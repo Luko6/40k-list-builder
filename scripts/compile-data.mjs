@@ -247,7 +247,8 @@ function buildDatasheet(link, source) {
   if (invuln) for (const s of statMap.values()) s.invulnerableSave = invuln
 
   const id = slug(link.name)
-  const ov = overrides[id] ?? {}
+  // BSData uses US spelling ("Armor"); the Munitorum uses UK ("Armour").
+  const ov = overrides[id] ?? overrides[id.replace(/armor\b/, 'armour')] ?? {}
   const basePts = ptsFrom(entry)
   const { keywords, factionKeywords } = keywordsFrom(entry)
   const weapons = [...wMap.values()]

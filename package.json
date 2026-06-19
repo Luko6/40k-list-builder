@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "scrape-mfm": "node scripts/scrape-mfm.mjs",
     "compile-data": "node scripts/compile-data.mjs",
     "preview": "vite preview",
     "lint": "eslint .",

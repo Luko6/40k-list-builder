@@ -192,8 +192,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
-          "points": 95
+          "models": 3,
+          "points": 90
+        },
+        {
+          "models": 6,
+          "points": 180
         }
       ]
     },
@@ -312,7 +316,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 50
+          "points": 40
         }
       ],
       "canLead": [
@@ -508,7 +512,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 75
+          "points": 65
         }
       ],
       "canLead": [
@@ -616,7 +620,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 50
+          "points": 40
         }
       ],
       "canLead": [
@@ -942,8 +946,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 5,
           "points": 75
+        },
+        {
+          "models": 10,
+          "points": 150
         }
       ]
     },
@@ -1154,8 +1162,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
-          "points": 90
+          "models": 5,
+          "points": 85
+        },
+        {
+          "models": 10,
+          "points": 160
         }
       ]
     },
@@ -1533,7 +1545,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 45
+          "points": 40
         }
       ],
       "canLead": [
@@ -1692,8 +1704,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 3,
           "points": 80
+        },
+        {
+          "models": 6,
+          "points": 160
         }
       ]
     },
@@ -1882,7 +1898,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 160
+          "points": 150
         }
       ]
     },
@@ -2559,7 +2575,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 95
+          "points": 85
         }
       ],
       "canLead": [
@@ -3137,8 +3153,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 3,
           "points": 150
+        },
+        {
+          "models": 6,
+          "points": 300
         }
       ]
     },
@@ -3377,8 +3397,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 3,
           "points": 175
+        },
+        {
+          "models": 6,
+          "points": 350
         }
       ]
     },
@@ -3565,7 +3589,7 @@
       "wargearOptions": [],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 4,
           "points": 110
         }
       ],
@@ -3773,7 +3797,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 75
+          "points": 70
         }
       ],
       "canLead": [
@@ -4181,7 +4205,7 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 4,
           "points": 105
         }
       ]
@@ -4270,7 +4294,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 55
+          "points": 45
         }
       ],
       "canLead": [
@@ -4534,11 +4558,11 @@
       "sizeOptions": [
         {
           "models": 10,
-          "points": 110
+          "points": 150
         },
         {
           "models": 20,
-          "points": 150
+          "points": 290
         }
       ]
     },
@@ -4728,8 +4752,8 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
-          "points": 200
+          "models": 5,
+          "points": 180
         }
       ]
     },
@@ -5219,8 +5243,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 5,
           "points": 120
+        },
+        {
+          "models": 10,
+          "points": 200
         }
       ]
     },
@@ -5665,8 +5693,8 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
-          "points": 85
+          "models": 3,
+          "points": 75
         }
       ]
     },
@@ -5766,7 +5794,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 70
+          "points": 100
         }
       ],
       "canLead": [
@@ -5995,8 +6023,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 3,
           "points": 90
+        },
+        {
+          "models": 6,
+          "points": 180
         }
       ]
     },
@@ -6257,7 +6289,11 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 0
+          "points": 75
+        },
+        {
+          "models": 2,
+          "points": 150
         }
       ]
     },
@@ -7002,8 +7038,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 5,
           "points": 100
+        },
+        {
+          "models": 10,
+          "points": 200
         }
       ]
     },
@@ -7166,8 +7206,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 5,
           "points": 110
+        },
+        {
+          "models": 10,
+          "points": 220
         }
       ]
     },
@@ -7486,7 +7530,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 100
+          "points": 85
         }
       ]
     },
@@ -7651,8 +7695,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 3,
           "points": 120
+        },
+        {
+          "models": 6,
+          "points": 240
         }
       ]
     },
@@ -7754,8 +7802,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
-          "points": 80
+          "models": 5,
+          "points": 85
+        },
+        {
+          "models": 10,
+          "points": 150
         }
       ]
     },
@@ -7853,8 +7905,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
-          "points": 90
+          "models": 5,
+          "points": 85
+        },
+        {
+          "models": 10,
+          "points": 170
         }
       ]
     },
@@ -7952,8 +8008,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
-          "points": 100
+          "models": 5,
+          "points": 110
+        },
+        {
+          "models": 10,
+          "points": 180
         }
       ]
     },
@@ -8255,8 +8315,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 5,
           "points": 80
+        },
+        {
+          "models": 10,
+          "points": 150
         }
       ]
     },
@@ -8664,7 +8728,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 70
+          "points": 55
         }
       ],
       "canLead": [
@@ -9165,7 +9229,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 270
+          "points": 250
         }
       ]
     },
@@ -9414,7 +9478,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 55
+          "points": 45
         }
       ],
       "canLead": [
@@ -9528,7 +9592,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 55
+          "points": 45
         }
       ],
       "canLead": [
@@ -9623,7 +9687,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 55
+          "points": 45
         }
       ],
       "canLead": [
@@ -9851,7 +9915,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 85
+          "points": 80
         }
       ],
       "canLead": [
@@ -10064,8 +10128,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
-          "points": 80
+          "models": 3,
+          "points": 70
+        },
+        {
+          "models": 6,
+          "points": 140
         }
       ]
     },
@@ -10781,7 +10849,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 205
+          "points": 195
         }
       ]
     },
@@ -10912,8 +10980,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
-          "points": 80
+          "models": 5,
+          "points": 75
+        },
+        {
+          "models": 10,
+          "points": 150
         }
       ]
     },
@@ -11128,7 +11200,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 180
+          "points": 170
         }
       ]
     },
@@ -11402,7 +11474,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 235
+          "points": 245
         }
       ]
     },
@@ -11762,8 +11834,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
-          "points": 70
+          "models": 5,
+          "points": 65
+        },
+        {
+          "models": 10,
+          "points": 120
         }
       ]
     },
@@ -12019,8 +12095,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 5,
           "points": 85
+        },
+        {
+          "models": 10,
+          "points": 160
         }
       ]
     },
@@ -12142,7 +12222,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 115
+          "points": 105
         }
       ]
     },
@@ -12257,7 +12337,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 125
+          "points": 130
         }
       ]
     },
@@ -13130,7 +13210,7 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 3,
           "points": 75
         }
       ]
@@ -13350,8 +13430,20 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 4,
           "points": 105
+        },
+        {
+          "models": 5,
+          "points": 130
+        },
+        {
+          "models": 9,
+          "points": 235
+        },
+        {
+          "models": 10,
+          "points": 260
         }
       ]
     },
@@ -13989,7 +14081,7 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 10,
           "points": 140
         }
       ]
@@ -14236,8 +14328,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
-          "points": 180
+          "models": 5,
+          "points": 155
+        },
+        {
+          "models": 10,
+          "points": 310
         }
       ]
     },
@@ -14456,8 +14552,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
-          "points": 175
+          "models": 5,
+          "points": 160
+        },
+        {
+          "models": 10,
+          "points": 320
         }
       ]
     },
@@ -14848,8 +14948,12 @@
       ],
       "sizeOptions": [
         {
-          "models": 1,
+          "models": 5,
           "points": 100
+        },
+        {
+          "models": 10,
+          "points": 200
         }
       ]
     },
@@ -15092,7 +15196,7 @@
       "sizeOptions": [
         {
           "models": 1,
-          "points": 190
+          "points": 175
         }
       ]
     }

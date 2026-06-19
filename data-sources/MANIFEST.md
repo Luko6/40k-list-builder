@@ -28,9 +28,23 @@ curl -fsSL "$BASE/Warhammer%2040%2C000.gst"           -o "bsdata/Warhammer 40,00
 
 Then bump the pinned commit above.
 
-## Munitorum Field Manual (11e points + roles)
+## Munitorum Field Manual (11e points)
 
-Points and LEADER/SUPPORT roles are corrected against the Munitorum Field Manual
-(<https://mfm.warhammer-community.com/en/black-templars>) via a hand-maintained
-overrides file (`scripts/points-overrides.json`), since the MFM has no clean API
-and the BSData snapshot carries 10e points.
+- **Upstream:** <https://mfm.warhammer-community.com/en/black-templars>
+- **Snapshot:** `mfm/black-templars.rsc.txt` — the page's React Flight (RSC)
+  payload, captured 2026-06-20.
+
+The MFM is a Next.js App Router app with no clean API; the page data is
+server-rendered into a flight payload returned when the route is fetched with
+an `RSC: 1` header. `scripts/scrape-mfm.mjs` (`npm run scrape-mfm`) parses that
+payload — resolving the lazy `$L<id>` point refs — into
+`scripts/points-overrides.json` (points-by-size keyed by datasheet-name slug),
+which `compile-data` merges over the BSData 10e cost. 88/89 datasheets match by
+name; re-run after MFM updates.
+
+### Re-capturing
+
+```bash
+npm run scrape-mfm        # fetches live, refreshes the .rsc.txt snapshot + overrides
+npm run scrape-mfm -- --cached   # re-parse the saved snapshot without refetching
+```
