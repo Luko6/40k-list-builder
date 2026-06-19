@@ -60,23 +60,135 @@ body {
   font-weight: 600;
 }
 
-.placeholder-card {
+.panel {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem;
 }
 
-.placeholder-card p {
-  margin: 0 0 0.75rem;
+.panel h2 {
+  margin: 0 0 0.5rem;
 }
 
-.placeholder-card p:last-child {
-  margin-bottom: 0;
+.panel h4 {
+  margin: 1rem 0 0.5rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
 }
 
 .muted {
   color: var(--muted);
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.tag--leader {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tag--support {
+  border-color: #3d6fb4;
+  color: #6f9fe0;
+}
+
+.tag--disposition {
+  border-color: #b48a3d;
+  color: #e0bb6f;
+}
+
+.enhancements {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.enhancements li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.enhancements li:last-child {
+  border-bottom: none;
+}
+
+.unit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.unit-card {
+  background: #1d1d22;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.unit-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.unit-card__head h2,
+.unit-card__head h3 {
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+.unit-card__head h3 {
+  font-size: 1.05rem;
+}
+
+.unit-card__points {
+  margin: 0.4rem 0 0.75rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.statline {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.statline th {
+  color: var(--muted);
+  font-weight: 600;
+  padding: 0.2rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.statline td {
+  padding: 0.3rem 0;
+}
+
+.wargear {
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.wargear li {
+  margin-bottom: 0.3rem;
 }
 
 .app-footer {
