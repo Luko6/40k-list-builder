@@ -1,5 +1,6 @@
 import { useMemo, useReducer } from 'react'
 import type { Detachment, FactionCatalogue } from '../data/schema'
+import { fromSavedList, loadCurrent } from './storage'
 
 /**
  * In-memory working state for the list being built. This is deliberately
@@ -14,6 +15,9 @@ export interface RosterUnit {
 }
 
 export interface RosterState {
+  id: string
+  name: string
+  createdAt: string
   detachmentId: string
   units: RosterUnit[]
 }
@@ -23,11 +27,26 @@ type Action =
   | { type: 'addUnit'; datasheetId: string }
   | { type: 'removeUnit'; instanceId: string }
   | { type: 'setSize'; instanceId: string; sizeOptionIndex: number }
+  | { type: 'rename'; name: string }
+  | { type: 'load'; state: RosterState }
+  | { type: 'new'; detachmentId: string }
 
 function reducer(state: RosterState, action: Action): RosterState {
   switch (action.type) {
     case 'setDetachment':
       return { ...state, detachmentId: action.detachmentId }
+    case 'rename':
+      return { ...state, name: action.name }
+    case 'load':
+      return action.state
+    case 'new':
+      return {
+        id: crypto.randomUUID(),
+        name: 'Untitled list',
+        createdAt: new Date().toISOString(),
+        detachmentId: action.detachmentId,
+        units: [],
+      }
     case 'addUnit':
       return {
         ...state,
@@ -64,11 +83,26 @@ export interface RosterTotals {
   overLimit: boolean
 }
 
-export function useRoster(catalogue: FactionCatalogue) {
-  const [state, dispatch] = useReducer(reducer, {
+function init(catalogue: FactionCatalogue): RosterState {
+  const current = loadCurrent()
+  if (current) {
+    try {
+      return fromSavedList(current)
+    } catch {
+      /* stale/incompatible saved list — fall through to a fresh one */
+    }
+  }
+  return {
+    id: crypto.randomUUID(),
+    name: 'Untitled list',
+    createdAt: new Date().toISOString(),
     detachmentId: catalogue.detachments[0]?.id ?? '',
     units: [],
-  })
+  }
+}
+
+export function useRoster(catalogue: FactionCatalogue) {
+  const [state, dispatch] = useReducer(reducer, catalogue, init)
 
   const size = catalogue.gameSizes[0]
   const byId = useMemo(

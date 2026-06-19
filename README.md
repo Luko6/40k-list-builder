@@ -29,10 +29,22 @@ Source = GitHub Actions**.
 ## Roadmap
 
 - [x] **Phase 0** — repo scaffold + Pages deploy pipeline
-- [ ] **Phase 1** — data format + small Black Templars seed
-- [ ] **Phase 2** — importer (BattleScribe wh40k-10e data → our JSON, points corrected vs. Munitorum)
-- [ ] **Phase 3** — list builder UI
-- [ ] **Phase 4** — persistence + printable roster output
+- [x] **Phase 1** — data format + Black Templars seed
+- [x] **Phase 2** — importer (BattleScribe wh40k-10e → our JSON) + BT-legal SM units (89 datasheets)
+- [x] **Phase 3** — list builder UI (add units, sizes, live points + warnings)
+- [x] **Phase 4** — persistence (localStorage + named lists), JSON import/export, printable summary
+- [ ] **Next** — wargear/enhancement assignment, leader attachment, deeper validation
+
+See [GAPS.md](GAPS.md) for current limitations.
+
+### Data pipeline
+
+```bash
+npm run scrape-mfm     # Munitorum points -> scripts/points-overrides.json
+npm run compile-data   # vendored BSData + overrides -> src/data/generated/black-templars.json
+```
+
+Then commit the regenerated JSON; pushing to `main` deploys it.
 
 ## Data sources
 

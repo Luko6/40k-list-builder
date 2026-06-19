@@ -389,6 +389,76 @@ body {
   color: var(--muted);
 }
 
+/* ── Toolbar ──────────────────────────────────────────────────── */
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.toolbar__name {
+  background: #0d0d0f;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 0.5rem 0.7rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.toolbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.toolbar__spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar__select {
+  background: #0d0d0f;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 0.35rem 0.5rem;
+  font-size: 0.82rem;
+}
+
+.btn--sm {
+  padding: 0.35rem 0.7rem;
+  font-size: 0.82rem;
+}
+
+/* ── Print ────────────────────────────────────────────────────── */
+.print-summary {
+  display: none;
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+  }
+  .app-header,
+  .toolbar,
+  .builder,
+  .app-footer {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .print-summary {
+    display: block;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    white-space: pre-wrap;
+    color: #000;
+  }
+}
+
 @media (max-width: 540px) {
   .app-header h1 {
     font-size: 1.75rem;
