@@ -73,6 +73,9 @@ const SKIP_RE =
   /\b(detachment|battle honours?|battle scars?|crusade relics?|battle traits?|weapon modifications?|show\/hide)\b/i
 const skip = (name) => !!name && (SKIP_EXACT.has(name) || SKIP_RE.test(name))
 
+// Mode-tagged datasheet variants out of MVP scope (narrative/legacy).
+const MODE_TAG = /\[(legends|crucible)\]/i
+
 // Walk a unit's subtree, resolving links, collecting profiles by type.
 // Returns { unitProfiles, weaponProfiles, abilities, groups }.
 function collect(entry) {
@@ -221,24 +224,16 @@ function wargearOption(g) {
   }
 }
 
-// ── Build datasheets from BT top-level entry links ─────────────────────
+// ── Build a datasheet from a top-level entry link ──────────────────────
 const overrides = existsSync(OVERRIDES_FILE)
   ? JSON.parse(readFileSync(OVERRIDES_FILE, 'utf8'))
   : {}
 
-const topLinks = arr(btCatalogue.entryLinks?.entryLink).filter((l) => !/\[Legends\]/i.test(l.name))
-const datasheets = []
-const report = []
-
-for (const link of topLinks) {
+function buildDatasheet(link, source) {
   const entry = resolve(link)
   const c = collect(entry)
-  if (c.unitProfiles.length === 0) {
-    report.push(`SKIP (no Unit profile): ${link.name}`)
-    continue
-  }
+  if (c.unitProfiles.length === 0) return null
 
-  // dedupe statlines by name, weapons by id
   const statMap = new Map()
   for (const p of c.unitProfiles) if (!statMap.has(p.name)) statMap.set(p.name, statlineFrom(p))
   const wMap = new Map()
@@ -254,31 +249,69 @@ for (const link of topLinks) {
   const id = slug(link.name)
   const ov = overrides[id] ?? {}
   const basePts = ptsFrom(entry)
-  const sizeOptions = ov.sizeOptions ?? [{ models: 1, points: basePts }]
-
   const { keywords, factionKeywords } = keywordsFrom(entry)
   const weapons = [...wMap.values()]
-  const defaultLoadout = weapons.filter((w) => !optionalIds.has(w.id)).map((w) => w.id)
+  const canLead = canLeadFrom(c.abilities)
 
-  datasheets.push({
+  return {
     id,
     name: link.name,
-    source: 'black-templars',
+    source,
     ...(ov.role ? { role: ov.role } : {}),
     keywords,
     factionKeywords,
     statlines: [...statMap.values()],
     weapons,
-    defaultLoadout,
+    defaultLoadout: weapons.filter((w) => !optionalIds.has(w.id)).map((w) => w.id),
     wargearOptions: c.groups.map(wargearOption),
-    sizeOptions,
-    ...(canLeadFrom(c.abilities) ? { canLead: canLeadFrom(c.abilities) } : {}),
-  })
-  report.push(
-    `${link.name}: ${statMap.size} statline(s), ${weapons.length} weapon(s), ` +
-      `${c.groups.length} option group(s), pts ${basePts}${ov.sizeOptions ? ' (MFM)' : ''}`,
-  )
+    sizeOptions: ov.sizeOptions ?? [{ models: 1, points: basePts }],
+    ...(canLead ? { canLead } : {}),
+    _report: `${statMap.size} statline(s), ${weapons.length} weapon(s), ${c.groups.length} option group(s), pts ${basePts}${ov.sizeOptions ? ' (MFM)' : ''}`,
+  }
 }
+
+// Black Templars CANNOT field psykers, and bring their own characters rather
+// than other chapters' named heroes — so generic SM Epic Heroes/Psykers are
+// excluded. Legends units are out of scope.
+function btLegality(link) {
+  if (MODE_TAG.test(link.name)) return 'mode-tag'
+  const cats = arr(resolve(link).categoryLinks?.categoryLink).map((c) => c.name)
+  if (cats.includes('Psyker')) return 'psyker'
+  if (cats.includes('Epic Hero')) return 'epic-hero (other chapter)'
+  return null
+}
+
+const datasheets = []
+const byOurId = new Map()
+const report = []
+
+// Pass 1: BT-specific curated units (always legal, win on dedupe).
+for (const link of arr(btCatalogue.entryLinks?.entryLink)) {
+  if (MODE_TAG.test(link.name)) continue
+  const ds = buildDatasheet(link, 'black-templars')
+  if (!ds) { report.push(`BT SKIP (no Unit profile): ${link.name}`); continue }
+  const { _report, ...clean } = ds
+  datasheets.push(clean)
+  byOurId.set(clean.id, clean)
+  report.push(`BT  ${link.name}: ${_report}`)
+}
+
+// Pass 2: generic Space Marines units imported into BT, minus illegal ones.
+const smCatalogue = roots[1].catalogue
+let smAdded = 0, smExcluded = 0, smDuped = 0
+for (const link of arr(smCatalogue.entryLinks?.entryLink)) {
+  const reason = btLegality(link)
+  if (reason) { smExcluded++; continue }
+  const id = slug(link.name)
+  if (byOurId.has(id)) { smDuped++; continue }
+  const ds = buildDatasheet(link, 'space-marines')
+  if (!ds) continue
+  const { _report, ...clean } = ds
+  datasheets.push(clean)
+  byOurId.set(clean.id, clean)
+  smAdded++
+}
+report.push(`\nSM import: +${smAdded} added, ${smDuped} duplicates of BT entries, ${smExcluded} excluded (mode-tag/psyker/epic-hero)`)
 
 const catalogue = {
   schemaVersion: SCHEMA_VERSION,
