@@ -7,6 +7,11 @@ A Warhammer 40,000 army list builder. MVP scope: **Black Templars** only.
 - **Persistence:** browser `localStorage` + JSON import/export (no account, no backend)
 - **Validation:** points total vs. limit + basic structure (detachment, enhancements, unit sizes)
 
+> **Resuming / contributing?** Start with [CLAUDE.md](CLAUDE.md) — architecture,
+> the data pipeline, gotchas, and prioritized next steps. [GAPS.md](GAPS.md) lists
+> current limitations; [data-sources/MANIFEST.md](data-sources/MANIFEST.md)
+> documents data provenance.
+
 ## Development
 
 ```bash
