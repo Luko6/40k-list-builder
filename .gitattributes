@@ -1,0 +1,3 @@
+# Keep vendored upstream data byte-pristine (no EOL conversion) so the pinned
+# snapshot matches BSData exactly and re-vendoring stays reproducible.
+data-sources/** -text

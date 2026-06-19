@@ -1,0 +1,3345 @@
+{
+  "schemaVersion": 1,
+  "id": "black-templars",
+  "name": "Black Templars",
+  "edition": "11th (10e BSData stand-in)",
+  "gameSizes": [
+    {
+      "id": "strikeForce",
+      "label": "Strike Force (2000 pts)",
+      "pointsLimit": 2000,
+      "detachmentPoints": 3,
+      "enhancementLimit": 4,
+      "datasheetLimit": 3
+    }
+  ],
+  "detachments": [
+    {
+      "id": "gladius-task-force",
+      "name": "Gladius Task Force",
+      "detachmentPoints": 3,
+      "forceDisposition": "PRIORITY ASSETS",
+      "enhancements": [
+        {
+          "id": "adept-of-the-codex",
+          "name": "Adept of the Codex",
+          "points": 20
+        },
+        {
+          "id": "artificer-armour",
+          "name": "Artificer Armour",
+          "points": 10
+        },
+        {
+          "id": "fire-discipline",
+          "name": "Fire Discipline",
+          "points": 25
+        },
+        {
+          "id": "the-honour-vehement",
+          "name": "The Honour Vehement",
+          "points": 15
+        }
+      ]
+    }
+  ],
+  "datasheets": [
+    {
+      "id": "castellan",
+      "name": "Castellan",
+      "source": "black-templars",
+      "keywords": [
+        "Character",
+        "Infantry",
+        "Grenades",
+        "Imperium",
+        "Tacticus",
+        "Lieutenant",
+        "Castellan"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Castellan",
+          "movement": "6\"",
+          "toughness": 4,
+          "save": "3+",
+          "wounds": 4,
+          "leadership": "6+",
+          "objectiveControl": 1
+        }
+      ],
+      "weapons": [
+        {
+          "id": "astartes-chainsword",
+          "name": "Astartes Chainsword",
+          "range": "Melee",
+          "attacks": "7",
+          "skill": "2+",
+          "strength": "4",
+          "armourPenetration": "-1",
+          "damage": "1",
+          "abilities": [
+            "Sustained Hits 1"
+          ]
+        },
+        {
+          "id": "master-crafted-power-weapon",
+          "name": "Master-crafted Power Weapon",
+          "range": "Melee",
+          "attacks": "6",
+          "skill": "2+",
+          "strength": "5",
+          "armourPenetration": "-2",
+          "damage": "2",
+          "abilities": [
+            "Lethal Hits"
+          ]
+        },
+        {
+          "id": "heavy-bolt-pistol",
+          "name": "Heavy Bolt Pistol",
+          "range": "18\"",
+          "attacks": "1",
+          "skill": "2+",
+          "strength": "4",
+          "armourPenetration": "-1",
+          "damage": "1",
+          "abilities": [
+            "Pistol"
+          ]
+        },
+        {
+          "id": "combi-weapon",
+          "name": "Combi-weapon",
+          "range": "24\"",
+          "attacks": "1",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Anti-Infantry 4+",
+            "Devastating Wounds",
+            "Rapid Fire 1"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "wargear",
+          "description": "Wargear",
+          "min": 0,
+          "max": 1,
+          "choices": []
+        },
+        {
+          "id": "melee-weapon",
+          "description": "Melee Weapon",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "astartes-chainsword",
+              "name": "Astartes chainsword",
+              "addWeapons": [
+                "astartes-chainsword"
+              ]
+            },
+            {
+              "id": "master-crafted-power-weapon",
+              "name": "Master-crafted Power Weapon",
+              "addWeapons": [
+                "master-crafted-power-weapon"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ranged-weapon",
+          "description": "Ranged Weapon",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "heavy-bolt-pistol",
+              "name": "Heavy Bolt Pistol",
+              "addWeapons": [
+                "heavy-bolt-pistol"
+              ]
+            },
+            {
+              "id": "combi-weapon",
+              "name": "Combi-weapon",
+              "addWeapons": [
+                "combi-weapon"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 70
+        }
+      ],
+      "canLead": [
+        "assault-intercessor-squad",
+        "infernus-squad",
+        "intercessor-squad",
+        "crusader-squad",
+        "sword-brethren",
+        "sternguard-veteran-squad",
+        "you-can-attach-this-model-to-one-of-the-above-units-even-if-one-captain-or-chapter-master-model-has-already-been-attached-to-it-if-you-do-and-that-bodyguard-unit-is-destroyed-the-leader-units-attached-to-it-become-separate-units-with-their-original-starting-strengths"
+      ]
+    },
+    {
+      "id": "chaplain-grimaldus",
+      "name": "Chaplain Grimaldus",
+      "source": "black-templars",
+      "keywords": [
+        "Infantry",
+        "Imperium",
+        "Tacticus"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Grimaldus",
+          "movement": "6\"",
+          "toughness": 4,
+          "save": "3+",
+          "wounds": 4,
+          "leadership": "5+",
+          "objectiveControl": 1
+        },
+        {
+          "name": "Cenobyte Servitor",
+          "movement": "6\"",
+          "toughness": 4,
+          "save": "3+",
+          "wounds": 1,
+          "leadership": "8+",
+          "objectiveControl": 1
+        }
+      ],
+      "weapons": [
+        {
+          "id": "artificer-crozius",
+          "name": "Artificer Crozius",
+          "range": "Melee",
+          "attacks": "6",
+          "skill": "2+",
+          "strength": "6",
+          "armourPenetration": "-2",
+          "damage": "2"
+        },
+        {
+          "id": "plasma-pistol-supercharge",
+          "name": "Plasma Pistol - Supercharge",
+          "range": "12\"",
+          "attacks": "1",
+          "skill": "2+",
+          "strength": "8",
+          "armourPenetration": "-3",
+          "damage": "2",
+          "abilities": [
+            "Hazardous",
+            "Pistol"
+          ]
+        },
+        {
+          "id": "plasma-pistol-standard",
+          "name": "Plasma Pistol - Standard",
+          "range": "12\"",
+          "attacks": "1",
+          "skill": "2+",
+          "strength": "7",
+          "armourPenetration": "-2",
+          "damage": "1",
+          "abilities": [
+            "Pistol"
+          ]
+        },
+        {
+          "id": "close-combat-weapon",
+          "name": "Close Combat Weapon",
+          "range": "Melee",
+          "attacks": "1",
+          "skill": "4+",
+          "strength": "3",
+          "armourPenetration": "0",
+          "damage": "1"
+        }
+      ],
+      "defaultLoadout": [
+        "artificer-crozius",
+        "plasma-pistol-supercharge",
+        "plasma-pistol-standard",
+        "close-combat-weapon"
+      ],
+      "wargearOptions": [],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 110
+        }
+      ],
+      "canLead": [
+        "assault-intercessor-squad",
+        "infernus-squad",
+        "intercessor-squad",
+        "crusader-squad",
+        "sword-brethren"
+      ]
+    },
+    {
+      "id": "crusade-ancient",
+      "name": "Crusade Ancient",
+      "source": "black-templars",
+      "keywords": [
+        "Character",
+        "Infantry",
+        "Grenades",
+        "Ancient",
+        "Tacticus",
+        "Imperium",
+        "Crusade Ancient"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Crusade Ancient",
+          "movement": "6\"",
+          "toughness": 4,
+          "save": "3+",
+          "wounds": 4,
+          "leadership": "6+",
+          "objectiveControl": 1
+        }
+      ],
+      "weapons": [
+        {
+          "id": "master-crafted-power-weapon",
+          "name": "Master-crafted Power Weapon",
+          "range": "Melee",
+          "attacks": "5",
+          "skill": "2+",
+          "strength": "5",
+          "armourPenetration": "-2",
+          "damage": "2",
+          "abilities": [
+            "Lethal Hits"
+          ]
+        },
+        {
+          "id": "bolt-pistol",
+          "name": "Bolt pistol",
+          "range": "12\"",
+          "attacks": "1",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Pistol"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "wargear",
+          "description": "Wargear",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "master-crafted-power-weapon",
+              "name": "Master-crafted Power Weapon",
+              "addWeapons": [
+                "master-crafted-power-weapon"
+              ]
+            },
+            {
+              "id": "bolt-pistol",
+              "name": "Bolt pistol",
+              "addWeapons": [
+                "bolt-pistol"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 55
+        }
+      ],
+      "canLead": [
+        "crusader-squad",
+        "sword-brethren-squad",
+        "you-can-attach-this-model-to-one-of-the-above-units-even-if-one-captain-chapter-master-execrator-or-lieutenant-model-has-already-been-attached-to-it-if-you-do-and-that-bodyguard-unit-is-destroyed-the-leader-units-attached-to-it-become-separate-units-with-their-original-starting-strengths"
+      ]
+    },
+    {
+      "id": "crusader-squad",
+      "name": "Crusader Squad",
+      "source": "black-templars",
+      "keywords": [
+        "Infantry",
+        "Battleline",
+        "Grenades",
+        "Imperium",
+        "Tacticus",
+        "Crusader Squad"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Sword Brother",
+          "movement": "6\"",
+          "toughness": 4,
+          "save": "3+",
+          "wounds": 2,
+          "leadership": "6+",
+          "objectiveControl": 2
+        },
+        {
+          "name": "Initiate",
+          "movement": "6\"",
+          "toughness": 4,
+          "save": "3+",
+          "wounds": 2,
+          "leadership": "6+",
+          "objectiveControl": 2
+        },
+        {
+          "name": "Neophyte",
+          "movement": "6\"",
+          "toughness": 4,
+          "save": "4+",
+          "wounds": 2,
+          "leadership": "6+",
+          "objectiveControl": 2
+        }
+      ],
+      "weapons": [
+        {
+          "id": "master-crafted-power-weapon",
+          "name": "Master-crafted Power Weapon",
+          "range": "Melee",
+          "attacks": "3",
+          "skill": "2+",
+          "strength": "5",
+          "armourPenetration": "-2",
+          "damage": "2",
+          "abilities": [
+            "Lethal Hits"
+          ]
+        },
+        {
+          "id": "heavy-bolt-pistol",
+          "name": "Heavy Bolt Pistol",
+          "range": "18\"",
+          "attacks": "1",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "-1",
+          "damage": "1",
+          "abilities": [
+            "Pistol"
+          ]
+        },
+        {
+          "id": "pyre-pistol",
+          "name": "Pyre Pistol",
+          "range": "12\"",
+          "attacks": "D6",
+          "skill": "N/A",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Ignores Cover",
+            "Pistol",
+            "Torrent"
+          ]
+        },
+        {
+          "id": "close-combat-weapon",
+          "name": "Close combat weapon",
+          "range": "Melee",
+          "attacks": "3",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1"
+        },
+        {
+          "id": "bolt-rifle",
+          "name": "Bolt Rifle",
+          "range": "24\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "-1",
+          "damage": "1",
+          "abilities": [
+            "Assault",
+            "Heavy"
+          ]
+        },
+        {
+          "id": "bolt-pistol",
+          "name": "Bolt pistol",
+          "range": "12\"",
+          "attacks": "1",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Pistol"
+          ]
+        },
+        {
+          "id": "astartes-chainsword",
+          "name": "Astartes Chainsword",
+          "range": "Melee",
+          "attacks": "4",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "-1",
+          "damage": "1",
+          "abilities": [
+            "Sustained Hits 1"
+          ]
+        },
+        {
+          "id": "power-fist",
+          "name": "Power fist",
+          "range": "Melee",
+          "attacks": "3",
+          "skill": "3+",
+          "strength": "8",
+          "armourPenetration": "-2",
+          "damage": "2"
+        },
+        {
+          "id": "pyreblaster",
+          "name": "Pyreblaster",
+          "range": "12\"",
+          "attacks": "D6",
+          "skill": "N/A",
+          "strength": "5",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Ignores Cover",
+            "Torrent"
+          ]
+        },
+        {
+          "id": "neophyte-firearm",
+          "name": "Neophyte Firearm",
+          "range": "18\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Assault"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "crusaders",
+          "description": "Crusaders",
+          "min": 10,
+          "max": 20,
+          "choices": [
+            {
+              "id": "sword-brother",
+              "name": "Sword Brother"
+            }
+          ]
+        },
+        {
+          "id": "pistol",
+          "description": "Pistol",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "heavy-bolt-pistol",
+              "name": "Heavy Bolt Pistol",
+              "addWeapons": [
+                "heavy-bolt-pistol"
+              ]
+            },
+            {
+              "id": "pyre-pistol",
+              "name": "Pyre Pistol",
+              "addWeapons": [
+                "pyre-pistol"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "initiates",
+          "description": "Initiates",
+          "min": 5,
+          "max": 11,
+          "choices": [
+            {
+              "id": "initiate-w-bolt-rifle",
+              "name": "Initiate w/Bolt Rifle"
+            },
+            {
+              "id": "initiate-w-chainsword-heavy-bolt-pistol",
+              "name": "Initiate w/Chainsword & Heavy Bolt Pistol"
+            },
+            {
+              "id": "initiate-w-power-fist-heavy-bolt-pistol",
+              "name": "Initiate w/Power Fist & Heavy Bolt Pistol"
+            },
+            {
+              "id": "initiate-w-pyreblaster",
+              "name": "Initiate w/Pyreblaster"
+            }
+          ]
+        },
+        {
+          "id": "neophytes",
+          "description": "Neophytes",
+          "min": 4,
+          "max": 8,
+          "choices": [
+            {
+              "id": "neophyte-w-firearm",
+              "name": "Neophyte w/ Firearm"
+            },
+            {
+              "id": "neophyte-w-astartes-chainsword",
+              "name": "Neophyte w/ Astartes Chainsword"
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 10,
+          "points": 110
+        },
+        {
+          "models": 20,
+          "points": 150
+        }
+      ]
+    },
+    {
+      "id": "emperors-champion",
+      "name": "Emperor's Champion",
+      "source": "black-templars",
+      "role": "leader",
+      "keywords": [
+        "Character",
+        "Infantry",
+        "Grenades",
+        "Imperium",
+        "Tacticus",
+        "Emperor's Champion"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "The Emperor's Champion",
+          "movement": "8\"",
+          "toughness": 4,
+          "save": "2+",
+          "wounds": 5,
+          "leadership": "6+",
+          "objectiveControl": 1
+        }
+      ],
+      "weapons": [
+        {
+          "id": "black-sword-strike",
+          "name": "Black Sword - Strike",
+          "range": "Melee",
+          "attacks": "6",
+          "skill": "2+",
+          "strength": "8",
+          "armourPenetration": "-3",
+          "damage": "3",
+          "abilities": [
+            "Anti-Character 5+",
+            "Precision"
+          ]
+        },
+        {
+          "id": "black-sword-sweep",
+          "name": "Black Sword - Sweep",
+          "range": "Melee",
+          "attacks": "10",
+          "skill": "2+",
+          "strength": "6",
+          "armourPenetration": "-2",
+          "damage": "1"
+        },
+        {
+          "id": "bolt-pistol",
+          "name": "Bolt pistol",
+          "range": "12\"",
+          "attacks": "1",
+          "skill": "2+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Pistol"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "wargear",
+          "description": "Wargear",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "black-sword",
+              "name": "Black Sword",
+              "addWeapons": [
+                "black-sword-strike",
+                "black-sword-sweep"
+              ]
+            },
+            {
+              "id": "bolt-pistol",
+              "name": "Bolt pistol",
+              "addWeapons": [
+                "bolt-pistol"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 70
+        }
+      ],
+      "canLead": [
+        "assault-intercessor-squad",
+        "intercessor-squad",
+        "crusader-squad",
+        "sword-brethren",
+        "sternguard-veteran-squad"
+      ]
+    },
+    {
+      "id": "emperors-champion-anointed",
+      "name": "Emperor's Champion (Anointed)",
+      "source": "black-templars",
+      "keywords": [
+        "Character",
+        "Infantry",
+        "Grenades",
+        "Imperium",
+        "Tacticus",
+        "Emperor's Champion"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "The Emperor's Champion",
+          "movement": "8\"",
+          "toughness": 4,
+          "save": "2+",
+          "wounds": 5,
+          "leadership": "6+",
+          "objectiveControl": 1
+        }
+      ],
+      "weapons": [
+        {
+          "id": "black-sword-strike",
+          "name": "Black Sword - Strike",
+          "range": "Melee",
+          "attacks": "6",
+          "skill": "2+",
+          "strength": "8",
+          "armourPenetration": "-3",
+          "damage": "3",
+          "abilities": [
+            "Anti-Character 5+",
+            "Precision"
+          ]
+        },
+        {
+          "id": "black-sword-sweep",
+          "name": "Black Sword - Sweep",
+          "range": "Melee",
+          "attacks": "10",
+          "skill": "2+",
+          "strength": "6",
+          "armourPenetration": "-2",
+          "damage": "1"
+        },
+        {
+          "id": "bolt-pistol",
+          "name": "Bolt pistol",
+          "range": "12\"",
+          "attacks": "1",
+          "skill": "2+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Pistol"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "wargear",
+          "description": "Wargear",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "black-sword",
+              "name": "Black Sword",
+              "addWeapons": [
+                "black-sword-strike",
+                "black-sword-sweep"
+              ]
+            },
+            {
+              "id": "bolt-pistol",
+              "name": "Bolt pistol",
+              "addWeapons": [
+                "bolt-pistol"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 100
+        }
+      ],
+      "canLead": [
+        "assault-intercessor-squad",
+        "intercessor-squad",
+        "crusader-squad",
+        "sword-brethren",
+        "sternguard-veteran-squad"
+      ]
+    },
+    {
+      "id": "execrator",
+      "name": "Execrator",
+      "source": "black-templars",
+      "keywords": [
+        "Infantry",
+        "Character",
+        "Chaplain",
+        "Grenades",
+        "Imperium",
+        "Tacticus",
+        "Execrator"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Execrator",
+          "movement": "6\"",
+          "toughness": 4,
+          "save": "3+",
+          "wounds": 4,
+          "leadership": "5+",
+          "objectiveControl": 1
+        }
+      ],
+      "weapons": [
+        {
+          "id": "master-crafted-power-weapon",
+          "name": "Master-crafted Power Weapon",
+          "range": "Melee",
+          "attacks": "3",
+          "skill": "2+",
+          "strength": "5",
+          "armourPenetration": "-2",
+          "damage": "2",
+          "abilities": [
+            "Extra Attacks",
+            "Lethal Hits"
+          ]
+        },
+        {
+          "id": "crozius-arcanum",
+          "name": "Crozius arcanum",
+          "range": "Melee",
+          "attacks": "5",
+          "skill": "2+",
+          "strength": "6",
+          "armourPenetration": "-1",
+          "damage": "2"
+        },
+        {
+          "id": "pyre-pistol",
+          "name": "Pyre Pistol",
+          "range": "12\"",
+          "attacks": "D6",
+          "skill": "N/A",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Ignores Cover",
+            "Pistol",
+            "Torrent"
+          ]
+        },
+        {
+          "id": "absolvor-bolt-pistol",
+          "name": "Absolvor bolt pistol",
+          "range": "18\"",
+          "attacks": "1",
+          "skill": "3+",
+          "strength": "5",
+          "armourPenetration": "-1",
+          "damage": "2",
+          "abilities": [
+            "Pistol"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "wargear",
+          "description": "Wargear",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "master-crafted-power-weapon",
+              "name": "Master-crafted Power Weapon",
+              "addWeapons": [
+                "master-crafted-power-weapon"
+              ]
+            },
+            {
+              "id": "crozius-arcanum",
+              "name": "Crozius arcanum",
+              "addWeapons": [
+                "crozius-arcanum"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pistol",
+          "description": "Pistol",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "pyre-pistol",
+              "name": "Pyre Pistol",
+              "addWeapons": [
+                "pyre-pistol"
+              ]
+            },
+            {
+              "id": "absolvor-bolt-pistol",
+              "name": "Absolvor bolt pistol",
+              "addWeapons": [
+                "absolvor-bolt-pistol"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 60
+        }
+      ],
+      "canLead": [
+        "crusader-squad",
+        "sword-brethren"
+      ]
+    },
+    {
+      "id": "gladiator-lancer",
+      "name": "Gladiator Lancer",
+      "source": "black-templars",
+      "keywords": [
+        "Vehicle",
+        "Imperium",
+        "Smoke",
+        "Gladiator Lancer"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Black Templars Gladiator Lancer",
+          "movement": "10\"",
+          "toughness": 10,
+          "save": "3+",
+          "wounds": 12,
+          "leadership": "6+",
+          "objectiveControl": 3
+        }
+      ],
+      "weapons": [
+        {
+          "id": "lancer-laser-destroyer",
+          "name": "Lancer Laser Destroyer",
+          "range": "72\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "14",
+          "armourPenetration": "-4",
+          "damage": "D6+3",
+          "abilities": [
+            "Heavy"
+          ]
+        },
+        {
+          "id": "armoured-hull",
+          "name": "Armoured Hull",
+          "range": "Melee",
+          "attacks": "3",
+          "skill": "4+",
+          "strength": "6",
+          "armourPenetration": "0",
+          "damage": "1"
+        },
+        {
+          "id": "icarus-rocket-pod",
+          "name": "Icarus Rocket Pod",
+          "range": "24\"",
+          "attacks": "D3",
+          "skill": "3+",
+          "strength": "8",
+          "armourPenetration": "-1",
+          "damage": "2",
+          "abilities": [
+            "Anti-fly 2+"
+          ]
+        },
+        {
+          "id": "ironhail-heavy-stubber",
+          "name": "Ironhail Heavy Stubber",
+          "range": "36\"",
+          "attacks": "3",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Rapid Fire 3"
+          ]
+        },
+        {
+          "id": "multi-melta",
+          "name": "Multi-melta",
+          "range": "18\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "9",
+          "armourPenetration": "-4",
+          "damage": "D6",
+          "abilities": [
+            "Melta 2"
+          ]
+        },
+        {
+          "id": "fragstorm-grenade-launcher",
+          "name": "Fragstorm grenade launcher",
+          "range": "18\"",
+          "attacks": "D6",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Blast"
+          ]
+        },
+        {
+          "id": "storm-bolter",
+          "name": "Storm bolter",
+          "range": "24\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Rapid Fire 2"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "wargear",
+          "description": "Wargear",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "lancer-laser-destroyer",
+              "name": "Lancer Laser Destroyer",
+              "addWeapons": [
+                "lancer-laser-destroyer"
+              ]
+            },
+            {
+              "id": "armoured-hull",
+              "name": "Armoured Hull",
+              "addWeapons": [
+                "armoured-hull"
+              ]
+            },
+            {
+              "id": "icarus-rocket-pod",
+              "name": "Icarus Rocket Pod",
+              "addWeapons": [
+                "icarus-rocket-pod"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pintle-mount-option",
+          "description": "Pintle Mount Option",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "ironhail-heavy-stubber",
+              "name": "Ironhail Heavy Stubber",
+              "addWeapons": [
+                "ironhail-heavy-stubber"
+              ]
+            },
+            {
+              "id": "multi-melta",
+              "name": "Multi-melta",
+              "addWeapons": [
+                "multi-melta"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sponson-weapons",
+          "description": "Sponson Weapons",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "2-fragstorm-grenade-launchers",
+              "name": "2 Fragstorm Grenade Launchers"
+            },
+            {
+              "id": "2-storm-bolters",
+              "name": "2 Storm Bolters"
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 160
+        }
+      ]
+    },
+    {
+      "id": "gladiator-reaper",
+      "name": "Gladiator Reaper",
+      "source": "black-templars",
+      "keywords": [
+        "Smoke",
+        "Imperium",
+        "Vehicle",
+        "Gladiator Reaper"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Black Templars Gladiator Reaper",
+          "movement": "10\"",
+          "toughness": 10,
+          "save": "3+",
+          "wounds": 12,
+          "leadership": "6+",
+          "objectiveControl": 3
+        }
+      ],
+      "weapons": [
+        {
+          "id": "tempest-bolter",
+          "name": "Tempest Bolter",
+          "range": "24\"",
+          "attacks": "4",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "-1",
+          "damage": "1",
+          "abilities": [
+            "Rapid Fire 4"
+          ]
+        },
+        {
+          "id": "twin-heavy-onslaught-gatling-cannon",
+          "name": "Twin Heavy Onslaught Gatling Cannon",
+          "range": "24\"",
+          "attacks": "12",
+          "skill": "3+",
+          "strength": "6",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Devastating Wounds",
+            "Twin-linked"
+          ]
+        },
+        {
+          "id": "armoured-hull",
+          "name": "Armoured Hull",
+          "range": "Melee",
+          "attacks": "3",
+          "skill": "4+",
+          "strength": "6",
+          "armourPenetration": "0",
+          "damage": "1"
+        },
+        {
+          "id": "icarus-rocket-pod",
+          "name": "Icarus Rocket Pod",
+          "range": "24\"",
+          "attacks": "D3",
+          "skill": "3+",
+          "strength": "8",
+          "armourPenetration": "-1",
+          "damage": "2",
+          "abilities": [
+            "Anti-fly 2+"
+          ]
+        },
+        {
+          "id": "ironhail-heavy-stubber",
+          "name": "Ironhail Heavy Stubber",
+          "range": "36\"",
+          "attacks": "3",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Rapid Fire 3"
+          ]
+        },
+        {
+          "id": "multi-melta",
+          "name": "Multi-melta",
+          "range": "18\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "9",
+          "armourPenetration": "-4",
+          "damage": "D6",
+          "abilities": [
+            "Melta 2"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "wargear",
+          "description": "Wargear",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "tempest-bolter",
+              "name": "Tempest Bolter",
+              "addWeapons": [
+                "tempest-bolter"
+              ]
+            },
+            {
+              "id": "twin-heavy-onslaught-gatling-cannon",
+              "name": "Twin Heavy Onslaught Gatling Cannon",
+              "addWeapons": [
+                "twin-heavy-onslaught-gatling-cannon"
+              ]
+            },
+            {
+              "id": "armoured-hull",
+              "name": "Armoured Hull",
+              "addWeapons": [
+                "armoured-hull"
+              ]
+            },
+            {
+              "id": "icarus-rocket-pod",
+              "name": "Icarus Rocket Pod",
+              "addWeapons": [
+                "icarus-rocket-pod"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pintle-mount-option",
+          "description": "Pintle Mount Option",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "ironhail-heavy-stubber",
+              "name": "Ironhail Heavy Stubber",
+              "addWeapons": [
+                "ironhail-heavy-stubber"
+              ]
+            },
+            {
+              "id": "multi-melta",
+              "name": "Multi-melta",
+              "addWeapons": [
+                "multi-melta"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 160
+        }
+      ]
+    },
+    {
+      "id": "gladiator-valiant",
+      "name": "Gladiator Valiant",
+      "source": "black-templars",
+      "keywords": [
+        "Vehicle",
+        "Smoke",
+        "Imperium",
+        "Gladiator Valiant"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Black Templars Gladiator Valiant",
+          "movement": "10\"",
+          "toughness": 10,
+          "save": "3+",
+          "wounds": 12,
+          "leadership": "6+",
+          "objectiveControl": 3
+        }
+      ],
+      "weapons": [
+        {
+          "id": "twin-las-talon",
+          "name": "Twin Las-talon",
+          "range": "36\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "10",
+          "armourPenetration": "-3",
+          "damage": "D6+1",
+          "abilities": [
+            "Twin-linked"
+          ]
+        },
+        {
+          "id": "armoured-hull",
+          "name": "Armoured Hull",
+          "range": "Melee",
+          "attacks": "3",
+          "skill": "4+",
+          "strength": "6",
+          "armourPenetration": "0",
+          "damage": "1"
+        },
+        {
+          "id": "icarus-rocket-pod",
+          "name": "Icarus Rocket Pod",
+          "range": "24\"",
+          "attacks": "D3",
+          "skill": "3+",
+          "strength": "8",
+          "armourPenetration": "-1",
+          "damage": "2",
+          "abilities": [
+            "Anti-fly 2+"
+          ]
+        },
+        {
+          "id": "ironhail-heavy-stubber",
+          "name": "Ironhail Heavy Stubber",
+          "range": "36\"",
+          "attacks": "3",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Rapid Fire 3"
+          ]
+        },
+        {
+          "id": "multi-melta",
+          "name": "Multi-melta",
+          "range": "18\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "9",
+          "armourPenetration": "-4",
+          "damage": "D6",
+          "abilities": [
+            "Melta 2"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "wargear",
+          "description": "Wargear",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "twin-las-talon",
+              "name": "Twin Las-talon",
+              "addWeapons": [
+                "twin-las-talon"
+              ]
+            },
+            {
+              "id": "armoured-hull",
+              "name": "Armoured Hull",
+              "addWeapons": [
+                "armoured-hull"
+              ]
+            },
+            {
+              "id": "icarus-rocket-pod",
+              "name": "Icarus Rocket Pod",
+              "addWeapons": [
+                "icarus-rocket-pod"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pintle-mount-option",
+          "description": "Pintle Mount Option",
+          "min": 0,
+          "max": 3,
+          "choices": [
+            {
+              "id": "ironhail-heavy-stubber",
+              "name": "Ironhail Heavy Stubber",
+              "addWeapons": [
+                "ironhail-heavy-stubber"
+              ]
+            },
+            {
+              "id": "multi-melta",
+              "name": "Multi-melta",
+              "addWeapons": [
+                "multi-melta"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 150
+        }
+      ]
+    },
+    {
+      "id": "high-marshal-helbrecht",
+      "name": "High Marshal Helbrecht",
+      "source": "black-templars",
+      "keywords": [
+        "Epic Hero",
+        "Character",
+        "Grenades",
+        "Imperium",
+        "Tacticus",
+        "High Marshal Helbrecht",
+        "Infantry",
+        "Chapter Master"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "High Marshal Helbrecht",
+          "movement": "6\"",
+          "toughness": 4,
+          "save": "2+",
+          "wounds": 6,
+          "leadership": "6+",
+          "objectiveControl": 3
+        }
+      ],
+      "weapons": [
+        {
+          "id": "sword-of-the-high-marshals-sweep",
+          "name": "Sword of the High Marshals - Sweep",
+          "range": "Melee",
+          "attacks": "12",
+          "skill": "2+",
+          "strength": "6",
+          "armourPenetration": "-3",
+          "damage": "1"
+        },
+        {
+          "id": "sword-of-the-high-marshals-strike",
+          "name": "Sword of the High Marshals - Strike",
+          "range": "Melee",
+          "attacks": "6",
+          "skill": "2+",
+          "strength": "8",
+          "armourPenetration": "-3",
+          "damage": "3"
+        },
+        {
+          "id": "ferocity",
+          "name": "Ferocity",
+          "range": "24\"",
+          "attacks": "2",
+          "skill": "2+",
+          "strength": "5",
+          "armourPenetration": "-1",
+          "damage": "2",
+          "abilities": [
+            "Anti-infantry 4+",
+            "Devastating Wounds"
+          ]
+        }
+      ],
+      "defaultLoadout": [
+        "sword-of-the-high-marshals-sweep",
+        "sword-of-the-high-marshals-strike",
+        "ferocity"
+      ],
+      "wargearOptions": [],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 120
+        }
+      ],
+      "canLead": [
+        "assault-intercessor-squad",
+        "intercessor-squad",
+        "crusader-squad",
+        "sword-brethren"
+      ]
+    },
+    {
+      "id": "impulsor",
+      "name": "Impulsor",
+      "source": "black-templars",
+      "keywords": [
+        "Vehicle",
+        "Transport",
+        "Dedicated Transport",
+        "Imperium",
+        "Impulsor"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Black Templars Impulsor",
+          "movement": "12\"",
+          "toughness": 9,
+          "save": "3+",
+          "wounds": 11,
+          "leadership": "6+",
+          "objectiveControl": 2
+        }
+      ],
+      "weapons": [
+        {
+          "id": "armoured-hull",
+          "name": "Armoured Hull",
+          "range": "Melee",
+          "attacks": "3",
+          "skill": "4+",
+          "strength": "6",
+          "armourPenetration": "0",
+          "damage": "1"
+        },
+        {
+          "id": "ironhail-skytalon-array",
+          "name": "Ironhail Skytalon Array",
+          "range": "36\"",
+          "attacks": "8",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Anti-Fly 4+",
+            "Sustained Hits 1"
+          ]
+        },
+        {
+          "id": "bellicatus-missile-array-frag",
+          "name": "Bellicatus Missile Array - Frag",
+          "range": "48\"",
+          "attacks": "D6",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Blast"
+          ]
+        },
+        {
+          "id": "bellicatus-missile-array-icarus",
+          "name": "Bellicatus Missile Array - Icarus",
+          "range": "48\"",
+          "attacks": "D3",
+          "skill": "3+",
+          "strength": "8",
+          "armourPenetration": "-1",
+          "damage": "2",
+          "abilities": [
+            "Anti-Fly 2+"
+          ]
+        },
+        {
+          "id": "bellicatus-missile-array-krak",
+          "name": "Bellicatus Missile Array - Krak",
+          "range": "48\"",
+          "attacks": "1",
+          "skill": "3+",
+          "strength": "8",
+          "armourPenetration": "-2",
+          "damage": "D6"
+        },
+        {
+          "id": "ironhail-heavy-stubber",
+          "name": "Ironhail Heavy Stubber",
+          "range": "36\"",
+          "attacks": "3",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Rapid Fire 3"
+          ]
+        },
+        {
+          "id": "multi-melta",
+          "name": "Multi-melta",
+          "range": "18\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "9",
+          "armourPenetration": "-4",
+          "damage": "D6",
+          "abilities": [
+            "Melta 2"
+          ]
+        },
+        {
+          "id": "fragstorm-grenade-launcher",
+          "name": "Fragstorm grenade launcher",
+          "range": "18\"",
+          "attacks": "D6",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Blast"
+          ]
+        },
+        {
+          "id": "storm-bolter",
+          "name": "Storm bolter",
+          "range": "24\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Rapid Fire 2"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "wargear",
+          "description": "Wargear",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "armoured-hull",
+              "name": "Armoured Hull",
+              "addWeapons": [
+                "armoured-hull"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "option",
+          "description": "Option",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "orbital-comms-array",
+              "name": "Orbital Comms Array"
+            },
+            {
+              "id": "shield-dome",
+              "name": "Shield Dome"
+            },
+            {
+              "id": "ironhail-skytalon-array",
+              "name": "Ironhail Skytalon Array",
+              "addWeapons": [
+                "ironhail-skytalon-array"
+              ]
+            },
+            {
+              "id": "bellicatus-missile-array",
+              "name": "Bellicatus Missile Array",
+              "addWeapons": [
+                "bellicatus-missile-array-frag",
+                "bellicatus-missile-array-icarus",
+                "bellicatus-missile-array-krak"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pintle-mount-option",
+          "description": "Pintle Mount Option",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "ironhail-heavy-stubber",
+              "name": "Ironhail Heavy Stubber",
+              "addWeapons": [
+                "ironhail-heavy-stubber"
+              ]
+            },
+            {
+              "id": "multi-melta",
+              "name": "Multi-melta",
+              "addWeapons": [
+                "multi-melta"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sponsons",
+          "description": "Sponsons",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "2-fragstorm-grenade-launchers",
+              "name": "2 Fragstorm Grenade Launchers"
+            },
+            {
+              "id": "2-storm-bolters",
+              "name": "2 Storm Bolters"
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 100
+        }
+      ]
+    },
+    {
+      "id": "land-raider-crusader",
+      "name": "Land Raider Crusader",
+      "source": "black-templars",
+      "keywords": [
+        "Vehicle",
+        "Land Raider Crusader",
+        "Smoke",
+        "Imperium",
+        "Transport",
+        "Grenades",
+        "Land Raider"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Land Raider Crusader",
+          "movement": "12\"",
+          "toughness": 12,
+          "save": "2+",
+          "wounds": 16,
+          "leadership": "6+",
+          "objectiveControl": 5
+        }
+      ],
+      "weapons": [
+        {
+          "id": "armoured-tracks",
+          "name": "Armoured Tracks",
+          "range": "Melee",
+          "attacks": "6",
+          "skill": "4+",
+          "strength": "8",
+          "armourPenetration": "0",
+          "damage": "1"
+        },
+        {
+          "id": "hunter-killer-missile",
+          "name": "Hunter-killer missile",
+          "range": "48\"",
+          "attacks": "1",
+          "skill": "2+",
+          "strength": "14",
+          "armourPenetration": "-3",
+          "damage": "D6",
+          "abilities": [
+            "One Shot"
+          ]
+        },
+        {
+          "id": "hurricane-bolter",
+          "name": "Hurricane Bolter",
+          "range": "24\"",
+          "attacks": "6",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Rapid Fire 6",
+            "Twin-linked"
+          ]
+        },
+        {
+          "id": "multi-melta",
+          "name": "Multi-melta",
+          "range": "18\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "9",
+          "armourPenetration": "-4",
+          "damage": "D6",
+          "abilities": [
+            "Melta 2"
+          ]
+        },
+        {
+          "id": "storm-bolter",
+          "name": "Storm bolter",
+          "range": "24\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Rapid Fire 2"
+          ]
+        },
+        {
+          "id": "twin-assault-cannon",
+          "name": "Twin assault cannon",
+          "range": "24\"",
+          "attacks": "6",
+          "skill": "3+",
+          "strength": "6",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Devastating wounds",
+            "Twin-linked"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "wargear",
+          "description": "Wargear",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "armoured-tracks",
+              "name": "Armoured Tracks",
+              "addWeapons": [
+                "armoured-tracks"
+              ]
+            },
+            {
+              "id": "hunter-killer-missile",
+              "name": "Hunter-killer missile",
+              "addWeapons": [
+                "hunter-killer-missile"
+              ]
+            },
+            {
+              "id": "hurricane-bolter",
+              "name": "Hurricane Bolter",
+              "addWeapons": [
+                "hurricane-bolter"
+              ]
+            },
+            {
+              "id": "multi-melta",
+              "name": "Multi-melta",
+              "addWeapons": [
+                "multi-melta"
+              ]
+            },
+            {
+              "id": "storm-bolter",
+              "name": "Storm bolter",
+              "addWeapons": [
+                "storm-bolter"
+              ]
+            },
+            {
+              "id": "twin-assault-cannon",
+              "name": "Twin assault cannon",
+              "addWeapons": [
+                "twin-assault-cannon"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 220
+        }
+      ]
+    },
+    {
+      "id": "marshal",
+      "name": "Marshal",
+      "source": "black-templars",
+      "role": "leader",
+      "keywords": [
+        "Character",
+        "Infantry",
+        "Grenades",
+        "Imperium",
+        "Tacticus",
+        "Marshal",
+        "Captain"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Marshal",
+          "movement": "6\"",
+          "toughness": 4,
+          "save": "3+",
+          "wounds": 5,
+          "leadership": "6+",
+          "objectiveControl": 1
+        }
+      ],
+      "weapons": [
+        {
+          "id": "master-crafted-power-weapon",
+          "name": "Master-crafted Power Weapon",
+          "range": "Melee",
+          "attacks": "7",
+          "skill": "2+",
+          "strength": "5",
+          "armourPenetration": "-2",
+          "damage": "2",
+          "abilities": [
+            "Lethal Hits"
+          ]
+        },
+        {
+          "id": "plasma-pistol-standard",
+          "name": "Plasma Pistol - Standard",
+          "range": "12\"",
+          "attacks": "1",
+          "skill": "2+",
+          "strength": "7",
+          "armourPenetration": "-2",
+          "damage": "1",
+          "abilities": [
+            "Pistol"
+          ]
+        },
+        {
+          "id": "plasma-pistol-supercharge",
+          "name": "Plasma Pistol - Supercharge",
+          "range": "12\"",
+          "attacks": "1",
+          "skill": "2+",
+          "strength": "8",
+          "armourPenetration": "-3",
+          "damage": "2",
+          "abilities": [
+            "Hazardous",
+            "Pistol"
+          ]
+        },
+        {
+          "id": "combi-weapon",
+          "name": "Combi-weapon",
+          "range": "24\"",
+          "attacks": "1",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Anti-Infantry 4+",
+            "Devastating Wounds",
+            "Rapid Fire 1"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "wargear",
+          "description": "Wargear",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "master-crafted-power-weapon",
+              "name": "Master-crafted Power Weapon",
+              "addWeapons": [
+                "master-crafted-power-weapon"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ranged-weapon",
+          "description": "Ranged Weapon",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "plasma-pistol",
+              "name": "Plasma Pistol",
+              "addWeapons": [
+                "plasma-pistol-standard",
+                "plasma-pistol-supercharge"
+              ]
+            },
+            {
+              "id": "combi-weapon",
+              "name": "Combi-weapon",
+              "addWeapons": [
+                "combi-weapon"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 85
+        }
+      ],
+      "canLead": [
+        "assault-intercessor-squad",
+        "infernus-squad",
+        "intercessor-squad",
+        "crusader-squad",
+        "sword-brethren",
+        "sternguard-veteran-squad"
+      ]
+    },
+    {
+      "id": "repulsor",
+      "name": "Repulsor",
+      "source": "black-templars",
+      "keywords": [
+        "Vehicle",
+        "Imperium",
+        "Smoke",
+        "Repulsor",
+        "Transport"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Repulsor",
+          "movement": "10\"",
+          "toughness": 12,
+          "save": "3+",
+          "wounds": 16,
+          "leadership": "6+",
+          "objectiveControl": 5
+        }
+      ],
+      "weapons": [
+        {
+          "id": "armoured-hull",
+          "name": "Armoured Hull",
+          "range": "Melee",
+          "attacks": "6",
+          "skill": "4+",
+          "strength": "8",
+          "armourPenetration": "0",
+          "damage": "1"
+        },
+        {
+          "id": "multi-melta",
+          "name": "Multi-melta",
+          "range": "18\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "9",
+          "armourPenetration": "-4",
+          "damage": "D6",
+          "abilities": [
+            "Melta 2"
+          ]
+        },
+        {
+          "id": "hunter-slayer-missile",
+          "name": "Hunter-slayer missile",
+          "range": "48\"",
+          "attacks": "1",
+          "skill": "2+",
+          "strength": "14",
+          "armourPenetration": "-3",
+          "damage": "D6",
+          "abilities": [
+            "Indirect Fire",
+            "One Shot"
+          ]
+        },
+        {
+          "id": "repulsor-defensive-array",
+          "name": "Repulsor Defensive Array",
+          "range": "24\"",
+          "attacks": "18",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1"
+        },
+        {
+          "id": "twin-heavy-bolter",
+          "name": "Twin heavy bolter",
+          "range": "36\"",
+          "attacks": "3",
+          "skill": "3+",
+          "strength": "5",
+          "armourPenetration": "-1",
+          "damage": "2",
+          "abilities": [
+            "Sustained Hits 1",
+            "Twin-linked"
+          ]
+        },
+        {
+          "id": "twin-lascannon",
+          "name": "Twin lascannon",
+          "range": "48\"",
+          "attacks": "1",
+          "skill": "3+",
+          "strength": "12",
+          "armourPenetration": "-3",
+          "damage": "D6+1",
+          "abilities": [
+            "Twin-linked"
+          ]
+        },
+        {
+          "id": "las-talon",
+          "name": "Las-talon",
+          "range": "36\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "10",
+          "armourPenetration": "-3",
+          "damage": "D6"
+        },
+        {
+          "id": "heavy-onslaught-gatling-cannon",
+          "name": "Heavy Onslaught Gatling Cannon",
+          "range": "24\"",
+          "attacks": "12",
+          "skill": "3+",
+          "strength": "6",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Devastating Wounds"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "wargear",
+          "description": "Wargear",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "armoured-hull",
+              "name": "Armoured Hull",
+              "addWeapons": [
+                "armoured-hull"
+              ]
+            },
+            {
+              "id": "multi-melta",
+              "name": "Multi-melta",
+              "addWeapons": [
+                "multi-melta"
+              ]
+            },
+            {
+              "id": "hunter-slayer-missile",
+              "name": "Hunter-slayer missile",
+              "addWeapons": [
+                "hunter-slayer-missile"
+              ]
+            },
+            {
+              "id": "repulsor-defensive-array",
+              "name": "Repulsor Defensive Array",
+              "addWeapons": [
+                "repulsor-defensive-array"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "hull-weapon",
+          "description": "Hull Weapon",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "twin-heavy-bolter",
+              "name": "Twin heavy bolter",
+              "addWeapons": [
+                "twin-heavy-bolter"
+              ]
+            },
+            {
+              "id": "twin-lascannon",
+              "name": "Twin lascannon",
+              "addWeapons": [
+                "twin-lascannon"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "turret-weapon",
+          "description": "Turret Weapon",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "las-talon",
+              "name": "Las-talon",
+              "addWeapons": [
+                "las-talon"
+              ]
+            },
+            {
+              "id": "heavy-onslaught-gatling-cannon",
+              "name": "Heavy Onslaught Gatling Cannon",
+              "addWeapons": [
+                "heavy-onslaught-gatling-cannon"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 180
+        }
+      ]
+    },
+    {
+      "id": "repulsor-executioner",
+      "name": "Repulsor Executioner",
+      "source": "black-templars",
+      "keywords": [
+        "Vehicle",
+        "Smoke",
+        "Imperium",
+        "Transport",
+        "Repulsor Executioner"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Black Templars Repulsor Executioner",
+          "movement": "10\"",
+          "toughness": 12,
+          "save": "3+",
+          "wounds": 16,
+          "leadership": "6+",
+          "objectiveControl": 5
+        }
+      ],
+      "weapons": [
+        {
+          "id": "repulsor-executioner-defensive-array",
+          "name": "Repulsor Executioner Defensive Array",
+          "range": "24\"",
+          "attacks": "10",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1"
+        },
+        {
+          "id": "armoured-hull",
+          "name": "Armoured Hull",
+          "range": "Melee",
+          "attacks": "6",
+          "skill": "4+",
+          "strength": "8",
+          "armourPenetration": "0",
+          "damage": "1"
+        },
+        {
+          "id": "heavy-onslaught-gatling-cannon",
+          "name": "Heavy Onslaught Gatling Cannon",
+          "range": "24\"",
+          "attacks": "12",
+          "skill": "3+",
+          "strength": "6",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Devastating Wounds"
+          ]
+        },
+        {
+          "id": "icarus-rocket-pod",
+          "name": "Icarus Rocket Pod",
+          "range": "24\"",
+          "attacks": "D3",
+          "skill": "3+",
+          "strength": "8",
+          "armourPenetration": "-1",
+          "damage": "2",
+          "abilities": [
+            "Anti-fly 2+"
+          ]
+        },
+        {
+          "id": "twin-heavy-bolter",
+          "name": "Twin heavy bolter",
+          "range": "36\"",
+          "attacks": "3",
+          "skill": "3+",
+          "strength": "5",
+          "armourPenetration": "-1",
+          "damage": "2",
+          "abilities": [
+            "Sustained Hits 1",
+            "Twin-linked"
+          ]
+        },
+        {
+          "id": "twin-icarus-ironhail-heavy-stubber",
+          "name": "Twin Icarus ironhail heavy stubber",
+          "range": "36\"",
+          "attacks": "3",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Anti-FLY 4+",
+            "Rapid Fire 3",
+            "Twin-linked"
+          ]
+        },
+        {
+          "id": "ironhail-heavy-stubber",
+          "name": "Ironhail Heavy Stubber",
+          "range": "36\"",
+          "attacks": "3",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Rapid Fire 3"
+          ]
+        },
+        {
+          "id": "multi-melta",
+          "name": "Multi-melta",
+          "range": "18\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "9",
+          "armourPenetration": "-4",
+          "damage": "D6",
+          "abilities": [
+            "Melta 2"
+          ]
+        },
+        {
+          "id": "heavy-laser-destroyer",
+          "name": "Heavy Laser Destroyer",
+          "range": "72\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "16",
+          "armourPenetration": "-4",
+          "damage": "D6+4",
+          "abilities": [
+            "Heavy"
+          ]
+        },
+        {
+          "id": "macro-plasma-incinerator-standard",
+          "name": "Macro Plasma Incinerator - Standard",
+          "range": "36\"",
+          "attacks": "D6+1",
+          "skill": "3+",
+          "strength": "8",
+          "armourPenetration": "-3",
+          "damage": "2",
+          "abilities": [
+            "Blast"
+          ]
+        },
+        {
+          "id": "macro-plasma-incinerator-supercharge",
+          "name": "Macro Plasma Incinerator - Supercharge",
+          "range": "36\"",
+          "attacks": "D6+1",
+          "skill": "3+",
+          "strength": "9",
+          "armourPenetration": "-4",
+          "damage": "3",
+          "abilities": [
+            "Blast",
+            "Hazardous"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "wargear",
+          "description": "Wargear",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "repulsor-executioner-defensive-array",
+              "name": "Repulsor Executioner Defensive Array",
+              "addWeapons": [
+                "repulsor-executioner-defensive-array"
+              ]
+            },
+            {
+              "id": "armoured-hull",
+              "name": "Armoured Hull",
+              "addWeapons": [
+                "armoured-hull"
+              ]
+            },
+            {
+              "id": "heavy-onslaught-gatling-cannon",
+              "name": "Heavy Onslaught Gatling Cannon",
+              "addWeapons": [
+                "heavy-onslaught-gatling-cannon"
+              ]
+            },
+            {
+              "id": "icarus-rocket-pod",
+              "name": "Icarus Rocket Pod",
+              "addWeapons": [
+                "icarus-rocket-pod"
+              ]
+            },
+            {
+              "id": "twin-heavy-bolter",
+              "name": "Twin heavy bolter",
+              "addWeapons": [
+                "twin-heavy-bolter"
+              ]
+            },
+            {
+              "id": "twin-icarus-ironhail-heavy-stubber",
+              "name": "Twin Icarus ironhail heavy stubber",
+              "addWeapons": [
+                "twin-icarus-ironhail-heavy-stubber"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pintle-mount-option",
+          "description": "Pintle Mount Option",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "ironhail-heavy-stubber",
+              "name": "Ironhail Heavy Stubber",
+              "addWeapons": [
+                "ironhail-heavy-stubber"
+              ]
+            },
+            {
+              "id": "multi-melta",
+              "name": "Multi-melta",
+              "addWeapons": [
+                "multi-melta"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "turret-weapon",
+          "description": "Turret Weapon",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "heavy-laser-destroyer",
+              "name": "Heavy Laser Destroyer",
+              "addWeapons": [
+                "heavy-laser-destroyer"
+              ]
+            },
+            {
+              "id": "macro-plasma-incinerator",
+              "name": "Macro Plasma Incinerator",
+              "addWeapons": [
+                "macro-plasma-incinerator-standard",
+                "macro-plasma-incinerator-supercharge"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 235
+        }
+      ]
+    },
+    {
+      "id": "sternguard-veteran-squad",
+      "name": "Sternguard Veteran Squad",
+      "source": "black-templars",
+      "keywords": [
+        "Infantry",
+        "Grenades",
+        "Imperium",
+        "Tacticus",
+        "Sternguard Veteran Squad"
+      ],
+      "factionKeywords": [
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Sternguard Veteran Squad",
+          "movement": "6\"",
+          "toughness": 4,
+          "save": "3+",
+          "wounds": 2,
+          "leadership": "6+",
+          "objectiveControl": 1
+        },
+        {
+          "name": "Sternguard Veteran Sergeant",
+          "movement": "6\"",
+          "toughness": 4,
+          "save": "3+",
+          "wounds": 2,
+          "leadership": "6+",
+          "objectiveControl": 1
+        }
+      ],
+      "weapons": [
+        {
+          "id": "sternguard-bolt-pistol",
+          "name": "Sternguard Bolt Pistol",
+          "range": "12\"",
+          "attacks": "1",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Devastating Wounds",
+            "Pistol"
+          ]
+        },
+        {
+          "id": "sternguard-bolt-rifle",
+          "name": "Sternguard Bolt Rifle",
+          "range": "24\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "-1",
+          "damage": "1",
+          "abilities": [
+            "Assault",
+            "Devastating Wounds",
+            "Heavy",
+            "Rapid Fire 1"
+          ]
+        },
+        {
+          "id": "close-combat-weapon",
+          "name": "Close combat weapon",
+          "range": "Melee",
+          "attacks": "4",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1"
+        },
+        {
+          "id": "combi-weapon",
+          "name": "Combi-weapon",
+          "range": "24\"",
+          "attacks": "1",
+          "skill": "4+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Anti-Infantry 4+",
+            "Devastating Wounds",
+            "Rapid Fire 1"
+          ]
+        },
+        {
+          "id": "astartes-chainsword",
+          "name": "Astartes Chainsword",
+          "range": "Melee",
+          "attacks": "6",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "-1",
+          "damage": "1"
+        },
+        {
+          "id": "power-weapon",
+          "name": "Power Weapon",
+          "range": "Melee",
+          "attacks": "5",
+          "skill": "3+",
+          "strength": "5",
+          "armourPenetration": "-2",
+          "damage": "1"
+        },
+        {
+          "id": "power-fist",
+          "name": "Power Fist",
+          "range": "Melee",
+          "attacks": "4",
+          "skill": "3+",
+          "strength": "8",
+          "armourPenetration": "-2",
+          "damage": "2"
+        },
+        {
+          "id": "pyrecannon",
+          "name": "Pyrecannon",
+          "range": "12\"",
+          "attacks": "D6+1",
+          "skill": "N/A",
+          "strength": "6",
+          "armourPenetration": "-1",
+          "damage": "1",
+          "abilities": [
+            "Ignores Cover",
+            "Torrent"
+          ]
+        },
+        {
+          "id": "sternguard-heavy-bolter",
+          "name": "Sternguard Heavy Bolter",
+          "range": "36\"",
+          "attacks": "3",
+          "skill": "4+",
+          "strength": "5",
+          "armourPenetration": "-1",
+          "damage": "2",
+          "abilities": [
+            "Devastating Wounds",
+            "Heavy",
+            "Sustained Hits 1"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "sternguard-veterans",
+          "description": "Sternguard Veterans",
+          "min": 5,
+          "max": 10,
+          "choices": [
+            {
+              "id": "sternguard-veteran-w-bolt-rifle",
+              "name": "Sternguard Veteran w/ Bolt Rifle"
+            },
+            {
+              "id": "sternguard-veteran-sergeant",
+              "name": "Sternguard Veteran Sergeant"
+            },
+            {
+              "id": "sternguard-veteran-w-special-weapon",
+              "name": "Sternguard Veteran w/ Special Weapon"
+            },
+            {
+              "id": "sternguard-veteran-w-combi-weapon",
+              "name": "Sternguard Veteran w/ Combi-weapon"
+            }
+          ]
+        },
+        {
+          "id": "weapon-option",
+          "description": "Weapon Option",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "combi-weapon",
+              "name": "Combi-weapon",
+              "addWeapons": [
+                "combi-weapon"
+              ]
+            },
+            {
+              "id": "sternguard-bolt-rifle",
+              "name": "Sternguard Bolt Rifle",
+              "addWeapons": [
+                "sternguard-bolt-rifle"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "melee-option",
+          "description": "Melee Option",
+          "min": 0,
+          "max": 1,
+          "choices": [
+            {
+              "id": "astartes-chainsword",
+              "name": "Astartes Chainsword",
+              "addWeapons": [
+                "astartes-chainsword"
+              ]
+            },
+            {
+              "id": "power-weapon",
+              "name": "Power Weapon",
+              "addWeapons": [
+                "power-weapon"
+              ]
+            },
+            {
+              "id": "power-fist",
+              "name": "Power Fist",
+              "addWeapons": [
+                "power-fist"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "weapon-option",
+          "description": "Weapon Option",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "pyrecannon",
+              "name": "Pyrecannon",
+              "addWeapons": [
+                "pyrecannon"
+              ]
+            },
+            {
+              "id": "sternguard-heavy-bolter",
+              "name": "Sternguard Heavy Bolter",
+              "addWeapons": [
+                "sternguard-heavy-bolter"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 85
+        }
+      ]
+    },
+    {
+      "id": "sword-brethren-squad",
+      "name": "Sword Brethren Squad",
+      "source": "black-templars",
+      "keywords": [
+        "Infantry",
+        "Grenades",
+        "Imperium",
+        "Tacticus",
+        "Primaris Sword Brethren"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Primaris Sword Brethren",
+          "movement": "6\"",
+          "toughness": 4,
+          "save": "3+",
+          "wounds": 3,
+          "leadership": "6+",
+          "objectiveControl": 1
+        }
+      ],
+      "weapons": [
+        {
+          "id": "heavy-bolt-pistol",
+          "name": "Heavy Bolt Pistol",
+          "range": "18\"",
+          "attacks": "1",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "-1",
+          "damage": "1",
+          "abilities": [
+            "Pistol"
+          ]
+        },
+        {
+          "id": "plasma-pistol-supercharge",
+          "name": "Plasma pistol - supercharge",
+          "range": "12\"",
+          "attacks": "1",
+          "skill": "3+",
+          "strength": "8",
+          "armourPenetration": "-3",
+          "damage": "2",
+          "abilities": [
+            "Hazardous",
+            "Pistol"
+          ]
+        },
+        {
+          "id": "plasma-pistol-standard",
+          "name": "Plasma pistol - standard",
+          "range": "12\"",
+          "attacks": "1",
+          "skill": "3+",
+          "strength": "7",
+          "armourPenetration": "-2",
+          "damage": "1",
+          "abilities": [
+            "Pistol"
+          ]
+        },
+        {
+          "id": "pyre-pistol",
+          "name": "Pyre Pistol",
+          "range": "12\"",
+          "attacks": "D6",
+          "skill": "N/A",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Ignores Cover",
+            "Pistol",
+            "Torrent"
+          ]
+        },
+        {
+          "id": "thunder-hammer",
+          "name": "Thunder Hammer",
+          "range": "Melee",
+          "attacks": "3",
+          "skill": "3+",
+          "strength": "8",
+          "armourPenetration": "-2",
+          "damage": "2",
+          "abilities": [
+            "Devastating Wounds"
+          ]
+        },
+        {
+          "id": "master-crafted-power-weapon",
+          "name": "Master-crafted Power Weapon",
+          "range": "Melee",
+          "attacks": "3",
+          "skill": "2+",
+          "strength": "5",
+          "armourPenetration": "-2",
+          "damage": "2",
+          "abilities": [
+            "Lethal Hits"
+          ]
+        },
+        {
+          "id": "astartes-chainsword",
+          "name": "Astartes Chainsword",
+          "range": "Melee",
+          "attacks": "6",
+          "skill": "2+",
+          "strength": "4",
+          "armourPenetration": "-1",
+          "damage": "1",
+          "abilities": [
+            "Sustained Hits 1"
+          ]
+        },
+        {
+          "id": "twin-lightning-claws",
+          "name": "Twin Lightning Claws",
+          "range": "Melee",
+          "attacks": "5",
+          "skill": "2+",
+          "strength": "5",
+          "armourPenetration": "-2",
+          "damage": "1",
+          "abilities": [
+            "Twin-linked"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "sword-brethren",
+          "description": "Sword Brethren",
+          "min": 4,
+          "max": 10,
+          "choices": [
+            {
+              "id": "sword-brother",
+              "name": "Sword Brother"
+            },
+            {
+              "id": "sword-brother-w-twin-lightning-claws",
+              "name": "Sword Brother w/ Twin Lightning Claws"
+            }
+          ]
+        },
+        {
+          "id": "pistol-option",
+          "description": "Pistol Option",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "heavy-bolt-pistol",
+              "name": "Heavy Bolt Pistol",
+              "addWeapons": [
+                "heavy-bolt-pistol"
+              ]
+            },
+            {
+              "id": "plasma-pistol",
+              "name": "Plasma pistol",
+              "addWeapons": [
+                "plasma-pistol-supercharge",
+                "plasma-pistol-standard"
+              ]
+            },
+            {
+              "id": "pyre-pistol",
+              "name": "Pyre Pistol",
+              "addWeapons": [
+                "pyre-pistol"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "melee-option",
+          "description": "Melee Option",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "thunder-hammer",
+              "name": "Thunder Hammer",
+              "addWeapons": [
+                "thunder-hammer"
+              ]
+            },
+            {
+              "id": "master-crafted-power-weapon",
+              "name": "Master-crafted Power Weapon",
+              "addWeapons": [
+                "master-crafted-power-weapon"
+              ]
+            },
+            {
+              "id": "astartes-chainsword",
+              "name": "Astartes Chainsword",
+              "addWeapons": [
+                "astartes-chainsword"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 105
+        }
+      ]
+    },
+    {
+      "id": "terminator-squad",
+      "name": "Terminator Squad",
+      "source": "black-templars",
+      "keywords": [
+        "Infantry",
+        "Imperium",
+        "Terminator",
+        "Terminator Squad"
+      ],
+      "factionKeywords": [
+        "Adeptus Astartes",
+        "Black Templars"
+      ],
+      "statlines": [
+        {
+          "name": "Terminator Sergeant",
+          "movement": "5\"",
+          "toughness": 5,
+          "save": "2+",
+          "wounds": 3,
+          "leadership": "6+",
+          "objectiveControl": 1
+        },
+        {
+          "name": "Terminator Squad",
+          "movement": "5\"",
+          "toughness": 5,
+          "save": "2+",
+          "wounds": 3,
+          "leadership": "6+",
+          "objectiveControl": 1
+        }
+      ],
+      "weapons": [
+        {
+          "id": "storm-bolter",
+          "name": "Storm bolter",
+          "range": "24\"",
+          "attacks": "2",
+          "skill": "3+",
+          "strength": "4",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Rapid Fire 2"
+          ]
+        },
+        {
+          "id": "power-weapon",
+          "name": "Power weapon",
+          "range": "Melee",
+          "attacks": "4",
+          "skill": "3+",
+          "strength": "5",
+          "armourPenetration": "-2",
+          "damage": "1"
+        },
+        {
+          "id": "chainfist",
+          "name": "Chainfist",
+          "range": "Melee",
+          "attacks": "3",
+          "skill": "4+",
+          "strength": "8",
+          "armourPenetration": "-2",
+          "damage": "2",
+          "abilities": [
+            "Anti-Vehicle 3+"
+          ]
+        },
+        {
+          "id": "power-fist",
+          "name": "Power fist",
+          "range": "Melee",
+          "attacks": "3",
+          "skill": "3+",
+          "strength": "8",
+          "armourPenetration": "-2",
+          "damage": "2"
+        },
+        {
+          "id": "heavy-flamer",
+          "name": "Heavy Flamer",
+          "range": "12\"",
+          "attacks": "D6",
+          "skill": "N/A",
+          "strength": "5",
+          "armourPenetration": "-1",
+          "damage": "1",
+          "abilities": [
+            "Ignores Cover",
+            "Torrent"
+          ]
+        },
+        {
+          "id": "assault-cannon",
+          "name": "Assault Cannon",
+          "range": "24\"",
+          "attacks": "6",
+          "skill": "3+",
+          "strength": "6",
+          "armourPenetration": "0",
+          "damage": "1",
+          "abilities": [
+            "Devastating Wounds"
+          ]
+        }
+      ],
+      "defaultLoadout": [],
+      "wargearOptions": [
+        {
+          "id": "terminators",
+          "description": "Terminators",
+          "min": 5,
+          "max": 10,
+          "choices": [
+            {
+              "id": "terminator-sergeant",
+              "name": "Terminator Sergeant"
+            },
+            {
+              "id": "terminator-w-power-fist",
+              "name": "Terminator w/ Power Fist"
+            },
+            {
+              "id": "terminator-w-chain-fist",
+              "name": "Terminator w/ Chain Fist"
+            },
+            {
+              "id": "terminator-w-heavy-weapon",
+              "name": "Terminator w/ Heavy Weapon"
+            }
+          ]
+        },
+        {
+          "id": "weapon-option",
+          "description": "Weapon Option",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "power-weapon",
+              "name": "Power weapon",
+              "addWeapons": [
+                "power-weapon"
+              ]
+            },
+            {
+              "id": "chainfist",
+              "name": "Chainfist",
+              "addWeapons": [
+                "chainfist"
+              ]
+            },
+            {
+              "id": "power-fist",
+              "name": "Power fist",
+              "addWeapons": [
+                "power-fist"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ranged-weapon-option",
+          "description": "Ranged Weapon Option",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "cyclone-missile-launcher-storm-bolter",
+              "name": "Cyclone Missile Launcher & Storm Bolter"
+            },
+            {
+              "id": "heavy-flamer",
+              "name": "Heavy Flamer",
+              "addWeapons": [
+                "heavy-flamer"
+              ]
+            },
+            {
+              "id": "assault-cannon",
+              "name": "Assault Cannon",
+              "addWeapons": [
+                "assault-cannon"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "melee-weapon-option",
+          "description": "Melee Weapon Option",
+          "min": 1,
+          "max": 1,
+          "choices": [
+            {
+              "id": "power-fist",
+              "name": "Power Fist",
+              "addWeapons": [
+                "power-fist"
+              ]
+            },
+            {
+              "id": "chainfist",
+              "name": "Chainfist",
+              "addWeapons": [
+                "chainfist"
+              ]
+            }
+          ]
+        }
+      ],
+      "sizeOptions": [
+        {
+          "models": 1,
+          "points": 175
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "pointsSource": "Munitorum overrides where present, else BSData 10e cost",
+    "statsSource": "BSData wh40k-10e @ 97dfd33"
+  }
+}

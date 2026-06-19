@@ -1,0 +1,20 @@
+{
+  "_comment": "Munitorum Field Manual overrides keyed by datasheet id (slug of name). Merged over BSData cat data by compile-data. role: leader|support. sizeOptions replace the cat's single base cost. Values below are PROVISIONAL (best-effort MFM reading) — verify against https://mfm.warhammer-community.com/en/black-templars.",
+  "emperors-champion": {
+    "role": "leader",
+    "sizeOptions": [{ "models": 1, "points": 70 }]
+  },
+  "marshal": {
+    "role": "leader",
+    "sizeOptions": [{ "models": 1, "points": 85 }]
+  },
+  "crusader-squad": {
+    "sizeOptions": [
+      { "models": 10, "points": 110 },
+      { "models": 20, "points": 150 }
+    ]
+  },
+  "impulsor": {
+    "sizeOptions": [{ "models": 1, "points": 100 }]
+  }
+}
