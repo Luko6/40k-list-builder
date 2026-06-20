@@ -52,8 +52,10 @@ src/
   list/useRoster.ts                   useReducer working state (detachments[] + unit instances) + totals + validation
   list/storage.ts                     localStorage + JSON import/export (RosterState <-> SavedList)
   list/summary.ts                     copy/print roster text builder
-  components/UnitCatalog.tsx          left panel: search + add units (datasheet-limit guard)
-  components/RosterPanel.tsx          right panel: detachments + DP, validation panel, per-unit size/wargear/enhancement/leader, live points
+  list/categories.ts                  shared unit-category helper (Characters/Battleline/…) used by catalog/roster/summary
+  components/UnitCatalog.tsx          left panel: search + add units, grouped by category, expandable stats
+  components/RosterPanel.tsx          right panel: detachments + DP, validation panel, units grouped by category as expandable cards
+  components/UnitStats.tsx            statline + weapon tables (shown in catalog/roster expanders)
   components/Toolbar.tsx              name, save/load/delete, import/export, copy/print
   App.tsx                             wires it together + autosave effect
   index.css                          all styles (incl. @media print)

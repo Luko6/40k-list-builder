@@ -1,5 +1,8 @@
-import type { Datasheet, FactionCatalogue } from '../data/schema'
+import { useState } from 'react'
+import type { Datasheet, Enhancement, FactionCatalogue } from '../data/schema'
 import type { RosterState, RosterTotals, RosterUnit } from '../list/useRoster'
+import { CATEGORY_ORDER, unitCategory, type Category } from '../list/categories'
+import { UnitStats } from './UnitStats'
 
 /** Enhancements go on CHARACTERs that aren't Epic Heroes (e.g. not Helbrecht). */
 function canTakeEnhancement(ds: Datasheet): boolean {
@@ -34,6 +37,10 @@ function buildInstanceLabels(
   return labels
 }
 
+function unitPoints(ds: Datasheet, u: RosterUnit, enhancement?: Enhancement): number {
+  return (ds.sizeOptions[u.sizeOptionIndex]?.points ?? 0) + (enhancement?.points ?? 0)
+}
+
 export function RosterPanel({
   catalogue,
   state,
@@ -59,6 +66,15 @@ export function RosterPanel({
   onSetEnhancement: (instanceId: string, enhancementId?: string) => void
   onSetAttachment: (instanceId: string, attachedToInstanceId?: string) => void
 }) {
+  const [open, setOpen] = useState<Set<string>>(new Set())
+  const toggle = (id: string) =>
+    setOpen((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+
   const datasheetLimit = catalogue.gameSizes[0].datasheetLimit
   // Enhancement pool = union across all selected detachments.
   const enhancementById = new Map(
@@ -83,6 +99,16 @@ export function RosterPanel({
     const list = leadersByBodyguard.get(u.attachedToInstanceId) ?? []
     list.push(u)
     leadersByBodyguard.set(u.attachedToInstanceId, list)
+  }
+
+  // Group units into roster sections, preserving add order within each.
+  const grouped = new Map<Category, RosterUnit[]>()
+  for (const u of state.units) {
+    const ds = byId.get(u.datasheetId)
+    if (!ds) continue
+    const cat = unitCategory(ds)
+    if (!grouped.has(cat)) grouped.set(cat, [])
+    grouped.get(cat)!.push(u)
   }
 
   return (
@@ -137,10 +163,7 @@ export function RosterPanel({
       {addableDetachments.length > 0 && (
         <label className="field">
           <span className="muted">Add detachment</span>
-          <select
-            value=""
-            onChange={(e) => e.target.value && onAddDetachment(e.target.value)}
-          >
+          <select value="" onChange={(e) => e.target.value && onAddDetachment(e.target.value)}>
             <option value="">— add a detachment —</option>
             {addableDetachments.map((d) => (
               <option key={d.id} value={d.id}>
@@ -151,126 +174,167 @@ export function RosterPanel({
         </label>
       )}
 
-      <h3>Units</h3>
       {state.units.length === 0 ? (
-        <p className="muted">No units yet — add some from the left.</p>
+        <>
+          <h3>Units</h3>
+          <p className="muted">No units yet — add some from the left.</p>
+        </>
       ) : (
-        <ul className="roster__units">
-          {state.units.map((u) => {
-            const ds = byId.get(u.datasheetId)
-            if (!ds) return null
-            const opt = ds.sizeOptions[u.sizeOptionIndex]
-            const overCount =
-              !ds.isDedicatedTransport &&
-              (totals.perDatasheet.get(u.datasheetId) ?? 0) > datasheetLimit
-            const enhancement = u.enhancementId ? enhancementById.get(u.enhancementId) : undefined
-            const eligible = canTakeEnhancement(ds) && hasEnhancements
-            const enhPts = enhancement?.points ?? 0
+        CATEGORY_ORDER.filter((cat) => grouped.has(cat)).map((cat) => {
+          const units = grouped.get(cat)!
+          const subtotal = units.reduce((n, u) => {
+            const ds = byId.get(u.datasheetId)!
+            return n + unitPoints(ds, u, u.enhancementId ? enhancementById.get(u.enhancementId) : undefined)
+          }, 0)
+          return (
+            <div key={cat} className="roster__group">
+              <div className="roster__group-head">
+                <h3>{cat}</h3>
+                <span className="muted">
+                  {units.length} · {subtotal} pts
+                </span>
+              </div>
+              <ul className="roster__units">
+                {units.map((u) => {
+                  const ds = byId.get(u.datasheetId)!
+                  const opt = ds.sizeOptions[u.sizeOptionIndex]
+                  const overCount =
+                    !ds.isDedicatedTransport &&
+                    (totals.perDatasheet.get(u.datasheetId) ?? 0) > datasheetLimit
+                  const enhancement = u.enhancementId ? enhancementById.get(u.enhancementId) : undefined
+                  const eligible = canTakeEnhancement(ds) && hasEnhancements
 
-            const leads = realCanLead(ds, byId)
-            const isLeader = leads.length > 0
-            const eligibleBodyguards = isLeader
-              ? state.units.filter(
-                  (v) => v.instanceId !== u.instanceId && leads.includes(v.datasheetId),
-                )
-              : []
-            const attachedLeaders = leadersByBodyguard.get(u.instanceId) ?? []
+                  const leads = realCanLead(ds, byId)
+                  const isLeader = leads.length > 0
+                  const eligibleBodyguards = isLeader
+                    ? state.units.filter(
+                        (v) => v.instanceId !== u.instanceId && leads.includes(v.datasheetId),
+                      )
+                    : []
+                  const attachedLeaders = leadersByBodyguard.get(u.instanceId) ?? []
+                  const isOpen = open.has(u.instanceId)
 
-            const hasOptions = eligible || isLeader || ds.wargearOptions.length > 0
-            return (
-              <li key={u.instanceId} className="roster__unit">
-                <div className="roster__unit-main">
-                  <span className="roster__unit-name">
-                    {ds.name}
-                    {overCount && <span className="warn-inline" title={`Max ${datasheetLimit} allowed`}> ⚠</span>}
-                  </span>
-                  {ds.sizeOptions.length > 1 ? (
-                    <select
-                      value={u.sizeOptionIndex}
-                      onChange={(e) => onSetSize(u.instanceId, Number(e.target.value))}
-                    >
-                      {ds.sizeOptions.map((o, i) => (
-                        <option key={i} value={i}>
-                          {o.models} models — {o.points} pts
-                        </option>
-                      ))}
-                    </select>
-                  ) : (
-                    <span className="muted">{opt?.models} model{opt && opt.models > 1 ? 's' : ''}</span>
-                  )}
-                  {u.attachedToInstanceId && (
-                    <span className="roster__attached-note muted">
-                      ↳ leading {labels.get(u.attachedToInstanceId) ?? 'unit'}
-                    </span>
-                  )}
-                  {attachedLeaders.length > 0 && (
-                    <span className="roster__attached-note muted">
-                      led by {attachedLeaders.map((l) => labels.get(l.instanceId)).join(', ')}
-                    </span>
-                  )}
-                </div>
-                <span className="roster__unit-pts">{(opt?.points ?? 0) + enhPts}</span>
-                <button className="btn btn--ghost" onClick={() => onRemove(u.instanceId)} title="Remove">
-                  ✕
-                </button>
-
-                {hasOptions && (
-                  <div className="roster__unit-options">
-                    {isLeader && (
-                      <label className="field roster__attach">
-                        <span className="muted">Attach to</span>
-                        {eligibleBodyguards.length > 0 ? (
-                          <select
-                            value={u.attachedToInstanceId ?? ''}
-                            onChange={(e) => onSetAttachment(u.instanceId, e.target.value)}
-                          >
-                            <option value="">— not attached —</option>
-                            {eligibleBodyguards.map((v) => (
-                              <option key={v.instanceId} value={v.instanceId}>
-                                {labels.get(v.instanceId)}
-                              </option>
-                            ))}
-                          </select>
-                        ) : (
-                          <span className="muted roster__attach-empty">
-                            No eligible unit in the roster yet.
-                          </span>
-                        )}
-                      </label>
-                    )}
-                    {eligible && (
-                      <label className="field roster__enhancement">
-                        <span className="muted">Enhancement</span>
-                        <select
-                          value={u.enhancementId ?? ''}
-                          onChange={(e) => onSetEnhancement(u.instanceId, e.target.value)}
+                  return (
+                    <li key={u.instanceId} className="roster__unit" data-open={isOpen}>
+                      <div className="roster__unit-head">
+                        <button
+                          className="roster__expand"
+                          aria-expanded={isOpen}
+                          onClick={() => toggle(u.instanceId)}
+                          title="View stats & options"
                         >
-                          <option value="">— none —</option>
-                          {totals.detachments.map((d) => (
-                            <optgroup key={d.id} label={d.name}>
-                              {d.enhancements.map((e) => {
-                                const taken =
-                                  e.id !== u.enhancementId && usedEnhancementIds.has(e.id)
-                                return (
-                                  <option key={e.id} value={e.id} disabled={taken}>
-                                    {e.name} (+{e.points}){taken ? ' — taken' : ''}
-                                  </option>
-                                )
-                              })}
-                            </optgroup>
-                          ))}
-                        </select>
-                      </label>
-                    )}
-                    {ds.wargearOptions.length > 0 && (
-                      <WargearOptions unit={u} ds={ds} onSetWargear={onSetWargear} />
-                    )}
-                  </div>
-                )}
-              </li>
-            )
-          })}
-        </ul>
+                          {isOpen ? '▾' : '▸'}
+                        </button>
+                        <div className="roster__unit-main">
+                          <span className="roster__unit-name">
+                            {ds.name}
+                            {overCount && (
+                              <span className="warn-inline" title={`Max ${datasheetLimit} allowed`}>
+                                {' '}
+                                ⚠
+                              </span>
+                            )}
+                          </span>
+                          {ds.sizeOptions.length > 1 ? (
+                            <select
+                              value={u.sizeOptionIndex}
+                              onChange={(e) => onSetSize(u.instanceId, Number(e.target.value))}
+                            >
+                              {ds.sizeOptions.map((o, i) => (
+                                <option key={i} value={i}>
+                                  {o.models} models — {o.points} pts
+                                </option>
+                              ))}
+                            </select>
+                          ) : (
+                            <span className="muted">
+                              {opt?.models} model{opt && opt.models > 1 ? 's' : ''}
+                            </span>
+                          )}
+                          {u.attachedToInstanceId && (
+                            <span className="roster__attached-note muted">
+                              ↳ leading {labels.get(u.attachedToInstanceId) ?? 'unit'}
+                            </span>
+                          )}
+                          {attachedLeaders.length > 0 && (
+                            <span className="roster__attached-note muted">
+                              led by {attachedLeaders.map((l) => labels.get(l.instanceId)).join(', ')}
+                            </span>
+                          )}
+                        </div>
+                        <span className="roster__unit-pts">{unitPoints(ds, u, enhancement)}</span>
+                        <button
+                          className="btn btn--ghost"
+                          onClick={() => onRemove(u.instanceId)}
+                          title="Remove"
+                        >
+                          ✕
+                        </button>
+                      </div>
+
+                      {isOpen && (
+                        <div className="roster__unit-body">
+                          <UnitStats ds={ds} />
+                          <div className="roster__unit-options">
+                            {isLeader && (
+                              <label className="field roster__attach">
+                                <span className="muted">Attach to</span>
+                                {eligibleBodyguards.length > 0 ? (
+                                  <select
+                                    value={u.attachedToInstanceId ?? ''}
+                                    onChange={(e) => onSetAttachment(u.instanceId, e.target.value)}
+                                  >
+                                    <option value="">— not attached —</option>
+                                    {eligibleBodyguards.map((v) => (
+                                      <option key={v.instanceId} value={v.instanceId}>
+                                        {labels.get(v.instanceId)}
+                                      </option>
+                                    ))}
+                                  </select>
+                                ) : (
+                                  <span className="muted roster__attach-empty">
+                                    No eligible unit in the roster yet.
+                                  </span>
+                                )}
+                              </label>
+                            )}
+                            {eligible && (
+                              <label className="field roster__enhancement">
+                                <span className="muted">Enhancement</span>
+                                <select
+                                  value={u.enhancementId ?? ''}
+                                  onChange={(e) => onSetEnhancement(u.instanceId, e.target.value)}
+                                >
+                                  <option value="">— none —</option>
+                                  {totals.detachments.map((d) => (
+                                    <optgroup key={d.id} label={d.name}>
+                                      {d.enhancements.map((e) => {
+                                        const taken =
+                                          e.id !== u.enhancementId && usedEnhancementIds.has(e.id)
+                                        return (
+                                          <option key={e.id} value={e.id} disabled={taken}>
+                                            {e.name} (+{e.points}){taken ? ' — taken' : ''}
+                                          </option>
+                                        )
+                                      })}
+                                    </optgroup>
+                                  ))}
+                                </select>
+                              </label>
+                            )}
+                            {ds.wargearOptions.length > 0 && (
+                              <WargearOptions unit={u} ds={ds} onSetWargear={onSetWargear} />
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          )
+        })
       )}
     </section>
   )

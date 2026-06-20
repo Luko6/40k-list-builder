@@ -244,18 +244,49 @@ body {
   padding: 0;
 }
 
-.catalog__list {
-  max-height: 70vh;
-  overflow-y: auto;
+.catalog__group + .catalog__group {
+  margin-top: 0.5rem;
+}
+
+.catalog__group-head {
+  margin: 0.75rem 0 0.25rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
 }
 
 .catalog__row {
+  border-bottom: 1px solid var(--border);
+}
+
+.catalog__row-main {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   justify-content: space-between;
   padding: 0.5rem 0;
-  border-bottom: 1px solid var(--border);
+}
+
+.catalog__expand,
+.roster__expand {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0 0.15rem;
+  line-height: 1;
+  align-self: center;
+}
+
+.catalog__expand:hover,
+.roster__expand:hover {
+  color: var(--text);
+}
+
+.catalog__stats {
+  padding: 0 0 0.75rem 1.4rem;
 }
 
 .catalog__main {
@@ -415,13 +446,37 @@ body {
   font-weight: 600;
 }
 
+.roster__group-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 1rem 0 0.25rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.25rem;
+}
+
+.roster__group-head h3 {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
 .roster__unit {
+  border-bottom: 1px solid var(--border);
+}
+
+.roster__unit[data-open='true'] {
+  background: #1a1a1f;
+  border-radius: 8px;
+  border-bottom-color: transparent;
+  margin: 0.25rem 0;
+}
+
+.roster__unit-head {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0.4rem;
 }
 
 .roster__unit-main {
@@ -435,6 +490,10 @@ body {
   font-weight: 600;
 }
 
+.roster__unit-body {
+  padding: 0.25rem 0.6rem 0.85rem 1.8rem;
+}
+
 .roster__unit-pts {
   font-variant-numeric: tabular-nums;
   color: var(--muted);
@@ -442,11 +501,12 @@ body {
 
 /* ── Per-unit options (enhancement + wargear) ─────────────────── */
 .roster__unit-options {
-  grid-column: 1 / -1;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  margin-top: 0.35rem;
+  margin-top: 0.75rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
 }
 
 .roster__enhancement,
@@ -497,6 +557,68 @@ body {
 
 .wargear-check input {
   accent-color: var(--accent);
+}
+
+/* ── Unit stats (statline + weapons) ──────────────────────────── */
+.ustats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ustats__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ustats__table th {
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.66rem;
+  text-align: center;
+  padding: 0.2rem 0.3rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.ustats__table td {
+  text-align: center;
+  padding: 0.25rem 0.3rem;
+  border-bottom: 1px solid #232329;
+}
+
+.ustats__statline td,
+.ustats__statline th {
+  background: #1d1d22;
+}
+
+.ustats__wname,
+.ustats__pname {
+  text-align: left !important;
+  width: 99%;
+}
+
+.ustats__wabilities {
+  color: #6f9fe0;
+  font-size: 0.72rem;
+}
+
+.ustats__inv {
+  color: #e0bb6f;
+}
+
+.ustats__weapons {
+  overflow-x: auto;
+}
+
+.ustats__keywords {
+  margin: 0;
+  font-size: 0.74rem;
+  line-height: 1.4;
 }
 
 /* ── Toolbar ──────────────────────────────────────────────────── */

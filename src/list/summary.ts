@@ -1,16 +1,6 @@
 import type { Datasheet, FactionCatalogue, GameSize } from '../data/schema'
 import type { RosterState } from './useRoster'
-
-function bucket(ds: Datasheet): string {
-  if (ds.role || ds.keywords.includes('Character') || ds.keywords.includes('Epic Hero'))
-    return 'Characters'
-  if (ds.keywords.includes('Battleline')) return 'Battleline'
-  if (ds.isDedicatedTransport || ds.keywords.includes('Dedicated Transport'))
-    return 'Dedicated Transports'
-  return 'Other'
-}
-
-const ORDER = ['Characters', 'Battleline', 'Other', 'Dedicated Transports']
+import { CATEGORY_ORDER, unitCategory } from './categories'
 
 /** A clean, copy-paste / printable text roster. */
 export function buildSummaryText(
@@ -69,7 +59,7 @@ export function buildSummaryText(
     if (u.attachedToInstanceId && labelByInstance.has(u.attachedToInstanceId))
       lines.push(`    Leading: ${labelByInstance.get(u.attachedToInstanceId)}`)
     if (wargearNames.length) lines.push(`    Wargear: ${wargearNames.join(', ')}`)
-    const key = bucket(ds)
+    const key = unitCategory(ds)
     if (!groups.has(key)) groups.set(key, [])
     groups.get(key)!.push(lines.join('\n'))
   }
@@ -79,7 +69,7 @@ export function buildSummaryText(
   out.push(`${size.label} · ${total} / ${size.pointsLimit} pts · ${state.units.length} units`)
   for (const d of detachments)
     out.push(`Detachment: ${d.name} [${d.forceDisposition}] · ${d.detachmentPoints} DP`)
-  for (const key of ORDER) {
+  for (const key of CATEGORY_ORDER) {
     const lines = groups.get(key)
     if (!lines?.length) continue
     out.push('', key.toUpperCase(), ...lines.sort())
