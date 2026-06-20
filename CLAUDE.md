@@ -100,11 +100,12 @@ To change data: edit the compiler or `points-overrides.json`, re-run
 
 Full limitations are in **GAPS.md**. Highest-value remaining work, with entry points:
 
-1. **Wargear/enhancement assignment UI.** Data is already compiled
-   (`Datasheet.wargearOptions`, `Detachment.enhancements`). Add selection UI in
-   `RosterPanel.tsx`, store choices on the roster unit (extend `RosterUnit` in
-   `useRoster.ts` and the `ListUnit` mapping in `storage.ts`), fold enhancement
-   points into `totals`.
+1. ~~**Wargear/enhancement assignment UI.**~~ **Done.** Per-unit wargear
+   selection (`RosterUnit.wargearSelections`) and enhancement assignment
+   (`RosterUnit.enhancementId`) are wired through `useRoster.ts` → `storage.ts`
+   → `RosterPanel.tsx` → `summary.ts`. Enhancement points fold into `totals`
+   with a soft over-limit warning; wargear is loadout-only (all `pointsDelta`
+   are 0). See GAPS.md for what's still not enforced.
 2. **Leader attachment.** `Datasheet.canLead` exists. Add attach UI + an
    `attachedToInstanceId` on roster units (schema already has the field).
 3. **Compile all ~18 BT detachments + enhancements.** Only Gladius Task Force is

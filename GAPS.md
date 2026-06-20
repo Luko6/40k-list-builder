@@ -4,19 +4,23 @@ Honest status of what the app does **not** do yet, so expectations are clear.
 Roughly ordered by impact on actually building a legal list.
 
 ## Rules / validation
-- **No wargear selection UI.** Each datasheet's loadout option groups are
-  compiled into the data, but the builder doesn't yet let you choose weapons.
-  Unit points use the size cost only (most 11e wargear is points-neutral, so
-  this rarely changes the total — but it isn't modelled).
-- **No enhancement assignment.** Detachment enhancements are in the data, but
-  you can't yet attach one to a character. They don't count toward points or
-  the enhancement limit.
+- **Wargear selection is loadout-only.** You can now pick each datasheet's
+  weapon/loadout options per unit, and the choices persist and show in the
+  summary. But all compiled wargear is points-neutral (every `pointsDelta` is
+  0) and no option scales `perModels`, so selections don't change the total and
+  min/max are surfaced only as soft hints (single-pick = dropdown, multi-pick =
+  checkboxes capped at max) — they aren't enforced.
+- **Enhancements are assignable** to eligible characters (CHARACTER, non-Epic-
+  Hero), fold into the unit + army points, and are deduped (each enhancement
+  once) with an over-limit warning. NOT enforced: the hard cap is only warned,
+  not blocked, and the Emperor's Champion's datasheet-specific ban isn't modeled
+  (it's treated as a normal character).
 - **No leader attachment.** `canLead` is compiled (parsed from each Leader
   ability), but there's no UI to attach a leader to a bodyguard unit.
-- **Shallow validation.** Only two checks run: total points vs the 2000 cap,
-  and max-3-of-a-datasheet. NOT enforced: detachment composition, Battleline
-  minimums, enhancement count limit, the Detachment-Points budget, leader/
-  character rules, and the "1st unit costs more" tiered character pricing
+- **Shallow validation.** Checks that run: total points vs the 2000 cap,
+  max-3-of-a-datasheet, and a soft enhancement-limit warning. NOT enforced:
+  detachment composition, Battleline minimums, the Detachment-Points budget,
+  leader/character rules, and the "1st unit costs more" tiered character pricing
   (the builder takes a single cost per size).
 
 ## Scope

@@ -27,12 +27,28 @@ export function buildSummaryText(
     const ds = byId.get(u.datasheetId)
     if (!ds) continue
     const opt = ds.sizeOptions[u.sizeOptionIndex]
-    const pts = opt?.points ?? 0
+    const allChoices = ds.wargearOptions.flatMap((o) => o.choices)
+    const enhancement = detachment?.enhancements.find((e) => e.id === u.enhancementId)
+    let wargearDelta = 0
+    const wargearNames: string[] = []
+    for (const choiceIds of Object.values(u.wargearSelections)) {
+      for (const choiceId of choiceIds) {
+        const choice = allChoices.find((c) => c.id === choiceId)
+        if (!choice) continue
+        wargearNames.push(choice.name)
+        wargearDelta += choice.pointsDelta ?? 0
+      }
+    }
+    const pts = (opt?.points ?? 0) + (enhancement?.points ?? 0) + wargearDelta
     total += pts
-    const line = `  ${ds.name} (${opt?.models ?? 1} model${opt && opt.models > 1 ? 's' : ''}) — ${pts} pts`
+    const lines = [
+      `  ${ds.name} (${opt?.models ?? 1} model${opt && opt.models > 1 ? 's' : ''}) — ${pts} pts`,
+    ]
+    if (enhancement) lines.push(`    Enhancement: ${enhancement.name} (+${enhancement.points})`)
+    if (wargearNames.length) lines.push(`    Wargear: ${wargearNames.join(', ')}`)
     const key = bucket(ds)
     if (!groups.has(key)) groups.set(key, [])
-    groups.get(key)!.push(line)
+    groups.get(key)!.push(lines.join('\n'))
   }
 
   const out: string[] = []

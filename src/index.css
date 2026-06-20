@@ -389,6 +389,55 @@ body {
   color: var(--muted);
 }
 
+/* ── Per-unit options (enhancement + wargear) ─────────────────── */
+.roster__unit-options {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+
+.roster__enhancement {
+  margin: 0;
+}
+
+.wargear-opts {
+  font-size: 0.82rem;
+}
+
+.wargear-opts > summary {
+  cursor: pointer;
+  padding: 0.2rem 0;
+  user-select: none;
+}
+
+.wargear-opt {
+  margin: 0.35rem 0 0;
+}
+
+.wargear-opt--multi {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem 0.6rem;
+}
+
+.wargear-opt__minmax {
+  font-size: 0.72rem;
+}
+
+.wargear-check {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.15rem 0;
+  cursor: pointer;
+}
+
+.wargear-check input {
+  accent-color: var(--accent);
+}
+
 /* ── Toolbar ──────────────────────────────────────────────────── */
 .toolbar {
   display: flex;

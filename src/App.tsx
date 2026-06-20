@@ -91,6 +91,12 @@ function App() {
           onSetSize={(instanceId, sizeOptionIndex) =>
             dispatch({ type: 'setSize', instanceId, sizeOptionIndex })
           }
+          onSetWargear={(instanceId, optionId, choiceIds) =>
+            dispatch({ type: 'setWargear', instanceId, optionId, choiceIds })
+          }
+          onSetEnhancement={(instanceId, enhancementId) =>
+            dispatch({ type: 'setEnhancement', instanceId, enhancementId })
+          }
         />
       </div>
 

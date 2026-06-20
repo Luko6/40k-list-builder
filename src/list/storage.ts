@@ -15,18 +15,22 @@ const LISTS_KEY = 'btlb:lists'
 const now = () => new Date().toISOString()
 
 export function toSavedList(state: RosterState, gameSizeId: GameSizeId): SavedList {
+  const enhancementIds = state.units
+    .map((u) => u.enhancementId)
+    .filter((id): id is string => Boolean(id))
   return {
     schemaVersion: SCHEMA_VERSION,
     id: state.id,
     name: state.name.trim() || 'Untitled list',
     faction: 'black-templars',
     gameSizeId,
-    detachments: [{ detachmentId: state.detachmentId, enhancementIds: [] }],
+    detachments: [{ detachmentId: state.detachmentId, enhancementIds }],
     units: state.units.map((u) => ({
       instanceId: u.instanceId,
       datasheetId: u.datasheetId,
       sizeOptionIndex: u.sizeOptionIndex,
-      wargearSelections: {},
+      wargearSelections: u.wargearSelections,
+      ...(u.enhancementId ? { enhancementId: u.enhancementId } : {}),
     })),
     createdAt: state.createdAt,
     updatedAt: now(),
@@ -51,6 +55,8 @@ export function fromSavedList(sl: SavedList): RosterState {
       instanceId: u.instanceId,
       datasheetId: u.datasheetId,
       sizeOptionIndex: u.sizeOptionIndex,
+      wargearSelections: u.wargearSelections ?? {},
+      enhancementId: u.enhancementId,
     })),
   }
 }

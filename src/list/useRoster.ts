@@ -4,14 +4,18 @@ import { fromSavedList, loadCurrent } from './storage'
 
 /**
  * In-memory working state for the list being built. This is deliberately
- * lighter than the persisted SavedList shape (Phase 4) — it tracks only what
- * the builder needs right now: the chosen detachment and the unit instances
- * with their selected size. Wargear/enhancement/leader state lands here later.
+ * lighter than the persisted SavedList shape (Phase 4) — it tracks the chosen
+ * detachment and the unit instances with their selected size, wargear choices,
+ * and any assigned enhancement. Leader attachment state lands here later.
  */
 export interface RosterUnit {
   instanceId: string
   datasheetId: string
   sizeOptionIndex: number
+  /** wargear optionId -> selected choiceId(s). */
+  wargearSelections: Record<string, string[]>
+  /** Enhancement (from the current detachment) assigned to this unit. */
+  enhancementId?: string
 }
 
 export interface RosterState {
@@ -27,6 +31,8 @@ type Action =
   | { type: 'addUnit'; datasheetId: string }
   | { type: 'removeUnit'; instanceId: string }
   | { type: 'setSize'; instanceId: string; sizeOptionIndex: number }
+  | { type: 'setWargear'; instanceId: string; optionId: string; choiceIds: string[] }
+  | { type: 'setEnhancement'; instanceId: string; enhancementId?: string }
   | { type: 'rename'; name: string }
   | { type: 'load'; state: RosterState }
   | { type: 'new'; detachmentId: string }
@@ -34,7 +40,15 @@ type Action =
 function reducer(state: RosterState, action: Action): RosterState {
   switch (action.type) {
     case 'setDetachment':
-      return { ...state, detachmentId: action.detachmentId }
+      if (action.detachmentId === state.detachmentId) return state
+      // Enhancements belong to a detachment, so switching invalidates them.
+      return {
+        ...state,
+        detachmentId: action.detachmentId,
+        units: state.units.map((u) =>
+          u.enhancementId ? { ...u, enhancementId: undefined } : u,
+        ),
+      }
     case 'rename':
       return { ...state, name: action.name }
     case 'load':
@@ -56,6 +70,7 @@ function reducer(state: RosterState, action: Action): RosterState {
             instanceId: crypto.randomUUID(),
             datasheetId: action.datasheetId,
             sizeOptionIndex: 0,
+            wargearSelections: {},
           },
         ],
       }
@@ -70,6 +85,26 @@ function reducer(state: RosterState, action: Action): RosterState {
             : u,
         ),
       }
+    case 'setWargear':
+      return {
+        ...state,
+        units: state.units.map((u) => {
+          if (u.instanceId !== action.instanceId) return u
+          const wargearSelections = { ...u.wargearSelections }
+          if (action.choiceIds.length) wargearSelections[action.optionId] = action.choiceIds
+          else delete wargearSelections[action.optionId]
+          return { ...u, wargearSelections }
+        }),
+      }
+    case 'setEnhancement':
+      return {
+        ...state,
+        units: state.units.map((u) =>
+          u.instanceId === action.instanceId
+            ? { ...u, enhancementId: action.enhancementId || undefined }
+            : u,
+        ),
+      }
   }
 }
 
@@ -81,6 +116,10 @@ export interface RosterTotals {
   /** datasheetId -> count, for the "max N of each datasheet" rule. */
   perDatasheet: Map<string, number>
   overLimit: boolean
+  /** Enhancements assigned across the army. */
+  enhancementsUsed: number
+  enhancementLimit: number
+  enhancementOverLimit: boolean
 }
 
 function init(catalogue: FactionCatalogue): RosterState {
@@ -111,21 +150,41 @@ export function useRoster(catalogue: FactionCatalogue) {
   )
 
   const totals: RosterTotals = useMemo(() => {
+    const detachment = catalogue.detachments.find((d) => d.id === state.detachmentId)
+    const enhancementById = new Map((detachment?.enhancements ?? []).map((e) => [e.id, e]))
     let points = 0
+    let enhancementsUsed = 0
     const perDatasheet = new Map<string, number>()
     for (const u of state.units) {
       const ds = byId.get(u.datasheetId)
       const opt = ds?.sizeOptions[u.sizeOptionIndex]
       if (opt) points += opt.points
+      // Wargear point deltas (0 in current data, but modeled for safety).
+      for (const choiceIds of Object.values(u.wargearSelections)) {
+        for (const choiceId of choiceIds) {
+          const choice = ds?.wargearOptions
+            .flatMap((o) => o.choices)
+            .find((c) => c.id === choiceId)
+          if (choice?.pointsDelta) points += choice.pointsDelta
+        }
+      }
+      const enhancement = u.enhancementId ? enhancementById.get(u.enhancementId) : undefined
+      if (enhancement) {
+        points += enhancement.points
+        enhancementsUsed += 1
+      }
       perDatasheet.set(u.datasheetId, (perDatasheet.get(u.datasheetId) ?? 0) + 1)
     }
     return {
       points,
       pointsLimit: size.pointsLimit,
-      detachment: catalogue.detachments.find((d) => d.id === state.detachmentId),
+      detachment,
       unitCount: state.units.length,
       perDatasheet,
       overLimit: points > size.pointsLimit,
+      enhancementsUsed,
+      enhancementLimit: size.enhancementLimit,
+      enhancementOverLimit: enhancementsUsed > size.enhancementLimit,
     }
   }, [state, byId, catalogue.detachments, size])
 
