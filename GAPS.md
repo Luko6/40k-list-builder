@@ -31,10 +31,11 @@ Roughly ordered by impact on actually building a legal list.
 ## Scope
 - **One detachment at a time.** The schema supports 11e's multiple-detachment
   + DP-budget model, but the UI only picks a single detachment and ignores DP.
-- **Only the Gladius Task Force detachment** is in the catalogue (with
-  hand-entered enhancements). The other ~18 Black Templars detachments and
-  their enhancements aren't compiled yet — the MFM scraper currently extracts
-  unit points only, not detachment/enhancement data.
+- **All 19 detachments are compiled** (3 BT-specific + 16 generic Space
+  Marines, all legal for BT) with DP, force disposition, and enhancements,
+  parsed from the MFM payload into `detachments.json`. Caveat: `(Upgrade)`-type
+  enhancements (which the rules allow on non-character units) are still only
+  offered to characters in the UI.
 - **Strike Force (2000 pts) only.** Incursion/Onslaught are out of MVP scope.
 - **Black Templars only.** By design for the MVP.
 

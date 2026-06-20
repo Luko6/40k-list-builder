@@ -19,7 +19,23 @@ const SRC_DIR = 'data-sources/bsdata'
 const OUT_DIR = 'src/data/generated'
 const OUT_FILE = `${OUT_DIR}/black-templars.json`
 const OVERRIDES_FILE = 'scripts/points-overrides.json'
+const DETACHMENTS_FILE = 'scripts/detachments.json'
 const SCHEMA_VERSION = 1
+
+// Fallback if the scraper hasn't produced detachments.json yet (e.g. fresh
+// checkout). Matches the MFM's Gladius Task Force entry.
+const FALLBACK_DETACHMENTS = [
+  {
+    id: 'gladius-task-force', name: 'Gladius Task Force', detachmentPoints: 3,
+    forceDisposition: 'PRIORITY ASSETS',
+    enhancements: [
+      { id: 'adept-of-the-codex', name: 'Adept of the Codex', points: 20 },
+      { id: 'artificer-armour', name: 'Artificer Armour', points: 10 },
+      { id: 'fire-discipline', name: 'Fire Discipline', points: 25 },
+      { id: 'the-honour-vehement', name: 'The Honour Vehement', points: 15 },
+    ],
+  },
+]
 
 const ALWAYS_ARRAY = new Set([
   'catalogueLink', 'entryLink', 'infoLink', 'selectionEntry',
@@ -229,6 +245,12 @@ const overrides = existsSync(OVERRIDES_FILE)
   ? JSON.parse(readFileSync(OVERRIDES_FILE, 'utf8'))
   : {}
 
+const detachments = (
+  existsSync(DETACHMENTS_FILE)
+    ? JSON.parse(readFileSync(DETACHMENTS_FILE, 'utf8')).detachments ?? FALLBACK_DETACHMENTS
+    : FALLBACK_DETACHMENTS
+).sort((a, b) => a.name.localeCompare(b.name))
+
 function buildDatasheet(link, source) {
   const entry = resolve(link)
   const c = collect(entry)
@@ -346,17 +368,7 @@ const catalogue = {
   gameSizes: [
     { id: 'strikeForce', label: 'Strike Force (2000 pts)', pointsLimit: 2000, detachmentPoints: 3, enhancementLimit: 4, datasheetLimit: 3 },
   ],
-  detachments: [
-    {
-      id: 'gladius-task-force', name: 'Gladius Task Force', detachmentPoints: 3, forceDisposition: 'PRIORITY ASSETS',
-      enhancements: [
-        { id: 'adept-of-the-codex', name: 'Adept of the Codex', points: 20 },
-        { id: 'artificer-armour', name: 'Artificer Armour', points: 10 },
-        { id: 'fire-discipline', name: 'Fire Discipline', points: 25 },
-        { id: 'the-honour-vehement', name: 'The Honour Vehement', points: 15 },
-      ],
-    },
-  ],
+  detachments,
   datasheets: datasheets.sort((a, b) => a.name.localeCompare(b.name)),
   meta: {
     pointsSource: 'Munitorum overrides where present, else BSData 10e cost',

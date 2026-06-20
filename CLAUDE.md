@@ -39,9 +39,10 @@ data-sources/                         pinned, read-only upstream snapshots (don'
   MANIFEST.md                         provenance + re-vendoring instructions
 
 scripts/
-  scrape-mfm.mjs                      MFM payload -> points-overrides.json (resolves lazy $L point refs)
+  scrape-mfm.mjs                      MFM payload -> points-overrides.json + detachments.json (resolves lazy $L refs)
   points-overrides.json              GENERATED: points-by-size + roles, keyed by datasheet-name slug
-  compile-data.mjs                    BSData cats (+ overrides) -> generated JSON  (the real work)
+  detachments.json                   GENERATED: all 19 detachments (DP, disposition, enhancements)
+  compile-data.mjs                    BSData cats (+ overrides + detachments) -> generated JSON  (the real work)
   inspect.mjs                         dev helper: print a compiled datasheet
 
 src/
@@ -69,7 +70,11 @@ wh40k-**10e** is a stand-in for stats; points are real 11e from the MFM.
    React Flight payload where unit names are UPPERCASE spans and point values are
    lazy refs (`$L<id>`) resolved by sibling rows (`<id>:[...,"80 pts"]`). The
    script resolves these into `points-overrides.json` keyed by name slug. 88/89
-   match (the "(Anointed)" EC variant isn't on the MFM).
+   match (the "(Anointed)" EC variant isn't on the MFM). It **also** parses the
+   DETACHMENTS section into `detachments.json` — all 19 detachments legal for BT
+   (3 BT-specific + 16 generic Space Marines), each with its DP badge, force
+   disposition, and enhancements (points + `(Upgrade)` flag). Run with `--cached`
+   to parse the vendored payload offline.
 2. **`compile-data.mjs`** is a recursive BattleScribe resolver. It walks each
    unit's subtree following `entryLink`/`infoLink` `targetId`s across all three
    files, extracting statlines, weapon profiles, wargear option groups, keywords,
@@ -78,9 +83,12 @@ wh40k-**10e** is a stand-in for stats; points are real 11e from the MFM.
    catalogue's imported root entries, applying BT legality (exclude Psykers,
    other chapters' Epic Heroes, Legends/Crucible) and deduping (BT wins). Points
    from `points-overrides.json` are merged over the cat's 10e cost.
+   `catalogue.detachments` is driven from `detachments.json` (sorted by name;
+   falls back to a hardcoded Gladius entry if the file is absent).
 
-To change data: edit the compiler or `points-overrides.json`, re-run
-`compile-data`, **commit the regenerated JSON**, push.
+To change data: edit the compiler or the scraper, re-run `scrape-mfm --cached`
+(if detachment/points data changed) then `compile-data`, **commit the
+regenerated JSON**, push.
 
 ## Gotchas
 
@@ -88,8 +96,9 @@ To change data: edit the compiler or `points-overrides.json`, re-run
   (it 404s and the Pages site is torn down). Pages was enabled with
   `gh api repos/Luko6/40k-list-builder/pages -X POST -f build_type=workflow`
   (the Actions token itself can't create the Pages site).
-- **Never hand-edit** `src/data/generated/black-templars.json` or
-  `scripts/points-overrides.json` — they're regenerated. Edit the compiler/scraper.
+- **Never hand-edit** `src/data/generated/black-templars.json`,
+  `scripts/points-overrides.json`, or `scripts/detachments.json` — they're
+  regenerated. Edit the compiler/scraper.
 - **`data-sources/**` is byte-pristine** (`.gitattributes` sets `-text`). Re-vendor
   via the commands in `data-sources/MANIFEST.md`; don't edit in place.
 - **Windows/CRLF**: git warns "LF will be replaced by CRLF" on commit — harmless,
@@ -114,11 +123,13 @@ Full limitations are in **GAPS.md**. Highest-value remaining work, with entry po
    "Sword Brethren" never matched `sword-brethren-squad` and rule-text
    sentences leaked in — `compile-data.mjs` now resolves canLead against the
    real id set (7 remapped, 13 fragments dropped).
-3. **Compile all ~18 BT detachments + enhancements.** Only Gladius Task Force is
-   hand-entered in `compile-data.mjs`. The MFM payload contains every detachment
-   (UPPERCASE) with DP + force disposition + enhancements (title-case + points) —
-   extend `scrape-mfm.mjs` to parse them, then drive `catalogue.detachments` from
-   that instead of the hardcoded block.
+3. ~~**Compile all ~18 BT detachments + enhancements.**~~ **Done.** All 19
+   detachments (with DP, force disposition, and enhancements incl. `(Upgrade)`
+   flag) are parsed from the MFM payload by `scrape-mfm.mjs` into
+   `detachments.json`, and `compile-data.mjs` drives `catalogue.detachments`
+   from it. The UI already let you pick the detachment, so this lit up the full
+   list. Still single-detachment-at-a-time (see #5) and `(Upgrade)` enhancements
+   are only offered to characters in the UI.
 4. **Roles for all units.** Only EC + Marshal are tagged leader. The MFM payload
    has LEADER/SUPPORT markers — extend `scrape-mfm.mjs` to emit `role` per unit.
 5. **Deeper validation** (DP budget, multiple detachments in the UI, enhancement

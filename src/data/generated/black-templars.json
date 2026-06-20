@@ -15,6 +15,194 @@
   ],
   "detachments": [
     {
+      "id": "anvil-siege-force",
+      "name": "Anvil Siege Force",
+      "detachmentPoints": 2,
+      "forceDisposition": "TAKE AND HOLD",
+      "enhancements": [
+        {
+          "id": "architect-of-war",
+          "name": "Architect of War",
+          "points": 25
+        },
+        {
+          "id": "fleet-commander",
+          "name": "Fleet Commander",
+          "points": 15
+        },
+        {
+          "id": "indomitable-fury",
+          "name": "Indomitable Fury",
+          "points": 20
+        },
+        {
+          "id": "stoic-defender",
+          "name": "Stoic Defender",
+          "points": 15
+        }
+      ]
+    },
+    {
+      "id": "armoured-speartip",
+      "name": "Armoured Speartip",
+      "detachmentPoints": 3,
+      "forceDisposition": "TAKE AND HOLD",
+      "enhancements": [
+        {
+          "id": "armoured-commander",
+          "name": "Armoured Commander",
+          "points": 25
+        },
+        {
+          "id": "liberator",
+          "name": "Liberator",
+          "points": 15
+        },
+        {
+          "id": "shock-deployment",
+          "name": "Shock Deployment",
+          "points": 20
+        },
+        {
+          "id": "tip-of-the-spear",
+          "name": "Tip of the Spear",
+          "points": 40
+        }
+      ]
+    },
+    {
+      "id": "bastion-task-force",
+      "name": "Bastion Task Force",
+      "detachmentPoints": 3,
+      "forceDisposition": "TAKE AND HOLD",
+      "enhancements": [
+        {
+          "id": "blades-of-valour",
+          "name": "Blades of Valour",
+          "points": 15
+        },
+        {
+          "id": "bombast-omnivox",
+          "name": "Bombast Omnivox",
+          "points": 15
+        },
+        {
+          "id": "eye-of-the-primarch",
+          "name": "Eye of the Primarch",
+          "points": 10
+        },
+        {
+          "id": "hero-of-the-chapter",
+          "name": "Hero of the Chapter",
+          "points": 20
+        }
+      ]
+    },
+    {
+      "id": "ceramite-sentinels",
+      "name": "Ceramite Sentinels",
+      "detachmentPoints": 3,
+      "forceDisposition": "TAKE AND HOLD",
+      "enhancements": [
+        {
+          "id": "castellum-omnivox",
+          "name": "Castellum Omnivox",
+          "points": 20
+        },
+        {
+          "id": "defensive-mastery",
+          "name": "Defensive Mastery",
+          "points": 25
+        },
+        {
+          "id": "honour-indefatigable",
+          "name": "Honour Indefatigable",
+          "points": 25
+        },
+        {
+          "id": "spy-skull-data-link",
+          "name": "Spy-skull Data Link",
+          "points": 15
+        }
+      ]
+    },
+    {
+      "id": "companions-of-vehemence",
+      "name": "Companions of Vehemence",
+      "detachmentPoints": 2,
+      "forceDisposition": "PURGE THE FOE",
+      "enhancements": [
+        {
+          "id": "incendiary-animus",
+          "name": "Incendiary Animus",
+          "points": 25
+        },
+        {
+          "id": "merciless-denunciation",
+          "name": "Merciless Denunciation",
+          "points": 25
+        },
+        {
+          "id": "oathbound-exemplar",
+          "name": "Oathbound Exemplar",
+          "points": 15
+        },
+        {
+          "id": "zealous-vanguard",
+          "name": "Zealous Vanguard",
+          "points": 20
+        }
+      ]
+    },
+    {
+      "id": "firestorm-assault-force",
+      "name": "Firestorm Assault Force",
+      "detachmentPoints": 2,
+      "forceDisposition": "PURGE THE FOE",
+      "enhancements": [
+        {
+          "id": "adamantine-mantle",
+          "name": "Adamantine Mantle",
+          "points": 20
+        },
+        {
+          "id": "champion-of-humanity",
+          "name": "Champion of Humanity",
+          "points": 10
+        },
+        {
+          "id": "forged-in-battle",
+          "name": "Forged in Battle",
+          "points": 15
+        },
+        {
+          "id": "war-tempered-artifice",
+          "name": "War-tempered Artifice",
+          "points": 25
+        }
+      ]
+    },
+    {
+      "id": "fulguris-task-force",
+      "name": "Fulguris Task Force",
+      "detachmentPoints": 1,
+      "forceDisposition": "DISRUPTION",
+      "enhancements": [
+        {
+          "id": "bellicose-weapon-spirits",
+          "name": "Bellicose Weapon Spirits",
+          "points": 15,
+          "isUpgrade": true
+        },
+        {
+          "id": "raptorial-cogitator-core",
+          "name": "Raptorial Cogitator Core",
+          "points": 15,
+          "isUpgrade": true
+        }
+      ]
+    },
+    {
       "id": "gladius-task-force",
       "name": "Gladius Task Force",
       "detachmentPoints": 3,
@@ -38,6 +226,272 @@
         {
           "id": "the-honour-vehement",
           "name": "The Honour Vehement",
+          "points": 15
+        }
+      ]
+    },
+    {
+      "id": "godhammer-assault-force",
+      "name": "Godhammer Assault Force",
+      "detachmentPoints": 2,
+      "forceDisposition": "DISRUPTION",
+      "enhancements": [
+        {
+          "id": "augury-servo-host",
+          "name": "Augury Servo-Host",
+          "points": 15
+        },
+        {
+          "id": "battle-psalm-precentor",
+          "name": "Battle-Psalm Precentor",
+          "points": 10
+        },
+        {
+          "id": "herald-of-sacred-slaughter",
+          "name": "Herald of Sacred Slaughter",
+          "points": 15
+        },
+        {
+          "id": "paragon-of-fury",
+          "name": "Paragon of Fury",
+          "points": 25
+        }
+      ]
+    },
+    {
+      "id": "headhunter-task-force",
+      "name": "Headhunter Task Force",
+      "detachmentPoints": 2,
+      "forceDisposition": "PRIORITY ASSETS",
+      "enhancements": [
+        {
+          "id": "astartes-tank-ace",
+          "name": "Astartes Tank Ace",
+          "points": 40
+        },
+        {
+          "id": "firestorm-coordinators",
+          "name": "Firestorm Coordinators",
+          "points": 20
+        },
+        {
+          "id": "gunnery-honours",
+          "name": "Gunnery Honours",
+          "points": 20
+        },
+        {
+          "id": "redoubtable-machine-spirit",
+          "name": "Redoubtable Machine Spirit",
+          "points": 25
+        }
+      ]
+    },
+    {
+      "id": "ironstorm-spearhead",
+      "name": "Ironstorm Spearhead",
+      "detachmentPoints": 2,
+      "forceDisposition": "PURGE THE FOE",
+      "enhancements": [
+        {
+          "id": "adept-of-the-omnissiah",
+          "name": "Adept of the Omnissiah",
+          "points": 35
+        },
+        {
+          "id": "master-of-machine-war",
+          "name": "Master of Machine War",
+          "points": 20
+        },
+        {
+          "id": "target-augury-web",
+          "name": "Target Augury Web",
+          "points": 30
+        },
+        {
+          "id": "the-flesh-is-weak",
+          "name": "The Flesh Is Weak",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "id": "marshals-household",
+      "name": "Marshal's Household",
+      "detachmentPoints": 1,
+      "forceDisposition": "PRIORITY ASSETS",
+      "enhancements": [
+        {
+          "id": "fervent-exemplars",
+          "name": "Fervent Exemplars",
+          "points": 10,
+          "isUpgrade": true
+        },
+        {
+          "id": "inheritors-of-sigismund",
+          "name": "Inheritors of Sigismund",
+          "points": 15,
+          "isUpgrade": true
+        }
+      ]
+    },
+    {
+      "id": "orbital-assault-force",
+      "name": "Orbital Assault Force",
+      "detachmentPoints": 2,
+      "forceDisposition": "TAKE AND HOLD",
+      "enhancements": [
+        {
+          "id": "dedicated-gunship",
+          "name": "Dedicated Gunship",
+          "points": 15
+        },
+        {
+          "id": "laurels-of-thunder",
+          "name": "Laurels of Thunder",
+          "points": 15
+        },
+        {
+          "id": "orbital-uplink-reliquary",
+          "name": "Orbital Uplink Reliquary",
+          "points": 25
+        },
+        {
+          "id": "veteran-of-the-vanguard",
+          "name": "Veteran of the Vanguard",
+          "points": 20
+        }
+      ]
+    },
+    {
+      "id": "stormlance-task-force",
+      "name": "Stormlance Task Force",
+      "detachmentPoints": 2,
+      "forceDisposition": "DISRUPTION",
+      "enhancements": [
+        {
+          "id": "feinting-withdrawal",
+          "name": "Feinting Withdrawal",
+          "points": 10
+        },
+        {
+          "id": "fury-of-the-storm",
+          "name": "Fury of the Storm",
+          "points": 25
+        },
+        {
+          "id": "hunters-instincts",
+          "name": "Hunter’s Instincts",
+          "points": 25
+        },
+        {
+          "id": "portents-of-wisdom",
+          "name": "Portents of Wisdom",
+          "points": 15
+        }
+      ]
+    },
+    {
+      "id": "subversion-assets",
+      "name": "Subversion Assets",
+      "detachmentPoints": 1,
+      "forceDisposition": "RECONNAISSANCE",
+      "enhancements": [
+        {
+          "id": "death-in-the-dark",
+          "name": "Death in the Dark",
+          "points": 15,
+          "isUpgrade": true
+        },
+        {
+          "id": "shroud-field",
+          "name": "Shroud Field",
+          "points": 20
+        }
+      ]
+    },
+    {
+      "id": "the-living-miracle",
+      "name": "The Living Miracle",
+      "detachmentPoints": 1,
+      "forceDisposition": "PURGE THE FOE",
+      "enhancements": [
+        {
+          "id": "guiding-omens",
+          "name": "Guiding Omens",
+          "points": 15
+        }
+      ]
+    },
+    {
+      "id": "vanguard-spearhead",
+      "name": "Vanguard Spearhead",
+      "detachmentPoints": 2,
+      "forceDisposition": "RECONNAISSANCE",
+      "enhancements": [
+        {
+          "id": "execute-and-redeploy",
+          "name": "Execute and Redeploy",
+          "points": 20
+        },
+        {
+          "id": "ghostweave-cloak",
+          "name": "Ghostweave Cloak",
+          "points": 15
+        },
+        {
+          "id": "shadow-war-veteran",
+          "name": "Shadow War Veteran",
+          "points": 30
+        },
+        {
+          "id": "the-blade-driven-deep",
+          "name": "The Blade Driven Deep",
+          "points": 25
+        }
+      ]
+    },
+    {
+      "id": "vindication-task-force",
+      "name": "Vindication Task Force",
+      "detachmentPoints": 2,
+      "forceDisposition": "PRIORITY ASSETS",
+      "enhancements": [
+        {
+          "id": "consecrating-aura",
+          "name": "Consecrating Aura",
+          "points": 25
+        },
+        {
+          "id": "imperialis-of-the-eternal-crusade",
+          "name": "Imperialis of the Eternal Crusade",
+          "points": 15
+        },
+        {
+          "id": "orb-of-the-emperors-aegis",
+          "name": "Orb of the Emperor’s Aegis",
+          "points": 10
+        },
+        {
+          "id": "warden-of-honour",
+          "name": "Warden of Honour",
+          "points": 20
+        }
+      ]
+    },
+    {
+      "id": "wrathful-procession",
+      "name": "Wrathful Procession",
+      "detachmentPoints": 1,
+      "forceDisposition": "TAKE AND HOLD",
+      "enhancements": [
+        {
+          "id": "adaptable-executioner",
+          "name": "Adaptable Executioner",
+          "points": 20
+        },
+        {
+          "id": "benediction-of-fury",
+          "name": "Benediction of Fury",
           "points": 15
         }
       ]
