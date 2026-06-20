@@ -494,6 +494,21 @@ body {
   padding: 0.25rem 0.6rem 0.85rem 1.8rem;
 }
 
+/* Leaders attached to a unit, nested beneath its card. */
+.roster__nested {
+  margin: 0 0 0.4rem 1.4rem;
+  padding-left: 0.6rem;
+  border-left: 2px solid var(--accent);
+}
+
+.roster__unit--nested {
+  border-bottom: none;
+}
+
+.roster__lead-arrow {
+  color: var(--accent);
+}
+
 .roster__unit-pts {
   font-variant-numeric: tabular-nums;
   color: var(--muted);

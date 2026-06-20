@@ -81,6 +81,7 @@ export function RosterPanel({
     totals.detachments.flatMap((d) => d.enhancements.map((e) => [e.id, e] as const)),
   )
   const hasEnhancements = enhancementById.size > 0
+  const enhOf = (u: RosterUnit) => (u.enhancementId ? enhancementById.get(u.enhancementId) : undefined)
   // Each enhancement may only be taken once across the army.
   const usedEnhancementIds = new Set(
     state.units.map((u) => u.enhancementId).filter(Boolean) as string[],
@@ -92,23 +93,176 @@ export function RosterPanel({
   )
 
   const labels = buildInstanceLabels(state.units, byId)
-  // bodyguard instanceId -> leader units attached to it.
+  const instanceIds = new Set(state.units.map((u) => u.instanceId))
+  // A leader nests only when its bodyguard is actually present; otherwise (e.g.
+  // a stale id from a hand-edited import) it renders top-level so it can't vanish.
+  const isNestedLeader = (u: RosterUnit) =>
+    Boolean(u.attachedToInstanceId && instanceIds.has(u.attachedToInstanceId))
+  // bodyguard instanceId -> leader units attached to it (rendered nested below it).
   const leadersByBodyguard = new Map<string, RosterUnit[]>()
   for (const u of state.units) {
-    if (!u.attachedToInstanceId) continue
-    const list = leadersByBodyguard.get(u.attachedToInstanceId) ?? []
+    if (!isNestedLeader(u)) continue
+    const list = leadersByBodyguard.get(u.attachedToInstanceId!) ?? []
     list.push(u)
-    leadersByBodyguard.set(u.attachedToInstanceId, list)
+    leadersByBodyguard.set(u.attachedToInstanceId!, list)
   }
 
-  // Group units into roster sections, preserving add order within each.
+  // Group the units that render at top level; nested leaders appear under their
+  // bodyguard's card rather than in their own section.
   const grouped = new Map<Category, RosterUnit[]>()
   for (const u of state.units) {
+    if (isNestedLeader(u)) continue
     const ds = byId.get(u.datasheetId)
     if (!ds) continue
     const cat = unitCategory(ds)
     if (!grouped.has(cat)) grouped.set(cat, [])
     grouped.get(cat)!.push(u)
+  }
+
+  // Points / card count for a unit including any leaders nested under it.
+  const attachedOf = (u: RosterUnit) => leadersByBodyguard.get(u.instanceId) ?? []
+  const pointsWithLeaders = (u: RosterUnit): number => {
+    const ds = byId.get(u.datasheetId)
+    let p = ds ? unitPoints(ds, u, enhOf(u)) : 0
+    for (const l of attachedOf(u)) {
+      const lds = byId.get(l.datasheetId)
+      if (lds) p += unitPoints(lds, l, enhOf(l))
+    }
+    return p
+  }
+
+  const renderUnit = (u: RosterUnit, nested = false) => {
+    const ds = byId.get(u.datasheetId)
+    if (!ds) return null
+    const opt = ds.sizeOptions[u.sizeOptionIndex]
+    const overCount =
+      !ds.isDedicatedTransport && (totals.perDatasheet.get(u.datasheetId) ?? 0) > datasheetLimit
+    const enhancement = enhOf(u)
+    const eligible = canTakeEnhancement(ds) && hasEnhancements
+
+    const leads = realCanLead(ds, byId)
+    const isLeader = leads.length > 0
+    const eligibleBodyguards = isLeader
+      ? state.units.filter((v) => v.instanceId !== u.instanceId && leads.includes(v.datasheetId))
+      : []
+    const attachedLeaders = nested ? [] : attachedOf(u)
+    const isOpen = open.has(u.instanceId)
+    const hasOptions = eligible || isLeader || ds.wargearOptions.length > 0
+
+    return (
+      <li
+        key={u.instanceId}
+        className={nested ? 'roster__unit roster__unit--nested' : 'roster__unit'}
+        data-open={isOpen}
+      >
+        <div className="roster__unit-head">
+          <button
+            className="roster__expand"
+            aria-expanded={isOpen}
+            onClick={() => toggle(u.instanceId)}
+            title="View stats & options"
+          >
+            {isOpen ? '▾' : '▸'}
+          </button>
+          <div className="roster__unit-main">
+            <span className="roster__unit-name">
+              {nested && <span className="roster__lead-arrow">↳ </span>}
+              {ds.name}
+              {overCount && (
+                <span className="warn-inline" title={`Max ${datasheetLimit} allowed`}>
+                  {' '}
+                  ⚠
+                </span>
+              )}
+            </span>
+            {ds.sizeOptions.length > 1 ? (
+              <select
+                value={u.sizeOptionIndex}
+                onChange={(e) => onSetSize(u.instanceId, Number(e.target.value))}
+              >
+                {ds.sizeOptions.map((o, i) => (
+                  <option key={i} value={i}>
+                    {o.models} models — {o.points} pts
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <span className="muted">
+                {opt?.models} model{opt && opt.models > 1 ? 's' : ''}
+              </span>
+            )}
+          </div>
+          <span className="roster__unit-pts">{unitPoints(ds, u, enhancement)}</span>
+          <button className="btn btn--ghost" onClick={() => onRemove(u.instanceId)} title="Remove">
+            ✕
+          </button>
+        </div>
+
+        {isOpen && (
+          <div className="roster__unit-body">
+            <UnitStats ds={ds} />
+            {hasOptions && (
+              <div className="roster__unit-options">
+                {isLeader && (
+                  <label className="field roster__attach">
+                    <span className="muted">Attach to</span>
+                    {eligibleBodyguards.length > 0 ? (
+                      <select
+                        value={u.attachedToInstanceId ?? ''}
+                        onChange={(e) => onSetAttachment(u.instanceId, e.target.value)}
+                      >
+                        <option value="">— not attached —</option>
+                        {eligibleBodyguards.map((v) => (
+                          <option key={v.instanceId} value={v.instanceId}>
+                            {labels.get(v.instanceId)}
+                          </option>
+                        ))}
+                      </select>
+                    ) : (
+                      <span className="muted roster__attach-empty">
+                        No eligible unit in the roster yet.
+                      </span>
+                    )}
+                  </label>
+                )}
+                {eligible && (
+                  <label className="field roster__enhancement">
+                    <span className="muted">Enhancement</span>
+                    <select
+                      value={u.enhancementId ?? ''}
+                      onChange={(e) => onSetEnhancement(u.instanceId, e.target.value)}
+                    >
+                      <option value="">— none —</option>
+                      {totals.detachments.map((d) => (
+                        <optgroup key={d.id} label={d.name}>
+                          {d.enhancements.map((e) => {
+                            const taken = e.id !== u.enhancementId && usedEnhancementIds.has(e.id)
+                            return (
+                              <option key={e.id} value={e.id} disabled={taken}>
+                                {e.name} (+{e.points}){taken ? ' — taken' : ''}
+                              </option>
+                            )
+                          })}
+                        </optgroup>
+                      ))}
+                    </select>
+                  </label>
+                )}
+                {ds.wargearOptions.length > 0 && (
+                  <WargearOptions unit={u} ds={ds} onSetWargear={onSetWargear} />
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {attachedLeaders.length > 0 && (
+          <ul className="roster__units roster__nested">
+            {attachedLeaders.map((l) => renderUnit(l, true))}
+          </ul>
+        )}
+      </li>
+    )
   }
 
   return (
@@ -182,156 +336,17 @@ export function RosterPanel({
       ) : (
         CATEGORY_ORDER.filter((cat) => grouped.has(cat)).map((cat) => {
           const units = grouped.get(cat)!
-          const subtotal = units.reduce((n, u) => {
-            const ds = byId.get(u.datasheetId)!
-            return n + unitPoints(ds, u, u.enhancementId ? enhancementById.get(u.enhancementId) : undefined)
-          }, 0)
+          const subtotal = units.reduce((n, u) => n + pointsWithLeaders(u), 0)
+          const cardCount = units.reduce((n, u) => n + 1 + attachedOf(u).length, 0)
           return (
             <div key={cat} className="roster__group">
               <div className="roster__group-head">
                 <h3>{cat}</h3>
                 <span className="muted">
-                  {units.length} · {subtotal} pts
+                  {cardCount} · {subtotal} pts
                 </span>
               </div>
-              <ul className="roster__units">
-                {units.map((u) => {
-                  const ds = byId.get(u.datasheetId)!
-                  const opt = ds.sizeOptions[u.sizeOptionIndex]
-                  const overCount =
-                    !ds.isDedicatedTransport &&
-                    (totals.perDatasheet.get(u.datasheetId) ?? 0) > datasheetLimit
-                  const enhancement = u.enhancementId ? enhancementById.get(u.enhancementId) : undefined
-                  const eligible = canTakeEnhancement(ds) && hasEnhancements
-
-                  const leads = realCanLead(ds, byId)
-                  const isLeader = leads.length > 0
-                  const eligibleBodyguards = isLeader
-                    ? state.units.filter(
-                        (v) => v.instanceId !== u.instanceId && leads.includes(v.datasheetId),
-                      )
-                    : []
-                  const attachedLeaders = leadersByBodyguard.get(u.instanceId) ?? []
-                  const isOpen = open.has(u.instanceId)
-
-                  return (
-                    <li key={u.instanceId} className="roster__unit" data-open={isOpen}>
-                      <div className="roster__unit-head">
-                        <button
-                          className="roster__expand"
-                          aria-expanded={isOpen}
-                          onClick={() => toggle(u.instanceId)}
-                          title="View stats & options"
-                        >
-                          {isOpen ? '▾' : '▸'}
-                        </button>
-                        <div className="roster__unit-main">
-                          <span className="roster__unit-name">
-                            {ds.name}
-                            {overCount && (
-                              <span className="warn-inline" title={`Max ${datasheetLimit} allowed`}>
-                                {' '}
-                                ⚠
-                              </span>
-                            )}
-                          </span>
-                          {ds.sizeOptions.length > 1 ? (
-                            <select
-                              value={u.sizeOptionIndex}
-                              onChange={(e) => onSetSize(u.instanceId, Number(e.target.value))}
-                            >
-                              {ds.sizeOptions.map((o, i) => (
-                                <option key={i} value={i}>
-                                  {o.models} models — {o.points} pts
-                                </option>
-                              ))}
-                            </select>
-                          ) : (
-                            <span className="muted">
-                              {opt?.models} model{opt && opt.models > 1 ? 's' : ''}
-                            </span>
-                          )}
-                          {u.attachedToInstanceId && (
-                            <span className="roster__attached-note muted">
-                              ↳ leading {labels.get(u.attachedToInstanceId) ?? 'unit'}
-                            </span>
-                          )}
-                          {attachedLeaders.length > 0 && (
-                            <span className="roster__attached-note muted">
-                              led by {attachedLeaders.map((l) => labels.get(l.instanceId)).join(', ')}
-                            </span>
-                          )}
-                        </div>
-                        <span className="roster__unit-pts">{unitPoints(ds, u, enhancement)}</span>
-                        <button
-                          className="btn btn--ghost"
-                          onClick={() => onRemove(u.instanceId)}
-                          title="Remove"
-                        >
-                          ✕
-                        </button>
-                      </div>
-
-                      {isOpen && (
-                        <div className="roster__unit-body">
-                          <UnitStats ds={ds} />
-                          <div className="roster__unit-options">
-                            {isLeader && (
-                              <label className="field roster__attach">
-                                <span className="muted">Attach to</span>
-                                {eligibleBodyguards.length > 0 ? (
-                                  <select
-                                    value={u.attachedToInstanceId ?? ''}
-                                    onChange={(e) => onSetAttachment(u.instanceId, e.target.value)}
-                                  >
-                                    <option value="">— not attached —</option>
-                                    {eligibleBodyguards.map((v) => (
-                                      <option key={v.instanceId} value={v.instanceId}>
-                                        {labels.get(v.instanceId)}
-                                      </option>
-                                    ))}
-                                  </select>
-                                ) : (
-                                  <span className="muted roster__attach-empty">
-                                    No eligible unit in the roster yet.
-                                  </span>
-                                )}
-                              </label>
-                            )}
-                            {eligible && (
-                              <label className="field roster__enhancement">
-                                <span className="muted">Enhancement</span>
-                                <select
-                                  value={u.enhancementId ?? ''}
-                                  onChange={(e) => onSetEnhancement(u.instanceId, e.target.value)}
-                                >
-                                  <option value="">— none —</option>
-                                  {totals.detachments.map((d) => (
-                                    <optgroup key={d.id} label={d.name}>
-                                      {d.enhancements.map((e) => {
-                                        const taken =
-                                          e.id !== u.enhancementId && usedEnhancementIds.has(e.id)
-                                        return (
-                                          <option key={e.id} value={e.id} disabled={taken}>
-                                            {e.name} (+{e.points}){taken ? ' — taken' : ''}
-                                          </option>
-                                        )
-                                      })}
-                                    </optgroup>
-                                  ))}
-                                </select>
-                              </label>
-                            )}
-                            {ds.wargearOptions.length > 0 && (
-                              <WargearOptions unit={u} ds={ds} onSetWargear={onSetWargear} />
-                            )}
-                          </div>
-                        </div>
-                      )}
-                    </li>
-                  )
-                })}
-              </ul>
+              <ul className="roster__units">{units.map((u) => renderUnit(u))}</ul>
             </div>
           )
         })

@@ -16,8 +16,9 @@ Roughly ordered by impact on actually building a legal list.
   not blocked, and the Emperor's Champion's datasheet-specific ban isn't modeled
   (it's treated as a normal character).
 - **Leader attachment is single-tier.** You can attach a LEADER to an eligible
-  bodyguard unit in the roster (dropdown filtered by `canLead`); the summary
-  shows the pairing and removing a bodyguard detaches its leaders. NOT enforced:
+  bodyguard unit (dropdown filtered by `canLead`); attached leaders render
+  nested beneath their bodyguard's card in the roster, the summary shows the
+  pairing, and removing a bodyguard detaches its leaders. NOT enforced:
   the "max one Leader per unit (some allow two)" rule — multiple leaders can be
   pointed at the same unit, and equipment-conditional leads (e.g. Captain needs
   a relic shield to join Bladeguard) aren't modeled. Points are unaffected (10e/
