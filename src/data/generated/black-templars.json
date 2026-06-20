@@ -659,6 +659,7 @@
       "id": "ancient",
       "name": "Ancient",
       "source": "space-marines",
+      "role": "support",
       "keywords": [
         "Infantry",
         "Character",
@@ -788,6 +789,7 @@
       "id": "ancient-in-terminator-armor",
       "name": "Ancient in Terminator Armor",
       "source": "space-marines",
+      "role": "support",
       "keywords": [
         "Character",
         "Infantry",
@@ -977,6 +979,7 @@
       "id": "apothecary",
       "name": "Apothecary",
       "source": "space-marines",
+      "role": "support",
       "keywords": [
         "Character",
         "Grenades",
@@ -1090,6 +1093,7 @@
       "id": "apothecary-biologis",
       "name": "Apothecary Biologis",
       "source": "space-marines",
+      "role": "support",
       "keywords": [
         "Character",
         "Infantry",
@@ -1919,6 +1923,7 @@
       "id": "bladeguard-ancient",
       "name": "Bladeguard Ancient",
       "source": "space-marines",
+      "role": "support",
       "keywords": [
         "Infantry",
         "Character",
@@ -2355,6 +2360,7 @@
       "id": "captain",
       "name": "Captain",
       "source": "space-marines",
+      "role": "leader",
       "keywords": [
         "Character",
         "Infantry",
@@ -2611,6 +2617,7 @@
       "id": "captain-in-gravis-armour",
       "name": "Captain in Gravis Armour",
       "source": "space-marines",
+      "role": "leader",
       "keywords": [
         "Character",
         "Infantry",
@@ -2785,6 +2792,7 @@
       "id": "captain-in-phobos-armour",
       "name": "Captain in Phobos Armour",
       "source": "space-marines",
+      "role": "leader",
       "keywords": [
         "Character",
         "Infantry",
@@ -2895,6 +2903,7 @@
       "id": "captain-in-terminator-armour",
       "name": "Captain in Terminator Armour",
       "source": "space-marines",
+      "role": "leader",
       "keywords": [
         "Character",
         "Infantry",
@@ -3035,6 +3044,7 @@
       "id": "captain-with-jump-pack",
       "name": "Captain with Jump Pack",
       "source": "space-marines",
+      "role": "leader",
       "keywords": [
         "Character",
         "Infantry",
@@ -3256,6 +3266,7 @@
       "id": "castellan",
       "name": "Castellan",
       "source": "black-templars",
+      "role": "support",
       "keywords": [
         "Character",
         "Infantry",
@@ -3856,6 +3867,7 @@
       "id": "chaplain",
       "name": "Chaplain",
       "source": "space-marines",
+      "role": "leader",
       "keywords": [
         "Character",
         "Infantry",
@@ -3948,6 +3960,7 @@
       "id": "chaplain-grimaldus",
       "name": "Chaplain Grimaldus",
       "source": "black-templars",
+      "role": "leader",
       "keywords": [
         "Infantry",
         "Imperium",
@@ -4051,6 +4064,7 @@
       "id": "chaplain-in-terminator-armour",
       "name": "Chaplain in Terminator Armour",
       "source": "space-marines",
+      "role": "leader",
       "keywords": [
         "Character",
         "Infantry",
@@ -4149,6 +4163,7 @@
       "id": "chaplain-on-bike",
       "name": "Chaplain on Bike",
       "source": "space-marines",
+      "role": "leader",
       "keywords": [
         "Character",
         "Mounted",
@@ -4254,6 +4269,7 @@
       "id": "chaplain-with-jump-pack",
       "name": "Chaplain with Jump Pack",
       "source": "space-marines",
+      "role": "leader",
       "keywords": [
         "Character",
         "Infantry",
@@ -4659,6 +4675,7 @@
       "id": "crusade-ancient",
       "name": "Crusade Ancient",
       "source": "black-templars",
+      "role": "support",
       "keywords": [
         "Character",
         "Infantry",
@@ -6253,6 +6270,7 @@
       "id": "emperors-champion-anointed",
       "name": "Emperor's Champion (Anointed)",
       "source": "black-templars",
+      "role": "leader",
       "keywords": [
         "Character",
         "Infantry",
@@ -6480,6 +6498,7 @@
       "id": "execrator",
       "name": "Execrator",
       "source": "black-templars",
+      "role": "leader",
       "keywords": [
         "Infantry",
         "Character",
@@ -7663,6 +7682,7 @@
       "id": "high-marshal-helbrecht",
       "name": "High Marshal Helbrecht",
       "source": "black-templars",
+      "role": "leader",
       "keywords": [
         "Epic Hero",
         "Character",
@@ -9093,6 +9113,7 @@
       "id": "judiciar",
       "name": "Judiciar",
       "source": "space-marines",
+      "role": "leader",
       "keywords": [
         "Character",
         "Infantry",
@@ -9681,6 +9702,7 @@
       "id": "lieutenant",
       "name": "Lieutenant",
       "source": "space-marines",
+      "role": "support",
       "keywords": [
         "Character",
         "Infantry",
@@ -9940,6 +9962,7 @@
       "id": "lieutenant-in-phobos-armour",
       "name": "Lieutenant in Phobos Armour",
       "source": "space-marines",
+      "role": "support",
       "keywords": [
         "Character",
         "Infantry",
@@ -10048,6 +10071,7 @@
       "id": "lieutenant-in-reiver-armour",
       "name": "Lieutenant in Reiver Armour",
       "source": "space-marines",
+      "role": "support",
       "keywords": [
         "Character",
         "Infantry",
@@ -14531,6 +14555,7 @@
       "id": "techmarine",
       "name": "Techmarine",
       "source": "space-marines",
+      "role": "leader",
       "keywords": [
         "Character",
         "Infantry",

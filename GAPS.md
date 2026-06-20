@@ -47,8 +47,11 @@ Roughly ordered by impact on actually building a legal list.
   (Anointed)" variant isn't listed separately on the MFM and falls back to the
   cat's 10e cost. Points are a dated snapshot — re-run `npm run scrape-mfm`
   after each Munitorum update.
-- **Roles incomplete.** Only Emperor's Champion and Marshal carry a
-  LEADER/SUPPORT tag; the rest aren't extracted from the MFM yet.
+- **Roles complete.** All LEADER/SUPPORT roles are scraped from the MFM badges
+  (27 datasheets: 17 leader, 10 support); the rest are untagged battleline/
+  vehicles/etc. Caveat: the MFM omits a badge for "Lieutenant with Combi-weapon"
+  (left untagged to match the MFM) and for the EC "(Anointed)" variant (manually
+  tagged leader to mirror the base model).
 
 ## Persistence
 - **Local to one browser.** Lists live in `localStorage` (autosaved) plus named

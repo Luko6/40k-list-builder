@@ -74,7 +74,8 @@ wh40k-**10e** is a stand-in for stats; points are real 11e from the MFM.
    DETACHMENTS section into `detachments.json` — all 19 detachments legal for BT
    (3 BT-specific + 16 generic Space Marines), each with its DP badge, force
    disposition, and enhancements (points + `(Upgrade)` flag). Run with `--cached`
-   to parse the vendored payload offline.
+   to parse the vendored payload offline. It also reads each unit's LEADER/
+   SUPPORT badge and emits a `role` per unit into `points-overrides.json`.
 2. **`compile-data.mjs`** is a recursive BattleScribe resolver. It walks each
    unit's subtree following `entryLink`/`infoLink` `targetId`s across all three
    files, extracting statlines, weapon profiles, wargear option groups, keywords,
@@ -130,8 +131,13 @@ Full limitations are in **GAPS.md**. Highest-value remaining work, with entry po
    from it. The UI already let you pick the detachment, so this lit up the full
    list. Still single-detachment-at-a-time (see #5) and `(Upgrade)` enhancements
    are only offered to characters in the UI.
-4. **Roles for all units.** Only EC + Marshal are tagged leader. The MFM payload
-   has LEADER/SUPPORT markers — extend `scrape-mfm.mjs` to emit `role` per unit.
+4. ~~**Roles for all units.**~~ **Done.** `scrape-mfm.mjs` now reads each unit's
+   LEADER/SUPPORT badge from the MFM payload (the badge sits right after the
+   unit name; the names after it are its can-lead list) and emits `role` into
+   `points-overrides.json`. 27 datasheets tagged (17 leader, 10 support). A
+   small `ROLE_OVERRIDES` map covers MFM gaps (the EC "(Anointed)" variant,
+   which isn't on the MFM, is tagged leader). The catalog UI already renders the
+   role chips (`UnitCatalog.tsx`).
 5. **Deeper validation** (DP budget, multiple detachments in the UI, enhancement
    limit, battleline minimums). Schema already models multiple detachments + DP.
 
