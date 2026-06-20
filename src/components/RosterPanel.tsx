@@ -6,6 +6,34 @@ function canTakeEnhancement(ds: Datasheet): boolean {
   return ds.keywords.includes('Character') && !ds.keywords.includes('Epic Hero')
 }
 
+/** canLead carries some slugified rule-text fragments from compilation; keep
+ *  only ids that resolve to a real datasheet in the catalogue. */
+function realCanLead(ds: Datasheet, byId: Map<string, Datasheet>): string[] {
+  return (ds.canLead ?? []).filter((id) => byId.has(id))
+}
+
+/** Label each instance, disambiguating duplicates of the same datasheet. */
+function buildInstanceLabels(
+  units: RosterUnit[],
+  byId: Map<string, Datasheet>,
+): Map<string, string> {
+  const counts = new Map<string, number>()
+  for (const u of units) counts.set(u.datasheetId, (counts.get(u.datasheetId) ?? 0) + 1)
+  const seen = new Map<string, number>()
+  const labels = new Map<string, string>()
+  for (const u of units) {
+    const name = byId.get(u.datasheetId)?.name ?? u.datasheetId
+    if ((counts.get(u.datasheetId) ?? 0) > 1) {
+      const n = (seen.get(u.datasheetId) ?? 0) + 1
+      seen.set(u.datasheetId, n)
+      labels.set(u.instanceId, `${name} #${n}`)
+    } else {
+      labels.set(u.instanceId, name)
+    }
+  }
+  return labels
+}
+
 export function RosterPanel({
   catalogue,
   state,
@@ -16,6 +44,7 @@ export function RosterPanel({
   onSetSize,
   onSetWargear,
   onSetEnhancement,
+  onSetAttachment,
 }: {
   catalogue: FactionCatalogue
   state: RosterState
@@ -26,6 +55,7 @@ export function RosterPanel({
   onSetSize: (instanceId: string, sizeOptionIndex: number) => void
   onSetWargear: (instanceId: string, optionId: string, choiceIds: string[]) => void
   onSetEnhancement: (instanceId: string, enhancementId?: string) => void
+  onSetAttachment: (instanceId: string, attachedToInstanceId?: string) => void
 }) {
   const { detachment } = totals
   const datasheetLimit = catalogue.gameSizes[0].datasheetLimit
@@ -34,6 +64,16 @@ export function RosterPanel({
   const usedEnhancementIds = new Set(
     state.units.map((u) => u.enhancementId).filter(Boolean) as string[],
   )
+
+  const labels = buildInstanceLabels(state.units, byId)
+  // bodyguard instanceId -> leader units attached to it.
+  const leadersByBodyguard = new Map<string, RosterUnit[]>()
+  for (const u of state.units) {
+    if (!u.attachedToInstanceId) continue
+    const list = leadersByBodyguard.get(u.attachedToInstanceId) ?? []
+    list.push(u)
+    leadersByBodyguard.set(u.attachedToInstanceId, list)
+  }
 
   return (
     <section className="roster panel">
@@ -86,6 +126,17 @@ export function RosterPanel({
             const enhancement = enhancements.find((e) => e.id === u.enhancementId)
             const eligible = canTakeEnhancement(ds) && enhancements.length > 0
             const enhPts = enhancement?.points ?? 0
+
+            const leads = realCanLead(ds, byId)
+            const isLeader = leads.length > 0
+            const eligibleBodyguards = isLeader
+              ? state.units.filter(
+                  (v) => v.instanceId !== u.instanceId && leads.includes(v.datasheetId),
+                )
+              : []
+            const attachedLeaders = leadersByBodyguard.get(u.instanceId) ?? []
+
+            const hasOptions = eligible || isLeader || ds.wargearOptions.length > 0
             return (
               <li key={u.instanceId} className="roster__unit">
                 <div className="roster__unit-main">
@@ -107,14 +158,46 @@ export function RosterPanel({
                   ) : (
                     <span className="muted">{opt?.models} model{opt && opt.models > 1 ? 's' : ''}</span>
                   )}
+                  {u.attachedToInstanceId && (
+                    <span className="roster__attached-note muted">
+                      ↳ leading {labels.get(u.attachedToInstanceId) ?? 'unit'}
+                    </span>
+                  )}
+                  {attachedLeaders.length > 0 && (
+                    <span className="roster__attached-note muted">
+                      led by {attachedLeaders.map((l) => labels.get(l.instanceId)).join(', ')}
+                    </span>
+                  )}
                 </div>
                 <span className="roster__unit-pts">{(opt?.points ?? 0) + enhPts}</span>
                 <button className="btn btn--ghost" onClick={() => onRemove(u.instanceId)} title="Remove">
                   ✕
                 </button>
 
-                {(eligible || ds.wargearOptions.length > 0) && (
+                {hasOptions && (
                   <div className="roster__unit-options">
+                    {isLeader && (
+                      <label className="field roster__attach">
+                        <span className="muted">Attach to</span>
+                        {eligibleBodyguards.length > 0 ? (
+                          <select
+                            value={u.attachedToInstanceId ?? ''}
+                            onChange={(e) => onSetAttachment(u.instanceId, e.target.value)}
+                          >
+                            <option value="">— not attached —</option>
+                            {eligibleBodyguards.map((v) => (
+                              <option key={v.instanceId} value={v.instanceId}>
+                                {labels.get(v.instanceId)}
+                              </option>
+                            ))}
+                          </select>
+                        ) : (
+                          <span className="muted roster__attach-empty">
+                            No eligible unit in the roster yet.
+                          </span>
+                        )}
+                      </label>
+                    )}
                     {eligible && (
                       <label className="field roster__enhancement">
                         <span className="muted">Enhancement</span>

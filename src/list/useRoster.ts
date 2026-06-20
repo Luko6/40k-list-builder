@@ -16,6 +16,8 @@ export interface RosterUnit {
   wargearSelections: Record<string, string[]>
   /** Enhancement (from the current detachment) assigned to this unit. */
   enhancementId?: string
+  /** For a LEADER: instanceId of the bodyguard unit it's attached to. */
+  attachedToInstanceId?: string
 }
 
 export interface RosterState {
@@ -33,6 +35,7 @@ type Action =
   | { type: 'setSize'; instanceId: string; sizeOptionIndex: number }
   | { type: 'setWargear'; instanceId: string; optionId: string; choiceIds: string[] }
   | { type: 'setEnhancement'; instanceId: string; enhancementId?: string }
+  | { type: 'setAttachment'; instanceId: string; attachedToInstanceId?: string }
   | { type: 'rename'; name: string }
   | { type: 'load'; state: RosterState }
   | { type: 'new'; detachmentId: string }
@@ -75,7 +78,17 @@ function reducer(state: RosterState, action: Action): RosterState {
         ],
       }
     case 'removeUnit':
-      return { ...state, units: state.units.filter((u) => u.instanceId !== action.instanceId) }
+      return {
+        ...state,
+        units: state.units
+          .filter((u) => u.instanceId !== action.instanceId)
+          // Detach any leader that was attached to the removed bodyguard.
+          .map((u) =>
+            u.attachedToInstanceId === action.instanceId
+              ? { ...u, attachedToInstanceId: undefined }
+              : u,
+          ),
+      }
     case 'setSize':
       return {
         ...state,
@@ -102,6 +115,15 @@ function reducer(state: RosterState, action: Action): RosterState {
         units: state.units.map((u) =>
           u.instanceId === action.instanceId
             ? { ...u, enhancementId: action.enhancementId || undefined }
+            : u,
+        ),
+      }
+    case 'setAttachment':
+      return {
+        ...state,
+        units: state.units.map((u) =>
+          u.instanceId === action.instanceId
+            ? { ...u, attachedToInstanceId: action.attachedToInstanceId || undefined }
             : u,
         ),
       }

@@ -23,6 +23,22 @@ export function buildSummaryText(
   const groups = new Map<string, string[]>()
   let total = 0
 
+  // Disambiguate duplicate datasheets so "leading X" is unambiguous.
+  const dsCounts = new Map<string, number>()
+  for (const u of state.units) dsCounts.set(u.datasheetId, (dsCounts.get(u.datasheetId) ?? 0) + 1)
+  const seenDs = new Map<string, number>()
+  const labelByInstance = new Map<string, string>()
+  for (const u of state.units) {
+    const name = byId.get(u.datasheetId)?.name ?? u.datasheetId
+    if ((dsCounts.get(u.datasheetId) ?? 0) > 1) {
+      const n = (seenDs.get(u.datasheetId) ?? 0) + 1
+      seenDs.set(u.datasheetId, n)
+      labelByInstance.set(u.instanceId, `${name} #${n}`)
+    } else {
+      labelByInstance.set(u.instanceId, name)
+    }
+  }
+
   for (const u of state.units) {
     const ds = byId.get(u.datasheetId)
     if (!ds) continue
@@ -45,6 +61,8 @@ export function buildSummaryText(
       `  ${ds.name} (${opt?.models ?? 1} model${opt && opt.models > 1 ? 's' : ''}) — ${pts} pts`,
     ]
     if (enhancement) lines.push(`    Enhancement: ${enhancement.name} (+${enhancement.points})`)
+    if (u.attachedToInstanceId && labelByInstance.has(u.attachedToInstanceId))
+      lines.push(`    Leading: ${labelByInstance.get(u.attachedToInstanceId)}`)
     if (wargearNames.length) lines.push(`    Wargear: ${wargearNames.join(', ')}`)
     const key = bucket(ds)
     if (!groups.has(key)) groups.set(key, [])

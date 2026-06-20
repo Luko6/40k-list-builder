@@ -15,8 +15,13 @@ Roughly ordered by impact on actually building a legal list.
   once) with an over-limit warning. NOT enforced: the hard cap is only warned,
   not blocked, and the Emperor's Champion's datasheet-specific ban isn't modeled
   (it's treated as a normal character).
-- **No leader attachment.** `canLead` is compiled (parsed from each Leader
-  ability), but there's no UI to attach a leader to a bodyguard unit.
+- **Leader attachment is single-tier.** You can attach a LEADER to an eligible
+  bodyguard unit in the roster (dropdown filtered by `canLead`); the summary
+  shows the pairing and removing a bodyguard detaches its leaders. NOT enforced:
+  the "max one Leader per unit (some allow two)" rule — multiple leaders can be
+  pointed at the same unit, and equipment-conditional leads (e.g. Captain needs
+  a relic shield to join Bladeguard) aren't modeled. Points are unaffected (10e/
+  11e cost leaders and bodyguards separately).
 - **Shallow validation.** Checks that run: total points vs the 2000 cap,
   max-3-of-a-datasheet, and a soft enhancement-limit warning. NOT enforced:
   detachment composition, Battleline minimums, the Detachment-Points budget,

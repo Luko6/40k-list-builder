@@ -97,6 +97,9 @@ function App() {
           onSetEnhancement={(instanceId, enhancementId) =>
             dispatch({ type: 'setEnhancement', instanceId, enhancementId })
           }
+          onSetAttachment={(instanceId, attachedToInstanceId) =>
+            dispatch({ type: 'setAttachment', instanceId, attachedToInstanceId })
+          }
         />
       </div>
 

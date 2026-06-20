@@ -31,6 +31,7 @@ export function toSavedList(state: RosterState, gameSizeId: GameSizeId): SavedLi
       sizeOptionIndex: u.sizeOptionIndex,
       wargearSelections: u.wargearSelections,
       ...(u.enhancementId ? { enhancementId: u.enhancementId } : {}),
+      ...(u.attachedToInstanceId ? { attachedToInstanceId: u.attachedToInstanceId } : {}),
     })),
     createdAt: state.createdAt,
     updatedAt: now(),
@@ -57,6 +58,7 @@ export function fromSavedList(sl: SavedList): RosterState {
       sizeOptionIndex: u.sizeOptionIndex,
       wargearSelections: u.wargearSelections ?? {},
       enhancementId: u.enhancementId,
+      attachedToInstanceId: u.attachedToInstanceId,
     })),
   }
 }

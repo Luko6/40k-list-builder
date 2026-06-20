@@ -106,8 +106,14 @@ Full limitations are in **GAPS.md**. Highest-value remaining work, with entry po
    → `RosterPanel.tsx` → `summary.ts`. Enhancement points fold into `totals`
    with a soft over-limit warning; wargear is loadout-only (all `pointsDelta`
    are 0). See GAPS.md for what's still not enforced.
-2. **Leader attachment.** `Datasheet.canLead` exists. Add attach UI + an
-   `attachedToInstanceId` on roster units (schema already has the field).
+2. ~~**Leader attachment.**~~ **Done.** `RosterUnit.attachedToInstanceId` +
+   `setAttachment` action; `RosterPanel` shows an attach dropdown for LEADERs
+   (filtered to in-roster bodyguards via `canLead`), bodyguards list their
+   leaders, and removing a bodyguard detaches them. summary shows the pairing.
+   Also fixed a compiler bug: `canLead` was slugified from ability text so
+   "Sword Brethren" never matched `sword-brethren-squad` and rule-text
+   sentences leaked in — `compile-data.mjs` now resolves canLead against the
+   real id set (7 remapped, 13 fragments dropped).
 3. **Compile all ~18 BT detachments + enhancements.** Only Gladius Task Force is
    hand-entered in `compile-data.mjs`. The MFM payload contains every detachment
    (UPPERCASE) with DP + force disposition + enhancements (title-case + points) —

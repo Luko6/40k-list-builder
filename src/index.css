@@ -398,8 +398,18 @@ body {
   margin-top: 0.35rem;
 }
 
-.roster__enhancement {
+.roster__enhancement,
+.roster__attach {
   margin: 0;
+}
+
+.roster__attached-note {
+  font-size: 0.76rem;
+}
+
+.roster__attach-empty {
+  font-size: 0.8rem;
+  font-style: italic;
 }
 
 .wargear-opts {

@@ -314,6 +314,30 @@ for (const link of arr(smCatalogue.entryLinks?.entryLink)) {
 }
 report.push(`\nSM import: +${smAdded} added, ${smDuped} duplicates of BT entries, ${smExcluded} excluded (mode-tag/psyker/epic-hero)`)
 
+// Pass 3: repair canLead. It's slugified from the Leader ability text, so the
+// names don't always match a datasheet id ("Sword Brethren" -> the datasheet
+// id is `sword-brethren-squad`) and trailing rule-text sentences can leak in.
+// Resolve each entry against the real id set; drop what can't be resolved.
+const idSet = new Set(datasheets.map((d) => d.id))
+const resolveLead = (raw) => {
+  if (idSet.has(raw)) return raw
+  if (idSet.has(`${raw}-squad`)) return `${raw}-squad`
+  return null
+}
+let leadFixed = 0, leadDropped = 0
+for (const d of datasheets) {
+  if (!d.canLead) continue
+  for (const raw of d.canLead) {
+    const r = resolveLead(raw)
+    if (r === null) leadDropped++
+    else if (r !== raw) leadFixed++
+  }
+  const resolved = [...new Set(d.canLead.map(resolveLead).filter(Boolean))]
+  if (resolved.length) d.canLead = resolved
+  else delete d.canLead
+}
+report.push(`canLead repair: ${leadFixed} id(s) remapped, ${leadDropped} unresolved entr(ies) dropped`)
+
 const catalogue = {
   schemaVersion: SCHEMA_VERSION,
   id: 'black-templars',

@@ -327,8 +327,7 @@
         "intercessor-squad",
         "sternguard-veteran-squad",
         "desolation-squad",
-        "tactical-squad",
-        "you-can-attach-this-model-to-one-of-the-above-units-even-if-one-captain-chapter-master-or-lieutenant-model-has-already-been-attached-to-it-if-you-do-and-that-bodyguard-unit-is-destroyed-the-leader-units-attached-to-it-become-separate-units-with-their-original-starting-strengths"
+        "tactical-squad"
       ]
     },
     {
@@ -517,8 +516,7 @@
       ],
       "canLead": [
         "terminator-squad",
-        "terminator-assault-squad",
-        "you-can-attach-this-model-to-one-of-the-above-units-even-if-one-captain-chapter-master-or-lieutenant-model-has-already-been-attached-to-it-if-you-do-and-that-bodyguard-unit-is-destroyed-the-leader-units-attached-to-it-become-separate-units-with-their-original-starting-strengths"
+        "terminator-assault-squad"
       ]
     },
     {
@@ -631,8 +629,7 @@
         "infernus-squad",
         "intercessor-squad",
         "sternguard-veteran-squad",
-        "tactical-squad",
-        "you-can-attach-this-model-to-one-of-the-above-units-even-if-one-captain-chapter-master-or-lieutenant-model-has-already-been-attached-to-it-if-you-do-and-that-bodyguard-unit-is-destroyed-the-leader-units-attached-to-it-become-separate-units-with-their-original-starting-strengths"
+        "tactical-squad"
       ]
     },
     {
@@ -720,8 +717,7 @@
       "canLead": [
         "aggressor-squad",
         "eradicator-squad",
-        "heavy-intercessor-squad",
-        "you-can-attach-this-model-to-one-of-the-above-units-even-if-one-captain-or-chapter-master-model-has-already-been-attached-to-it-if-you-do-and-that-bodyguard-unit-is-destroyed-the-leader-units-attached-to-it-become-separate-units-with-their-original-starting-strengths"
+        "heavy-intercessor-squad"
       ]
     },
     {
@@ -1549,8 +1545,7 @@
         }
       ],
       "canLead": [
-        "bladeguard-veteran-squad",
-        "you-can-attach-this-model-to-the-above-unit-even-if-one-captain-chapter-master-or-lieutenant-model-has-already-been-attached-to-it-if-you-do-and-that-bodyguard-unit-is-destroyed-the-leader-units-attached-to-it-become-separate-units-with-their-original-starting-strengths"
+        "bladeguard-veteran-squad"
       ]
     },
     {
@@ -2155,8 +2150,7 @@
         "intercessor-squad",
         "sternguard-veteran-squad",
         "company-heroes",
-        "tactical-squad",
-        "this-model-cannot-be-attached-to-a-bladeguard-veteran-squad-unless-it-is-equipped-with-a-relic-shield-and-cannot-be-attached-to-a-hellblaster-squad-unless-it-is-equipped-with-a-plasma-pistol"
+        "tactical-squad"
       ]
     },
     {
@@ -2579,7 +2573,6 @@
         }
       ],
       "canLead": [
-        "relic-terminator-squad",
         "terminator-assault-squad",
         "terminator-squad"
       ]
@@ -2954,9 +2947,8 @@
         "infernus-squad",
         "intercessor-squad",
         "crusader-squad",
-        "sword-brethren",
-        "sternguard-veteran-squad",
-        "you-can-attach-this-model-to-one-of-the-above-units-even-if-one-captain-or-chapter-master-model-has-already-been-attached-to-it-if-you-do-and-that-bodyguard-unit-is-destroyed-the-leader-units-attached-to-it-become-separate-units-with-their-original-starting-strengths"
+        "sword-brethren-squad",
+        "sternguard-veteran-squad"
       ]
     },
     {
@@ -3598,7 +3590,7 @@
         "infernus-squad",
         "intercessor-squad",
         "crusader-squad",
-        "sword-brethren"
+        "sword-brethren-squad"
       ]
     },
     {
@@ -3801,7 +3793,6 @@
         }
       ],
       "canLead": [
-        "bike-squad",
         "outrider-squad"
       ]
     },
@@ -4299,8 +4290,7 @@
       ],
       "canLead": [
         "crusader-squad",
-        "sword-brethren-squad",
-        "you-can-attach-this-model-to-one-of-the-above-units-even-if-one-captain-chapter-master-execrator-or-lieutenant-model-has-already-been-attached-to-it-if-you-do-and-that-bodyguard-unit-is-destroyed-the-leader-units-attached-to-it-become-separate-units-with-their-original-starting-strengths"
+        "sword-brethren-squad"
       ]
     },
     {
@@ -5801,7 +5791,7 @@
         "assault-intercessor-squad",
         "intercessor-squad",
         "crusader-squad",
-        "sword-brethren",
+        "sword-brethren-squad",
         "sternguard-veteran-squad"
       ]
     },
@@ -5907,7 +5897,7 @@
         "assault-intercessor-squad",
         "intercessor-squad",
         "crusader-squad",
-        "sword-brethren",
+        "sword-brethren-squad",
         "sternguard-veteran-squad"
       ]
     },
@@ -6169,7 +6159,7 @@
       ],
       "canLead": [
         "crusader-squad",
-        "sword-brethren"
+        "sword-brethren-squad"
       ]
     },
     {
@@ -7296,7 +7286,7 @@
         "assault-intercessor-squad",
         "intercessor-squad",
         "crusader-squad",
-        "sword-brethren"
+        "sword-brethren-squad"
       ]
     },
     {
@@ -9489,8 +9479,7 @@
         "infernus-squad",
         "intercessor-squad",
         "sternguard-veteran-squad",
-        "tactical-squad",
-        "you-can-attach-this-model-to-a-unit-it-can-lead-even-if-one-captain-or-chapter-master-model-has-already-been-attached-to-it-if-you-do-and-that-bodyguard-unit-is-destroyed-the-leader-units-attached-to-it-become-separate-units-with-their-original-starting-strengths"
+        "tactical-squad"
       ]
     },
     {
@@ -9598,8 +9587,7 @@
       "canLead": [
         "incursor-squad",
         "infiltrator-squad",
-        "reiver-squad",
-        "you-can-attach-this-model-to-a-unit-it-can-lead-units-even-if-one-captain-or-chapter-master-model-has-already-been-attached-to-it-if-you-do-and-that-bodyguard-unit-is-destroyed-the-leader-units-attached-to-it-become-separate-units-with-their-original-starting-strengths"
+        "reiver-squad"
       ]
     },
     {
@@ -9691,8 +9679,7 @@
         }
       ],
       "canLead": [
-        "reiver-squad",
-        "you-can-attach-this-model-a-unit-it-can-lead-even-if-one-captain-or-chapter-master-model-has-already-been-attached-to-it-if-you-do-and-that-bodyguard-unit-is-destroyed-the-leader-units-attached-to-it-become-separate-units-with-their-original-starting-strengths"
+        "reiver-squad"
       ]
     },
     {
@@ -9923,7 +9910,7 @@
         "infernus-squad",
         "intercessor-squad",
         "crusader-squad",
-        "sword-brethren",
+        "sword-brethren-squad",
         "sternguard-veteran-squad"
       ]
     },
