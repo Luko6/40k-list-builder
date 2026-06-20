@@ -39,7 +39,8 @@ export function RosterPanel({
   state,
   totals,
   byId,
-  onSetDetachment,
+  onAddDetachment,
+  onRemoveDetachment,
   onRemove,
   onSetSize,
   onSetWargear,
@@ -50,19 +51,28 @@ export function RosterPanel({
   state: RosterState
   totals: RosterTotals
   byId: Map<string, FactionCatalogue['datasheets'][number]>
-  onSetDetachment: (id: string) => void
+  onAddDetachment: (id: string) => void
+  onRemoveDetachment: (id: string) => void
   onRemove: (instanceId: string) => void
   onSetSize: (instanceId: string, sizeOptionIndex: number) => void
   onSetWargear: (instanceId: string, optionId: string, choiceIds: string[]) => void
   onSetEnhancement: (instanceId: string, enhancementId?: string) => void
   onSetAttachment: (instanceId: string, attachedToInstanceId?: string) => void
 }) {
-  const { detachment } = totals
   const datasheetLimit = catalogue.gameSizes[0].datasheetLimit
-  const enhancements = detachment?.enhancements ?? []
+  // Enhancement pool = union across all selected detachments.
+  const enhancementById = new Map(
+    totals.detachments.flatMap((d) => d.enhancements.map((e) => [e.id, e] as const)),
+  )
+  const hasEnhancements = enhancementById.size > 0
   // Each enhancement may only be taken once across the army.
   const usedEnhancementIds = new Set(
     state.units.map((u) => u.enhancementId).filter(Boolean) as string[],
+  )
+  // Detachments that can still be added within the remaining DP budget.
+  const remainingDP = totals.detachmentPointsBudget - totals.detachmentPointsUsed
+  const addableDetachments = catalogue.detachments.filter(
+    (d) => !state.detachmentIds.includes(d.id) && d.detachmentPoints <= remainingDP,
   )
 
   const labels = buildInstanceLabels(state.units, byId)
@@ -88,29 +98,57 @@ export function RosterPanel({
           {totals.unitCount} unit{totals.unitCount === 1 ? '' : 's'}
         </div>
       </div>
-      {totals.overLimit && (
-        <p className="warn">Over the {totals.pointsLimit} pts limit by {totals.points - totals.pointsLimit}.</p>
-      )}
-      {totals.enhancementOverLimit && (
-        <p className="warn">
-          {totals.enhancementsUsed} enhancements assigned — max {totals.enhancementLimit}.
-        </p>
+      {totals.problems.length > 0 && (
+        <ul className="roster__problems">
+          {totals.problems.map((p, i) => (
+            <li key={i}>{p}</li>
+          ))}
+        </ul>
       )}
 
-      <label className="field">
-        <span className="muted">Detachment</span>
-        <select value={state.detachmentId} onChange={(e) => onSetDetachment(e.target.value)}>
-          {catalogue.detachments.map((d) => (
-            <option key={d.id} value={d.id}>
-              {d.name} · {d.detachmentPoints} DP
-            </option>
+      <div className="roster__detach-head">
+        <h3>Detachments</h3>
+        <span className="muted" data-over={totals.dpOverBudget}>
+          {totals.detachmentPointsUsed} / {totals.detachmentPointsBudget} DP
+        </span>
+      </div>
+      {totals.detachments.length === 0 ? (
+        <p className="muted">No detachment selected — add one below.</p>
+      ) : (
+        <ul className="roster__detachments">
+          {totals.detachments.map((d) => (
+            <li key={d.id} className="roster__detachment">
+              <span className="roster__detachment-main">
+                <span className="roster__detachment-name">{d.name}</span>
+                <span className="tag tag--disposition">{d.forceDisposition}</span>
+              </span>
+              <span className="muted">{d.detachmentPoints} DP</span>
+              <button
+                className="btn btn--ghost"
+                onClick={() => onRemoveDetachment(d.id)}
+                title="Remove detachment"
+              >
+                ✕
+              </button>
+            </li>
           ))}
-        </select>
-      </label>
-      {detachment && (
-        <p className="muted roster__disposition">
-          Force disposition: <strong>{detachment.forceDisposition}</strong>
-        </p>
+        </ul>
+      )}
+      {addableDetachments.length > 0 && (
+        <label className="field">
+          <span className="muted">Add detachment</span>
+          <select
+            value=""
+            onChange={(e) => e.target.value && onAddDetachment(e.target.value)}
+          >
+            <option value="">— add a detachment —</option>
+            {addableDetachments.map((d) => (
+              <option key={d.id} value={d.id}>
+                {d.name} · {d.detachmentPoints} DP · {d.forceDisposition}
+              </option>
+            ))}
+          </select>
+        </label>
       )}
 
       <h3>Units</h3>
@@ -122,9 +160,11 @@ export function RosterPanel({
             const ds = byId.get(u.datasheetId)
             if (!ds) return null
             const opt = ds.sizeOptions[u.sizeOptionIndex]
-            const overCount = (totals.perDatasheet.get(u.datasheetId) ?? 0) > datasheetLimit
-            const enhancement = enhancements.find((e) => e.id === u.enhancementId)
-            const eligible = canTakeEnhancement(ds) && enhancements.length > 0
+            const overCount =
+              !ds.isDedicatedTransport &&
+              (totals.perDatasheet.get(u.datasheetId) ?? 0) > datasheetLimit
+            const enhancement = u.enhancementId ? enhancementById.get(u.enhancementId) : undefined
+            const eligible = canTakeEnhancement(ds) && hasEnhancements
             const enhPts = enhancement?.points ?? 0
 
             const leads = realCanLead(ds, byId)
@@ -206,17 +246,18 @@ export function RosterPanel({
                           onChange={(e) => onSetEnhancement(u.instanceId, e.target.value)}
                         >
                           <option value="">— none —</option>
-                          {enhancements.map((e) => (
-                            <option
-                              key={e.id}
-                              value={e.id}
-                              disabled={e.id !== u.enhancementId && usedEnhancementIds.has(e.id)}
-                            >
-                              {e.name} (+{e.points})
-                              {e.id !== u.enhancementId && usedEnhancementIds.has(e.id)
-                                ? ' — taken'
-                                : ''}
-                            </option>
+                          {totals.detachments.map((d) => (
+                            <optgroup key={d.id} label={d.name}>
+                              {d.enhancements.map((e) => {
+                                const taken =
+                                  e.id !== u.enhancementId && usedEnhancementIds.has(e.id)
+                                return (
+                                  <option key={e.id} value={e.id} disabled={taken}>
+                                    {e.name} (+{e.points}){taken ? ' — taken' : ''}
+                                  </option>
+                                )
+                              })}
+                            </optgroup>
                           ))}
                         </select>
                       </label>

@@ -19,7 +19,12 @@ export function buildSummaryText(
   state: RosterState,
   byId: Map<string, Datasheet>,
 ): string {
-  const detachment = catalogue.detachments.find((d) => d.id === state.detachmentId)
+  const detachments = state.detachmentIds
+    .map((id) => catalogue.detachments.find((d) => d.id === id))
+    .filter((d): d is NonNullable<typeof d> => Boolean(d))
+  const enhancementById = new Map(
+    detachments.flatMap((d) => d.enhancements.map((e) => [e.id, e] as const)),
+  )
   const groups = new Map<string, string[]>()
   let total = 0
 
@@ -44,7 +49,7 @@ export function buildSummaryText(
     if (!ds) continue
     const opt = ds.sizeOptions[u.sizeOptionIndex]
     const allChoices = ds.wargearOptions.flatMap((o) => o.choices)
-    const enhancement = detachment?.enhancements.find((e) => e.id === u.enhancementId)
+    const enhancement = u.enhancementId ? enhancementById.get(u.enhancementId) : undefined
     let wargearDelta = 0
     const wargearNames: string[] = []
     for (const choiceIds of Object.values(u.wargearSelections)) {
@@ -71,8 +76,9 @@ export function buildSummaryText(
 
   const out: string[] = []
   out.push(`${catalogue.name} — ${state.name.trim() || 'Untitled list'}`)
-  if (detachment) out.push(`${size.label} · ${detachment.name} [${detachment.forceDisposition}]`)
-  out.push(`${total} / ${size.pointsLimit} pts · ${state.units.length} units`)
+  out.push(`${size.label} · ${total} / ${size.pointsLimit} pts · ${state.units.length} units`)
+  for (const d of detachments)
+    out.push(`Detachment: ${d.name} [${d.forceDisposition}] · ${d.detachmentPoints} DP`)
   for (const key of ORDER) {
     const lines = groups.get(key)
     if (!lines?.length) continue

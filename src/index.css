@@ -355,13 +355,64 @@ body {
   font-size: 0.85rem;
 }
 
-.roster__disposition {
-  font-size: 0.8rem;
-  margin: 0.25rem 0 0;
+/* ── Validation panel ─────────────────────────────────────────── */
+.roster__problems {
+  list-style: none;
+  margin: 0 0 0.75rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #5c2b25;
+  border-radius: 8px;
+  background: #2a1512;
 }
 
-.roster__disposition strong {
-  color: #e0bb6f;
+.roster__problems li {
+  color: #e0a93d;
+  font-size: 0.82rem;
+  padding: 0.1rem 0;
+}
+
+/* ── Detachments ──────────────────────────────────────────────── */
+.roster__detach-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.roster__detach-head h3 {
+  margin: 0;
+}
+
+.roster__detach-head [data-over='true'] {
+  color: #e0533d;
+  font-weight: 700;
+}
+
+.roster__detachments {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.roster__detachment {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.roster__detachment-main {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.roster__detachment-name {
+  font-weight: 600;
 }
 
 .roster__unit {

@@ -5,8 +5,8 @@ import { fromSavedList, loadCurrent } from './storage'
 /**
  * In-memory working state for the list being built. This is deliberately
  * lighter than the persisted SavedList shape (Phase 4) — it tracks the chosen
- * detachment and the unit instances with their selected size, wargear choices,
- * and any assigned enhancement. Leader attachment state lands here later.
+ * detachments and the unit instances with their selected size, wargear choices,
+ * assigned enhancement, and leader attachment.
  */
 export interface RosterUnit {
   instanceId: string
@@ -14,7 +14,7 @@ export interface RosterUnit {
   sizeOptionIndex: number
   /** wargear optionId -> selected choiceId(s). */
   wargearSelections: Record<string, string[]>
-  /** Enhancement (from the current detachment) assigned to this unit. */
+  /** Enhancement (from one of the selected detachments) assigned to this unit. */
   enhancementId?: string
   /** For a LEADER: instanceId of the bodyguard unit it's attached to. */
   attachedToInstanceId?: string
@@ -24,12 +24,14 @@ export interface RosterState {
   id: string
   name: string
   createdAt: string
-  detachmentId: string
+  /** 11e lets an army combine several detachments up to the DP budget. */
+  detachmentIds: string[]
   units: RosterUnit[]
 }
 
 type Action =
-  | { type: 'setDetachment'; detachmentId: string }
+  | { type: 'addDetachment'; detachmentId: string }
+  | { type: 'removeDetachment'; detachmentId: string; remainingEnhancementIds: string[] }
   | { type: 'addUnit'; datasheetId: string }
   | { type: 'removeUnit'; instanceId: string }
   | { type: 'setSize'; instanceId: string; sizeOptionIndex: number }
@@ -42,16 +44,22 @@ type Action =
 
 function reducer(state: RosterState, action: Action): RosterState {
   switch (action.type) {
-    case 'setDetachment':
-      if (action.detachmentId === state.detachmentId) return state
-      // Enhancements belong to a detachment, so switching invalidates them.
+    case 'addDetachment':
+      if (state.detachmentIds.includes(action.detachmentId)) return state
+      return { ...state, detachmentIds: [...state.detachmentIds, action.detachmentId] }
+    case 'removeDetachment': {
+      const kept = new Set(action.remainingEnhancementIds)
       return {
         ...state,
-        detachmentId: action.detachmentId,
+        detachmentIds: state.detachmentIds.filter((id) => id !== action.detachmentId),
+        // Drop enhancements that only existed in the removed detachment.
         units: state.units.map((u) =>
-          u.enhancementId ? { ...u, enhancementId: undefined } : u,
+          u.enhancementId && !kept.has(u.enhancementId)
+            ? { ...u, enhancementId: undefined }
+            : u,
         ),
       }
+    }
     case 'rename':
       return { ...state, name: action.name }
     case 'load':
@@ -61,7 +69,7 @@ function reducer(state: RosterState, action: Action): RosterState {
         id: crypto.randomUUID(),
         name: 'Untitled list',
         createdAt: new Date().toISOString(),
-        detachmentId: action.detachmentId,
+        detachmentIds: action.detachmentId ? [action.detachmentId] : [],
         units: [],
       }
     case 'addUnit':
@@ -133,7 +141,8 @@ function reducer(state: RosterState, action: Action): RosterState {
 export interface RosterTotals {
   points: number
   pointsLimit: number
-  detachment: Detachment | undefined
+  /** All currently-selected detachments. */
+  detachments: Detachment[]
   unitCount: number
   /** datasheetId -> count, for the "max N of each datasheet" rule. */
   perDatasheet: Map<string, number>
@@ -142,6 +151,12 @@ export interface RosterTotals {
   enhancementsUsed: number
   enhancementLimit: number
   enhancementOverLimit: boolean
+  /** Detachment-Points budget (sum of detachment DP vs the game-size budget). */
+  detachmentPointsUsed: number
+  detachmentPointsBudget: number
+  dpOverBudget: boolean
+  /** Human-readable validation issues, for the validation panel. */
+  problems: string[]
 }
 
 function init(catalogue: FactionCatalogue): RosterState {
@@ -157,7 +172,7 @@ function init(catalogue: FactionCatalogue): RosterState {
     id: crypto.randomUUID(),
     name: 'Untitled list',
     createdAt: new Date().toISOString(),
-    detachmentId: catalogue.detachments[0]?.id ?? '',
+    detachmentIds: catalogue.detachments[0] ? [catalogue.detachments[0].id] : [],
     units: [],
   }
 }
@@ -172,11 +187,17 @@ export function useRoster(catalogue: FactionCatalogue) {
   )
 
   const totals: RosterTotals = useMemo(() => {
-    const detachment = catalogue.detachments.find((d) => d.id === state.detachmentId)
-    const enhancementById = new Map((detachment?.enhancements ?? []).map((e) => [e.id, e]))
+    const detachments = state.detachmentIds
+      .map((id) => catalogue.detachments.find((d) => d.id === id))
+      .filter((d): d is Detachment => Boolean(d))
+    // Enhancement lookup across the union of selected detachments.
+    const enhancementById = new Map(
+      detachments.flatMap((d) => d.enhancements.map((e) => [e.id, e] as const)),
+    )
     let points = 0
     let enhancementsUsed = 0
     const perDatasheet = new Map<string, number>()
+    const enhancementUses = new Map<string, number>()
     for (const u of state.units) {
       const ds = byId.get(u.datasheetId)
       const opt = ds?.sizeOptions[u.sizeOptionIndex]
@@ -194,19 +215,52 @@ export function useRoster(catalogue: FactionCatalogue) {
       if (enhancement) {
         points += enhancement.points
         enhancementsUsed += 1
+        enhancementUses.set(enhancement.id, (enhancementUses.get(enhancement.id) ?? 0) + 1)
       }
       perDatasheet.set(u.datasheetId, (perDatasheet.get(u.datasheetId) ?? 0) + 1)
     }
+
+    const detachmentPointsUsed = detachments.reduce((n, d) => n + d.detachmentPoints, 0)
+    const detachmentPointsBudget = size.detachmentPoints
+    const dpOverBudget = detachmentPointsUsed > detachmentPointsBudget
+
+    // Consolidated, human-readable validation issues.
+    const problems: string[] = []
+    if (detachments.length === 0) problems.push('No detachment selected.')
+    if (points > size.pointsLimit)
+      problems.push(`Over the points limit by ${points - size.pointsLimit} (${points}/${size.pointsLimit}).`)
+    if (dpOverBudget)
+      problems.push(
+        `Detachments cost ${detachmentPointsUsed} DP, over the ${detachmentPointsBudget} DP budget.`,
+      )
+    if (enhancementsUsed > size.enhancementLimit)
+      problems.push(`${enhancementsUsed} enhancements assigned, over the limit of ${size.enhancementLimit}.`)
+    const dupEnh = [...enhancementUses.entries()].filter(([, n]) => n > 1)
+    for (const [id] of dupEnh) {
+      const name = enhancementById.get(id)?.name ?? id
+      problems.push(`Enhancement "${name}" is assigned more than once.`)
+    }
+    for (const [datasheetId, count] of perDatasheet) {
+      const ds = byId.get(datasheetId)
+      if (!ds || ds.isDedicatedTransport) continue
+      if (count > size.datasheetLimit)
+        problems.push(`${count}× ${ds.name} — max ${size.datasheetLimit} of a datasheet.`)
+    }
+
     return {
       points,
       pointsLimit: size.pointsLimit,
-      detachment,
+      detachments,
       unitCount: state.units.length,
       perDatasheet,
       overLimit: points > size.pointsLimit,
       enhancementsUsed,
       enhancementLimit: size.enhancementLimit,
       enhancementOverLimit: enhancementsUsed > size.enhancementLimit,
+      detachmentPointsUsed,
+      detachmentPointsBudget,
+      dpOverBudget,
+      problems,
     }
   }, [state, byId, catalogue.detachments, size])
 

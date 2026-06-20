@@ -49,11 +49,11 @@ src/
   data/schema.ts                      TS types: FactionCatalogue (compiled) + SavedList (persisted)
   data/generated/black-templars.json  GENERATED catalogue (89 datasheets) — DO NOT hand-edit
   data/black-templars.ts              imports + type-casts the generated JSON (single boundary)
-  list/useRoster.ts                   useReducer working state (detachment + unit instances) + totals
+  list/useRoster.ts                   useReducer working state (detachments[] + unit instances) + totals + validation
   list/storage.ts                     localStorage + JSON import/export (RosterState <-> SavedList)
   list/summary.ts                     copy/print roster text builder
   components/UnitCatalog.tsx          left panel: search + add units (datasheet-limit guard)
-  components/RosterPanel.tsx          right panel: detachment, per-unit size, remove, live points
+  components/RosterPanel.tsx          right panel: detachments + DP, validation panel, per-unit size/wargear/enhancement/leader, live points
   components/Toolbar.tsx              name, save/load/delete, import/export, copy/print
   App.tsx                             wires it together + autosave effect
   index.css                          all styles (incl. @media print)
@@ -138,8 +138,15 @@ Full limitations are in **GAPS.md**. Highest-value remaining work, with entry po
    small `ROLE_OVERRIDES` map covers MFM gaps (the EC "(Anointed)" variant,
    which isn't on the MFM, is tagged leader). The catalog UI already renders the
    role chips (`UnitCatalog.tsx`).
-5. **Deeper validation** (DP budget, multiple detachments in the UI, enhancement
-   limit, battleline minimums). Schema already models multiple detachments + DP.
+5. ~~**Deeper validation**~~ **Done.** `RosterState` now holds `detachmentIds[]`;
+   the UI manages multiple detachments with a Detachment-Points budget (add
+   dropdown hides detachments that don't fit remaining DP; removing one drops
+   enhancements only it provided). Enhancements are pooled across all selected
+   detachments (grouped by detachment in the dropdown). `totals.problems[]`
+   drives a consolidated validation panel (over points / DP / enhancement limit,
+   duplicate enhancement, >3 of a datasheet). Checks are advisory, not hard
+   blocks. See GAPS.md for what's still not modeled (Battleline minimums,
+   tiered character pricing, composition rules).
 
 Working conventions: keep build + lint green before committing; commit each
 logical chunk with a descriptive message; push deploys automatically; verify the

@@ -23,13 +23,22 @@ function App() {
 
   // Autosave the working list to localStorage on every change.
   useEffect(() => {
-    saveCurrent(toSavedList(state, size.id))
-  }, [state, size.id])
+    saveCurrent(toSavedList(state, size.id, cat))
+  }, [state, size.id, cat])
 
   const summaryText = buildSummaryText(cat, size, state, byId)
 
+  // Enhancement ids still valid after a detachment is removed (used to drop
+  // enhancements that only existed in the removed detachment).
+  const handleRemoveDetachment = (detachmentId: string) => {
+    const remainingEnhancementIds = cat.detachments
+      .filter((d) => state.detachmentIds.includes(d.id) && d.id !== detachmentId)
+      .flatMap((d) => d.enhancements.map((e) => e.id))
+    dispatch({ type: 'removeDetachment', detachmentId, remainingEnhancementIds })
+  }
+
   const handleSave = () => {
-    upsertSavedList(toSavedList(state, size.id))
+    upsertSavedList(toSavedList(state, size.id, cat))
     setSavedLists(getSavedLists())
   }
   const handleLoad = (id: string) => {
@@ -68,7 +77,7 @@ function App() {
         onSave={handleSave}
         onLoad={handleLoad}
         onDelete={handleDelete}
-        onExport={() => downloadJson(toSavedList(state, size.id))}
+        onExport={() => downloadJson(toSavedList(state, size.id, cat))}
         onImportFile={handleImport}
         onPrint={() => window.print()}
         onCopy={() => navigator.clipboard?.writeText(summaryText)}
@@ -86,7 +95,8 @@ function App() {
           state={state}
           totals={totals}
           byId={byId}
-          onSetDetachment={(detachmentId) => dispatch({ type: 'setDetachment', detachmentId })}
+          onAddDetachment={(detachmentId) => dispatch({ type: 'addDetachment', detachmentId })}
+          onRemoveDetachment={handleRemoveDetachment}
           onRemove={(instanceId) => dispatch({ type: 'removeUnit', instanceId })}
           onSetSize={(instanceId, sizeOptionIndex) =>
             dispatch({ type: 'setSize', instanceId, sizeOptionIndex })

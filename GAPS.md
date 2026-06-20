@@ -22,15 +22,20 @@ Roughly ordered by impact on actually building a legal list.
   pointed at the same unit, and equipment-conditional leads (e.g. Captain needs
   a relic shield to join Bladeguard) aren't modeled. Points are unaffected (10e/
   11e cost leaders and bodyguards separately).
-- **Shallow validation.** Checks that run: total points vs the 2000 cap,
-  max-3-of-a-datasheet, and a soft enhancement-limit warning. NOT enforced:
-  detachment composition, Battleline minimums, the Detachment-Points budget,
-  leader/character rules, and the "1st unit costs more" tiered character pricing
-  (the builder takes a single cost per size).
+- **Validation is advisory.** A consolidated panel surfaces: over the points
+  cap, over the Detachment-Points budget, over the enhancement limit, the same
+  enhancement assigned twice, and >3 of a (non-transport) datasheet. These are
+  warnings, not hard blocks — you can still build an illegal list (the
+  add-detachment dropdown does, however, hide detachments that wouldn't fit the
+  DP budget). NOT modeled: Battleline minimums, leader/character composition
+  rules, the Battleline-gets-6 / transport-exempt nuances of the datasheet cap,
+  and the "1st unit costs more" tiered character pricing (single cost per size).
 
 ## Scope
-- **One detachment at a time.** The schema supports 11e's multiple-detachment
-  + DP-budget model, but the UI only picks a single detachment and ignores DP.
+- **Multiple detachments with a DP budget.** You can now combine detachments up
+  to the game size's Detachment-Points budget (Strike Force = 3 DP); enhancements
+  are pooled across all selected detachments. Removing a detachment drops any
+  enhancement that only it provided.
 - **All 19 detachments are compiled** (3 BT-specific + 16 generic Space
   Marines, all legal for BT) with DP, force disposition, and enhancements,
   parsed from the MFM payload into `detachments.json`. Caveat: `(Upgrade)`-type

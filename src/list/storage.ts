@@ -5,7 +5,7 @@
  * so exported files are self-describing and can be migrated later. The builder
  * works in the lighter RosterState shape, so we convert at this boundary.
  */
-import type { GameSizeId, SavedList } from '../data/schema'
+import type { FactionCatalogue, GameSizeId, SavedList } from '../data/schema'
 import { SCHEMA_VERSION } from '../data/schema'
 import type { RosterState } from './useRoster'
 
@@ -14,8 +14,20 @@ const LISTS_KEY = 'btlb:lists'
 
 const now = () => new Date().toISOString()
 
-export function toSavedList(state: RosterState, gameSizeId: GameSizeId): SavedList {
-  const enhancementIds = state.units
+export function toSavedList(
+  state: RosterState,
+  gameSizeId: GameSizeId,
+  catalogue: FactionCatalogue,
+): SavedList {
+  // Map each enhancement id to the (first) selected detachment that defines it,
+  // so the per-detachment enhancementIds in the export are accurate.
+  const detachmentOfEnhancement = new Map<string, string>()
+  for (const id of state.detachmentIds) {
+    const d = catalogue.detachments.find((x) => x.id === id)
+    for (const e of d?.enhancements ?? [])
+      if (!detachmentOfEnhancement.has(e.id)) detachmentOfEnhancement.set(e.id, id)
+  }
+  const usedEnhancementIds = state.units
     .map((u) => u.enhancementId)
     .filter((id): id is string => Boolean(id))
   return {
@@ -24,7 +36,12 @@ export function toSavedList(state: RosterState, gameSizeId: GameSizeId): SavedLi
     name: state.name.trim() || 'Untitled list',
     faction: 'black-templars',
     gameSizeId,
-    detachments: [{ detachmentId: state.detachmentId, enhancementIds }],
+    detachments: state.detachmentIds.map((detachmentId) => ({
+      detachmentId,
+      enhancementIds: usedEnhancementIds.filter(
+        (eid) => detachmentOfEnhancement.get(eid) === detachmentId,
+      ),
+    })),
     units: state.units.map((u) => ({
       instanceId: u.instanceId,
       datasheetId: u.datasheetId,
@@ -51,7 +68,9 @@ export function fromSavedList(sl: SavedList): RosterState {
     id: sl.id,
     name: sl.name,
     createdAt: sl.createdAt ?? now(),
-    detachmentId: sl.detachments?.[0]?.detachmentId ?? '',
+    detachmentIds: Array.isArray(sl.detachments)
+      ? sl.detachments.map((d) => d.detachmentId).filter(Boolean)
+      : [],
     units: sl.units.map((u) => ({
       instanceId: u.instanceId,
       datasheetId: u.datasheetId,
