@@ -15,6 +15,13 @@ function realCanLead(ds: Datasheet, byId: Map<string, Datasheet>): string[] {
   return (ds.canLead ?? []).filter((id) => byId.has(id))
 }
 
+/** Which attach slot a character occupies. A bodyguard unit may hold at most
+ *  one LEADER and one SUPPORT character at a time. Attachable characters with
+ *  no explicit role are treated as leaders. */
+function attachSlot(ds?: Datasheet): 'leader' | 'support' {
+  return ds?.role === 'support' ? 'support' : 'leader'
+}
+
 /** Label each instance, disambiguating duplicates of the same datasheet. */
 function buildInstanceLabels(
   units: RosterUnit[],
@@ -153,13 +160,21 @@ export function RosterPanel({
     const eligible = canTakeEnhancement(ds) && hasEnhancements
 
     const leads = realCanLead(ds, byId)
-    const isLeader = leads.length > 0
-    const eligibleBodyguards = isLeader
-      ? state.units.filter((v) => v.instanceId !== u.instanceId && leads.includes(v.datasheetId))
+    const isAttachable = leads.length > 0
+    const mySlot = attachSlot(ds)
+    // A bodyguard is eligible if this character can lead it AND that unit's
+    // matching slot (leader/support) isn't already filled by a different one.
+    const eligibleBodyguards = isAttachable
+      ? state.units.filter((v) => {
+          if (v.instanceId === u.instanceId || !leads.includes(v.datasheetId)) return false
+          return !attachedOf(v).some(
+            (c) => c.instanceId !== u.instanceId && attachSlot(byId.get(c.datasheetId)) === mySlot,
+          )
+        })
       : []
     const attachedLeaders = nested ? [] : attachedOf(u)
     const isOpen = open.has(u.instanceId)
-    const hasOptions = eligible || isLeader || ds.wargearOptions.length > 0
+    const hasOptions = eligible || isAttachable || ds.wargearOptions.length > 0
 
     return (
       <li
@@ -218,9 +233,9 @@ export function RosterPanel({
             />
             {hasOptions && (
               <div className="roster__unit-options">
-                {isLeader && (
+                {isAttachable && (
                   <label className="field roster__attach">
-                    <span className="muted">Attach to</span>
+                    <span className="muted">Attach to ({mySlot} slot)</span>
                     {eligibleBodyguards.length > 0 ? (
                       <select
                         value={u.attachedToInstanceId ?? ''}
