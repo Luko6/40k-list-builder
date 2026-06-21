@@ -74,6 +74,14 @@ export function RosterPanel({
       else next.add(id)
       return next
     })
+  const [collapsedCats, setCollapsedCats] = useState<Set<string>>(new Set())
+  const toggleCat = (cat: string) =>
+    setCollapsedCats((prev) => {
+      const next = new Set(prev)
+      if (next.has(cat)) next.delete(cat)
+      else next.add(cat)
+      return next
+    })
 
   const datasheetLimit = catalogue.gameSizes[0].datasheetLimit
   // Enhancement pool = union across all selected detachments.
@@ -338,15 +346,25 @@ export function RosterPanel({
           const units = grouped.get(cat)!
           const subtotal = units.reduce((n, u) => n + pointsWithLeaders(u), 0)
           const cardCount = units.reduce((n, u) => n + 1 + attachedOf(u).length, 0)
+          const catCollapsed = collapsedCats.has(cat)
           return (
             <div key={cat} className="roster__group">
-              <div className="roster__group-head">
-                <h3>{cat}</h3>
+              <button
+                className="roster__group-head"
+                aria-expanded={!catCollapsed}
+                onClick={() => toggleCat(cat)}
+              >
+                <span className="roster__group-title">
+                  <span className="group-chevron">{catCollapsed ? '▸' : '▾'}</span>
+                  {cat}
+                </span>
                 <span className="muted">
                   {cardCount} · {subtotal} pts
                 </span>
-              </div>
-              <ul className="roster__units">{units.map((u) => renderUnit(u))}</ul>
+              </button>
+              {!catCollapsed && (
+                <ul className="roster__units">{units.map((u) => renderUnit(u))}</ul>
+              )}
             </div>
           )
         })

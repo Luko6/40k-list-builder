@@ -20,6 +20,14 @@ export function UnitCatalog({
 }) {
   const [query, setQuery] = useState('')
   const [expanded, setExpanded] = useState<string | null>(null)
+  const [collapsedCats, setCollapsedCats] = useState<Set<string>>(new Set())
+  const toggleCat = (cat: string) =>
+    setCollapsedCats((prev) => {
+      const next = new Set(prev)
+      if (next.has(cat)) next.delete(cat)
+      else next.add(cat)
+      return next
+    })
 
   const groups = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -56,11 +64,19 @@ export function UnitCatalog({
       {total === 0 ? (
         <p className="muted">No units match “{query}”.</p>
       ) : (
-        CATEGORY_ORDER.filter((cat) => groups.has(cat)).map((cat) => (
+        CATEGORY_ORDER.filter((cat) => groups.has(cat)).map((cat) => {
+          const catCollapsed = collapsedCats.has(cat)
+          return (
           <div key={cat} className="catalog__group">
-            <h4 className="catalog__group-head">
+            <button
+              className="catalog__group-head"
+              aria-expanded={!catCollapsed}
+              onClick={() => toggleCat(cat)}
+            >
+              <span className="group-chevron">{catCollapsed ? '▸' : '▾'}</span>
               {cat} <span className="muted">({groups.get(cat)!.length})</span>
-            </h4>
+            </button>
+            {!catCollapsed && (
             <ul className="catalog__list">
               {groups.get(cat)!.map((d) => {
                 const count = perDatasheet.get(d.id) ?? 0
@@ -103,8 +119,10 @@ export function UnitCatalog({
                 )
               })}
             </ul>
+            )}
           </div>
-        ))
+          )
+        })
       )}
     </section>
   )
