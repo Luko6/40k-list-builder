@@ -20,6 +20,7 @@ const OUT_DIR = 'src/data/generated'
 const OUT_FILE = `${OUT_DIR}/black-templars.json`
 const OVERRIDES_FILE = 'scripts/points-overrides.json'
 const DETACHMENTS_FILE = 'scripts/detachments.json'
+const DETACH_RULES_FILE = 'scripts/detachment-rules.json'
 const SCHEMA_VERSION = 1
 
 // Fallback if the scraper hasn't produced detachments.json yet (e.g. fresh
@@ -245,11 +246,32 @@ const overrides = existsSync(OVERRIDES_FILE)
   ? JSON.parse(readFileSync(OVERRIDES_FILE, 'utf8'))
   : {}
 
+// Detachment rules/stratagems + (global) enhancement descriptions from
+// Wahapedia (scripts/scrape-wahapedia.mjs). Merged over the MFM base.
+const detachRulesFile = existsSync(DETACH_RULES_FILE)
+  ? JSON.parse(readFileSync(DETACH_RULES_FILE, 'utf8'))
+  : {}
+const detachRules = detachRulesFile.detachments ?? {}
+const enhDescriptions = detachRulesFile.enhancementDescriptions ?? {}
+
 const detachments = (
   existsSync(DETACHMENTS_FILE)
     ? JSON.parse(readFileSync(DETACHMENTS_FILE, 'utf8')).detachments ?? FALLBACK_DETACHMENTS
     : FALLBACK_DETACHMENTS
-).sort((a, b) => a.name.localeCompare(b.name))
+)
+  .sort((a, b) => a.name.localeCompare(b.name))
+  .map((d) => {
+    const r = detachRules[d.id]
+    const enhancements = d.enhancements.map((e) =>
+      enhDescriptions[e.id] ? { ...e, description: enhDescriptions[e.id] } : e,
+    )
+    return {
+      ...d,
+      ...(r?.rule ? { rule: r.rule } : {}),
+      ...(r?.stratagems?.length ? { stratagems: r.stratagems } : {}),
+      enhancements,
+    }
+  })
 
 function buildDatasheet(link, source) {
   const entry = resolve(link)

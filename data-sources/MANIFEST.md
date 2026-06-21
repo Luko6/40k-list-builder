@@ -48,3 +48,27 @@ name; re-run after MFM updates.
 npm run scrape-mfm        # fetches live, refreshes the .rsc.txt snapshot + overrides
 npm run scrape-mfm -- --cached   # re-parse the saved snapshot without refetching
 ```
+
+## Wahapedia (11e detachment rules, stratagems, enhancement text)
+
+- **Upstream:** <https://wahapedia.ru/wh40k10ed/factions/space-marines/black-templars>
+  (Wahapedia keeps the `wh40k10ed` path but serves current 11e content)
+- **Snapshot:** `wahapedia/black-templars.html`, captured 2026-06-21.
+- **License/ToS:** Wahapedia aggregates Games Workshop IP; used here for a
+  personal, non-commercial tool. Source credited in-app and here.
+
+The MFM is points-only, so detachment rules, stratagems, and enhancement
+*descriptions* come from Wahapedia. `scripts/scrape-wahapedia.mjs`
+(`npm run scrape-wahapedia`) parses the vendored page into
+`scripts/detachment-rules.json` (`{ detachments: {slug: {rule, stratagems}},
+enhancementDescriptions: {slug} }`), which `compile-data` merges over the
+MFM-derived `detachments.json`. **Coverage: 15/19 detachments** — the 4 newest
+BT detachments (Fulguris Task Force, Marshal's Household, Subversion Assets, The
+Living Miracle) load behind Wahapedia's JS filter and aren't in the static page.
+
+### Re-capturing
+
+```bash
+npm run scrape-wahapedia            # fetch live, refresh the .html snapshot + rules
+npm run scrape-wahapedia -- --cached   # re-parse the saved snapshot
+```

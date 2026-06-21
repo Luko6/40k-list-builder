@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "scrape-mfm": "node scripts/scrape-mfm.mjs",
+    "scrape-wahapedia": "node scripts/scrape-wahapedia.mjs",
     "compile-data": "node scripts/compile-data.mjs",
     "preview": "vite preview",
     "lint": "eslint .",

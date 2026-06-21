@@ -451,12 +451,79 @@ body {
 }
 
 .roster__detachment {
+  border-bottom: 1px solid var(--border);
+}
+
+.roster__detachment[data-open='true'] {
+  background: #1a1a1f;
+  border-radius: 8px;
+  border-bottom-color: transparent;
+  margin: 0.25rem 0;
+}
+
+.roster__detachment-head {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: auto 1fr auto auto;
   align-items: center;
   gap: 0.6rem;
+  padding: 0.45rem 0.4rem;
+}
+
+/* ── Detachment detail (rule / stratagems / enhancements) ─────── */
+.detach-detail {
+  padding: 0 0.6rem 0.85rem 1.8rem;
+}
+
+.detach-block {
+  margin-top: 0.75rem;
+}
+
+.detach-block h4 {
+  margin: 0 0 0.4rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+}
+
+.detach-text {
+  margin: 0.15rem 0 0;
+  font-size: 0.82rem;
+  white-space: pre-line;
+  line-height: 1.45;
+}
+
+.strat,
+.enh {
   padding: 0.45rem 0;
-  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+}
+
+.strat__head,
+.enh__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.strat__name,
+.enh__name {
+  font-weight: 600;
+  font-size: 0.86rem;
+}
+
+.strat__cp {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.strat__cat {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .roster__detachment-main {

@@ -23,22 +23,65 @@
         {
           "id": "architect-of-war",
           "name": "Architect of War",
-          "points": 25
+          "points": 25,
+          "description": "ADEPTUS ASTARTES model only. While the bearer is leading a unit, ranged weapons equipped by models in that unit have the [IGNORES COVER] ability."
         },
         {
           "id": "fleet-commander",
           "name": "Fleet Commander",
-          "points": 15
+          "points": 15,
+          "description": "CAPTAIN model only. Once per battle, at the start of your Shooting phase, you can select one point on the battlefield and place a marker on that point. At the start of your next Shooting phase, place another marker on the battlefield within 12\" of the centre of the first marker, then draw a straight line between the centre of each of these markers. Roll one D6 for each unit that line passes over or through: on a 3+, that unit suffers D3 mortal wounds. Both markers are then removed."
         },
         {
           "id": "indomitable-fury",
           "name": "Indomitable Fury",
-          "points": 20
+          "points": 20,
+          "description": "GRAVIS model only. The first time the bearer is destroyed, roll one D6 at the end of the phase. On a 2+, set the bearer back up on the battlefield, as close as possible to where it was destroyed and not within Engagement Range of any enemy units, with its full wounds remaining."
         },
         {
           "id": "stoic-defender",
           "name": "Stoic Defender",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES model only. While the bearer is leading a unit, models in that unit have the Feel No Pain 6+ ability while they are within range of an objective marker you control and, while that unit is Battle-shocked, halve the Objective Control characteristic of models in that unit instead of changing it to 0."
+        }
+      ],
+      "rule": "Detachment Rule\nShield of the Imperium\nRanged weapons equipped by ADEPTUS ASTARTES models from your army have the [HEAVY] ability. If such a weapon already has this ability, each time an attack is made with that weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to the Wound roll.",
+      "stratagems": [
+        {
+          "name": "ARMOUR OF CONTEMPT",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1."
+        },
+        {
+          "name": "RIGID DISCIPLINE",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: End of the Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that is within Engagement Range of one or more enemy units.\nEFFECT: Your unit can immediately make a Fall Back move of up to 6\".\nRESTRICTIONS: When making that move, your unit must end that move either wholly within your deployment zone or within range of an objective marker."
+        },
+        {
+          "name": "NOT ONE BACKWARDS STEP",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your Command phase.\nTARGET: One ADEPTUS ASTARTES INFANTRY unit from your army within range of an objective marker.\nEFFECT: Until the end of the turn, double the Objective Control characteristic of models in your unit, but it must Remain Stationary this turn."
+        },
+        {
+          "name": "NO THREAT TOO GREAT",
+          "cp": "2CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes a ranged attack that targets a MONSTER or VEHICLE unit, you can re-roll the Wound roll."
+        },
+        {
+          "name": "BATTLE DRILL RECALL",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot this phase.\nEFFECT: Until the end of the phase, ranged weapons equipped by models in your unit have the [SUSTAINED HITS 1] ability. If your unit Remained Stationary this turn, then until the end of the phase, each time a model in your unit makes a ranged attack, a successful unmodified Hit roll of 5+ scores a Critical Hit."
+        },
+        {
+          "name": "HAIL OF VENGEANCE",
+          "cp": "2CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your opponent’s Shooting phase, just after an enemy unit has resolved its attacks.\nTARGET: One ADEPTUS ASTARTES unit from your army that had one or more of its models destroyed as a result of the attacking unit’s attacks.\nEFFECT: Your unit can shoot as if it were your Shooting phase, but must target only that enemy unit when doing so, and can only do so if that enemy unit is an eligible target.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(119)});\n\r\n\r\n$(document).ready(function(){\r\nvar CookieSet = $.cookie('no_ads_for_boosters');\r\n\r\nif (jQuery.cookie('no_ads_for_boosters')!='turn_it_off') {\r\nwindow.yaContextCb.push(()=>{\r\nYa.Context.AdvManager.render({\r\n\"blockId\": \"R-A-3376916-9\",\r\n\"renderTo\": \"yandex_rtb_R-A-3376916-9\"\r\n})\r\n})\r\n}});"
         }
       ]
     },
@@ -51,22 +94,65 @@
         {
           "id": "armoured-commander",
           "name": "Armoured Commander",
-          "points": 25
+          "points": 25,
+          "description": "ADEPTUS ASTARTES model only. Once per turn, in your Movement phase, the bearer can use this Enhancement. If it does, select one friendly ADEPTUS ASTARTES TRANSPORT that is in Strategic Reserves. Until the end of the phase, for the purposes of setting up that TRANSPORT on the battlefield, treat the current battle round number as being one higher than it actually is."
         },
         {
           "id": "liberator",
           "name": "Liberator",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES model only. If you control an objective marker at the end of your Command phase, and the bearer’s unit (or any HEAVY TRANSPORT it is embarked within) is within range of that objective marker, that objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase."
         },
         {
           "id": "shock-deployment",
           "name": "Shock Deployment",
-          "points": 20
+          "points": 20,
+          "description": "ADEPTUS ASTARTES TERMINATOR or GRAVIS model only. In your Shooting phase, each time the bearer’s unit is selected to shoot, if it disembarked from a TRANSPORT this turn, until the end of the phase, ranged weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability."
         },
         {
           "id": "tip-of-the-spear",
           "name": "Tip of the Spear",
-          "points": 40
+          "points": 40,
+          "description": "ADEPTUS ASTARTES model only. If the bearer starts the battle embarked within a TRANSPORT, that TRANSPORT has the Scouts 6\" ability."
+        }
+      ],
+      "rule": "Detachment Rule\nRapid Deployment\nEach time an ADEPTUS ASTARTES unit from your army disembarks from a TRANSPORT (excluding FLY) that made a Normal or Advance move this phase (excluding those that arrived from Strategic Reserves), that disembarked unit can make a Normal move of up to D6\", or a Normal move of up to D3+3\" instead if that TRANSPORT is a HEAVY TRANSPORT (see below).\nKeywords\nADEPTUS ASTARTES TRANSPORT units from your army (excluding FLY) that have a Wounds characteristic of 14+ have the HEAVY TRANSPORT keyword.",
+      "stratagems": [
+        {
+          "name": "MACHINE WRATH",
+          "cp": "1CP",
+          "category": "Epic Deed",
+          "text": "WHEN: Any phase, just after a HEAVY TRANSPORT unit from your army with the Deadly Demise ability is destroyed.\nTARGET: That HEAVY TRANSPORT unit, if you rolled a 6 for its Deadly Demise ability. You can use this Stratagem on that unit even though it was just destroyed.\nEFFECT: Your unit can make a Normal or Fall Back move before its Deadly Demise ability is resolved, and before any embarked units perform an Emergency Disembarkation. When making this move, your unit can move through enemy models (excluding MONSTERS and VEHICLES) and can move within Engagement Range of such models, but cannot end that move within Engagement Range of them, and any Desperate Escape test is automatically passed."
+        },
+        {
+          "name": "ARMOUR OF CONTEMPT",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1."
+        },
+        {
+          "name": "RAPID EMBARKATION",
+          "cp": "1CP",
+          "category": "Wargear",
+          "text": "WHEN: End of the Fight phase.\nTARGET: One ADEPTUS ASTARTES INFANTRY unit from your army that is not within Engagement Range of one or more enemy units, and one friendly HEAVY TRANSPORT it is able to embark within.\nEFFECT: If your ADEPTUS ASTARTES INFANTRY unit is wholly within 6\" of that HEAVY TRANSPORT, it can embark within it."
+        },
+        {
+          "name": "CERAMITE SLEDGEHAMMER",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your Movement phase.\nTARGET: One ADEPTUS ASTARTES TRANSPORT unit from your army that has not been selected to move this phase.\nEFFECT: Until the end of the phase, each time your unit makes a Normal or Advance move, it can move horizontally through terrain features. In addition, if your unit is a HEAVY TRANSPORT, when making this move, your unit can move through enemy models (excluding MONSTERS and VEHICLES) and can move within Engagement Range of such models, but cannot end that move within Engagement Range of them, and any Desperate Escape test is automatically passed."
+        },
+        {
+          "name": "ADVANCED DEPLOYMENT",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your Movement phase.\nTARGET: One ADEPTUS ASTARTES TRANSPORT unit from your army that has not been selected to move this phase.\nEFFECT: Until the end of the phase, units can disembark from your TRANSPORT after it has Advanced. Units that do so count as having made a Normal move this phase, and cannot declare a charge in the same turn (unless your TRANSPORT has the Assault Ramp ability), but can otherwise act normally."
+        },
+        {
+          "name": "PURGATION DOCTRINE",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes an attack, add 1 to the Hit roll (if your unit disembarked from a HEAVY TRANSPORT this turn, add 1 to the Wound roll as well).\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(128)});"
         }
       ]
     },
@@ -79,22 +165,65 @@
         {
           "id": "blades-of-valour",
           "name": "Blades of Valour",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES model only. Improve the Armour Penetration characteristic of melee weapons equipped by the bearer and BATTLELINE models in the bearer’s unit by 1."
         },
         {
           "id": "bombast-omnivox",
           "name": "Bombast Omnivox",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES model only. Each time you select the bearer’s unit as the target of a Stratagem, roll one D6, adding 1 if the bearer’s unit has the BATTLELINE keyword: on a 4+, you gain 1CP."
         },
         {
           "id": "eye-of-the-primarch",
           "name": "Eye of the Primarch",
-          "points": 10
+          "points": 10,
+          "description": "ADEPTUS ASTARTES model only. Ranged weapons equipped by the bearer and BATTLELINE models in the bearer’s unit have the [PRECISION] ability."
         },
         {
           "id": "hero-of-the-chapter",
           "name": "Hero of the Chapter",
-          "points": 20
+          "points": 20,
+          "description": "ADEPTUS ASTARTES model only. While the bearer is leading a unit, the bearer has the BATTLELINE keyword."
+        }
+      ],
+      "rule": "ADEPTUS ASTARTES BATTLELINE units from your army:\nAre eligible to shoot and declare a charge in a turn in which they Advanced or Fell Back.\nAre eligible to start to perform an Action in a turn in which they Advanced or Fell Back.\nEach time an ADEPTUS ASTARTES BATTLELINE unit from your army is selected to attack, after resolving those attacks, select one enemy unit hit by one or more of those attacks. Until the end of the turn, that enemy unit is auspex scanned. Each time an ADEPTUS ASTARTES model from your army makes an attack that targets an auspex scanned unit, re-roll a Hit roll of 1.\nSCOUTS\nScouts form the vanguard of many armies. Unnoticed by the enemy, they range ahead of the main force.\nSome units have ‘Scouts x\"’ listed in their abilities. If every model in a unit has this ability, then at the start of the first battle round, before the first turn begins, it can make a Normal move of up to x\", with the exception that, while making that move, the distance moved by each model in that unit can be greater than that model's Move characteristic, as long as it is not greater than x\".\nDEDICATED TRANSPORT models can make use of any Scouts x\" ability listed in their abilities, or a Scouts x\" ability that a unit that starts the battle embarked within that DEDICATED TRANSPORT model has (provided only models with this ability are embarked within that DEDICATED TRANSPORT model), regardless of how that embarked unit gained this ability (e.g. listed in their abilities, conferred by an Enhancement or by an attached CHARACTER, etc.).\nA unit that moves using this ability must end that move more than 9\" horizontally away from all enemy models. If both players have units that can do this, the player who is taking the first turn moves their units first.\nExample: A unit has the Scouts 6\" ability. At the start of the first battle round, the controlling player can make a Normal move with that unit of up to 6\".\nScouts x\": Unit can make a Normal move of up to x\" before the first turn begins.\nIf embarked in a DEDICATED TRANSPORT, that DEDICATED TRANSPORT can make this move instead.\nMust end this move more than 9\" horizontally away from all enemy models.\nPile In\n\r\nWhen a unit Piles In, you can move each model in that unit that is not already in base-to-base contact with an enemy model up to 3\" – this is a Pile-in move. For a Pile In to be possible, a unit must be able to end these moves within Engagement Range of one or more enemy units and in Unit Coherency. If these conditions cannot be met, no models in the unit can make Pile-in moves this phase and you progress to making melee attacks with that unit. Otherwise, the unit can make Pile-in moves.\nEach time a model makes a Pile-in move, it must end that move closer to the closest enemy model. If it can also end that move in base-to-base contact with one or more enemy models while still satisfying all of the conditions above, it must do so. The controlling player chooses the order in which to move their models.\nPile-in Move: Up to 3\".\nEvery model that moves must end closer to the closest enemy model, and in base-to-base contact with an enemy model if possible. The unit must end in Unit Coherency and within Engagement Range of at least one enemy unit (or no models can Pile In).\n\r\nConsolidate\n\r\nAfter a unit has finished making all of its melee attacks, it Consolidates. Each time a unit Consolidates, you can move each model in that unit that is not already in base-to-base contact with an enemy model up to 3\" – this is a Consolidation move. For a Consolidation to be possible, a unit must be able to end these moves within Engagement Range of one or more enemy units and in Unit Coherency. If these conditions cannot be met, then each model in that unit can instead make a Consolidation move towards the closest objective marker, but only if, after doing so, that unit is within range of that objective marker and in Unit Coherency. If these conditions also cannot be met, no models in the unit can make Consolidation moves this phase and that unit’s fight ends.\nIf a unit can end its Consolidation within Engagement Range of one or more enemy units, then each time one of its models makes a Consolidation move, it must end that move closer to the closest enemy model. If it can also end that move in base-to-base contact with one or more enemy models while still satisfying all of the conditions above, it must do so. The controlling player chooses the order in which to move their models.\nConsolidation Move: Up to 3\".\nEvery model that moves must end closer to the closest enemy model, and in base-to-base contact with an enemy model if possible. The unit must end in Unit Coherency and within Engagement Range of at least one enemy unit if possible.\nIf the above is not possible, each model can move towards the closest objective marker, but this must result in the unit being within range of it and in Unit Coherency.\nIf the above is also not possible, no models can Consolidate.\n\r\nThe ADEPTUS ASTARTES, SMOKE and VEHICLE keywords are used in the following Space Marines datasheets:\nCharacters\nCarab Culln The Risen\nDedicated Transports\nRazorback\nRhino\nRelic Razorback\nOther\nDreadnought\nLand Raider\nLand Raider Redeemer\nPredator Annihilator\nPredator Destructor\nStormhawk Interceptor\nVindicator\nWhirlwind\nGladiator Lancer\nGladiator Reaper\nGladiator Valiant\nLand Raider Crusader\nRepulsor\nRepulsor Executioner\nCerberus\nDeimos Predator\nDeredeo Dreadnought\nFalchion\nFellblade\nHunter\nIronclad Dreadnought\nKratos\nLand Raider Achilles\nLand Raider Excelsior\nLand Raider Helios\nLand Raider Prometheus\nLand Raider Proteus\nLeviathan Dreadnought\nMastodon\nRhino Primaris\nSicaran Arcus\nSicaran Battle Tank\nSicaran Omega\nSicaran Punisher\nSicaran Venator\nSpartan\nStalker\nTerminus Ultra\nTyphon\nVenerable Dreadnought (Legendary)\nVindicator Laser Destroyer\nWhirlwind Scorpius\nAdaptive Defence",
+      "stratagems": [
+        {
+          "name": "CODEX DISCIPLINE",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase or the Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot or fight this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes an attack that targets an enemy unit, re-roll a Hit roll of 1. If that target is auspex scanned, re-roll a Wound roll of 1 as well."
+        },
+        {
+          "name": "GUIDED DISRUPTION",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your Shooting phase or the Fight phase, just after an ADEPTUS ASTARTES BATTLELINE unit from your army has finished making its attacks.\nTARGET: That ADEPTUS ASTARTES BATTLELINE unit.\nEFFECT: When an enemy unit is auspex scanned as a result of those attacks this turn, if that enemy unit does not have the MONSTER or VEHICLE keywords, until the start of your next turn, it is pinned. While a unit is pinned, subtract 2 from that unit’s Move characteristic and subtract 2 from Charge rolls made for that unit."
+        },
+        {
+          "name": "LIGHT OF VENGEANCE",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase or the Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot or fight this phase.\nEFFECT: Select the [LETHAL HITS] or [SUSTAINED HITS 1] ability. Until the end of the phase, weapons equipped by models in your unit have that ability while targeting an auspex scanned unit or if the bearer has the BATTLELINE keyword."
+        },
+        {
+          "name": "SHOCK BOMBARDMENT",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your Shooting phase or the Fight phase, just after an ADEPTUS ASTARTES BATTLELINE unit from your army finished making its attacks.\nTARGET: That ADEPTUS ASTARTES BATTLELINE unit.\nEFFECT: When an enemy unit is auspex scanned as a result of those attacks this turn, until the start of your next turn, it is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 from the Hit roll."
+        },
+        {
+          "name": "ANGELS DEFIANT",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES BATTLELINE unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the end of the phase, each time an attack targets your unit, if the Strength characteristic of that attack is greater than the Toughness characteristic of your unit, subtract 1 from the Wound roll."
+        },
+        {
+          "name": "HERESY UNDONE",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your Shooting phase or your Charge phase.\nTARGET: One ADEPTUS ASTARTES unit (excluding BATTLELINE units) from your army.\nEFFECT: Until the end of the phase, your unit is eligible to shoot and declare a charge in a turn in which it Advanced or Fell Back. If it does, every target of that charge and every target of those attacks must be an auspex scanned unit.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(125)});"
         }
       ]
     },
@@ -107,22 +236,65 @@
         {
           "id": "castellum-omnivox",
           "name": "Castellum Omnivox",
-          "points": 20
+          "points": 20,
+          "description": "ADEPTUS ASTARTES model only. Each time the bearer’s unit makes a Fall Back move, select one of the following to apply to that unit until the end of the turn:\nThat unit is eligible to perform an Action in a turn in which it Fell Back.\nThat unit is eligible to shoot and declare a charge in a turn in which it Fell Back."
         },
         {
           "id": "defensive-mastery",
           "name": "Defensive Mastery",
-          "points": 25
+          "points": 25,
+          "description": "ADEPTUS ASTARTES model only. After both players have deployed their armies, select up to three ADEPTUS ASTARTES units from your army and redeploy them. When doing so, you can set those units up in Strategic Reserves, regardless of how many units are already in Strategic Reserves."
         },
         {
           "id": "honour-indefatigable",
           "name": "Honour Indefatigable",
-          "points": 25
+          "points": 25,
+          "description": "GRAVIS model only. The first time the bearer is destroyed, roll one D6 at the end of the phase. On a 2+, set the bearer back up on the battlefield, as close as possible to where it was destroyed and not within Engagement Range of any enemy units, with its full wounds remaining."
         },
         {
           "id": "spy-skull-data-link",
           "name": "Spy-skull Data Link",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES model only. Ranged weapons equipped by models in the bearer’s unit have the [IGNORES COVER] ability."
+        }
+      ],
+      "rule": "Each time an ADEPTUS ASTARTES model from your army makes an attack, if that model’s unit is within a terrain feature, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.\nADEPTUS ASTARTES units from your army gain the ENTRENCHED keyword while all of the following are true:\nThat unit is within a terrain feature.\nThat unit was not set up on the battlefield this turn.\nNo model in that unit has moved more than 3\" this turn.\nWhile included in an Armoured Speartip Detachment following units have HEAVY TRANSPORT keyword:\nOther\nRepulsor Executioner\nRepulsor\nLand Raider Crusader\nLand Raider Redeemer\nLand Raider\nLand Raider Crusader\nRepulsor\nRepulsor Executioner\nLand Raider Achilles\nLand Raider Proteus\nLand Raider Prometheus\nSpartan\nTerminus Ultra\nMastodon\nLand Raider Excelsior\nLand Raider Helios\nRhino Primaris\nDreadnought Drop Pod\nDedicated Transports\nImpulsor\nImpulsor\nRhino\nDrop Pod\nRazorback\nTerrax-pattern Termite\nLand Speeder Storm\nRelic Razorback\nThe ADEPTUS ASTARTES and TERMINATOR keywords are used in the following Space Marines datasheets:\nCharacters\nAncient In Terminator Armour\nCaptain In Terminator Armour\nChaplain In Terminator Armour\nOther\nTerminator Assault Squad\nTerminator Squad\nRelic Terminator Squad\nEmergency Disembarkation\n\r\nIf a TRANSPORT model is destroyed and it is not possible to set up a disembarking unit wholly within 3\" of that TRANSPORT model and not within Engagement Range of any enemy models, that unit must instead perform an Emergency Disembarkation. This is performed as described for disembarking from a destroyed TRANSPORT model, except that a unit that does so must be set up wholly within 6\" of the destroyed TRANSPORT model (instead of wholly within 3\") and not within Engagement Range of any enemy models, and when rolling for each disembarking model, that unit suffers 1 mortal wound for each roll of 1-3 (instead of for each roll of 1). If, for any reason, a disembarking model still cannot be set up, that model is destroyed.\nUnits disembarking a destroyed TRANSPORT that cannot be set up wholly within 3\" of it must perform an Emergency Disembarkation:\nMust be set up wholly within 6\" of it instead of wholly within 3\".\nSuffer 1 mortal wound for each roll of 1-3, instead of each roll of 1.\nAny disembarking model that cannot be set up is destroyed.\n\r\nWhile included in a Headhunter Task Force Detachment following units have TANK ACE keyword:\nOther\nGladiator Lancer\nGladiator Valiant\nGladiator Reaper\nRepulsor Executioner\nRepulsor\nLand Raider Crusader\nGladiator Valiant\nLand Raider Redeemer\nVindicator\nLand Raider\nLand Raider Crusader\nGladiator Lancer\nPredator Annihilator\nPredator Destructor\nRepulsor\nRepulsor Executioner\nWhirlwind\nFirestrike Servo-turrets\nGladiator Reaper\nLand Raider Achilles\nLand Raider Proteus\nLand Raider Prometheus\nSpartan\nStalker\nDeathstorm Drop Pod\nDeimos Predator\nCerberus\nSicaran Arcus\nSicaran Omega\nThunderfire Cannon\nKratos\nVindicator Laser Destroyer\nTerminus Ultra\nSicaran Battle Tank\nMastodon\nLand Raider Excelsior\nFellblade\nLand Raider Helios\nWhirlwind Scorpius\nRhino Primaris\nRapier Carrier\nHunter\nSicaran Venator\nTyphon\nTarantula Sentry Battery\nTarantula Air Defence Battery\nDreadnought Drop Pod\nSicaran Punisher\nFalchion\nAstraeus\nBaal Predator\nDedicated Transports\nImpulsor\nImpulsor\nRhino\nRazorback\nTerrax-pattern Termite\nand others...\nInvulnerable Saves\n\r\nSome models have an invulnerable save listed on their datasheet. Each time an attack is allocated to a model with an invulnerable save, the controlling player must choose to use either that model’s Save characteristic or its invulnerable save, but not both. If a model has more than one invulnerable save, it can only use one of them – choose which it will use.\nUnlike armour saving throws (which use a model’s Save characteristic), invulnerable saving throws are never modified by an attack’s Armour Penetration characteristic, but otherwise follow the normal rules for saving throws.\nInvulnerable Save: Never modified by an attack’s AP.\nThe controlling player can choose to use either a model’s invulnerable save or its Save characteristic.\n\r\nTemplar Vows\nIf your Army Faction is ADEPTUS ASTARTES, at the start of the first battle round, select one of the following Vows to be active for ADEPTUS ASTARTES units from your army. While a Vow is active for a unit from your army, that unit has the associated ability shown below.\nAbhor the Witch, Destroy the Witch\nEach time this unit declares a charge, if one or more targets of that charge have the PSYKER keyword, you can re-roll the Charge roll. Melee weapons equipped by models in this unit have the [PRECISION] ability while targeting PSYKER units.\nAccept Any Challenge, No Matter the Odds\nEach time a model in this unit makes a melee attack, if the Strength characteristic of that attack is less than or equal to the Toughness characteristic of the target, add 1 to the Wound roll.\nSuffer Not the Unclean to Live\nThis unit is eligible to declare a charge in a turn in which it Fell Back, and each time a model in this unit makes a Pile-in or Consolidation move, it does not need to end that move closer to the closest enemy model, provided it ends that move as close as possible to the closest enemy unit.\nUphold the Honour of the Emperor\nIf this unit has the INFANTRY keyword:\nAt the end of your Command phase, if this unit is within range of an objective marker you control, that objective marker remains under your control until your opponent’s Level of Control over that objective marker is greater than yours at the end of a phase.\nIf the mission you are playing features Actions, this unit is eligible to start to perform an Action in a turn in which it Advanced.\nSpace Marine Chapters\nIf an ADEPTUS ASTARTES unit has a second Faction keyword on its datasheet, that Faction keyword is the name of that unit’s Chapter. For example, MARNEUS CALGAR has both the ADEPTUS ASTARTES and ULTRAMARINES Faction keywords, and is therefore from the Ultramarines Chapter.\nYou cannot include units from more than one Chapter in your army.\nIf your army includes one or more BLACK TEMPLARS units, it cannot include any ADEPTUS ASTARTES PSYKER models, and cannot include any of the following models that do not have the Black Templars keyword: GLADIATOR LANCER; GLADIATOR REAPER; GLADIATOR VALIANT; IMPULSOR; REPULSOR; REPULSOR EXECUTIONER.\nIf your army includes one or more DEATHWATCH units, it cannot include any of the following units: DEVASTATOR SQUAD; SCOUT SQUAD; TACTICAL SQUAD.\nIf your army includes one or more SPACE WOLVES units, it cannot include any of the following units: APOTHECARY; DEVASTATOR SQUAD; TACTICAL SQUAD.\nSuffer Not the Unclean to Live\nThis unit is eligible to declare a charge in a turn in which it Fell Back, and each time a model in this unit makes a Pile-in or Consolidation move, it does not need to end that move closer to the closest enemy model, provided it ends that move as close as possible to the closest enemy unit.\nCharge Bonus\n\r\nEach time a unit makes a Charge move, until the end of the turn, that unit has the Fights First ability.\r\nShock and Awe",
+      "stratagems": [
+        {
+          "name": "UNYIELDING MIGHT",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Command phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that is within Engagement Range of one or more enemy units.\nEFFECT: Until the start of your next Command phase, add 1 to the Objective Control characteristics of models in your unit."
+        },
+        {
+          "name": "PRIORITY STRIKE",
+          "cp": "2CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase or the Fight phase.\nTARGET: One ADEPTUS ASTARTES INFANTRY or ADEPTUS ASTARTES MOUNTED unit from your army that has not been selected to shoot or fight this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes an attack that targets a CHARACTER, MONSTER or VEHICLE unit, you can re-roll the Wound roll."
+        },
+        {
+          "name": "ARMOUR OF CONTEMPT",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1."
+        },
+        {
+          "name": "STAND TO THE END",
+          "cp": "1CP",
+          "category": "Epic Deed",
+          "text": "WHEN: Fight phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, roll one D6, adding 1 to the result if it is an ENTRENCHED unit: on a 4+, do not remove it from play. That destroyed model can fight after the attacking unit has finished making its attacks, and is then removed from play."
+        },
+        {
+          "name": "AUGMENTED TARGETING",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot this phase.\nEFFECT: Select either the [SUSTAINED HITS 1] or [LETHAL HITS] abilities. Until the end of the phase, ranged weapons equipped by models in your unit have the selected ability. If your unit is ENTRENCHED, until the end of the phase, ranged weapons equipped by models in your unit have the [SUSTAINED HITS 1] and [LETHAL HITS] abilities instead."
+        },
+        {
+          "name": "EVASIVE REPOSITIONING",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your opponent’s Shooting phase, just after an enemy unit has shot.\nTARGET: One ADEPTUS ASTARTES INFANTRY or ADEPTUS ASTARTES MOUNTED unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Your unit can make a Normal move of up to D6\". If your unit is ENTRENCHED, you can re-roll the D6 to determine how far your unit can move.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(127)});"
         }
       ]
     },
@@ -135,22 +307,65 @@
         {
           "id": "incendiary-animus",
           "name": "Incendiary Animus",
-          "points": 25
+          "points": 25,
+          "description": "CHAPLAIN or JUDICIAR model only. Improve the Armour Penetration characteristic of melee weapons equipped by models in the bearer’s unit by 1."
         },
         {
           "id": "merciless-denunciation",
           "name": "Merciless Denunciation",
-          "points": 25
+          "points": 25,
+          "description": "CHAPLAIN or JUDICIAR model only. Each time a model in the bearer’s unit makes a melee attack, you can re-roll the Hit roll."
         },
         {
           "id": "oathbound-exemplar",
           "name": "Oathbound Exemplar",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES INFANTRY model only. Add 1 to Advance rolls made for the bearer’s unit. If the mission pack you are playing features Actions, the bearer’s unit is eligible to start to perform an Action in a turn in which it Advanced."
         },
         {
           "id": "zealous-vanguard",
           "name": "Zealous Vanguard",
-          "points": 20
+          "points": 20,
+          "description": "ADEPTUS ASTARTES model only. Models in the bearer’s unit have the Scouts 6\" ability."
+        }
+      ],
+      "rule": "Detachment Rule\nRighteous Fervour\nYou can re-roll Advance and Charge rolls made for ADEPTUS ASTARTES units from your army.\nRESTRICTIONS\nYour army can include BLACK TEMPLARS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter.",
+      "stratagems": [
+        {
+          "name": "DEVOUT PUSH",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Fight phase.\nTARGET: One ADEPTUS ASTARTES INFANTRY unit from your army that has not been selected to fight this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes a Pile-in or Consolidation move, it can move up to 6\" instead of up to 3\".\nRESTRICTIONS: A unit cannot be targeted with this and the Hearts Hardened to Duty Stratagem in the same phase unless it has the CHAPLAIN or JUDICIAR keywords."
+        },
+        {
+          "name": "HEARTS HARDENED TO DUTY",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Fight phase, just before an ADEPTUS ASTARTES INFANTRY unit from your army Consolidates.\nTARGET: That ADEPTUS ASTARTES INFANTRY unit.\nEFFECT: Until the end of the phase, each time a model in your unit makes a Consolidation move, it does not need to end that move closer to the closest enemy model (or the closest enemy unit if the Suffer Not the Unclean to Live Vow is active for it)."
+        },
+        {
+          "name": "FOR THE EMPEROR'S HONOUR!",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Fight phase.\nTARGET: One ADEPTUS ASTARTES INFANTRY unit from your army that has not been selected to fight this phase.\nEFFECT: Until the end of the phase, melee weapons equipped by models in your unit have the [PRECISION] ability."
+        },
+        {
+          "name": "PIOUS ENMITY",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Fight phase.\nTARGET: One CHAPLAIN or JUDICIAR unit from your army that has not been selected to fight this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes a melee attack that targets an enemy unit, re-roll a Hit roll of 1. If that target is a MONSTER or VEHICLE unit, re-roll a Wound roll of 1 as well."
+        },
+        {
+          "name": "HERESY BEGETS RETRIBUTION",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move.\nTARGET: One CHAPLAIN or JUDICIAR unit from your army that is within 9\" of that enemy unit and is not within Engagement Range of one or more enemy units.\nEFFECT: Your unit can make a Retribution move. To do so, roll one D6: models in your unit move a number of inches up to the result, but your unit must end that move as close as possible to the closest enemy unit (excluding AIRCRAFT). When doing so, those models can be moved within Engagement Range of that enemy unit."
+        },
+        {
+          "name": "DREAD CRUSADERS",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your opponent’s Charge phase, just after an enemy unit declares a charge.\nTARGET: One ADEPTUS ASTARTES INFANTRY unit from your army that was selected as one of the targets of that charge.\nEFFECT: That enemy unit must take a Battle-shock test, subtracting 1 from the result.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(132)});"
         }
       ]
     },
@@ -163,22 +378,65 @@
         {
           "id": "adamantine-mantle",
           "name": "Adamantine Mantle",
-          "points": 20
+          "points": 20,
+          "description": "ADEPTUS ASTARTES model only. Each time an attack is allocated to the bearer, subtract 1 from the Damage characteristic of that attack. If that attack was made with a Melta or Torrent weapon, change the Damage characteristic of that attack to 1 instead."
         },
         {
           "id": "champion-of-humanity",
           "name": "Champion of Humanity",
-          "points": 10
+          "points": 10,
+          "description": "TACTICUS model only. While the bearer is leading a unit, models in that unit can ignore any or all modifiers to their characteristics and/or to any roll or test made for them (excluding modifiers to saving throws)."
         },
         {
           "id": "forged-in-battle",
           "name": "Forged in Battle",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES model only. While the bearer is leading a unit, once per turn, after making a Hit roll or a saving throw for a model in that unit, you can change the result of that roll to an unmodified 6."
         },
         {
           "id": "war-tempered-artifice",
           "name": "War-tempered Artifice",
-          "points": 25
+          "points": 25,
+          "description": "ADEPTUS ASTARTES INFANTRY model only. Add 3 to the Strength characteristic of the bearer’s melee weapons."
+        }
+      ],
+      "rule": "Detachment Rule\nClose-range Eradication\nRanged weapons equipped by ADEPTUS ASTARTES models from your army have the [ASSAULT] ability, and each time an attack made with such a weapon targets a unit within 12\", add 1 to the Strength characteristic of that attack.",
+      "stratagems": [
+        {
+          "name": "ARMOUR OF CONTEMPT",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1."
+        },
+        {
+          "name": "CRUCIBLE OF BATTLE",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase or the Fight phase.\nTARGET: One ADEPTUS ASTARTES INFANTRY unit from your army that has not been selected to shoot or fight this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes an attack that targets the closest eligible target within 6\", add 1 to the Wound roll."
+        },
+        {
+          "name": "RAPID EMBARKATION",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: End of the Fight phase.\nTARGET: One ADEPTUS ASTARTES TRANSPORT unit from your army that has no models embarked within it, and one ADEPTUS ASTARTES INFANTRY unit from your army wholly within 6\" of that TRANSPORT.\nEFFECT: Your INFANTRY unit can embark within that TRANSPORT.\nRESTRICTIONS: You cannot target an INFANTRY unit that is within Engagement Range of one or more enemy units, that cannot normally embark within that TRANSPORT, or that disembarked from a TRANSPORT this turn."
+        },
+        {
+          "name": "IMMOLATION PROTOCOLS",
+          "cp": "2CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot this phase.\nEFFECT: Until the end of the phase, Torrent weapons equipped by models in that unit have the [DEVASTATING WOUNDS] ability."
+        },
+        {
+          "name": "ONSLAUGHT OF FIRE",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that disembarked from a TRANSPORT this turn and has not been selected to shoot this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes a ranged attack that targets the closest eligible target within 12\", add 1 to the Hit roll. If one or more enemy models are destroyed as the result of any of those attacks, select one of those destroyed models; that destroyed model’s unit must take a Battle-shock test."
+        },
+        {
+          "name": "BURNING VENGEANCE",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your opponent’s Shooting phase, just after an enemy unit has resolved its attacks.\nTARGET: One ADEPTUS ASTARTES TRANSPORT unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: One unit embarked within that TRANSPORT can disembark as if it were your Movement phase, and can then shoot as if it were your Shooting phase, but must target only that enemy unit when doing so, and can only do so if that enemy unit is an eligible target.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(121)});\n\r\n\r\n$(document).ready(function(){\r\nvar CookieSet = $.cookie('no_ads_for_boosters');\r\n\r\nif (jQuery.cookie('no_ads_for_boosters')!='turn_it_off') {\r\nwindow.yaContextCb.push(()=>{\r\nYa.Context.AdvManager.render({\r\n\"blockId\": \"R-A-3376916-10\",\r\n\"renderTo\": \"yandex_rtb_R-A-3376916-10\"\r\n})\r\n})\r\n}});"
         }
       ]
     },
@@ -211,22 +469,65 @@
         {
           "id": "adept-of-the-codex",
           "name": "Adept of the Codex",
-          "points": 20
+          "points": 20,
+          "description": "CAPTAIN model only. At the start of your Command phase, if the bearer is on the battlefield, instead of selecting a Combat Doctrine to be active for your army, you can select the Tactical Doctrine. If you do, until the start of your next Command phase, that Combat Doctrine is active for the bearer’s unit only, even if you have already selected that Combat Doctrine to be active for your army this battle."
         },
         {
           "id": "artificer-armour",
           "name": "Artificer Armour",
-          "points": 10
+          "points": 10,
+          "description": "ADEPTUS ASTARTES model only. The bearer has a Save characteristic of 2+ and the Feel No Pain 5+ ability."
         },
         {
           "id": "fire-discipline",
           "name": "Fire Discipline",
-          "points": 25
+          "points": 25,
+          "description": "ADEPTUS ASTARTES model only. While the bearer is leading a unit, ranged weapons equipped by models in that unit have the [SUSTAINED HITS 1] ability. In addition, while the bearer’s unit is under the effects of the Devastator Doctrine, you can reroll Advance rolls made for that unit."
         },
         {
           "id": "the-honour-vehement",
           "name": "The Honour Vehement",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES model only. Add 1 to the Attacks and Strength characteristics of the bearer’s melee weapons. While the bearer is under the effects of the Assault Doctrine, add 2 to the Attacks and Strength characteristics of the bearers melee weapons instead."
+        }
+      ],
+      "rule": "At the start of your Command phase, you can select one of the Combat Doctrines listed below. Until the start of your next Command phase, that Combat Doctrine is active and its effects apply to all ADEPTUS ASTARTES units from your army. You can only select each Combat Doctrine once per battle.\nDevastator Doctrine\nThis unit is eligible to shoot in a turn in which it Advanced.\nTactical Doctrine\nThis unit is eligible to shoot and declare a charge in a turn in which it Fell Back.\nAssault Doctrine\nThis unit is eligible to declare a charge in a turn in which it Advanced.\nDevastator Doctrine\nThis unit is eligible to shoot in a turn in which it Advanced.\nTactical Doctrine\nThis unit is eligible to shoot and declare a charge in a turn in which it Fell Back.\nAssault Doctrine\nThis unit is eligible to declare a charge in a turn in which it Advanced.",
+      "stratagems": [
+        {
+          "name": "ARMOUR OF CONTEMPT",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1."
+        },
+        {
+          "name": "ONLY IN DEATH DOES DUTY END",
+          "cp": "2CP",
+          "category": "Epic Deed",
+          "text": "WHEN: Fight phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the end of the phase, each time a model in your unit is destroyed, if that model has not fought this phase, do not remove it from play. The destroyed model can fight after the attacking model’s unit has finished making its attacks, and is then removed from play."
+        },
+        {
+          "name": "HONOUR THE CHAPTER",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army.\nEFFECT: Until the end of the phase, melee weapons equipped by models in your unit have the [LANCE] ability. If your unit is under the effects of the Assault Doctrine, until the end of the phase, improve the Armour Penetration characteristic of such weapons by 1 as well."
+        },
+        {
+          "name": "ADAPTIVE STRATEGY",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your Command phase.\nTARGET: One ADEPTUS ASTARTES unit from your army.\nEFFECT: Select the Devastator Doctrine, Tactical Doctrine or Assault Doctrine. Until the start of your next Command phase, that Combat Doctrine is active for that unit instead of any other Combat Doctrine that is active for your army, even if you have already selected that doctrine this battle."
+        },
+        {
+          "name": "STORM OF FIRE",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot this phase.\nEFFECT: Until the end of the phase, ranged weapons equipped by models in your unit have the [IGNORES COVER] ability. If your unit is under the effects of the Devastator Doctrine, until the end of the phase, improve the Armour Penetration characteristic of such weapons by 1 as well."
+        },
+        {
+          "name": "SQUAD TACTICS",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move.\nTARGET: One ADEPTUS ASTARTES INFANTRY or ADEPTUS ASTARTES MOUNTED unit from your army that is within 9\" of the enemy unit that just ended that move.\nEFFECT: Your unit can make a Normal move of up to D6\", or a Normal move of up to 6\" instead if it is under the effects of the Tactical Doctrine.\nRESTRICTIONS: You cannot select a unit that is within Engagement Range of one or more enemy units.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(118)});"
         }
       ]
     },
@@ -239,22 +540,65 @@
         {
           "id": "augury-servo-host",
           "name": "Augury Servo-Host",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES model only. At the start of your Shooting phase, select one enemy unit within 12\" of and visible to the bearer. Until the end of the phase, models in that unit cannot have the Benefit of Cover."
         },
         {
           "id": "battle-psalm-precentor",
           "name": "Battle-Psalm Precentor",
-          "points": 10
+          "points": 10,
+          "description": "ADEPTUS ASTARTES model only. Each time the bearer’s unit declares a charge, if an enemy unit takes a Battle-shock test as a result of the Shock and Awe Detachment rule, subtract 1 from that Battle-shock test."
         },
         {
           "id": "herald-of-sacred-slaughter",
           "name": "Herald of Sacred Slaughter",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES model only. In the Declare Battle Formations step, if the bearer starts the battle embarked within a DEDICATED TRANSPORT, that DEDICATED TRANSPORT has the Scouts 9\" ability."
         },
         {
           "id": "paragon-of-fury",
           "name": "Paragon of Fury",
-          "points": 25
+          "points": 25,
+          "description": "ADEPTUS ASTARTES model only. Add 2 to the Strength characteristic of melee weapons equipped by the bearer. Each time a melee attack made by the bearer is allocated to an enemy model, if the bearer disembarked from a TRANSPORT this turn, add 1 to the Damage characteristic of that attack."
+        }
+      ],
+      "rule": "Each time an ADEPTUS ASTARTES unit from your army declares a charge, if it disembarked from a TRANSPORT this turn, after selecting the targets of that charge, select one of those targets; that enemy unit must take a Battle-shock test.\nEach time a model in an ADEPTUS ASTARTES unit from your army makes a melee attack, if it disembarked from a TRANSPORT this turn, add 1 to the Hit roll.\nRESTRICTIONS\nYour army can include BLACK TEMPLARS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter.\nFIGHTS FIRST\nSome warriors attack with blinding speed, landing their blows before their foes can react.\nUnits with this ability that are eligible to fight do so in the Fights First step, provided every model in the unit has this ability.\nZealous Litanies",
+      "stratagems": [
+        {
+          "name": "A CEASELESS CAUSE",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: End of the Fight phase.\nTARGET: One ADEPTUS ASTARTES INFANTRY unit from your army that was eligible to fight this phase.\nEFFECT: If your unit is not within Engagement Range of one or more enemy units, it can make a Normal move of up to 6\". It cannot embark within a TRANSPORT at the end of this move if it disembarked from a TRANSPORT this turn."
+        },
+        {
+          "name": "UNCOMPROMISING EGRESS",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your Movement phase.\nTARGET: One LAND RAIDER model from your army that has not been selected to move this phase.\nEFFECT: One ADEPTUS ASTARTES unit embarked within your LAND RAIDER can disembark. When doing so, models in that unit can be set up anywhere on the battlefield wholly within 6\" of your LAND RAIDER and can be set up within Engagement Range of one or more enemy units."
+        },
+        {
+          "name": "GAUNTLET OF THE GOD-EMPEROR",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your Movement phase.\nTARGET: One ADEPTUS ASTARTES VEHICLE model from your army that has not been selected to move this phase.\nEFFECT: Until the end of the phase, each time your model makes a Normal or Advance move, it can move horizontally through terrain features."
+        },
+        {
+          "name": "FOCUSED HATRED",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your Charge phase, just after you make a Charge roll for an ADEPTUS ASTARTES unit from your army that disembarked from a TRANSPORT this turn.\nTARGET: That ADEPTUS ASTARTES unit.\nEFFECT: Until the end of the phase, each time your unit makes a Charge move, models in your unit can move through models (when doing so, its models can move within Engagement Range of enemy models, but they can only end that move within Engagement Range of enemy models if those enemy models belong to a unit that your unit declared a charge against this turn)."
+        },
+        {
+          "name": "CONDEMNATORY INFO-SCREED",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to fight this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes an attack, if it disembarked from a TRANSPORT this turn, re-roll a Wound roll of 1. If that TRANSPORT has the LAND RAIDER keyword, you can re-roll the Wound roll instead."
+        },
+        {
+          "name": "BLESSED HULL",
+          "cp": "2CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your opponent’s Shooting phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES VEHICLE unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the end of the phase, each time an attack is allocated to a model in your unit, subtract 1 from the Damage characteristic of that attack.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(134)});"
         }
       ]
     },
@@ -272,17 +616,59 @@
         {
           "id": "firestorm-coordinators",
           "name": "Firestorm Coordinators",
-          "points": 20
+          "points": 20,
+          "description": "ADEPTUS ASTARTES VEHICLE model only. Ranged weapons equipped by the bearer have the [SUSTAINED HITS 1] ability."
         },
         {
           "id": "gunnery-honours",
           "name": "Gunnery Honours",
-          "points": 20
+          "points": 20,
+          "description": "ADEPTUS ASTARTES VEHICLE model only. Once per phase, you can re-roll one Hit roll, one Wound roll and one Damage roll for the bearer."
         },
         {
           "id": "redoubtable-machine-spirit",
           "name": "Redoubtable Machine Spirit",
-          "points": 25
+          "points": 25,
+          "description": "ADEPTUS ASTARTES VEHICLE model only. The bearer has a 5+ invulnerable save and, at the end of your Command phase, the bearer regains 1 lost wound."
+        }
+      ],
+      "rule": "Detachment Rule\nTarget Sighted\nEach time a TANK ACE unit from your army (see below) Advances, do not make an Advance roll for it. Instead, until the end of the phase, add 6\" to the Move characteristic of models in that unit.\nEach time a TANK ACE unit from your army shoots in your Shooting phase, if that unit did not Advance this turn, you can re-roll the Damage roll.\nKEYWORDS\nADEPTUS ASTARTES VEHICLE units from your army (excluding FORTIFICATIONS, DROP PODS, WALKERS and units that can FLY) have the TANK ACE keyword.\nIn the Muster Armies step, you can select up to three TANK ACE units from your army to gain the CHARACTER keyword.\nDesigner’s Note: This means that the selected units can be given Enhancements, and one of them can be selected as your WARLORD.",
+      "stratagems": [
+        {
+          "name": "ARMOUR OF CONTEMPT",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1."
+        },
+        {
+          "name": "TARGET WEAK POINT",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase.\nTARGET: One TANK ACE unit from your army that has not been selected to shoot this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes a ranged attack that targets a MONSTER or VEHICLE unit, improve the Armour Penetration characteristic of that attack by 1.\nRESTRICTIONS: A unit cannot be targeted with this and the Kill Shot Stratagem in the same phase."
+        },
+        {
+          "name": "KILL SHOT",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase.\nTARGET: One TANK ACE unit from your army that has not been selected to shoot this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes an attack that targets a MONSTER or VEHICLE unit, re-roll a Wound roll of 1. If the target unit is below its Starting Strength, you can re-roll the Wound roll instead.\nRESTRICTIONS: A unit cannot be targeted with this and the Target Weak Point Stratagem in the same phase."
+        },
+        {
+          "name": "RAPID GUNNERY",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your Shooting phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot this phase.\nEFFECT: Until the end of the phase, your unit is eligible to shoot in a turn in which it Fell Back."
+        },
+        {
+          "name": "REACTIVE REPOSITIONING",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move.\nTARGET: One TANK ACE unit from your army (excluding units containing one or more models with a Wounds characteristic of 16+) that is within 9\" of that enemy unit.\nEFFECT: Your unit can make a Normal move of up to D6\"."
+        },
+        {
+          "name": "MACHINE VENGEANCE",
+          "cp": "1CP",
+          "category": "Epic Deed",
+          "text": "WHEN: Your opponent’s Shooting phase, just after an enemy unit has shot.\nTARGET: One TANK ACE unit from your army (excluding units containing one or more models with a Wounds characteristic of 16+) that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Your unit can shoot as if it were your Shooting phase, but must target only that enemy unit when doing so, and can only do so if that enemy unit is visible and an eligible target.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(129)});"
         }
       ]
     },
@@ -295,22 +681,65 @@
         {
           "id": "adept-of-the-omnissiah",
           "name": "Adept of the Omnissiah",
-          "points": 35
+          "points": 35,
+          "description": "TECHMARINE model only. Once per battle round, when a saving throw is failed for a friendly ADEPTUS ASTARTES VEHICLE model within 6\" of the bearer, you can change the Damage characteristic of that attack to 0."
         },
         {
           "id": "master-of-machine-war",
           "name": "Master of Machine War",
-          "points": 20
+          "points": 20,
+          "description": "ADEPTUS ASTARTES model only. In your Command phase, select one ADEPTUS ASTARTES VEHICLE model within 6\" of the bearer. Until the start of your next Command phase, that VEHICLE is eligible to shoot even if it Fell Back or Advanced this turn."
         },
         {
           "id": "target-augury-web",
           "name": "Target Augury Web",
-          "points": 30
+          "points": 30,
+          "description": "TECHMARINE model only. In your Command phase, select one ADEPTUS ASTARTES VEHICLE model within 6\" of the bearer. Until the start of your next Command phase, weapons equipped by that VEHICLE model have the [LETHAL HITS] ability."
         },
         {
           "id": "the-flesh-is-weak",
           "name": "The Flesh Is Weak",
-          "points": 10
+          "points": 10,
+          "description": "ADEPTUS ASTARTES model only. The bearer has the Feel No Pain 4+ ability."
+        }
+      ],
+      "rule": "Detachment Rule\nArmoured Wrath\nOnce per phase for each ADEPTUS ASTARTES unit in your army, you can re-roll one Hit roll, one Wound roll or one Damage roll made for a model in that unit.",
+      "stratagems": [
+        {
+          "name": "UNBOWED CONVICTION",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Command phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that is below its Starting Strength.\nEFFECT: Until the end of the turn, your unit can ignore any or all modifiers to its characteristics and/or to any roll or test made for it (excluding modifiers to saving throws)."
+        },
+        {
+          "name": "ARMOUR OF CONTEMPT",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1."
+        },
+        {
+          "name": "MERCY IS WEAKNESS",
+          "cp": "2CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase or the Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot or fight this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes an attack that targets a unit that is below its Starting Strength, that attack has the [SUSTAINED HITS 1] ability, and when making such an attack, if the attacking model is a VEHICLE, a successful unmodified Hit roll of 5+ scores a Critical Hit."
+        },
+        {
+          "name": "VENGEFUL ANIMUS",
+          "cp": "1CP",
+          "category": "Epic Deed",
+          "text": "WHEN: Any phase, just after an ADEPTUS ASTARTES VEHICLE model from your army with the Deadly Demise ability is destroyed.\nTARGET: That ADEPTUS ASTARTES VEHICLE model. You can use this Stratagem on that model even though it was just destroyed.\nEFFECT: Do not roll one D6 to determine whether mortal wounds are inflicted by your model’s Deadly Demise ability. Instead, mortal wounds are automatically inflicted."
+        },
+        {
+          "name": "ANCIENT FURY",
+          "cp": "1CP",
+          "category": "Epic Deed",
+          "text": "WHEN: Your Command phase.\nTARGET: One ADEPTUS ASTARTES WALKER model from your army.\nEFFECT: Until the start of your next Command phase, improve your model’s Move, Toughness, Leadership and Objective Control characteristics by 1 and each time your model makes an attack, add 1 to the Hit roll."
+        },
+        {
+          "name": "POWER OF THE MACHINE SPIRIT",
+          "cp": "1CP",
+          "category": "Epic Deed",
+          "text": "WHEN: Your opponent’s Shooting phase, just after an enemy unit has resolved its attacks.\nTARGET: One ADEPTUS ASTARTES VEHICLE unit from your army that was reduced to Below Half-strength as a result of the attacking unit’s attacks.\nEFFECT: Your unit can shoot as if it were your Shooting phase, but must target only that enemy unit when doing so, and can only do so if that enemy unit is an eligible target.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(120)});"
         }
       ]
     },
@@ -343,22 +772,65 @@
         {
           "id": "dedicated-gunship",
           "name": "Dedicated Gunship",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES TERMINATOR model only. Once per battle, at the end of your opponent’s Fight phase, if the bearer’s unit is not within Engagement Range of one or more enemy units, the bearer can use this Enhancement. If it does, remove the bearer’s unit from the battlefield and place it into Strategic Reserves."
         },
         {
           "id": "laurels-of-thunder",
           "name": "Laurels of Thunder",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES model only. You can re-roll Charge rolls made for the bearer’s unit in a turn in which it was set up on the battlefield."
         },
         {
           "id": "orbital-uplink-reliquary",
           "name": "Orbital Uplink Reliquary",
-          "points": 25
+          "points": 25,
+          "description": "ADEPTUS ASTARTES model only. After both players have deployed their armies, select up to three ADEPTUS ASTARTES units from your army and redeploy them. When doing so, you can set those units up in Strategic Reserves if you wish, regardless of how many units are already in Strategic Reserves."
         },
         {
           "id": "veteran-of-the-vanguard",
           "name": "Veteran of the Vanguard",
-          "points": 20
+          "points": 20,
+          "description": "ADEPTUS ASTARTES model only. Models in the bearer’s unit have the Scouts 6\" ability."
+        }
+      ],
+      "rule": "Detachment Rule\nRapid-drop Deployment\nAt the start of the Declare Battle Formations step, select a number of ADEPTUS ASTARTES units (excluding TITANIC units) from your army based on the battle size, as shown below. Models in those units have the Deep Strike ability.\nBATTLE SIZENUMBER OF UNITS\nIncursion2\nStrike Force3\nOnslaught4\nEach time an ADEPTUS ASTARTES model from your army makes an attack, if it was set up on the battlefield this turn, re-roll a Wound roll of 1. If it disembarked from a DROP POD this turn, re-roll a Hit roll of 1 as well.",
+      "stratagems": [
+        {
+          "name": "SUPPRESSION STRAFING",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Command phase.\nTARGET: One ADEPTUS ASTARTES unit from your army.\nEFFECT: Select one enemy unit visible to and within 18\" of your unit. That enemy unit takes a Battle-shock test. When doing so, subtract 1 from that test and, if that test is failed, until the start of your next turn, that enemy unit is suppressed. While a unit is suppressed, each time a model in that unit makes an attack, subtract 1 from the Hit roll.\nRESTRICTIONS: You cannot use this Stratagem more than once per battle round."
+        },
+        {
+          "name": "TACTICAL DECAPITATION",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase or the Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot or fight this phase.\nEFFECT: Until the end of the phase, weapons equipped by models in your unit have the [PRECISION] ability and each time a model in your unit makes an attack that targets a CHARACTER unit, add 1 to the Hit roll."
+        },
+        {
+          "name": "SHOCK ONSLAUGHT",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to fight this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes a Pile-in or Consolidation move, it can move up to 6\" instead of up to 3\"."
+        },
+        {
+          "name": "AUTO‑SENSE COORDINATION",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase or the Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot or fight this phase.\nEFFECT: Select the [LETHAL HITS] or [SUSTAINED HITS 1] ability. Until the end of the phase, weapons equipped by models in your unit have this ability in a turn in which they disembarked from a DROP POD or while targeting an enemy unit within 12\"."
+        },
+        {
+          "name": "BLIND SCREEN",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your opponent’s Shooting phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES unit (excluding TITANIC units) from your army that was selected as the target of one or more of the attacking unit’s attacks and one friendly ADEPTUS ASTARTES SMOKE VEHICLE or DROP POD unit within 9\" of it.\nEFFECT: Until the end of the phase, models in your units have the Stealth ability and each time a ranged attack targets one of your units, models in that unit have the Benefit of Cover against that attack."
+        },
+        {
+          "name": "ONWARD FOR THE EMPEROR",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: End of your opponent’s Fight phase.\nTARGET: One ADEPTUS ASTARTES INFANTRY unit from your army that was not set up on the battlefield this turn and one friendly TRANSPORT it is able to embark within.\nEFFECT: If your ADEPTUS ASTARTES unit is wholly within 6\" of that TRANSPORT, it can embark within it.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(126)});"
         }
       ]
     },
@@ -371,22 +843,65 @@
         {
           "id": "feinting-withdrawal",
           "name": "Feinting Withdrawal",
-          "points": 10
+          "points": 10,
+          "description": "ADEPTUS ASTARTES model only. While the bearer is leading a unit, that unit is eligible to shoot in a turn in which it Fell Back."
         },
         {
           "id": "fury-of-the-storm",
           "name": "Fury of the Storm",
-          "points": 25
+          "points": 25,
+          "description": "ADEPTUS ASTARTES MOUNTED model only. Improve the Strength and Armour Penetration characteristics of the bearer’s melee weapons by 1. Each time the bearer ends a Charge move, until the end of the turn, improve the Strength and Armour Penetration characteristics of the bearers melee weapons by 2 instead."
         },
         {
           "id": "hunters-instincts",
           "name": "Hunter’s Instincts",
-          "points": 25
+          "points": 25,
+          "description": "ADEPTUS ASTARTES MOUNTED model only. If the bearer’s unit is in Strategic Reserves, for the purposes of setting up that unit on the battlefield, treat the current battle round number as being one higher than it actually is."
         },
         {
           "id": "portents-of-wisdom",
           "name": "Portents of Wisdom",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES model only. While the bearer is leading a unit, you can re-roll Advance rolls made for that unit."
+        }
+      ],
+      "rule": "ADEPTUS ASTARTES MOUNTED model only. If the bearer’s unit is in Strategic Reserves, for the purposes of setting up that unit on the battlefield, treat the current battle round number as being one higher than it actually is.\nRe-rolls\n\r\nSome rules allow you to re-roll a dice roll, which means you get to roll some or all of the dice again. If a rule allows you to re-roll a dice roll that was made by adding several dice together (e.g. 2D6, 3D6, etc.) then, unless otherwise stated, you must re-roll all of those dice again.\nYou can never re-roll a dice more than once, and re-rolls happen before modifiers (if any) are applied. Rules that refer to the value of an ‘unmodified’ dice roll are referring to the dice result after any re-rolls, but before any modifiers are applied.\nUnmodified Dice: the result after re-rolls, but before any modifiers.\nA dice can never be re-rolled more than once.\nYou must re-roll all dice if several need adding together (e.g. 2D6).\nRe-rolls are applied before any modifiers.\n\r\nThe ADEPTUS ASTARTES keyword is used in the following Space Marines datasheets:\nCharacters\nAncient\nAncient In Terminator Armour\nApothecary\nApothecary Biologis\nBladeguard Ancient\nCaptain\nCaptain In Gravis Armour\nCaptain In Phobos Armour\nCaptain In Terminator Armour\nCaptain With Jump Pack\nChaplain\nChaplain In Terminator Armour\nChaplain On Bike\nChaplain With Jump Pack\nJudiciar\nLieutenant\nLieutenant In Phobos Armour\nLieutenant In Reiver Armour\nLieutenant With Combi-weapon\nTechmarine\nCastellan\nChaplain Grimaldus\nCrusade Ancient\nEmperor’s Champion\nExecrator\nHigh Marshal Helbrecht\nMarshal\nAncient on Bike\nApothecary on Bike\nCaptain on Bike\nCarab Culln The Risen\nCompany Champion On Bike\nFerren Areios\nImperial Space Marine\nPrimaris Company Champion\nTechmarine on Bike\nBattleline\nAssault Intercessor Squad\nHeavy Intercessor Squad\nIntercessor Squad\nTactical Squad\nCrusader Squad\nCrusader Squad (Legendary)\nDedicated Transports\nDrop Pod\nRazorback\nRhino\nImpulsor\nLand Speeder Storm\nRelic Razorback\nTerrax-pattern Termite\nFortifications\nHammerfall Bunker\nOther\nAggressor Squad\nAssault Intercessors With Jump Packs\nBallistus Dreadnought\nBladeguard Veteran Squad\nBrutalis Dreadnought\nCenturion Assault Squad\nCenturion Devastator Squad\nCompany Heroes\nDesolation Squad\nDevastator Squad\nDreadnought\nEliminator Squad\nEradicator Squad\nFirestrike Servo-turrets\nHellblaster Squad\nInceptor Squad\nIncursor Squad\nInfernus Squad\nand others...\nThe AIRCRAFT keyword is used in the following Space Marines datasheets:\nOther\nStormhawk Interceptor\nStormraven Gunship\nStormtalon Gunship\nThunderhawk Gunship\nCaestus Assault Ram\nFire Raptor Gunship\nSokar-pattern Stormbird\nStorm Eagle Gunship\nThunderhawk Transporter\nXiphon Interceptor\nThe ANCIENT keyword is used in the following Space Marines datasheets:\nCharacters\nAncient\nAncient In Terminator Armour\nBladeguard Ancient\nCrusade Ancient\nAncient on Bike\nOther\nCompany Heroes\nThe APOTHECARY keyword is used in the following Space Marines datasheets:\nCharacters\nApothecary\nApothecary Biologis\nApothecary on Bike\nThe ARTILLERY keyword is used in the following Space Marines datasheets:\nOther\nFirestrike Servo-turrets\nRapier Carrier\nTarantula Sentry Battery\nThunderfire Cannon\nThe BATTLELINE keyword is used in the following Space Marines datasheets:\nBattleline\nAssault Intercessor Squad\nHeavy Intercessor Squad\nIntercessor Squad\nTactical Squad\nCrusader Squad\nCrusader Squad (Legendary)\nThe BLACK TEMPLARS keyword is used in the following Space Marines datasheets:\nCharacters\nCastellan\nChaplain Grimaldus\nCrusade Ancient\nEmperor’s Champion\nExecrator\nHigh Marshal Helbrecht\nMarshal\nBattleline\nCrusader Squad\nCrusader Squad (Legendary)\nDedicated Transports\nImpulsor\nOther\nGladiator Lancer\nGladiator Reaper\nGladiator Valiant\nLand Raider Crusader\nRepulsor\nRepulsor Executioner\nSternguard Veteran Squad\nSword Brethren Squad\nTerminator Squad\nThe CAPTAIN keyword is used in the following Space Marines datasheets:\nCharacters\nCaptain\nCaptain In Gravis Armour\nCaptain In Phobos Armour\nCaptain In Terminator Armour\nCaptain With Jump Pack\nMarshal\nCaptain on Bike\nFerren Areios\nThe CENTURION keyword is used in the following Space Marines datasheets:\nOther\nCenturion Assault Squad\nCenturion Devastator Squad\nThe CHAPLAIN keyword is used in the following Space Marines datasheets:\nCharacters\nChaplain\nChaplain In Terminator Armour\nChaplain On Bike\nChaplain With Jump Pack\nExecrator\nThe CHAPTER MASTER keyword is used in the following Space Marines datasheets:\nCharacters\nHigh Marshal Helbrecht\nThe CHARACTER keyword is used in the following Space Marines datasheets:\nCharacters\nAncient\nAncient In Terminator Armour\nApothecary\nApothecary Biologis\nBladeguard Ancient\nCaptain\nCaptain In Gravis Armour\nCaptain In Phobos Armour\nCaptain In Terminator Armour\nCaptain With Jump Pack\nChaplain\nChaplain In Terminator Armour\nChaplain On Bike\nChaplain With Jump Pack\nJudiciar\nLieutenant\nLieutenant In Phobos Armour\nLieutenant In Reiver Armour\nLieutenant With Combi-weapon\nTechmarine\nCastellan\nChaplain Grimaldus\nCrusade Ancient\nEmperor’s Champion\nExecrator\nHigh Marshal Helbrecht\nMarshal\nAncient on Bike\nApothecary on Bike\nCaptain on Bike\nCarab Culln The Risen\nCompany Champion On Bike\nFerren Areios\nImperial Space Marine\nPrimaris Company Champion\nTechmarine on Bike\nThe COMMAND SQUAD keyword is used in the following Space Marines datasheets:\nOther\nCommand Squad\nThe CRUSADER SQUAD keyword is used in the following Space Marines datasheets:\nBattleline\nCrusader Squad\nCrusader Squad (Legendary)\nThe DEATHWING keyword is used in the following Space Marines datasheets:\nCharacters\nAncient In Terminator Armour\nBladeguard Ancient\nCaptain In Terminator Armour\nChaplain In Terminator Armour\nCarab Culln The Risen\nOther\nBallistus Dreadnought\nBladeguard Veteran Squad\nBrutalis Dreadnought\nDreadnought\nLand Raider\nLand Raider Redeemer\nRedemptor Dreadnought\nTerminator Assault Squad\nVanguard Veteran Squad With Jump Packs\nLand Raider Crusader\nRepulsor\nRepulsor Executioner\nSternguard Veteran Squad\nTerminator Squad\nChaplain Venerable Dreadnought\nDeredeo Dreadnought\nIronclad Dreadnought\nLeviathan Dreadnought\nMortis Dreadnought\nRelic Contemptor Dreadnought\nRelic Terminator Squad\nVenerable Dreadnought (Legendary)\nThe DEDICATED TRANSPORT keyword is used in the following Space Marines datasheets:\nDedicated Transports\nDrop Pod\nRazorback\nRhino\nImpulsor\nLand Speeder Storm\nRelic Razorback\nTerrax-pattern Termite\nThe DREADNOUGHT keyword is used in the following Space Marines datasheets:\nCharacters\nCarab Culln The Risen\nOther\nBallistus Dreadnought\nBrutalis Dreadnought\nDreadnought\nRedemptor Dreadnought\nChaplain Venerable Dreadnought\nDeredeo Dreadnought\nIronclad Dreadnought\nLeviathan Dreadnought\nMortis Dreadnought\nRelic Contemptor Dreadnought\nVenerable Dreadnought (Legendary)\nThe EPIC HERO keyword is used in the following Space Marines datasheets:\nCharacters\nChaplain Grimaldus\nHigh Marshal Helbrecht\nCarab Culln The Risen\nFerren Areios\nFlying\n\r\nIf a model can FLY, then when it makes a Normal, Advance or Fall Back move, it can be moved over enemy models as if they were not there, and can be moved within Engagement Range of enemy models when making such a move. Note this also means that MONSTER and VEHICLE models that can FLY can be moved over other MONSTER and VEHICLE models when making such a move. However, models that can FLY cannot end their move on top of any other models or within Engagement Range of any enemy models.\nWhen a model that can FLY starts or ends a move on a terrain feature, instead of measuring the path it has moved across the battlefield, you instead measure its path ‘through the air’, as shown in the diagram below.\nFLY models can move over enemy models when they make a Normal, Advance or Fall Back move.\nFLY models that start or end a move on a terrain feature measure distance moved through the air when they make a Normal, Advance or Fall Back move.\n\r\nThe FLY keyword is used in the following Space Marines datasheets:\nCharacters\nCaptain With Jump Pack\nChaplain With Jump Pack\nDedicated Transports\nLand Speeder Storm\nOther\nAssault Intercessors With Jump Packs\nInceptor Squad\nStorm Speeder Hailstrike\nStorm Speeder Hammerstrike\nStorm Speeder Thunderstrike\nStormhawk Interceptor\nStormraven Gunship\nStormtalon Gunship\nSuppressor Squad\nVanguard Veteran Squad With Jump Packs\nThunderhawk Gunship\nAssault Squad with Jump Packs\nCaestus Assault Ram\nFire Raptor Gunship\nJavelin Attack Speeder\nLand Speeder\nLand Speeder Tempest\nLand Speeder Tornado\nLand Speeder Typhoon\nSokar-pattern Stormbird\nStorm Eagle Gunship\nThunderhawk Transporter\nXiphon Interceptor\nThe FORTIFICATION keyword is used in the following Space Marines datasheets:\nFortifications\nHammerfall Bunker\nThe GLADIATOR LANCER keyword is used in the following Space Marines datasheets:\nOther\nGladiator Lancer\nThe GLADIATOR REAPER keyword is used in the following Space Marines datasheets:\nOther\nGladiator Reaper\nThe GLADIATOR VALIANT keyword is used in the following Space Marines datasheets:\nOther\nGladiator Valiant\nThe GRAVIS keyword is used in the following Space Marines datasheets:\nCharacters\nApothecary Biologis\nCaptain In Gravis Armour\nBattleline\nHeavy Intercessor Squad\nOther\nAggressor Squad\nEradicator Squad\nInceptor Squad\nThe GRENADES keyword is used in the following Space Marines datasheets:\nCharacters\nAncient\nApothecary\nBladeguard Ancient\nCaptain\nCaptain In Gravis Armour\nCaptain In Phobos Armour\nCaptain With Jump Pack\nChaplain\nChaplain On Bike\nLieutenant\nLieutenant In Phobos Armour\nLieutenant In Reiver Armour\nLieutenant With Combi-weapon\nTechmarine\nCastellan\nChaplain Grimaldus\nCrusade Ancient\nEmperor’s Champion\nExecrator\nHigh Marshal Helbrecht\nMarshal\nAncient on Bike\nApothecary on Bike\nCaptain on Bike\nCompany Champion On Bike\nFerren Areios\nImperial Space Marine\nPrimaris Company Champion\nTechmarine on Bike\nBattleline\nAssault Intercessor Squad\nHeavy Intercessor Squad\nIntercessor Squad\nTactical Squad\nCrusader Squad\nCrusader Squad (Legendary)\nOther\nAssault Intercessors With Jump Packs\nBladeguard Veteran Squad\nCompany Heroes\nDesolation Squad\nDevastator Squad\nEliminator Squad\nEradicator Squad\nHellblaster Squad\nIncursor Squad\nInfernus Squad\nInfiltrator Squad\nInvader ATV\nLand Raider Redeemer\nOutrider Squad\nReiver Squad\nScout Squad\nSuppressor Squad\nVanguard Veteran Squad With Jump Packs\nLand Raider Crusader\nSternguard Veteran Squad\nSword Brethren Squad\nAssault Squad\nAssault Squad with Jump Packs\nAttack Bike Squad\nBike Squad\nCommand Squad\nCompany Veterans On Bikes\nScout Bike Squad\nScout Sniper Squad\nVanguard Veteran Squad\nThe IMPERIUM keyword is used in the following Space Marines datasheets:\nCharacters\nAncient\nAncient In Terminator Armour\nApothecary\nApothecary Biologis\nBladeguard Ancient\nCaptain\nCaptain In Gravis Armour\nCaptain In Phobos Armour\nCaptain In Terminator Armour\nCaptain With Jump Pack\nChaplain\nChaplain In Terminator Armour\nChaplain On Bike\nChaplain With Jump Pack\nJudiciar\nLieutenant\nLieutenant In Phobos Armour\nLieutenant In Reiver Armour\nLieutenant With Combi-weapon\nTechmarine\nCastellan\nChaplain Grimaldus\nCrusade Ancient\nEmperor’s Champion\nExecrator\nHigh Marshal Helbrecht\nMarshal\nAncient on Bike\nApothecary on Bike\nCaptain on Bike\nCarab Culln The Risen\nCompany Champion On Bike\nFerren Areios\nImperial Space Marine\nPrimaris Company Champion\nTechmarine on Bike\nBattleline\nAssault Intercessor Squad\nHeavy Intercessor Squad\nIntercessor Squad\nTactical Squad\nCrusader Squad\nCrusader Squad (Legendary)\nDedicated Transports\nDrop Pod\nRazorback\nRhino\nImpulsor\nLand Speeder Storm\nRelic Razorback\nTerrax-pattern Termite\nFortifications\nHammerfall Bunker\nOther\nAggressor Squad\nAssault Intercessors With Jump Packs\nBallistus Dreadnought\nBladeguard Veteran Squad\nBrutalis Dreadnought\nCenturion Assault Squad\nCenturion Devastator Squad\nCompany Heroes\nDesolation Squad\nDevastator Squad\nDreadnought\nEliminator Squad\nEradicator Squad\nFirestrike Servo-turrets\nHellblaster Squad\nInceptor Squad\nIncursor Squad\nInfernus Squad\nand others...\nThe IMPULSOR keyword is used in the following Space Marines datasheets:\nDedicated Transports\nImpulsor\nThe INFANTRY keyword is used in the following Space Marines datasheets:\nCharacters\nAncient\nAncient In Terminator Armour\nApothecary\nApothecary Biologis\nBladeguard Ancient\nCaptain\nCaptain In Gravis Armour\nCaptain In Phobos Armour\nCaptain In Terminator Armour\nCaptain With Jump Pack\nChaplain\nChaplain In Terminator Armour\nChaplain With Jump Pack\nJudiciar\nLieutenant\nLieutenant In Phobos Armour\nLieutenant In Reiver Armour\nLieutenant With Combi-weapon\nTechmarine\nCastellan\nChaplain Grimaldus\nCrusade Ancient\nEmperor’s Champion\nExecrator\nHigh Marshal Helbrecht\nMarshal\nFerren Areios\nImperial Space Marine\nPrimaris Company Champion\nBattleline\nAssault Intercessor Squad\nHeavy Intercessor Squad\nIntercessor Squad\nTactical Squad\nCrusader Squad\nCrusader Squad (Legendary)\nOther\nAggressor Squad\nAssault Intercessors With Jump Packs\nBladeguard Veteran Squad\nCenturion Assault Squad\nCenturion Devastator Squad\nCompany Heroes\nDesolation Squad\nDevastator Squad\nEliminator Squad\nEradicator Squad\nHellblaster Squad\nInceptor Squad\nIncursor Squad\nInfernus Squad\nInfiltrator Squad\nReiver Squad\nScout Squad\nSuppressor Squad\nTerminator Assault Squad\nVanguard Veteran Squad With Jump Packs\nSternguard Veteran Squad\nSword Brethren Squad\nTerminator Squad\nAssault Squad\nAssault Squad with Jump Packs\nAstartes Servitors\nCommand Squad\nRelic Terminator Squad\nScout Sniper Squad\nVanguard Veteran Squad\nThe JUDICIAR keyword is used in the following Space Marines datasheets:\nCharacters\nJudiciar\nThe JUMP PACK keyword is used in the following Space Marines datasheets:\nCharacters\nCaptain With Jump Pack\nChaplain With Jump Pack\nOther\nAssault Intercessors With Jump Packs\nInceptor Squad\nSuppressor Squad\nVanguard Veteran Squad With Jump Packs\nAssault Squad with Jump Packs\nThe LAND RAIDER keyword is used in the following Space Marines datasheets:\nOther\nLand Raider\nLand Raider Redeemer\nLand Raider Crusader\nThe LAND RAIDER CRUSADER keyword is used in the following Space Marines datasheets:\nOther\nLand Raider Crusader\nThe LIEUTENANT keyword is used in the following Space Marines datasheets:\nCharacters\nLieutenant\nLieutenant In Phobos Armour\nLieutenant In Reiver Armour\nLieutenant With Combi-weapon\nCastellan\nThe MARSHAL keyword is used in the following Space Marines datasheets:\nCharacters\nMarshal\nThe MOUNTED keyword is used in the following Space Marines datasheets:\nCharacters\nChaplain On Bike\nAncient on Bike\nApothecary on Bike\nCaptain on Bike\nCompany Champion On Bike\nTechmarine on Bike\nOther\nInvader ATV\nOutrider Squad\nAttack Bike Squad\nBike Squad\nCompany Veterans On Bikes\nScout Bike Squad\nThe PHOBOS keyword is used in the following Space Marines datasheets:\nCharacters\nCaptain In Phobos Armour\nLieutenant In Phobos Armour\nLieutenant In Reiver Armour\nLieutenant With Combi-weapon\nOther\nEliminator Squad\nIncursor Squad\nInfiltrator Squad\nInvictor Tactical Warsuit\nReiver Squad\nThe PREDATOR ANNIHILATOR keyword is used in the following Space Marines datasheets:\nOther\nPredator Annihilator\nThe PREDATOR DESTRUCTOR keyword is used in the following Space Marines datasheets:\nOther\nPredator Destructor\nThe RAVENWING keyword is used in the following Space Marines datasheets:\nCharacters\nChaplain On Bike\nAncient on Bike\nApothecary on Bike\nCaptain on Bike\nCompany Champion On Bike\nTechmarine on Bike\nDedicated Transports\nLand Speeder Storm\nOther\nInvader ATV\nOutrider Squad\nStorm Speeder Hailstrike\nStorm Speeder Hammerstrike\nStorm Speeder Thunderstrike\nStormhawk Interceptor\nStormraven Gunship\nStormtalon Gunship\nThunderhawk Gunship\nAttack Bike Squad\nBike Squad\nCaestus Assault Ram\nCompany Veterans On Bikes\nFire Raptor Gunship\nJavelin Attack Speeder\nLand Speeder\nLand Speeder Tempest\nLand Speeder Tornado\nLand Speeder Typhoon\nScout Bike Squad\nSokar-pattern Stormbird\nStorm Eagle Gunship\nThunderhawk Transporter\nXiphon Interceptor\nThe REPULSOR keyword is used in the following Space Marines datasheets:\nOther\nRepulsor\nThe REPULSOR EXECUTIONER keyword is used in the following Space Marines datasheets:\nOther\nRepulsor Executioner\nThe RHINO keyword is used in the following Space Marines datasheets:\nDedicated Transports\nRhino\nThe SCOUT SQUAD keyword is used in the following Space Marines datasheets:\nOther\nScout Squad\nThe SMOKE keyword is used in the following Space Marines datasheets:\nCharacters\nLieutenant In Reiver Armour\nCarab Culln The Risen\nDedicated Transports\nRazorback\nRhino\nRelic Razorback\nOther\nDreadnought\nIncursor Squad\nInfiltrator Squad\nLand Raider\nLand Raider Redeemer\nPredator Annihilator\nPredator Destructor\nReiver Squad\nScout Squad\nStormhawk Interceptor\nSuppressor Squad\nVindicator\nWhirlwind\nGladiator Lancer\nGladiator Reaper\nGladiator Valiant\nLand Raider Crusader\nRepulsor\nRepulsor Executioner\nCerberus\nDeimos Predator\nDeredeo Dreadnought\nFalchion\nFellblade\nHunter\nIronclad Dreadnought\nKratos\nLand Raider Achilles\nLand Raider Excelsior\nLand Raider Helios\nLand Raider Prometheus\nLand Raider Proteus\nLeviathan Dreadnought\nMastodon\nRhino Primaris\nScout Bike Squad\nScout Sniper Squad\nSicaran Arcus\nSicaran Battle Tank\nSicaran Omega\nSicaran Punisher\nSicaran Venator\nSpartan\nStalker\nTerminus Ultra\nTyphon\nVenerable Dreadnought (Legendary)\nVindicator Laser Destroyer\nWhirlwind Scorpius\nThe STERNGUARD VETERAN SQUAD keyword is used in the following Space Marines datasheets:\nOther\nSternguard Veteran Squad\nThe TACTICUS keyword is used in the following Space Marines datasheets:\nCharacters\nAncient\nApothecary\nBladeguard Ancient\nCaptain\nCaptain With Jump Pack\nChaplain\nJudiciar\nLieutenant\nTechmarine\nCastellan\nChaplain Grimaldus\nCrusade Ancient\nEmperor’s Champion\nExecrator\nHigh Marshal Helbrecht\nMarshal\nFerren Areios\nPrimaris Company Champion\nBattleline\nAssault Intercessor Squad\nIntercessor Squad\nCrusader Squad\nOther\nAssault Intercessors With Jump Packs\nBladeguard Veteran Squad\nCompany Heroes\nDesolation Squad\nHellblaster Squad\nInfernus Squad\nSternguard Veteran Squad\nSword Brethren Squad\nThe TECHMARINE keyword is used in the following Space Marines datasheets:\nCharacters\nTechmarine\nTechmarine on Bike\nThe TERMINATOR keyword is used in the following Space Marines datasheets:\nCharacters\nAncient In Terminator Armour\nCaptain In Terminator Armour\nChaplain In Terminator Armour\nOther\nTerminator Assault Squad\nTerminator Squad\nRelic Terminator Squad\nThe TERMINATOR SQUAD keyword is used in the following Space Marines datasheets:\nOther\nTerminator Squad\nThe TITANIC keyword is used in the following Space Marines datasheets:\nOther\nAstraeus\nThunderhawk Gunship\nFalchion\nFellblade\nMastodon\nSokar-pattern Stormbird\nThunderhawk Transporter\nThe TRANSPORT keyword is used in the following Space Marines datasheets:\nDedicated Transports\nDrop Pod\nRazorback\nRhino\nImpulsor\nLand Speeder Storm\nRelic Razorback\nTerrax-pattern Termite\nOther\nLand Raider\nLand Raider Redeemer\nStormraven Gunship\nLand Raider Crusader\nRepulsor\nRepulsor Executioner\nThunderhawk Gunship\nCaestus Assault Ram\nDreadnought Drop Pod\nLand Raider Achilles\nLand Raider Excelsior\nLand Raider Helios\nLand Raider Prometheus\nLand Raider Proteus\nMastodon\nRhino Primaris\nSokar-pattern Stormbird\nSpartan\nStorm Eagle Gunship\nTerminus Ultra\nThunderhawk Transporter\nThe VANGUARD VETERAN SQUAD keyword is used in the following Space Marines datasheets:\nOther\nVanguard Veteran Squad With Jump Packs\nVanguard Veteran Squad\nThe VEHICLE keyword is used in the following Space Marines datasheets:\nCharacters\nCarab Culln The Risen\nDedicated Transports\nDrop Pod\nRazorback\nRhino\nImpulsor\nLand Speeder Storm\nRelic Razorback\nTerrax-pattern Termite\nFortifications\nHammerfall Bunker\nOther\nBallistus Dreadnought\nBrutalis Dreadnought\nDreadnought\nFirestrike Servo-turrets\nInvictor Tactical Warsuit\nLand Raider\nLand Raider Redeemer\nPredator Annihilator\nPredator Destructor\nRedemptor Dreadnought\nStorm Speeder Hailstrike\nStorm Speeder Hammerstrike\nStorm Speeder Thunderstrike\nStormhawk Interceptor\nStormraven Gunship\nStormtalon Gunship\nVindicator\nWhirlwind\nGladiator Lancer\nGladiator Reaper\nGladiator Valiant\nLand Raider Crusader\nRepulsor\nRepulsor Executioner\nAstraeus\nThunderhawk Gunship\nCaestus Assault Ram\nCerberus\nChaplain Venerable Dreadnought\nDeathstorm Drop Pod\nDeimos Predator\nDeredeo Dreadnought\nDreadnought Drop Pod\nFalchion\nFellblade\nFire Raptor Gunship\nHunter\nIronclad Dreadnought\nJavelin Attack Speeder\nKratos\nLand Raider Achilles\nLand Raider Excelsior\nLand Raider Helios\nLand Raider Prometheus\nLand Raider Proteus\nLand Speeder\nLand Speeder Tempest\nLand Speeder Tornado\nLand Speeder Typhoon\nLeviathan Dreadnought\nMastodon\nMortis Dreadnought\nRapier Carrier\nRelic Contemptor Dreadnought\nRhino Primaris\nSicaran Arcus\nSicaran Battle Tank\nSicaran Omega\nSicaran Punisher\nSicaran Venator\nSokar-pattern Stormbird\nSpartan\nStalker\nStorm Eagle Gunship\nTarantula Air Defence Battery\nTarantula Sentry Battery\nand others...\nThe VINDICATOR keyword is used in the following Space Marines datasheets:\nOther\nVindicator\nThe WALKER keyword is used in the following Space Marines datasheets:\nCharacters\nCarab Culln The Risen\nOther\nBallistus Dreadnought\nBrutalis Dreadnought\nDreadnought\nInvictor Tactical Warsuit\nRedemptor Dreadnought\nChaplain Venerable Dreadnought\nDeredeo Dreadnought\nIronclad Dreadnought\nLeviathan Dreadnought\nMortis Dreadnought\nRelic Contemptor Dreadnought\nVenerable Dreadnought (Legendary)\nBattle Honours\n\r\nEach time a unit gains a rank, it can gain one Battle Honour. Units can also gain additional Battle Honours by other means (such as by winning certain missions, fulfilling certain Agendas, etc.). Each time a unit gains a Battle Honour, increase its Crusade points total by 1 (if the unit is TITANIC, increase its Crusade points total by 2 instead). Make a note of each Battle Honour a unit has on its Crusade card. A unit can never have more than three Battle Honours unless it is a CHARACTER, in which case it can have up to six Battle Honours. Once the maximum is reached, each time a unit gains a new Battle Honour it must first remove one of its existing Battle Honours.\nThere are several categories of Battle Honours that can be bestowed upon a unit, such as Battle Traits, Weapon Modifications and Crusade Relics. Other categories of Battle Honour may be found in other publications. Each time a unit gains a Battle Honour, you can select from any category.\nOnce a unit gains enough XP it will gain a rank.\nOnly CHARACTER units can gain the Heroic or Legendary ranks.\nEach time a unit gains a rank, it can gain a Battle Honour.\nThere are several categories of Battle Honours, which include:\nBattle Traits: New skills and abilities.\nWeapon Modifications: Upgrade an item of wargear.\nCrusade Relic: Gain a rare and powerful artefact.\nEach time a unit gains a Battle Honour, increase its Crusade points total by 1 (or by 2 if TITANIC).\n\r\nRENOWNED HEROES1-3RP\nWhen you first start a Crusade force, you can purchase this Requisition the first time you add a CHARACTER unit to your Order of Battle. After that point, you can purchase this Requisition each time a unit from your Order of Battle gains a rank. In either case, you cannot select an EPIC HERO unit, a unit that already has an Enhancement, or a unit that has either the Disgraced or Mark of Shame Battle Scars.\nYou can select one Enhancement that unit has access to (if using this Requisition when that unit gains a rank, this is instead of it gaining a Battle Honour). When doing so, that unit has access to any Enhancements described within any Detachment rules that it could use, even though you have not yet started to muster your army and so have not selected any Detachment rules yet.\nIf the selected Enhancement replaces a weapon that is a Crusade Relic or a weapon upgraded by Weapon Modifications, that Crusade Relic or Weapon Modifications are lost. Recalculate the unit’s points value as a result of gaining this Enhancement and update its Crusade card. You cannot make any changes that would cause you to exceed your Supply Limit.\nThis Requisition costs 1RP plus 1 additional RP for each other Enhancement that your Order of Battle contains (to a maximum of 3RP).\nExample: If this Requisition was used to give a unit an Enhancement and one other unit in your Order of Battle already had an Enhancement, it would cost 2RP.\nHit Roll\n\r\nWhen a model makes an attack, make one Hit roll for that attack by rolling one D6. If the result of the Hit roll is greater than or equal to the attack’s Ballistic Skill (BS) characteristic (if the attack is being made with a ranged weapon) or its Weapon Skill (WS) characteristic (if the attack is being made with a melee weapon), then that Hit roll is successful and scores one hit against the target unit. Otherwise, the attack fails and the attack sequence ends.\nAn unmodified Hit roll of 6 is called a Critical Hit and is always successful. An unmodified Hit roll of 1 always fails. A Hit roll can never be modified by more than -1 or +1.\nHit Roll (Ranged Attack): A hit is scored if the D6 result equals or exceeds that attack’s BS.\nHit Roll (Melee Attack): A hit is scored if the D6 result equals or exceeds that attack’s WS.\nCritical Hit: Unmodified Hit roll of 6. Always successful.\nAn unmodified Hit roll of 1 always fails.\nA Hit roll can never be modified by more than -1 or +1.\n\r\nSpace Marine Chapters\nIf an ADEPTUS ASTARTES unit has a second Faction keyword on its datasheet, that Faction keyword is the name of that unit’s Chapter. For example, MARNEUS CALGAR has both the ADEPTUS ASTARTES and ULTRAMARINES Faction keywords, and is therefore from the Ultramarines Chapter.\nYou cannot include units from more than one Chapter in your army.\nIf your army includes one or more BLACK TEMPLARS units, it cannot include any ADEPTUS ASTARTES PSYKER models, and cannot include any of the following models that do not have the Black Templars keyword: GLADIATOR LANCER; GLADIATOR REAPER; GLADIATOR VALIANT; IMPULSOR; REPULSOR; REPULSOR EXECUTIONER.\nIf your army includes one or more DEATHWATCH units, it cannot include any of the following units: DEVASTATOR SQUAD; SCOUT SQUAD; TACTICAL SQUAD.\nIf your army includes one or more SPACE WOLVES units, it cannot include any of the following units: APOTHECARY; DEVASTATOR SQUAD; TACTICAL SQUAD.\nThe datasheets using AGENT OF THE IMPERIUM and DEATHWATCH keywords can be found in the following Factions:\nImperium: Imperial Agents, Space Marines.\nThe AGENT OF THE IMPERIUM and DEATHWATCH keywords are used in the following datasheets:\nCharacters\nWatch Captain Artemis\nWatch Master\nKill Team Cassius\nKill Team Cassius\nBattleline\nAquila Kill Team\nDeathwatch Kill Team\nOther\nCorvus Blackstar\nDeathwatch Terminator Squad\nFortis Kill Team\nIndomitor Kill Team\nProteus Kill Team\nSpectrus Kill Team\nVeteran Bike Squad\nFeel No Pain\nFEEL NO PAIN\nSome warriors refuse to be laid low, even by what should be fatal wounds.\nSome models have ‘Feel No Pain x+’ listed in their abilities. Each time a model with this ability suffers damage and so would lose a wound (including wounds lost due to mortal wounds), roll one D6: if the result is greater than or equal to the number denoted by ‘x’, that wound is ignored and is not lost. If a model has more than one Feel No Pain ability, you can only use one of those abilities each time that model suffers damage and so would lose a wound.\nFeel No Pain x+: Each time this model would lose a wound, roll one D6: if the result equals or exceeds ‘x’, that wound is not lost.\nSustained Hits\n\r\nWeapons with [SUSTAINED HITS X] in their profile are known as Sustained Hits weapons. Each time an attack is made with such a weapon, if a Critical Hit is rolled, that attack scores a number of additional hits on the target as denoted by ‘x’.\nExample: A model makes an attack with a melee weapon with the [SUSTAINED HITS 2] ability. If the Hit roll is an unmodified 6 (a Critical Hit), then that attack scores a total of 3 hits on the target (1 from the successful Hit roll of 6, and 2 from the [SUSTAINED HITS 2] ability).\n[SUSTAINED HITS X]: Each Critical Hit scores ‘x’ additional hits on the target.\n\r\nDestroyed\n\r\nThroughout a battle, models will suffer damage and be destroyed. When a model is destroyed, it is removed from the battlefield. When every model in a unit has been destroyed, that unit is destroyed.\r\nLance\n\r\nWeapons with [LANCE] in their profile are known as Lance weapons. Each time an attack is made with such a weapon, if the bearer made a Charge move this turn, add 1 to that attack’s Wound roll.\r\nIgnores Cover\n\r\nWeapons with [IGNORES COVER] in their profile are known as Ignores Cover weapons. Each time an attack is made with such a weapon, the target cannot have the Benefit of Cover against that attack.\r\nEngagement Range\n\r\nEngagement Range represents the zone of threat that models present to their enemies. While a model is within 1\" horizontally and 5\" vertically of an enemy model, those models – and their units – are within Engagement Range of each other.\nModels cannot be set up or end a Normal, Advance or Fall Back move within Engagement Range of any enemy models. If for any reason a model cannot meet this condition, that model is destroyed.\nEngagement Range: Within 1\" horizontally and 5\" vertically.\nModels cannot be set up or end a Normal, Advance or Fall Back move within Engagement Range of any enemy models.\n\r\nHeavy\n\r\nWeapons with [HEAVY] in their profile are known as Heavy weapons. Each time an attack is made with such a weapon, if the attacking model’s unit Remained Stationary this turn, add 1 to that attack’s Hit roll.\nAdd 1 to Hit rolls if the bearer’s unit Remained Stationary this turn.\n\r\nRemain Stationary\n\r\nIf a unit Remains Stationary, none of its models can be moved for the rest of the phase.\r\n2. Battle-shock\n\r\nIn this step, you must take a Battle-shock test for each of your units on the battlefield that is Below Half-strength. To do so, roll 2D6: if the result is greater than or equal to the best Leadership characteristic in that unit, the test is passed; otherwise, the test is failed and, until the start of your next Command phase, that unit is Battle-shocked.\nWhile a unit is Battle-shocked:\nThe Objective Control characteristic of all of its models is 0.\nIf it Falls Back, you must take a Desperate Escape test for every model in that unit.\nIts controlling player cannot use Stratagems to affect that unit.\nOnce you have taken Battle-shock tests for all of your units that require them, your Command phase ends and you progress to your Movement phase.\nIn this step, if for any reason a unit is forced to take a Battle-shock test for being below its Starting Strength, unless otherwise stated, that unit does not also have to take a Battle-shock test for being Below Half-strength. While a unit is Battle-shocked, all models in that unit are also Battle-shocked.\nTake a Battle-shock test for each unit from your army on the battlefield that is Below Half-strength.\nRoll 2D6: if the result is greater than or equal to the unit’s Leadership, the test is passed. Otherwise, the unit is Battle-shocked until the start of your next Command phase.\nBattle-shocked units have an OC of 0 and their controlling player cannot use Stratagems to affect them.\nBattle-shocked units must take Desperate Escape tests if they Fall Back.\n\r\nThe ADEPTUS ASTARTES and VEHICLE keywords are used in the following Space Marines datasheets:\nCharacters\nCarab Culln The Risen\nDedicated Transports\nDrop Pod\nRazorback\nRhino\nImpulsor\nLand Speeder Storm\nRelic Razorback\nTerrax-pattern Termite\nFortifications\nHammerfall Bunker\nOther\nBallistus Dreadnought\nBrutalis Dreadnought\nDreadnought\nFirestrike Servo-turrets\nInvictor Tactical Warsuit\nLand Raider\nLand Raider Redeemer\nPredator Annihilator\nPredator Destructor\nRedemptor Dreadnought\nStorm Speeder Hailstrike\nStorm Speeder Hammerstrike\nStorm Speeder Thunderstrike\nStormhawk Interceptor\nStormraven Gunship\nStormtalon Gunship\nVindicator\nWhirlwind\nGladiator Lancer\nGladiator Reaper\nGladiator Valiant\nLand Raider Crusader\nRepulsor\nRepulsor Executioner\nAstraeus\nThunderhawk Gunship\nCaestus Assault Ram\nCerberus\nChaplain Venerable Dreadnought\nDeathstorm Drop Pod\nDeimos Predator\nDeredeo Dreadnought\nDreadnought Drop Pod\nFalchion\nFellblade\nFire Raptor Gunship\nHunter\nIronclad Dreadnought\nJavelin Attack Speeder\nKratos\nLand Raider Achilles\nLand Raider Excelsior\nLand Raider Helios\nLand Raider Prometheus\nLand Raider Proteus\nLand Speeder\nLand Speeder Tempest\nLand Speeder Tornado\nLand Speeder Typhoon\nLeviathan Dreadnought\nMastodon\nMortis Dreadnought\nRapier Carrier\nRelic Contemptor Dreadnought\nRhino Primaris\nSicaran Arcus\nSicaran Battle Tank\nSicaran Omega\nSicaran Punisher\nSicaran Venator\nSokar-pattern Stormbird\nSpartan\nStalker\nStorm Eagle Gunship\nTarantula Air Defence Battery\nTarantula Sentry Battery\nand others...\nSaving Throw\n\r\nThe player controlling the target unit then makes one saving throw. By default, this will be an armour saving throw using their model’s Save (Sv) characteristic, but some models have invulnerable saves that can be used instead (see below). To make an armour saving throw, roll one D6, then modify the result by the Armour Penetration (AP) characteristic of the attack. For example, if the attack has an AP of -1, then 1 is subtracted from the saving throw.\nIf the result is greater than or equal to the Save characteristic of the model the attack was allocated to, then that saving throw is successful and the attack sequence ends. Otherwise, that saving throw fails and that model suffers damage.\nAn unmodified saving throw of 1 always fails. A saving throw can never be improved by more than +1.\nSaving Throw: Roll one D6 and modify by the attack’s AP. If the result is less than the Save of the model being rolled for, the saving throw is failed and that model suffers damage. Otherwise, that attack is saved.\nAn unmodified saving throw of 1 always fails.\nA saving throw can never be improved by more than +1.\n\r\nStarting Strength\n\r\nThe number of models a unit contains when it is added to your army is known as its Starting Strength.\r\nDisembark\n\r\nIf a unit from your army starts your Movement phase embarked within a TRANSPORT model, that unit can disembark in that phase.\nWhen a unit disembarks from a TRANSPORT model, set it up on the battlefield so that it is wholly within 3\" of that TRANSPORT model and not within Engagement Range of any enemy models. If, for any reason, a disembarking model cannot be set up, that model’s unit cannot disembark.\nUnits that disembark from a TRANSPORT model that either Remained Stationary this phase or has not yet made a Normal, Advance or Fall Back move this phase can then act normally (make a Normal move, Advance, shoot, declare a charge, fight, etc.) in the remainder of the turn. Such a disembarking unit cannot choose to Remain Stationary.\nUnits that disembark from a TRANSPORT model that made a Normal move this phase count as having made a Normal move themselves; they cannot move further during this phase. Such a unit also cannot declare a charge in the same turn, but can otherwise act normally in the remainder of the turn.\nUnits cannot disembark from a TRANSPORT model that either Advanced or Fell Back this turn.\nUnits that start your Movement phase embarked within a TRANSPORT can disembark this phase, provided their TRANSPORT has not Advanced or Fallen Back.\nIf a unit disembarks before its TRANSPORT moves, it can act normally.\nIf a unit disembarks after its TRANSPORT moves, it cannot move or charge this turn, but can otherwise act normally.\nDisembarking units must be set up wholly within 3\" of their TRANSPORT and not within Engagement Range of any enemy models (or the unit cannot disembark).\nUnits that disembark this turn cannot Remain Stationary.\n\r\nDEADLY DEMISE\nFrom detonating ammo stores to corrosive innards or frenzied death throes, some targets are deadly even in defeat.\nSome models have ‘Deadly Demise x’ listed in their abilities. When such a model is destroyed, roll one D6 before removing it from play (if such a model is a TRANSPORT, roll before any embarked models disembark). On a 6, each unit within 6\" of that model suffers a number of mortal wounds denoted by ‘x’ (if this is a random number, roll separately for each unit within 6\").\nExample: A TRANSPORT model with the Deadly Demise D3 ability is destroyed. Before any models disembark and before removing it from play, its controlling player rolls one D6, getting a 6. There are three units within 6\" of that destroyed model, so its controlling player rolls one D3 for each of them, inflicting mortal wounds accordingly.\nDeadly Demise x: When this model is destroyed, roll one D6. On a 6, each unit within 6\" suffers ‘x’ mortal wounds.\nThe ADEPTUS ASTARTES and WALKER keywords are used in the following Space Marines datasheets:\nCharacters\nCarab Culln The Risen\nOther\nBallistus Dreadnought\nBrutalis Dreadnought\nDreadnought\nInvictor Tactical Warsuit\nRedemptor Dreadnought\nChaplain Venerable Dreadnought\nDeredeo Dreadnought\nIronclad Dreadnought\nLeviathan Dreadnought\nMortis Dreadnought\nRelic Contemptor Dreadnought\nVenerable Dreadnought (Legendary)\nBelow Half-strength\n\r\nSome rules will refer to a unit being Below Half-strength.\nIf a unit has a Starting Strength of 1, then it is said to be Below Half-strength while its remaining number of wounds is less than half of its Wounds characteristic.\nFor any other unit, while the number of models in that unit is less than half of its Starting Strength, that unit is said to be Below Half-strength.\n\r\nAssault\n\r\nWeapons with [ASSAULT] in their profile are known as Assault weapons. If a unit that Advanced this turn contains any models equipped with Assault weapons, it is still eligible to shoot in this turn’s Shooting phase. When such a unit is selected to shoot, you can only resolve attacks using Assault weapons its models are equipped with.\nCan be shot even if the bearer’s unit Advanced.\n\r\nMelta\n\r\nWeapons with [MELTA X] in their profile are known as Melta weapons. Each time an attack made with such a weapon targets a unit within half that weapon’s range, that attack’s Damage characteristic is increased by the amount denoted by ‘x’.\nExample: A model targets a unit that is within half range of a weapon with a Damage characteristic of D6 and the [MELTA 2] ability. If that attack inflicts damage on the target, it inflicts D6+2 damage.\n[MELTA X]: Increase the Damage by ‘x’ when targeting units within half range.\n\r\nTorrent\n\r\nWeapons with [TORRENT] in their profile are known as Torrent weapons. Each time an attack is made with such a weapon, that attack automatically hits the target.\r\nThe ADEPTUS ASTARTES and TRANSPORT keywords are used in the following Space Marines datasheets:\nDedicated Transports\nDrop Pod\nRazorback\nRhino\nImpulsor\nLand Speeder Storm\nRelic Razorback\nTerrax-pattern Termite\nOther\nLand Raider\nLand Raider Redeemer\nStormraven Gunship\nLand Raider Crusader\nRepulsor\nRepulsor Executioner\nThunderhawk Gunship\nCaestus Assault Ram\nDreadnought Drop Pod\nLand Raider Achilles\nLand Raider Excelsior\nLand Raider Helios\nLand Raider Prometheus\nLand Raider Proteus\nMastodon\nRhino Primaris\nSokar-pattern Stormbird\nSpartan\nStorm Eagle Gunship\nTerminus Ultra\nThunderhawk Transporter\nThe ADEPTUS ASTARTES, FLY and VEHICLE keywords are used in the following Space Marines datasheets:\nDedicated Transports\nLand Speeder Storm\nOther\nStorm Speeder Hailstrike\nStorm Speeder Hammerstrike\nStorm Speeder Thunderstrike\nStormhawk Interceptor\nStormraven Gunship\nStormtalon Gunship\nThunderhawk Gunship\nCaestus Assault Ram\nFire Raptor Gunship\nJavelin Attack Speeder\nLand Speeder\nLand Speeder Tempest\nLand Speeder Tornado\nLand Speeder Typhoon\nSokar-pattern Stormbird\nStorm Eagle Gunship\nThunderhawk Transporter\nXiphon Interceptor\nBenefit of Cover\n\r\nModels can sometimes gain a measure of protection from terrain features. The rules below detail the conditions under which a terrain feature confers the Benefit of Cover on a model.\nEach time a ranged attack is allocated to a model that has the Benefit of Cover, add 1 to the saving throw made for that attack (excluding invulnerable saving throws). Models with a Save characteristic of 3+ or better cannot have the Benefit of Cover against attacks with an Armour Penetration characteristic of 0. Multiple instances of the Benefit of Cover are not cumulative – a model cannot benefit from this rule more than once at any one time.\nBenefit of Cover: Add 1 to armour saving throws against ranged attacks.\nDoes not apply to models with a Save of 3+ or better against attacks with an AP of 0.\nMultiple instances are not cumulative.\n\r\nINFILTRATORS\nMany armies employ reconnaissance units who can sit concealed, waiting for the right moment to strike.\nDuring deployment, if every model in a unit has this ability, then when you set it up, it can be set up anywhere on the battlefield that is more than 9\" horizontally away from the enemy deployment zone and all enemy models.\nSTEALTH\nSome warriors are masters of disguise and concealment.\nIf every model in a unit has this ability, then each time a ranged attack is made against it, subtract 1 from that attack’s Hit roll.\nLEADER\nMighty heroes fight at the forefront of battle.\nSome CHARACTER units have ‘Leader’ listed on their datasheets. Such CHARACTER units are known as Leaders, and the units they can lead – known as their Bodyguard units – are listed on their datasheet.\nDuring the Declare Battle Formations step, for each Leader in your army, if your army also includes one or more of that Leader’s Bodyguard units, you can select one of those Bodyguard units. That Leader will then attach to that Bodyguard unit for the duration of the battle and is said to be leading that unit. Each Bodyguard unit can only have one Leader attached to it.\nWhile a Bodyguard unit contains a Leader, it is known as an Attached unit and, with the exception of rules that are triggered when units are destroyed, it is treated as a single unit for all rules purposes. Each time an attack targets an Attached unit, until the attacking unit has resolved all of its attacks, you must use the Toughness characteristic of the Bodyguard models in that unit, even if a Leader in that unit has a different Toughness characteristic. Each time an attack sucessfully wounds an Attached unit, that attack cannot be allocated to a CHARACTER model in that unit, even if that CHARACTER model has lost one or more wounds or has already had attacks allocated to it this phase. As soon as the last Bodyguard model in an Attached unit has been destroyed, any attacks made against that unit that have yet to be allocated can then be allocated to CHARACTER models in that unit.\nEach time the last model in a Bodyguard unit is destroyed, each CHARACTER unit that is part of that Attached unit is no longer part of an Attached unit. It becomes a separate unit, with its original Starting Strength. If this happens as the result of an attack, they become separate units after the attacking unit has resolved all of its attacks.\nEach time the last model in a CHARACTER unit that is attached to a Bodyguard unit is destroyed and there is not another CHARACTER unit attached, that Attached unit’s Bodyguard unit is no longer part of an Attached unit. It becomes a separate unit, with its original Starting Strength. If this happens as the result of an attack, they become separate units after the attacking unit has resolved all of its attacks.\nEach time a unit that is part of an Attached unit is destroyed, it does not have the keywords of any other units that make up that Attached unit (unless it has those keywords on its own datasheet) for the purposes of any rules that would be triggered when that unit is destroyed.\nExample: If you only destroy the Bodyguard unit that is part of an Attached unit, you have not destroyed a CHARACTER unit. If you only destroy the CHARACTER unit that is part of an Attached unit, or if you destroy the whole Attached unit, you have destroyed one CHARACTER unit.\nBefore the battle, CHARACTER units with the Leader ability can be attached to one of their Bodyguard units to form an Attached unit.\nAttached units can only contain one Leader.\nAttacks cannot be allocated to CHARACTER models in Attached units.\nLONE OPERATIVE\nAssassins and other covert agents are difficult to track and pinpoint in the swirling maelstrom of battle.\nUnless part of an Attached unit (see Leader), this unit can only be selected as the target of a ranged attack if the attacking model is within 12\".\nPrecision\n\r\nWeapons with [PRECISION] in their profile are known as Precision weapons. Each time an attack made with such a weapon successfully wounds an Attached unit (see Leader ability), if a CHARACTER model in that unit is visible to the attacking model, the attacking model’s player can choose to have that attack allocated to that CHARACTER model instead of following the normal attack sequence.\nWhen targeting an Attached unit, the attacking model’s player can have the attack allocated to a CHARACTER model in that unit visible to the bearer.\n\r\nDivination Discipline\nEach time a model in this unit makes an attack, re-roll a Hit roll of 1 and re-roll a Wound roll of 1.\nBiomancy Discipline\nAdd 2\" to the Move characteristic of models in this unit.\nUnit Visible\n\r\nIf one or more models in a unit is visible to the observing model, then that model’s unit is visible to the observing model.",
+      "stratagems": [
+        {
+          "name": "ARMOUR OF CONTEMPT",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1."
+        },
+        {
+          "name": "BLITZING FUSILLADE",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot this phase.\nEFFECT: Until the end of the phase, ranged weapons equipped by models in your unit have the [ASSAULT] ability. If such a weapon already has this ability, until the end of the phase, that weapon has the [SUSTAINED HITS 1] ability as well."
+        },
+        {
+          "name": "FULL THROTTLE",
+          "cp": "2CP",
+          "category": "Wargear",
+          "text": "WHEN: Your Movement phase.\nTARGET: One ADEPTUS ASTARTES MOUNTED or ADEPTUS ASTARTES VEHICLE unit (excluding WALKERS) from your army.\nEFFECT: Until the end of the phase, if your unit Advances, do not make an Advance roll for it. Instead, until the end of the phase, add 6\" to the Move characteristic of models in your unit, or 9\" instead if your unit is MOUNTED."
+        },
+        {
+          "name": "SHOCK ASSAULT",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Charge phase.\nTARGET: One ADEPTUS ASTARTES MOUNTED unit from your army that has not declared a charge this phase.\nEFFECT: Until the end of the turn, you can re-roll Charge rolls made for your unit and melee weapons equipped by models in that unit have the [LANCE] ability."
+        },
+        {
+          "name": "RIDE HARD, RIDE FAST",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your opponent’s Shooting phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES MOUNTED or ADEPTUS ASTARTES FLY VEHICLE unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll and subtract 1 from the Wound roll."
+        },
+        {
+          "name": "WIND-SWIFT EVASION",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your opponent’s Movement phase, just after an enemy unit ends a Normal, Advance or Fall Back move.\nTARGET: One ADEPTUS ASTARTES INFANTRY or ADEPTUS ASTARTES MOUNTED unit from your army that is within 9\" of that enemy unit.\nEFFECT: Your unit can make a Normal move of up to 6\".\nRESTRICTIONS: You cannot select a unit that is within Engagement Range of one or more enemy units.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(122)});"
         }
       ]
     },
@@ -431,22 +946,65 @@
         {
           "id": "execute-and-redeploy",
           "name": "Execute and Redeploy",
-          "points": 20
+          "points": 20,
+          "description": "PHOBOS model only. In your Shooting phase, after the bearer’s unit has shot, if that unit is not within Engagement Range of one or more enemy units, it can make a Normal move of up to 6\". If it does, until the end of the turn, that unit is not eligible to declare a charge. This cannot allow the bearer’s unit to move more than once in your Shooting phase."
         },
         {
           "id": "ghostweave-cloak",
           "name": "Ghostweave Cloak",
-          "points": 15
+          "points": 15,
+          "description": "ADEPTUS ASTARTES model only. The bearer has the Stealth and Lone Operative abilities."
         },
         {
           "id": "shadow-war-veteran",
           "name": "Shadow War Veteran",
-          "points": 30
+          "points": 30,
+          "description": "PHOBOS model only. Gain following ability:\nLord of Deceit (Aura): Each time your opponent targets a unit from their army with a Stratagem, if that unit is within 12\" of this model, increase the cost of that use of that Stratagem by 1CP."
         },
         {
           "id": "the-blade-driven-deep",
           "name": "The Blade Driven Deep",
-          "points": 25
+          "points": 25,
+          "description": "ADEPTUS ASTARTES INFANTRY model only. While the bearer is leading a unit, models in that unit have the Infiltrators ability."
+        }
+      ],
+      "rule": "Detachment Rule\nShadow Masters\nEach time a ranged attack targets an ADEPTUS ASTARTES unit from your army, unless the attacking model is within 12\", subtract 1 from the Hit roll and the target has the Benefit of Cover against that attack.",
+      "stratagems": [
+        {
+          "name": "A DEADLY PRIZE",
+          "cp": "1CP",
+          "category": "Wargear",
+          "text": "WHEN: Start of the Command phase.\nTARGET: One ADEPTUS ASTARTES INFANTRY or ADEPTUS ASTARTES MOUNTED unit from your army within range of an objective marker you control.\nEFFECT: That objective marker is said to be Sabotaged, and remains under your control even if you have no models within range of it, until your opponent controls it at the start or end of any turn. While an objective marker is Sabotaged and under your control, each time an enemy unit ends a Normal, Advance, Fall Back or Charge move within range of that objective marker, roll one D6: on a 2+, that enemy unit suffers D3 mortal wounds."
+        },
+        {
+          "name": "ARMOUR OF CONTEMPT",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1."
+        },
+        {
+          "name": "SURGICAL STRIKES",
+          "cp": "2CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Fight phase.\nTARGET: One ADEPTUS ASTARTES INFANTRY unit from your army that has not been selected to fight this phase.\nEFFECT: Until the end of the phase, melee weapons equipped by models in your unit have the [PRECISION] ability."
+        },
+        {
+          "name": "STRIKE FROM THE SHADOWS",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase.\nTARGET: One ADEPTUS ASTARTES INFANTRY unit from your army that has not been selected to shoot this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes a ranged attack that targets an enemy unit that is more than 12\" away, improve the Ballistic Skill and Armour Penetration characteristics of that attack by 1. If one or more enemy models are destroyed as a result of those attacks, select one of those destroyed models; that destroyed model’s unit must take a Battle-shock test."
+        },
+        {
+          "name": "CALCULATED FEINT",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your opponent’s Charge phase, just after an enemy unit declares a charge.\nTARGET: One ADEPTUS ASTARTES INFANTRY unit from your army that was selected as a target of that charge.\nEFFECT: Your unit can make a Normal move of up to D6\", or up to 6\" instead if it is a PHOBOS or SCOUT SQUAD unit.\nRESTRICTIONS: You cannot select a unit that is within Engagement Range of one or more enemy units."
+        },
+        {
+          "name": "GUERRILLA TACTICS",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: End of your opponent’s Fight phase.\nTARGET: Up to two PHOBOS and/or SCOUT SQUAD units from your army, or one other ADEPTUS ASTARTES INFANTRY unit from your army.\nEFFECT: Remove those units from the battlefield and place them into Strategic Reserves.\nRESTRICTIONS: Each unit selected for this Stratagem must be more than 3\" away from all enemy models.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(123)});"
         }
       ]
     },
@@ -459,22 +1017,65 @@
         {
           "id": "consecrating-aura",
           "name": "Consecrating Aura",
-          "points": 25
+          "points": 25,
+          "description": "ADEPTUS ASTARTES model only. Models in the bearer’s unit have a 5+ invulnerable save."
         },
         {
           "id": "imperialis-of-the-eternal-crusade",
           "name": "Imperialis of the Eternal Crusade",
-          "points": 15
+          "points": 15,
+          "description": "ANCIENT model only. Each time an enemy unit selects the bearer’s unit as a target of a charge, subtract 2 from the Charge roll (this is not cumulative with any olher negative modifiers to that Charge roll)."
         },
         {
           "id": "orb-of-the-emperors-aegis",
           "name": "Orb of the Emperor’s Aegis",
-          "points": 10
+          "points": 10,
+          "description": "ADEPTUS ASTARTES model only. Models in the bearer’s unit have the Deep Strike ability."
         },
         {
           "id": "warden-of-honour",
           "name": "Warden of Honour",
-          "points": 20
+          "points": 20,
+          "description": "CRUSADE ANCIENT model only. While the bearer is leading a unit, each time you roll one D6 for the bearer’s Vengeful Exhortation ability, add 1 to the result."
+        }
+      ],
+      "rule": "Detachment Rule\nPurge and Sanctify\nEach time an attack targets an ANCIENT unit from your army, if that unit is within range of one or more objective markers and the Strength characteristic of that attack is greater than the Toughness characteristic of that unit, subtract 1 from the Wound roll.\nEach time a CRUSADER SQUAD unit from your army makes a Righteous Zeal move, that unit can end that move as close as possible to the closest objective marker instead of as close as possible to the closest enemy unit.\nRESTRICTIONS\nYour army can include BLACK TEMPLARS units, but it cannot include any ADEPTUS ASTARTES units drawn from any other Chapter.",
+      "stratagems": [
+        {
+          "name": "REFUSAL TO YIELD",
+          "cp": "1CP",
+          "category": "Epic Deed",
+          "text": "WHEN: Any phase, just after an ANCIENT model from your army is destroyed.\nTARGET: That ANCIENT model. You can use this Stratagem on that model even though it was just destroyed.\nEFFECT: At the end of the phase, set your model back up on the battlefield, as close as possible to where it was destroyed and not within Engagement Range of one or more enemy units, with its full wounds remaining.\nRESTRICTIONS: You cannot target the same model with this Stratagem more than once per battle."
+        },
+        {
+          "name": "LITANIES OF PURGATION",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to fight this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes an attack, if that model’s unit is within range of one or more objective markers or the target unit is within range of one or more objective markers, improve the Armour Penetration characteristic of that attack by 1."
+        },
+        {
+          "name": "SPOOR OF THE UNHOLY",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your Shooting phase or the Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to shoot or fight this phase.\nEFFECT: Until the end of the phase, ranged weapons equipped by models in your unit have the [IGNORES COVER] ability and each time a model in your unit makes an attack, you can ignore any or all modifiers to the following: that attack’s Ballistic Skill or Weapon Skill characteristic; the Hit roll."
+        },
+        {
+          "name": "RECLAIM OUR HONOUR!",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit destroys an ANCIENT model from your army that has not been targeted with the Refusal to Yield Stratagem this phase.\nTARGET: One ADEPTUS ASTARTES unit from your army visible to that enemy unit.\nEFFECT: Until the end of the battle, each time an ADEPTUS ASTARTES model from your army makes an attack that targets that enemy unit, add 1 to the Hit roll.\nRESTRICTIONS: You cannot target that ANCIENT model with the Refusal to Yield Stratagem this phase."
+        },
+        {
+          "name": "RECITATION OF THE REVERED",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your opponent’s Shooting phase, just after an enemy unit has selected its targets.\nTARGET: One ANCIENT unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the end of the phase, each time an attack targets your unit, subtract 1 from the Hit roll."
+        },
+        {
+          "name": "PERFERVID INTERVENTION",
+          "cp": "2CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: End of your opponent’s Charge phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that is within 6\" of one or more enemy units and would be eligible to declare a charge against one or more of those enemy units if it were your Charge phase.\nEFFECT: Your unit now declares a charge that only targets one or more of those enemy units, and you resolve that charge.\nRESTRICTIONS: Note that even if this charge is successful, your unit does not receive any Charge bonus this turn.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(133)});"
         }
       ]
     },
@@ -492,7 +1093,47 @@
         {
           "id": "benediction-of-fury",
           "name": "Benediction of Fury",
-          "points": 15
+          "points": 15,
+          "description": "CHAPLAIN model only. The bearer’s melee weapons have the [DEVASTATING WOUNDS] ability."
+        }
+      ],
+      "rule": "At the start of the battle round, you can select one of the Litanies listed below. If you do, until the end of the battle round, that Litany is active and its effects apply to all ADEPTUS ASTARTES INFANTRY and ADEPTUS ASTARTES MOUNTED units from your army.\nChorus of Relentless Hate\nAdd 2\" to the Move characteristic of models in this unit and add 1 to Advance rolls made for it.\nRite of Perfervid Wrath\nAdd 1 to the Strength characteristic of melee weapons equipped by models in this unit.\nCHANT OF DEATHLESS DEVOTION\nModels in this unit have a 5+ invulnerable save against ranged attacks.\nRESTRICTIONS\nYour army can include BLACK TEMPLARS units, but it cannot include ADEPTUS ASTARTES units drawn from any other Chapter.\nThe ADEPTUS ASTARTES and CHARACTER keywords are used in the following Space Marines datasheets:\nCharacters\nAncient\nAncient In Terminator Armour\nApothecary\nApothecary Biologis\nBladeguard Ancient\nCaptain\nCaptain In Gravis Armour\nCaptain In Phobos Armour\nCaptain In Terminator Armour\nCaptain With Jump Pack\nChaplain\nChaplain In Terminator Armour\nChaplain On Bike\nChaplain With Jump Pack\nJudiciar\nLieutenant\nLieutenant In Phobos Armour\nLieutenant In Reiver Armour\nLieutenant With Combi-weapon\nTechmarine\nCastellan\nChaplain Grimaldus\nCrusade Ancient\nEmperor’s Champion\nExecrator\nHigh Marshal Helbrecht\nMarshal\nAncient on Bike\nApothecary on Bike\nCaptain on Bike\nCarab Culln The Risen\nCompany Champion On Bike\nFerren Areios\nImperial Space Marine\nPrimaris Company Champion\nTechmarine on Bike\nRoll-offs\n\r\nSome rules instruct players to roll off. To do so, both players roll one D6, and whoever scores highest wins the roll-off. If there is a tie for the highest roll, roll off again. Neither player is allowed to re-roll or modify any o",
+      "stratagems": [
+        {
+          "name": "FUELLED BY FAITH",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Any phase, just after a mortal wound is allocated to an ADEPTUS ASTARTES unit from your army.\nTARGET: That ADEPTUS ASTARTES unit.\nEFFECT: Until the end of the phase, models in your unit have the Feel No Pain 5+ ability against mortal wounds."
+        },
+        {
+          "name": "ARMOUR OF CONTEMPT",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Your opponent’s Shooting phase or the Fight phase, just after an enemy unit has selected its targets.\nTARGET: One ADEPTUS ASTARTES unit from your army that was selected as the target of one or more of the attacking unit’s attacks.\nEFFECT: Until the attacking unit has finished making its attacks, each time an attack targets your unit, worsen the Armour Penetration characteristic of that attack by 1."
+        },
+        {
+          "name": "CASTIGATE THE DEMAGOGUES",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to fight this phase.\nEFFECT: Until the end of the phase, melee weapons equipped by models in your unit have the [PRECISION] ability."
+        },
+        {
+          "name": "BRUTE FERVOUR",
+          "cp": "1CP",
+          "category": "Battle Tactic",
+          "text": "WHEN: Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to fight this phase.\nEFFECT: Until the end of the phase, each time a model in your unit makes an attack, re-roll a Hit roll of 1 and you can ignore any or all modifiers to the following: that attack’s Weapon Skill characteristic; the Hit roll; the Wound roll."
+        },
+        {
+          "name": "RELENTLESS MOMENTUM",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Fight phase.\nTARGET: One ADEPTUS ASTARTES unit from your army that has not been selected to fight this phase and is within Engagement Range of one or more enemy units.\nEFFECT: Until the end of the phase, when determining which models in your unit are eligible to fight, any models in it that are within 3\" of one or more enemy models are eligible to fight. When resolving those attacks, such models can target one of those enemy units that is within 3\" of them and within Engagement Range of their unit."
+        },
+        {
+          "name": "VOICE OF DEVOTION",
+          "cp": "1CP",
+          "category": "Strategic Ploy",
+          "text": "WHEN: Your Command phase.\nTARGET: One ADEPTUS ASTARTES INFANTRY or ADEPTUS ASTARTES MOUNTED unit from your army.\nEFFECT: Select the Chorus of Relentless Hate, Rite of Perfervid Wrath or Chant of Deathless Devotion Litany. Until the end of the battle round, that Litany is active for your unit instead of any other Litany that is active for your army.\n\r\n\r\n\r\nezstandalone.cmd.push(function() {ezstandalone.showAds(137)});"
         }
       ]
     }

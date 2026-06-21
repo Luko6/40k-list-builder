@@ -55,6 +55,17 @@ export interface Enhancement {
   isUpgrade?: boolean
 }
 
+/** A detachment stratagem (from Wahapedia; see scripts/scrape-wahapedia.mjs). */
+export interface Stratagem {
+  name: string
+  /** e.g. `1CP`. */
+  cp: string
+  /** e.g. `Battle Tactic`, `Epic Deed`. */
+  category: string
+  /** Effect text (WHEN/TARGET/EFFECT prose). */
+  text: string
+}
+
 export interface Detachment {
   id: string
   name: string
@@ -62,6 +73,10 @@ export interface Detachment {
   detachmentPoints: number
   forceDisposition: ForceDisposition
   enhancements: Enhancement[]
+  /** Detachment rule text (Wahapedia). Absent if not yet sourced. */
+  rule?: string
+  /** Detachment stratagems (Wahapedia). Absent if not yet sourced. */
+  stratagems?: Stratagem[]
 }
 
 // ───────────────────────────── Datasheets ──────────────────────────────

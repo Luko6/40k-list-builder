@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { Datasheet, Enhancement, FactionCatalogue } from '../data/schema'
+import type { Datasheet, Detachment, Enhancement, FactionCatalogue } from '../data/schema'
 import type { RosterState, RosterTotals, RosterUnit } from '../list/useRoster'
 import { CATEGORY_ORDER, unitCategory, type Category } from '../list/categories'
 import { UnitStats } from './UnitStats'
@@ -87,6 +87,14 @@ export function RosterPanel({
       const next = new Set(prev)
       if (next.has(cat)) next.delete(cat)
       else next.add(cat)
+      return next
+    })
+  const [openDetach, setOpenDetach] = useState<Set<string>>(new Set())
+  const toggleDetach = (id: string) =>
+    setOpenDetach((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
       return next
     })
 
@@ -326,22 +334,36 @@ export function RosterPanel({
         <p className="muted">No detachment selected — add one below.</p>
       ) : (
         <ul className="roster__detachments">
-          {totals.detachments.map((d) => (
-            <li key={d.id} className="roster__detachment">
-              <span className="roster__detachment-main">
-                <span className="roster__detachment-name">{d.name}</span>
-                <span className="tag tag--disposition">{d.forceDisposition}</span>
-              </span>
-              <span className="muted">{d.detachmentPoints} DP</span>
-              <button
-                className="btn btn--ghost"
-                onClick={() => onRemoveDetachment(d.id)}
-                title="Remove detachment"
-              >
-                ✕
-              </button>
-            </li>
-          ))}
+          {totals.detachments.map((d) => {
+            const isOpen = openDetach.has(d.id)
+            return (
+              <li key={d.id} className="roster__detachment" data-open={isOpen}>
+                <div className="roster__detachment-head">
+                  <button
+                    className="roster__expand"
+                    aria-expanded={isOpen}
+                    onClick={() => toggleDetach(d.id)}
+                    title="View rule, stratagems & enhancements"
+                  >
+                    {isOpen ? '▾' : '▸'}
+                  </button>
+                  <span className="roster__detachment-main">
+                    <span className="roster__detachment-name">{d.name}</span>
+                    <span className="tag tag--disposition">{d.forceDisposition}</span>
+                  </span>
+                  <span className="muted">{d.detachmentPoints} DP</span>
+                  <button
+                    className="btn btn--ghost"
+                    onClick={() => onRemoveDetachment(d.id)}
+                    title="Remove detachment"
+                  >
+                    ✕
+                  </button>
+                </div>
+                {isOpen && <DetachmentDetail d={d} />}
+              </li>
+            )
+          })}
         </ul>
       )}
       {addableDetachments.length > 0 && (
@@ -399,6 +421,58 @@ export function RosterPanel({
         })
       )}
     </section>
+  )
+}
+
+/** Detachment rule + stratagems + enhancements (Wahapedia data, where present). */
+function DetachmentDetail({ d }: { d: Detachment }) {
+  return (
+    <div className="detach-detail">
+      {d.rule ? (
+        <div className="detach-block">
+          <h4>Detachment rule</h4>
+          <p className="detach-text">{d.rule}</p>
+        </div>
+      ) : (
+        <p className="muted">
+          Rule &amp; stratagems aren’t available from Wahapedia for this detachment yet.
+        </p>
+      )}
+
+      {d.stratagems && d.stratagems.length > 0 && (
+        <div className="detach-block">
+          <h4>Stratagems</h4>
+          {d.stratagems.map((s, i) => (
+            <div key={i} className="strat">
+              <div className="strat__head">
+                <span className="strat__name">{s.name}</span>
+                <span className="strat__cp">{s.cp}</span>
+              </div>
+              {s.category && <div className="strat__cat muted">{s.category}</div>}
+              <p className="detach-text">{s.text}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {d.enhancements.length > 0 && (
+        <div className="detach-block">
+          <h4>Enhancements</h4>
+          {d.enhancements.map((e) => (
+            <div key={e.id} className="enh">
+              <div className="enh__head">
+                <span className="enh__name">
+                  {e.name}
+                  {e.isUpgrade && <span className="muted"> (Upgrade)</span>}
+                </span>
+                <span className="muted">{e.points} pts</span>
+              </div>
+              {e.description && <p className="detach-text">{e.description}</p>}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   )
 }
 

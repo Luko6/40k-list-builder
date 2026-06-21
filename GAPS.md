@@ -15,14 +15,14 @@ Roughly ordered by impact on actually building a legal list.
   once) with an over-limit warning. NOT enforced: the hard cap is only warned,
   not blocked, and the Emperor's Champion's datasheet-specific ban isn't modeled
   (it's treated as a normal character).
-- **Leader attachment is single-tier.** You can attach a LEADER to an eligible
-  bodyguard unit (dropdown filtered by `canLead`); attached leaders render
-  nested beneath their bodyguard's card in the roster, the summary shows the
-  pairing, and removing a bodyguard detaches its leaders. NOT enforced:
-  the "max one Leader per unit (some allow two)" rule — multiple leaders can be
-  pointed at the same unit, and equipment-conditional leads (e.g. Captain needs
-  a relic shield to join Bladeguard) aren't modeled. Points are unaffected (10e/
-  11e cost leaders and bodyguards separately).
+- **Character attachment (leader + support).** Both LEADER and SUPPORT
+  characters can attach to an eligible bodyguard (dropdown filtered by `canLead`),
+  with at most one of each slot per unit enforced via the dropdown. Attached
+  characters render nested beneath the bodyguard, the summary shows the pairing,
+  and removing a bodyguard detaches them. NOT enforced: that a SUPPORT character
+  MUST be attached (deferred), and equipment-conditional leads (e.g. Captain needs
+  a relic shield to join Bladeguard). Points are unaffected (characters and
+  bodyguards cost separately).
 - **Validation is advisory.** A consolidated panel surfaces: over the points
   cap, over the Detachment-Points budget, over the enhancement limit, the same
   enhancement assigned twice, and >3 of a (non-transport) datasheet. These are
@@ -42,6 +42,14 @@ Roughly ordered by impact on actually building a legal list.
   parsed from the MFM payload into `detachments.json`. Caveat: `(Upgrade)`-type
   enhancements (which the rules allow on non-character units) are still only
   offered to characters in the UI.
+- **Detachment rules / stratagems / enhancement text from Wahapedia.** Each
+  selected detachment expands in the roster to show its rule, stratagems
+  (name/CP/category/effect), and enhancement descriptions, sourced from
+  Wahapedia (`scripts/scrape-wahapedia.mjs`). Covers **15/19** — the 4 newest
+  BT detachments (Fulguris Task Force, Marshal's Household, Subversion Assets,
+  The Living Miracle) load behind Wahapedia's JS filter and show a "not yet
+  available" note. Stratagem *effects* are display-only (not enforced), and
+  enhancement effects still aren't applied to a unit's stats (future work).
 - **Strike Force (2000 pts) only.** Incursion/Onslaught are out of MVP scope.
 - **Black Templars only.** By design for the MVP.
 

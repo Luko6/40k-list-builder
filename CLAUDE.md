@@ -18,8 +18,9 @@ npm run lint           # eslint (must pass)
 npm run preview        # serve the production build locally
 
 # Data pipeline (regenerates committed data; see "Data pipeline" below)
-npm run scrape-mfm     # Munitorum points -> scripts/points-overrides.json
-npm run compile-data   # vendored BSData + overrides -> src/data/generated/black-templars.json
+npm run scrape-mfm        # Munitorum points/roles -> points-overrides.json + detachments.json
+npm run scrape-wahapedia  # Wahapedia detachment rules/stratagems/enh text -> detachment-rules.json
+npm run compile-data      # vendored BSData + overrides + detachments -> generated/black-templars.json
 node scripts/inspect.mjs "Crusader Squad"   # dump a compiled datasheet to verify
 ```
 
@@ -35,14 +36,17 @@ static site needs no build step for data.
 ```
 data-sources/                         pinned, read-only upstream snapshots (don't edit)
   bsdata/*.cat, *.gst                 BattleScribe wh40k-10e: statlines, weapons, loadouts, keywords
-  mfm/black-templars.rsc.txt          Munitorum Field Manual page (React Flight payload) — 11e points
+  mfm/black-templars.rsc.txt          Munitorum Field Manual page (React Flight payload) — 11e points/roles
+  wahapedia/black-templars.html       Wahapedia BT page — 11e detachment rules/stratagems/enh text
   MANIFEST.md                         provenance + re-vendoring instructions
 
 scripts/
   scrape-mfm.mjs                      MFM payload -> points-overrides.json + detachments.json (resolves lazy $L refs)
-  points-overrides.json              GENERATED: points-by-size + roles, keyed by datasheet-name slug
-  detachments.json                   GENERATED: all 19 detachments (DP, disposition, enhancements)
-  compile-data.mjs                    BSData cats (+ overrides + detachments) -> generated JSON  (the real work)
+  scrape-wahapedia.mjs                Wahapedia BT page -> detachment-rules.json (rules/stratagems/enh descriptions)
+  points-overrides.json              GENERATED: points-by-size + roles + canLead, keyed by datasheet-name slug
+  detachments.json                   GENERATED: all 19 detachments (DP, disposition, enhancement names+points)
+  detachment-rules.json              GENERATED: detachment rules/stratagems + global enhancement descriptions (15/19; Wahapedia)
+  compile-data.mjs                    BSData cats (+ overrides + detachments + rules) -> generated JSON  (the real work)
   inspect.mjs                         dev helper: print a compiled datasheet
 
 src/
@@ -77,20 +81,26 @@ wh40k-**10e** is a stand-in for stats; points are real 11e from the MFM.
    (3 BT-specific + 16 generic Space Marines), each with its DP badge, force
    disposition, and enhancements (points + `(Upgrade)` flag). Run with `--cached`
    to parse the vendored payload offline. It also reads each unit's LEADER/
-   SUPPORT badge and emits a `role` per unit into `points-overrides.json`.
-2. **`compile-data.mjs`** is a recursive BattleScribe resolver. It walks each
+   SUPPORT badge (`role`) and the leader's can-lead list (the `font-bold` span
+   after the badge) into `points-overrides.json`.
+2. **`scrape-wahapedia.mjs`** parses the vendored Wahapedia BT page into
+   `detachment-rules.json`: each detachment's rule prose + stratagems (keyed off
+   each `str10Type` "Detachment – Category Stratagem" header) plus a global
+   enhancement-slug → description map. Covers 15/19 (the 4 newest BT detachments
+   load behind Wahapedia's JS filter). `--cached` parses the vendored snapshot.
+3. **`compile-data.mjs`** is a recursive BattleScribe resolver. It walks each
    unit's subtree following `entryLink`/`infoLink` `targetId`s across all three
    files, extracting statlines, weapon profiles, wargear option groups, keywords,
-   invuln, and the `canLead` list (parsed from the Leader ability text). It runs
-   over the BT catalogue's 19 curated top-level units **and** the Space Marines
-   catalogue's imported root entries, applying BT legality (exclude Psykers,
-   other chapters' Epic Heroes, Legends/Crucible) and deduping (BT wins). Points
-   from `points-overrides.json` are merged over the cat's 10e cost.
-   `catalogue.detachments` is driven from `detachments.json` (sorted by name;
-   falls back to a hardcoded Gladius entry if the file is absent).
+   invuln, and a `canLead` list (prefers the MFM list, falls back to the Leader
+   ability text). It runs over the BT catalogue's 19 curated top-level units
+   **and** the Space Marines catalogue's imported root entries, applying BT
+   legality (exclude Psykers, other chapters' Epic Heroes, Legends/Crucible) and
+   deduping (BT wins). Points from `points-overrides.json` merge over the cat's
+   10e cost; `catalogue.detachments` comes from `detachments.json` enriched with
+   `detachment-rules.json` (rule/stratagems/enhancement descriptions).
 
-To change data: edit the compiler or the scraper, re-run `scrape-mfm --cached`
-(if detachment/points data changed) then `compile-data`, **commit the
+To change data: edit the compiler/scrapers, re-run `scrape-mfm --cached` and/or
+`scrape-wahapedia --cached` as needed, then `compile-data`, **commit the
 regenerated JSON**, push.
 
 ## Gotchas
