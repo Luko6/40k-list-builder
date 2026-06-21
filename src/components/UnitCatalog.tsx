@@ -1,33 +1,30 @@
 import { useMemo, useState } from 'react'
 import type { Datasheet } from '../data/schema'
 import { CATEGORY_ORDER, unitCategory } from '../list/categories'
-import { UnitStats } from './UnitStats'
+import type { Selection } from './DetailPanel'
 
 function cheapest(unit: Datasheet) {
   return Math.min(...unit.sizeOptions.map((o) => o.points))
 }
 
+/** Left pane: searchable, category-grouped catalogue. Clicking a row adds the
+ *  unit; the ⓘ button previews its stats in the right pane without adding. */
 export function UnitCatalog({
   datasheets,
   perDatasheet,
   datasheetLimit,
+  selection,
   onAdd,
+  onPreview,
 }: {
   datasheets: Datasheet[]
   perDatasheet: Map<string, number>
   datasheetLimit: number
+  selection: Selection
   onAdd: (datasheetId: string) => void
+  onPreview: (datasheetId: string) => void
 }) {
   const [query, setQuery] = useState('')
-  const [expanded, setExpanded] = useState<Set<string>>(new Set())
-  const toggleExpand = (id: string) =>
-    setExpanded((prev) => {
-      const next = new Set(prev)
-      if (next.has(id)) next.delete(id)
-      else next.add(id)
-      return next
-    })
-  const nameById = useMemo(() => new Map(datasheets.map((d) => [d.id, d.name])), [datasheets])
   const [collapsedCats, setCollapsedCats] = useState<Set<string>>(new Set())
   const toggleCat = (cat: string) =>
     setCollapsedCats((prev) => {
@@ -60,7 +57,7 @@ export function UnitCatalog({
   return (
     <section className="catalog panel">
       <div className="catalog__head">
-        <h2>Add units</h2>
+        <h2>Units</h2>
         <input
           className="search"
           type="search"
@@ -75,65 +72,49 @@ export function UnitCatalog({
         CATEGORY_ORDER.filter((cat) => groups.has(cat)).map((cat) => {
           const catCollapsed = collapsedCats.has(cat)
           return (
-          <div key={cat} className="catalog__group">
-            <button
-              className="catalog__group-head"
-              aria-expanded={!catCollapsed}
-              onClick={() => toggleCat(cat)}
-            >
-              <span className="group-chevron">{catCollapsed ? '▸' : '▾'}</span>
-              {cat} <span className="muted">({groups.get(cat)!.length})</span>
-            </button>
-            {!catCollapsed && (
-            <ul className="catalog__list">
-              {groups.get(cat)!.map((d) => {
-                const count = perDatasheet.get(d.id) ?? 0
-                const atLimit = count >= datasheetLimit && !d.isDedicatedTransport
-                const isOpen = expanded.has(d.id)
-                return (
-                  <li key={d.id} className="catalog__row">
-                    <div className="catalog__row-main">
-                      <button
-                        className="catalog__expand"
-                        aria-expanded={isOpen}
-                        onClick={() => toggleExpand(d.id)}
-                        title="View stats"
-                      >
-                        {isOpen ? '▾' : '▸'}
-                      </button>
-                      <div className="catalog__main">
-                        <span className="catalog__name">{d.name}</span>
-                        <span className="catalog__meta">
-                          {d.role && <span className={`tag tag--${d.role}`}>{d.role}</span>}
-                          <span className="muted">from {cheapest(d)} pts</span>
-                          {count > 0 && <span className="muted">· in list ×{count}</span>}
-                        </span>
-                      </div>
-                      <button
-                        className="btn btn--sm"
-                        disabled={atLimit}
-                        title={atLimit ? `Max ${datasheetLimit} of this datasheet` : 'Add to list'}
-                        onClick={() => onAdd(d.id)}
-                      >
-                        Add
-                      </button>
-                    </div>
-                    {isOpen && (
-                      <div className="catalog__stats">
-                        <UnitStats
-                          ds={d}
-                          canLeadNames={(d.canLead ?? [])
-                            .map((id) => nameById.get(id))
-                            .filter((n): n is string => !!n)}
-                        />
-                      </div>
-                    )}
-                  </li>
-                )
-              })}
-            </ul>
-            )}
-          </div>
+            <div key={cat} className="catalog__group">
+              <button
+                className="catalog__group-head"
+                aria-expanded={!catCollapsed}
+                onClick={() => toggleCat(cat)}
+              >
+                <span className="group-chevron">{catCollapsed ? '▸' : '▾'}</span>
+                {cat} <span className="muted">({groups.get(cat)!.length})</span>
+              </button>
+              {!catCollapsed && (
+                <ul className="catalog__list">
+                  {groups.get(cat)!.map((d) => {
+                    const count = perDatasheet.get(d.id) ?? 0
+                    const atLimit = count >= datasheetLimit && !d.isDedicatedTransport
+                    const previewing = selection?.kind === 'preview' && selection.datasheetId === d.id
+                    return (
+                      <li key={d.id} className="catalog__row">
+                        <button
+                          className={`catalog__add${atLimit ? ' is-limit' : ''}`}
+                          title={atLimit ? `Max ${datasheetLimit} — adding anyway is allowed` : 'Add to list'}
+                          onClick={() => onAdd(d.id)}
+                        >
+                          <span className="catalog__name">{d.name}</span>
+                          <span className="catalog__meta">
+                            {d.role && <span className={`tag tag--${d.role}`}>{d.role}</span>}
+                            <span className="muted">from {cheapest(d)} pts</span>
+                            {count > 0 && <span className="muted">· ×{count}</span>}
+                          </span>
+                        </button>
+                        <button
+                          className={`catalog__info${previewing ? ' is-active' : ''}`}
+                          title="View stats"
+                          aria-label={`View ${d.name} stats`}
+                          onClick={() => onPreview(d.id)}
+                        >
+                          ⓘ
+                        </button>
+                      </li>
+                    )
+                  })}
+                </ul>
+              )}
+            </div>
           )
         })
       )}

@@ -57,9 +57,11 @@ src/
   list/storage.ts                     localStorage + JSON import/export (RosterState <-> SavedList)
   list/summary.ts                     copy/print roster text builder
   list/categories.ts                  shared unit-category helper (Characters/Battleline/…) used by catalog/roster/summary
-  components/UnitCatalog.tsx          left panel: search + add units, grouped by category, expandable stats
-  components/RosterPanel.tsx          right panel: detachments + DP, validation panel, units grouped by category as expandable cards (leaders nest under their bodyguard)
-  components/UnitStats.tsx            statline + weapon tables (shown in catalog/roster expanders)
+  list/units.ts                       shared unit helpers (points, attach slot, canLead, enhancement-eligibility, instance labels)
+  components/UnitCatalog.tsx          LEFT pane: search + category-grouped list; click row to add, ⓘ to preview
+  components/RosterPanel.tsx          MIDDLE pane: detachments + DP + validation; units grouped by category, click to select (leaders nest under bodyguard)
+  components/DetailPanel.tsx          RIGHT pane: detail for the selected unit (editable size/wargear/enhancement/attach), detachment (rule/stratagems/enh), or catalog preview (read-only + Add)
+  components/UnitStats.tsx            statline + weapon tables + can-lead (rendered inside DetailPanel)
   components/Toolbar.tsx              name, save/load/delete, import/export, copy/print
   App.tsx                             wires it together + autosave effect
   index.css                          all styles (incl. @media print)

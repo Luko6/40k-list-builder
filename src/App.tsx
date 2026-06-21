@@ -14,12 +14,14 @@ import {
 import { buildSummaryText } from './list/summary'
 import { UnitCatalog } from './components/UnitCatalog'
 import { RosterPanel } from './components/RosterPanel'
+import { DetailPanel, type Selection } from './components/DetailPanel'
 import { Toolbar } from './components/Toolbar'
 
 function App() {
   const cat = blackTemplars
   const { state, dispatch, totals, byId, size } = useRoster(cat)
   const [savedLists, setSavedLists] = useState(() => getSavedLists())
+  const [selection, setSelection] = useState<Selection>(null)
 
   // Autosave the working list to localStorage on every change.
   useEffect(() => {
@@ -28,22 +30,32 @@ function App() {
 
   const summaryText = buildSummaryText(cat, size, state, byId)
 
-  // Enhancement ids still valid after a detachment is removed (used to drop
-  // enhancements that only existed in the removed detachment).
+  const handleRemoveUnit = (instanceId: string) => {
+    if (selection?.kind === 'unit' && selection.instanceId === instanceId) setSelection(null)
+    dispatch({ type: 'removeUnit', instanceId })
+  }
+
+  // Drop enhancements that only the removed detachment provided.
   const handleRemoveDetachment = (detachmentId: string) => {
+    if (selection?.kind === 'detachment' && selection.detachmentId === detachmentId)
+      setSelection(null)
     const remainingEnhancementIds = cat.detachments
       .filter((d) => state.detachmentIds.includes(d.id) && d.id !== detachmentId)
       .flatMap((d) => d.enhancements.map((e) => e.id))
     dispatch({ type: 'removeDetachment', detachmentId, remainingEnhancementIds })
   }
 
+  const loadState = (sl: Parameters<typeof fromSavedList>[0]) => {
+    dispatch({ type: 'load', state: fromSavedList(sl) })
+    setSelection(null)
+  }
   const handleSave = () => {
     upsertSavedList(toSavedList(state, size.id, cat))
     setSavedLists(getSavedLists())
   }
   const handleLoad = (id: string) => {
     const sl = savedLists.find((l) => l.id === id)
-    if (sl) dispatch({ type: 'load', state: fromSavedList(sl) })
+    if (sl) loadState(sl)
   }
   const handleDelete = (id: string) => {
     deleteSavedList(id)
@@ -51,8 +63,7 @@ function App() {
   }
   const handleImport = async (file: File) => {
     try {
-      const sl = await readListFile(file)
-      dispatch({ type: 'load', state: fromSavedList(sl) })
+      loadState(await readListFile(file))
     } catch (e) {
       alert(e instanceof Error ? e.message : 'Could not import that file.')
     }
@@ -73,7 +84,10 @@ function App() {
         savedLists={savedLists}
         currentId={state.id}
         onRename={(name) => dispatch({ type: 'rename', name })}
-        onNew={() => dispatch({ type: 'new', detachmentId: cat.detachments[0]?.id ?? '' })}
+        onNew={() => {
+          dispatch({ type: 'new', detachmentId: cat.detachments[0]?.id ?? '' })
+          setSelection(null)
+        }}
         onSave={handleSave}
         onLoad={handleLoad}
         onDelete={handleDelete}
@@ -83,21 +97,34 @@ function App() {
         onCopy={() => navigator.clipboard?.writeText(summaryText)}
       />
 
-      <div className="builder">
+      <div className="builder builder--3">
         <UnitCatalog
           datasheets={cat.datasheets}
           perDatasheet={totals.perDatasheet}
           datasheetLimit={size.datasheetLimit}
+          selection={selection}
           onAdd={(datasheetId) => dispatch({ type: 'addUnit', datasheetId })}
+          onPreview={(datasheetId) => setSelection({ kind: 'preview', datasheetId })}
         />
         <RosterPanel
           catalogue={cat}
           state={state}
           totals={totals}
           byId={byId}
+          selection={selection}
           onAddDetachment={(detachmentId) => dispatch({ type: 'addDetachment', detachmentId })}
           onRemoveDetachment={handleRemoveDetachment}
-          onRemove={(instanceId) => dispatch({ type: 'removeUnit', instanceId })}
+          onSelectDetachment={(detachmentId) => setSelection({ kind: 'detachment', detachmentId })}
+          onRemove={handleRemoveUnit}
+          onSelectUnit={(instanceId) => setSelection({ kind: 'unit', instanceId })}
+        />
+        <DetailPanel
+          catalogue={cat}
+          state={state}
+          totals={totals}
+          byId={byId}
+          selection={selection}
+          onAdd={(datasheetId) => dispatch({ type: 'addUnit', datasheetId })}
           onSetSize={(instanceId, sizeOptionIndex) =>
             dispatch({ type: 'setSize', instanceId, sizeOptionIndex })
           }
