@@ -99,14 +99,14 @@ function parse(text) {
     const owner = names.findLast((n) => n.idx < m.index)
     if (!owner) continue
     roleByNameIdx.set(owner.idx, m[1].toLowerCase())
-    // A LEADER badge is followed by a /leader.svg icon and then a single
-    // `font-bold` span listing the units it can lead (comma-separated, UPPER).
-    if (m[1] === 'LEADER') {
-      const cl = text.slice(m.index, m.index + 700).match(/"font-bold","children":"([^"]+)"/)
-      if (cl) {
-        const ids = cl[1].split(',').map((s) => slug(s.trim())).filter(Boolean)
-        if (ids.length) canLeadByNameIdx.set(owner.idx, ids)
-      }
+    // Both LEADER and SUPPORT badges are followed by a leader/support icon and
+    // then a single `font-bold` span listing the units they can attach to
+    // (comma-separated, UPPERCASE). Capture it for both — SUPPORT characters
+    // (Apothecary, Ancient, Lieutenant…) attach to units too.
+    const cl = text.slice(m.index, m.index + 700).match(/"font-bold","children":"([^"]+)"/)
+    if (cl) {
+      const ids = cl[1].split(',').map((s) => slug(s.trim())).filter(Boolean)
+      if (ids.length) canLeadByNameIdx.set(owner.idx, ids)
     }
   }
 

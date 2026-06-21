@@ -1423,12 +1423,14 @@
       ],
       "canLead": [
         "assault-intercessor-squad",
+        "crusader-squad",
+        "desolation-squad",
         "devastator-squad",
         "hellblaster-squad",
         "infernus-squad",
         "intercessor-squad",
         "sternguard-veteran-squad",
-        "desolation-squad",
+        "sword-brethren-squad",
         "tactical-squad"
       ]
     },
@@ -1727,12 +1729,14 @@
       ],
       "canLead": [
         "assault-intercessor-squad",
+        "crusader-squad",
         "desolation-squad",
         "devastator-squad",
         "hellblaster-squad",
         "infernus-squad",
         "intercessor-squad",
         "sternguard-veteran-squad",
+        "sword-brethren-squad",
         "tactical-squad"
       ]
     },
@@ -4129,11 +4133,11 @@
       ],
       "canLead": [
         "assault-intercessor-squad",
+        "crusader-squad",
         "infernus-squad",
         "intercessor-squad",
-        "crusader-squad",
-        "sword-brethren-squad",
-        "sternguard-veteran-squad"
+        "sternguard-veteran-squad",
+        "sword-brethren-squad"
       ]
     },
     {
@@ -10676,10 +10680,12 @@
         "assault-intercessor-squad",
         "bladeguard-veteran-squad",
         "company-heroes",
+        "crusader-squad",
         "hellblaster-squad",
         "infernus-squad",
         "intercessor-squad",
         "sternguard-veteran-squad",
+        "sword-brethren-squad",
         "tactical-squad"
       ]
     },
