@@ -274,7 +274,9 @@ function buildDatasheet(link, source) {
   const basePts = ptsFrom(entry)
   const { keywords, factionKeywords } = keywordsFrom(entry)
   const weapons = [...wMap.values()]
-  const canLead = canLeadFrom(c.abilities)
+  // Prefer the Munitorum's can-lead list (clean, authoritative); fall back to
+  // the BSData Leader-ability text parse for anything the MFM didn't cover.
+  const canLead = ov.canLead ?? canLeadFrom(c.abilities)
 
   return {
     id,

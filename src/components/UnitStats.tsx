@@ -42,8 +42,10 @@ function WeaponTable({ title, weapons }: { title: string; weapons: WeaponProfile
   )
 }
 
-/** Combat profile for a datasheet: statline(s) + ranged/melee weapons + keywords. */
-export function UnitStats({ ds }: { ds: Datasheet }) {
+/** Combat profile for a datasheet: statline(s) + ranged/melee weapons + keywords.
+ *  canLeadNames (resolved by the caller, which has the id->name map) lists the
+ *  units this character can lead. */
+export function UnitStats({ ds, canLeadNames }: { ds: Datasheet; canLeadNames?: string[] }) {
   const ranged = ds.weapons.filter((w) => !isMelee(w))
   const melee = ds.weapons.filter(isMelee)
   const multi = ds.statlines.length > 1
@@ -81,6 +83,12 @@ export function UnitStats({ ds }: { ds: Datasheet }) {
 
       <WeaponTable title="Ranged weapons" weapons={ranged} />
       <WeaponTable title="Melee weapons" weapons={melee} />
+
+      {canLeadNames && canLeadNames.length > 0 && (
+        <p className="ustats__keywords">
+          <span className="muted">Can lead:</span> {canLeadNames.join(', ')}
+        </p>
+      )}
 
       {ds.keywords.length > 0 && (
         <p className="ustats__keywords">

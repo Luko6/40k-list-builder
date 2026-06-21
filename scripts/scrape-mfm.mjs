@@ -94,9 +94,20 @@ function parse(text) {
   // belongs to the closest name preceding it.
   const roleRe = /"children":"(LEADER|SUPPORT)"\}\]/g
   const roleByNameIdx = new Map()
+  const canLeadByNameIdx = new Map()
   for (let m; (m = roleRe.exec(text)); ) {
     const owner = names.findLast((n) => n.idx < m.index)
-    if (owner) roleByNameIdx.set(owner.idx, m[1].toLowerCase())
+    if (!owner) continue
+    roleByNameIdx.set(owner.idx, m[1].toLowerCase())
+    // A LEADER badge is followed by a /leader.svg icon and then a single
+    // `font-bold` span listing the units it can lead (comma-separated, UPPER).
+    if (m[1] === 'LEADER') {
+      const cl = text.slice(m.index, m.index + 700).match(/"font-bold","children":"([^"]+)"/)
+      if (cl) {
+        const ids = cl[1].split(',').map((s) => slug(s.trim())).filter(Boolean)
+        if (ids.length) canLeadByNameIdx.set(owner.idx, ids)
+      }
+    }
   }
 
   // Sum every integer in the model text: "1 model"->1, "5 models"->5,
@@ -114,7 +125,12 @@ function parse(text) {
       sizeOptions.push({ modelsText: cm[1], models: sumModels(cm[1]), points: pts })
     }
     if (sizeOptions.length) {
-      units.push({ name: names[i].name, sizeOptions, role: roleByNameIdx.get(names[i].idx) })
+      units.push({
+        name: names[i].name,
+        sizeOptions,
+        role: roleByNameIdx.get(names[i].idx),
+        canLead: canLeadByNameIdx.get(names[i].idx),
+      })
     }
   }
   return { units, refCount: Object.keys(refMap).length }
@@ -200,7 +216,8 @@ for (const u of units) {
   const sizeOptions = u.sizeOptions.map((s) => ({ models: s.models ?? 1, points: s.points }))
   const role = u.role ?? prev[id]?.role
   if (role) roleCount++
-  out[id] = { ...(role ? { role } : {}), sizeOptions }
+  const canLead = u.canLead ?? prev[id]?.canLead
+  out[id] = { ...(role ? { role } : {}), ...(canLead?.length ? { canLead } : {}), sizeOptions }
 }
 // Apply manual role fixes (may create entries for units not on the MFM).
 for (const [id, role] of Object.entries(ROLE_OVERRIDES)) {

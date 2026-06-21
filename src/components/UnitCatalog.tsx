@@ -19,7 +19,15 @@ export function UnitCatalog({
   onAdd: (datasheetId: string) => void
 }) {
   const [query, setQuery] = useState('')
-  const [expanded, setExpanded] = useState<string | null>(null)
+  const [expanded, setExpanded] = useState<Set<string>>(new Set())
+  const toggleExpand = (id: string) =>
+    setExpanded((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  const nameById = useMemo(() => new Map(datasheets.map((d) => [d.id, d.name])), [datasheets])
   const [collapsedCats, setCollapsedCats] = useState<Set<string>>(new Set())
   const toggleCat = (cat: string) =>
     setCollapsedCats((prev) => {
@@ -81,14 +89,14 @@ export function UnitCatalog({
               {groups.get(cat)!.map((d) => {
                 const count = perDatasheet.get(d.id) ?? 0
                 const atLimit = count >= datasheetLimit && !d.isDedicatedTransport
-                const isOpen = expanded === d.id
+                const isOpen = expanded.has(d.id)
                 return (
                   <li key={d.id} className="catalog__row">
                     <div className="catalog__row-main">
                       <button
                         className="catalog__expand"
                         aria-expanded={isOpen}
-                        onClick={() => setExpanded(isOpen ? null : d.id)}
+                        onClick={() => toggleExpand(d.id)}
                         title="View stats"
                       >
                         {isOpen ? '▾' : '▸'}
@@ -112,7 +120,12 @@ export function UnitCatalog({
                     </div>
                     {isOpen && (
                       <div className="catalog__stats">
-                        <UnitStats ds={d} />
+                        <UnitStats
+                          ds={d}
+                          canLeadNames={(d.canLead ?? [])
+                            .map((id) => nameById.get(id))
+                            .filter((n): n is string => !!n)}
+                        />
                       </div>
                     )}
                   </li>

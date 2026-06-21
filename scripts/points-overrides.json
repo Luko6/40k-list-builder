@@ -11,6 +11,13 @@
   },
   "chaplain-grimaldus": {
     "role": "leader",
+    "canLead": [
+      "assault-intercessor-squad",
+      "crusader-squad",
+      "infernus-squad",
+      "intercessor-squad",
+      "sword-brethren-squad"
+    ],
     "sizeOptions": [
       {
         "models": 4,
@@ -41,6 +48,13 @@
   },
   "emperors-champion": {
     "role": "leader",
+    "canLead": [
+      "assault-intercessor-squad",
+      "crusader-squad",
+      "intercessor-squad",
+      "sternguard-veteran-squad",
+      "sword-brethren-squad"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -50,6 +64,10 @@
   },
   "execrator": {
     "role": "leader",
+    "canLead": [
+      "crusader-squad",
+      "sword-brethren-squad"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -83,6 +101,12 @@
   },
   "high-marshal-helbrecht": {
     "role": "leader",
+    "canLead": [
+      "assault-intercessor-squad",
+      "crusader-squad",
+      "intercessor-squad",
+      "sword-brethren-squad"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -108,6 +132,14 @@
   },
   "marshal": {
     "role": "leader",
+    "canLead": [
+      "assault-intercessor-squad",
+      "crusader-squad",
+      "infernus-squad",
+      "intercessor-squad",
+      "sternguard-veteran-squad",
+      "sword-brethren-squad"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -294,6 +326,23 @@
   },
   "captain": {
     "role": "leader",
+    "canLead": [
+      "assault-intercessor-squad",
+      "bladeguard-veteran-squad",
+      "company-heroes",
+      "crusader-squad",
+      "deathwatch-veterans",
+      "decimus-kill-team",
+      "fortis-kill-team",
+      "hellblaster-squad",
+      "infernus-squad",
+      "inner-circle-companions",
+      "intercessor-squad",
+      "sternguard-veteran-squad",
+      "sword-brethren-squad",
+      "tactical-squad",
+      "victrix-honour-guard"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -303,6 +352,12 @@
   },
   "captain-in-gravis-armour": {
     "role": "leader",
+    "canLead": [
+      "aggressor-squad",
+      "eradicator-squad",
+      "heavy-intercessor-squad",
+      "indomitor-kill-team"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -312,6 +367,14 @@
   },
   "captain-in-phobos-armour": {
     "role": "leader",
+    "canLead": [
+      "eliminator-squad",
+      "incursor-squad",
+      "infiltrator-squad",
+      "reiver-squad",
+      "scout-squad",
+      "spectrus-kill-team"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -321,6 +384,13 @@
   },
   "captain-in-terminator-armour": {
     "role": "leader",
+    "canLead": [
+      "deathwatch-terminator-squad",
+      "deathwing-knights",
+      "deathwing-terminator-squad",
+      "terminator-assault-squad",
+      "terminator-squad"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -330,6 +400,12 @@
   },
   "captain-with-jump-pack": {
     "role": "leader",
+    "canLead": [
+      "assault-intercessors-with-jump-packs",
+      "sanguinary-guard",
+      "talonstrike-kill-team",
+      "vanguard-veteran-squad-with-jump-packs"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -363,6 +439,23 @@
   },
   "chaplain": {
     "role": "leader",
+    "canLead": [
+      "assault-intercessor-squad",
+      "bladeguard-veteran-squad",
+      "crusader-squad",
+      "death-company-marines",
+      "death-company-marines-with-bolt-rifles",
+      "deathwatch-veterans",
+      "decimus-kill-team",
+      "fortis-kill-team",
+      "hellblaster-squad",
+      "infernus-squad",
+      "inner-circle-companions",
+      "intercessor-squad",
+      "sternguard-veteran-squad",
+      "sword-brethren-squad",
+      "tactical-squad"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -372,6 +465,13 @@
   },
   "chaplain-in-terminator-armour": {
     "role": "leader",
+    "canLead": [
+      "deathwatch-terminator-squad",
+      "deathwing-knights",
+      "deathwing-terminator-squad",
+      "terminator-assault-squad",
+      "terminator-squad"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -381,6 +481,10 @@
   },
   "chaplain-on-bike": {
     "role": "leader",
+    "canLead": [
+      "outrider-squad",
+      "ravenwing-black-knights"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -390,6 +494,12 @@
   },
   "chaplain-with-jump-pack": {
     "role": "leader",
+    "canLead": [
+      "assault-intercessors-with-jump-packs",
+      "death-company-marines-with-jump-packs",
+      "talonstrike-kill-team",
+      "vanguard-veteran-squad-with-jump-packs"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -591,6 +701,20 @@
   },
   "judiciar": {
     "role": "leader",
+    "canLead": [
+      "assault-intercessor-squad",
+      "bladeguard-veteran-squad",
+      "crusader-squad",
+      "deathwatch-veterans",
+      "decimus-kill-team",
+      "fortis-kill-team",
+      "infernus-squad",
+      "inner-circle-companions",
+      "intercessor-squad",
+      "sternguard-veteran-squad",
+      "sword-brethren-squad",
+      "tactical-squad"
+    ],
     "sizeOptions": [
       {
         "models": 1,
@@ -799,6 +923,17 @@
   },
   "techmarine": {
     "role": "leader",
+    "canLead": [
+      "assault-intercessor-squad",
+      "crusader-squad",
+      "decimus-kill-team",
+      "desolation-squad",
+      "devastator-squad",
+      "fortis-kill-team",
+      "intercessor-squad",
+      "sword-brethren-squad",
+      "tactical-squad"
+    ],
     "sizeOptions": [
       {
         "models": 1,

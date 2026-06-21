@@ -99,6 +99,10 @@ export function RosterPanel({
   const addableDetachments = catalogue.detachments.filter(
     (d) => !state.detachmentIds.includes(d.id) && d.detachmentPoints <= remainingDP,
   )
+  // Distinct DP tiers present, ascending — used to group the add dropdown.
+  const dpTiers = [...new Set(addableDetachments.map((d) => d.detachmentPoints))].sort(
+    (a, b) => a - b,
+  )
 
   const labels = buildInstanceLabels(state.units, byId)
   const instanceIds = new Set(state.units.map((u) => u.instanceId))
@@ -208,7 +212,10 @@ export function RosterPanel({
 
         {isOpen && (
           <div className="roster__unit-body">
-            <UnitStats ds={ds} />
+            <UnitStats
+              ds={ds}
+              canLeadNames={leads.map((id) => byId.get(id)!.name)}
+            />
             {hasOptions && (
               <div className="roster__unit-options">
                 {isLeader && (
@@ -327,11 +334,18 @@ export function RosterPanel({
           <span className="muted">Add detachment</span>
           <select value="" onChange={(e) => e.target.value && onAddDetachment(e.target.value)}>
             <option value="">— add a detachment —</option>
-            {addableDetachments.map((d) => (
-              <option key={d.id} value={d.id}>
-                {d.name} · {d.detachmentPoints} DP · {d.forceDisposition}
-              </option>
-            ))}
+            {dpTiers.flatMap((dp) => [
+              <option key={`tier-${dp}`} disabled>
+                {`──── ${dp} DP ────`}
+              </option>,
+              ...addableDetachments
+                .filter((d) => d.detachmentPoints === dp)
+                .map((d) => (
+                  <option key={d.id} value={d.id}>
+                    {d.name} · {d.forceDisposition}
+                  </option>
+                )),
+            ])}
           </select>
         </label>
       )}
