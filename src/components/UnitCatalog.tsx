@@ -36,13 +36,21 @@ export function UnitCatalog({
 
   const groups = useMemo(() => {
     const q = query.trim().toLowerCase()
-    const list = q
-      ? datasheets.filter(
-          (d) =>
-            d.name.toLowerCase().includes(q) ||
-            d.keywords.some((k) => k.toLowerCase().includes(q)),
-        )
-      : datasheets
+    // A numeric query (optionally "<=" / "<" / "≤") filters by cost at or below.
+    const numMatch = q.match(/^[<≤]?=?\s*(\d+)$/)
+    let list: Datasheet[]
+    if (numMatch) {
+      const max = Number(numMatch[1])
+      list = datasheets.filter((d) => cheapest(d) <= max)
+    } else if (q) {
+      list = datasheets.filter(
+        (d) =>
+          d.name.toLowerCase().includes(q) ||
+          d.keywords.some((k) => k.toLowerCase().includes(q)),
+      )
+    } else {
+      list = datasheets
+    }
     const byCat = new Map<string, Datasheet[]>()
     for (const d of [...list].sort((a, b) => a.name.localeCompare(b.name))) {
       const cat = unitCategory(d)
@@ -61,7 +69,7 @@ export function UnitCatalog({
         <input
           className="search"
           type="search"
-          placeholder="Search name or keyword…"
+          placeholder="Search name, keyword, or max pts (e.g. 100)…"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
