@@ -197,10 +197,13 @@ function UnitDetail({
                 return (
                   <optgroup key={d.id} label={d.name}>
                     {opts.map((e) => {
-                      const taken = e.id !== u.enhancementId && usedEnhancementIds.has(e.id)
+                      // Upgrades may be taken on multiple units; others are unique.
+                      const taken =
+                        !e.isUpgrade && e.id !== u.enhancementId && usedEnhancementIds.has(e.id)
                       return (
                         <option key={e.id} value={e.id} disabled={taken}>
-                          {e.name} (+{e.points}){taken ? ' — taken' : ''}
+                          {e.name} (+{e.points})
+                          {e.isUpgrade ? ' — Upgrade' : taken ? ' — taken' : ''}
                         </option>
                       )
                     })}

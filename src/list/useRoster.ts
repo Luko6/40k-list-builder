@@ -195,7 +195,11 @@ export function useRoster(catalogue: FactionCatalogue) {
       detachments.flatMap((d) => d.enhancements.map((e) => [e.id, e] as const)),
     )
     let points = 0
-    let enhancementsUsed = 0
+    // Upgrade-type enhancements can be taken multiple times; collectively they
+    // use a single enhancement slot (and are capped at 3 instances). Other
+    // enhancements are unique and each use one slot.
+    let nonUpgradeAssignments = 0
+    let upgradeInstances = 0
     const perDatasheet = new Map<string, number>()
     const enhancementUses = new Map<string, number>()
     for (const u of state.units) {
@@ -214,12 +218,15 @@ export function useRoster(catalogue: FactionCatalogue) {
       const enhancement = u.enhancementId ? enhancementById.get(u.enhancementId) : undefined
       if (enhancement) {
         points += enhancement.points
-        enhancementsUsed += 1
         enhancementUses.set(enhancement.id, (enhancementUses.get(enhancement.id) ?? 0) + 1)
+        if (enhancement.isUpgrade) upgradeInstances += 1
+        else nonUpgradeAssignments += 1
       }
       perDatasheet.set(u.datasheetId, (perDatasheet.get(u.datasheetId) ?? 0) + 1)
     }
 
+    // Upgrades share one slot collectively; non-upgrades use one each.
+    const enhancementsUsed = nonUpgradeAssignments + (upgradeInstances > 0 ? 1 : 0)
     const detachmentPointsUsed = detachments.reduce((n, d) => n + d.detachmentPoints, 0)
     const detachmentPointsBudget = size.detachmentPoints
     const dpOverBudget = detachmentPointsUsed > detachmentPointsBudget
@@ -235,11 +242,16 @@ export function useRoster(catalogue: FactionCatalogue) {
       )
     if (enhancementsUsed > size.enhancementLimit)
       problems.push(`${enhancementsUsed} enhancements assigned, over the limit of ${size.enhancementLimit}.`)
-    const dupEnh = [...enhancementUses.entries()].filter(([, n]) => n > 1)
+    // Non-upgrade enhancements are unique; Upgrades may repeat (max 3 instances).
+    const dupEnh = [...enhancementUses.entries()].filter(
+      ([id, n]) => n > 1 && !enhancementById.get(id)?.isUpgrade,
+    )
     for (const [id] of dupEnh) {
       const name = enhancementById.get(id)?.name ?? id
       problems.push(`Enhancement "${name}" is assigned more than once.`)
     }
+    if (upgradeInstances > 3)
+      problems.push(`${upgradeInstances} Upgrade enhancements taken — max 3.`)
     for (const [datasheetId, count] of perDatasheet) {
       const ds = byId.get(datasheetId)
       if (!ds || ds.isDedicatedTransport) continue
