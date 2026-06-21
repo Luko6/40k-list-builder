@@ -753,13 +753,19 @@
           "id": "fervent-exemplars",
           "name": "Fervent Exemplars",
           "points": 10,
-          "isUpgrade": true
+          "isUpgrade": true,
+          "eligibility": {
+            "datasheetId": "sword-brethren-squad"
+          }
         },
         {
           "id": "inheritors-of-sigismund",
           "name": "Inheritors of Sigismund",
           "points": 15,
-          "isUpgrade": true
+          "isUpgrade": true,
+          "eligibility": {
+            "datasheetId": "sword-brethren-squad"
+          }
         }
       ]
     },

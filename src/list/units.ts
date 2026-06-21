@@ -1,9 +1,18 @@
 import type { Datasheet, Enhancement } from '../data/schema'
 import type { RosterUnit } from './useRoster'
 
-/** Enhancements go on CHARACTERs that aren't Epic Heroes (e.g. not Helbrecht). */
+/** Default enhancement eligibility: a CHARACTER that isn't an Epic Hero. */
 export function canTakeEnhancement(ds: Datasheet): boolean {
   return ds.keywords.includes('Character') && !ds.keywords.includes('Epic Hero')
+}
+
+/** Whether this specific enhancement may go on this datasheet. Most are any
+ *  non-Epic character; some are restricted to a datasheet/keyword (e.g.
+ *  Marshal's Household enhancements → Sword Brethren Squad). */
+export function canTakeEnhancementOf(ds: Datasheet, enh: Enhancement): boolean {
+  if (enh.eligibility?.datasheetId) return ds.id === enh.eligibility.datasheetId
+  if (enh.eligibility?.keyword) return ds.keywords.includes(enh.eligibility.keyword)
+  return canTakeEnhancement(ds)
 }
 
 /** canLead carries some slugified rule-text fragments from compilation; keep

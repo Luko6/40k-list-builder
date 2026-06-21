@@ -263,6 +263,12 @@ const detachRulesFile = existsSync(DETACH_RULES_FILE)
 const detachRules = detachRulesFile.detachments ?? {}
 const enhDescriptions = detachRulesFile.enhancementDescriptions ?? {}
 
+// Manual enhancement-eligibility overrides (rules the data sources don't carry).
+// Marshal's Household enhancements go on a SWORD BRETHREN unit, not characters.
+const ENHANCEMENT_ELIGIBILITY = {
+  'marshals-household': { datasheetId: 'sword-brethren-squad' },
+}
+
 const detachments = (
   existsSync(DETACHMENTS_FILE)
     ? JSON.parse(readFileSync(DETACHMENTS_FILE, 'utf8')).detachments ?? FALLBACK_DETACHMENTS
@@ -271,9 +277,12 @@ const detachments = (
   .sort((a, b) => a.name.localeCompare(b.name))
   .map((d) => {
     const r = detachRules[d.id]
-    const enhancements = d.enhancements.map((e) =>
-      enhDescriptions[e.id] ? { ...e, description: enhDescriptions[e.id] } : e,
-    )
+    const elig = ENHANCEMENT_ELIGIBILITY[d.id]
+    const enhancements = d.enhancements.map((e) => ({
+      ...e,
+      ...(enhDescriptions[e.id] ? { description: enhDescriptions[e.id] } : {}),
+      ...(elig ? { eligibility: elig } : {}),
+    }))
     return {
       ...d,
       ...(r?.rule ? { rule: r.rule } : {}),

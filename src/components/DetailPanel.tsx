@@ -3,7 +3,7 @@ import type { RosterState, RosterTotals, RosterUnit } from '../list/useRoster'
 import {
   attachSlot,
   buildInstanceLabels,
-  canTakeEnhancement,
+  canTakeEnhancementOf,
   realCanLead,
   unitPoints,
 } from '../list/units'
@@ -117,7 +117,9 @@ function UnitDetail({
     totals.detachments.flatMap((d) => d.enhancements.map((e) => [e.id, e] as const)),
   )
   const enhancement = u.enhancementId ? enhancementById.get(u.enhancementId) : undefined
-  const eligible = canTakeEnhancement(ds) && enhancementById.size > 0
+  // Enhancements this unit may take (most need a non-Epic character; some are
+  // datasheet-restricted, e.g. Marshal's Household → Sword Brethren Squad).
+  const eligible = [...enhancementById.values()].some((e) => canTakeEnhancementOf(ds, e))
   const usedEnhancementIds = new Set(
     state.units.map((v) => v.enhancementId).filter(Boolean) as string[],
   )
@@ -189,18 +191,22 @@ function UnitDetail({
               onChange={(e) => onSetEnhancement(u.instanceId, e.target.value)}
             >
               <option value="">— none —</option>
-              {totals.detachments.map((d) => (
-                <optgroup key={d.id} label={d.name}>
-                  {d.enhancements.map((e) => {
-                    const taken = e.id !== u.enhancementId && usedEnhancementIds.has(e.id)
-                    return (
-                      <option key={e.id} value={e.id} disabled={taken}>
-                        {e.name} (+{e.points}){taken ? ' — taken' : ''}
-                      </option>
-                    )
-                  })}
-                </optgroup>
-              ))}
+              {totals.detachments.map((d) => {
+                const opts = d.enhancements.filter((e) => canTakeEnhancementOf(ds, e))
+                if (opts.length === 0) return null
+                return (
+                  <optgroup key={d.id} label={d.name}>
+                    {opts.map((e) => {
+                      const taken = e.id !== u.enhancementId && usedEnhancementIds.has(e.id)
+                      return (
+                        <option key={e.id} value={e.id} disabled={taken}>
+                          {e.name} (+{e.points}){taken ? ' — taken' : ''}
+                        </option>
+                      )
+                    })}
+                  </optgroup>
+                )
+              })}
             </select>
           </label>
         )}

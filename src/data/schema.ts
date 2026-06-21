@@ -53,6 +53,10 @@ export interface Enhancement {
   description?: string
   /** "Upgrade"-type enhancements can go on non-hero units. */
   isUpgrade?: boolean
+  /** Restricts who may take this enhancement. Default (absent) = any non-Epic
+   *  CHARACTER. e.g. Marshal's Household enhancements go on a Sword Brethren
+   *  Squad, so `{ datasheetId: 'sword-brethren-squad' }`. */
+  eligibility?: { datasheetId?: string; keyword?: string }
 }
 
 /** A detachment stratagem (from Wahapedia; see scripts/scrape-wahapedia.mjs). */
