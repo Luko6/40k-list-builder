@@ -141,8 +141,8 @@ export type UnitRole = 'leader' | 'support'
 export interface Datasheet {
   id: string
   name: string
-  /** Which compiled source it came from. */
-  source: 'black-templars' | 'space-marines'
+  /** Which compiled source it came from. `agents` = allied Imperial Agents. */
+  source: 'black-templars' | 'space-marines' | 'agents'
   /** Munitorum role tag, if any. */
   role?: UnitRole
   keywords: string[]

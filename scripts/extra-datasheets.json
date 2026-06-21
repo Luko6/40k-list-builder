@@ -1,0 +1,51 @@
+{
+  "_comment": "Hand-authored datasheets appended by compile-data (not from BSData). Allied Imperial Agents placeholders. Stats are approximate 10e values; points are a manual placeholder, not from the MFM.",
+  "datasheets": [
+    {
+      "id": "callidus-assassin",
+      "name": "Callidus Assassin",
+      "source": "agents",
+      "keywords": ["Infantry", "Character", "Imperium", "Officio Assassinorum", "Callidus", "Assassin", "Lone Operative"],
+      "factionKeywords": ["Agents of the Imperium", "Imperium"],
+      "statlines": [
+        {
+          "name": "Callidus Assassin",
+          "movement": "8\"",
+          "toughness": 3,
+          "save": "6+",
+          "wounds": 5,
+          "leadership": "6+",
+          "objectiveControl": 1,
+          "invulnerableSave": "4+"
+        }
+      ],
+      "weapons": [
+        {
+          "id": "neural-shredder",
+          "name": "Neural shredder",
+          "range": "12\"",
+          "attacks": "D6",
+          "skill": "2+",
+          "strength": "6",
+          "armourPenetration": "-2",
+          "damage": "2",
+          "abilities": ["Torrent", "Anti-Psyker 2+"]
+        },
+        {
+          "id": "phase-sword-and-poison-blades",
+          "name": "Phase sword and poison blades",
+          "range": "Melee",
+          "attacks": "5",
+          "skill": "2+",
+          "strength": "5",
+          "armourPenetration": "-2",
+          "damage": "2",
+          "abilities": ["Anti-Infantry 2+", "Precision"]
+        }
+      ],
+      "defaultLoadout": ["neural-shredder", "phase-sword-and-poison-blades"],
+      "wargearOptions": [],
+      "sizeOptions": [{ "models": 1, "points": 100 }]
+    }
+  ]
+}

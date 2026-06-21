@@ -21,6 +21,7 @@ const OUT_FILE = `${OUT_DIR}/black-templars.json`
 const OVERRIDES_FILE = 'scripts/points-overrides.json'
 const DETACHMENTS_FILE = 'scripts/detachments.json'
 const DETACH_RULES_FILE = 'scripts/detachment-rules.json'
+const EXTRA_FILE = 'scripts/extra-datasheets.json'
 const SCHEMA_VERSION = 1
 
 // Fallback if the scraper hasn't produced detachments.json yet (e.g. fresh
@@ -367,6 +368,19 @@ for (const link of arr(smCatalogue.entryLinks?.entryLink)) {
   smAdded++
 }
 report.push(`\nSM import: +${smAdded} added, ${smDuped} duplicates of BT entries, ${smExcluded} excluded (mode-tag/psyker/epic-hero)`)
+
+// Pass 3: hand-authored extras (allied Imperial Agents placeholders, etc.).
+if (existsSync(EXTRA_FILE)) {
+  const extras = JSON.parse(readFileSync(EXTRA_FILE, 'utf8')).datasheets ?? []
+  let added = 0
+  for (const ds of extras) {
+    if (byOurId.has(ds.id)) continue
+    datasheets.push(ds)
+    byOurId.set(ds.id, ds)
+    added++
+  }
+  report.push(`Extra datasheets: +${added}`)
+}
 
 // Pass 3: repair canLead. It's slugified from the Leader ability text, so the
 // names don't always match a datasheet id ("Sword Brethren" -> the datasheet
