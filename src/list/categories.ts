@@ -1,21 +1,31 @@
 import type { Datasheet } from '../data/schema'
 
-/** Roster sections, in display order. */
+/** Roster sections, in display order (New Recruit-style, keyword-driven). */
 export const CATEGORY_ORDER = [
+  'Epic Heroes',
   'Characters',
   'Battleline',
+  'Infantry',
+  'Mounted',
+  'Vehicles',
+  'Fortifications',
   'Dedicated Transports',
   'Other',
 ] as const
 
 export type Category = (typeof CATEGORY_ORDER)[number]
 
-/** Which roster section a datasheet belongs to (keyword/role driven). */
+/** Which roster section a datasheet belongs to. A unit carries several keywords
+ *  (e.g. Character + Infantry), so the first match in this priority order wins. */
 export function unitCategory(ds: Datasheet): Category {
-  if (ds.role || ds.keywords.includes('Character') || ds.keywords.includes('Epic Hero'))
-    return 'Characters'
-  if (ds.keywords.includes('Battleline')) return 'Battleline'
-  if (ds.isDedicatedTransport || ds.keywords.includes('Dedicated Transport'))
-    return 'Dedicated Transports'
+  const k = ds.keywords
+  if (k.includes('Epic Hero')) return 'Epic Heroes'
+  if (k.includes('Character')) return 'Characters'
+  if (ds.isDedicatedTransport || k.includes('Dedicated Transport')) return 'Dedicated Transports'
+  if (k.includes('Battleline')) return 'Battleline'
+  if (k.includes('Infantry')) return 'Infantry'
+  if (k.includes('Mounted')) return 'Mounted'
+  if (k.includes('Vehicle')) return 'Vehicles'
+  if (k.includes('Fortification')) return 'Fortifications'
   return 'Other'
 }

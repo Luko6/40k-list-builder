@@ -189,13 +189,21 @@ function canLeadFrom(abilities) {
   return units.length ? units.map(slug) : undefined
 }
 
-function keywordsFrom(entry) {
-  const links = arr(entry.categoryLinks?.categoryLink)
+function keywordsFrom(entry, link) {
+  // Categories can be declared on the shared entry AND overridden/added on the
+  // top-level entryLink (e.g. BT tags Chaplain Grimaldus "Epic Hero" on the
+  // link, not the shared entry), so merge both.
+  const links = [
+    ...arr(entry.categoryLinks?.categoryLink),
+    ...arr(link?.categoryLinks?.categoryLink),
+  ]
   const keywords = []
   const factionKeywords = []
+  const seen = new Set()
   for (const l of links) {
     const name = l.name ?? ''
-    if (!name) continue
+    if (!name || seen.has(name)) continue
+    seen.add(name)
     if (name.startsWith('Faction:')) factionKeywords.push(name.replace('Faction:', '').trim())
     else if (!/^Configuration$/i.test(name)) keywords.push(name)
   }
@@ -294,7 +302,7 @@ function buildDatasheet(link, source) {
   // BSData uses US spelling ("Armor"); the Munitorum uses UK ("Armour").
   const ov = overrides[id] ?? overrides[id.replace(/armor\b/, 'armour')] ?? {}
   const basePts = ptsFrom(entry)
-  const { keywords, factionKeywords } = keywordsFrom(entry)
+  const { keywords, factionKeywords } = keywordsFrom(entry, link)
   const weapons = [...wMap.values()]
   // Prefer the Munitorum's can-lead list (clean, authoritative); fall back to
   // the BSData Leader-ability text parse for anything the MFM didn't cover.
