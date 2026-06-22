@@ -68,6 +68,7 @@ export function fromSavedList(sl: SavedList): RosterState {
     id: sl.id,
     name: sl.name,
     createdAt: sl.createdAt ?? now(),
+    gameSizeId: sl.gameSizeId ?? 'strikeForce',
     detachmentIds: Array.isArray(sl.detachments)
       ? sl.detachments.map((d) => d.detachmentId).filter(Boolean)
       : [],

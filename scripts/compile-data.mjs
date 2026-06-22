@@ -422,6 +422,7 @@ const catalogue = {
   edition: '11th (10e BSData stand-in)',
   gameSizes: [
     { id: 'strikeForce', label: 'Strike Force (2000 pts)', pointsLimit: 2000, detachmentPoints: 3, enhancementLimit: 4, datasheetLimit: 3 },
+    { id: 'incursion', label: 'Incursion (1000 pts)', pointsLimit: 1000, detachmentPoints: 2, enhancementLimit: 2, datasheetLimit: 3 },
   ],
   detachments,
   datasheets: datasheets.sort((a, b) => a.name.localeCompare(b.name)),

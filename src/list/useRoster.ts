@@ -1,5 +1,5 @@
 import { useMemo, useReducer } from 'react'
-import type { Detachment, FactionCatalogue } from '../data/schema'
+import type { Detachment, FactionCatalogue, GameSizeId } from '../data/schema'
 import { fromSavedList, loadCurrent } from './storage'
 
 /**
@@ -24,6 +24,8 @@ export interface RosterState {
   id: string
   name: string
   createdAt: string
+  /** Game size (points/DP/enhancement budgets), e.g. strikeForce or incursion. */
+  gameSizeId: GameSizeId
   /** 11e lets an army combine several detachments up to the DP budget. */
   detachmentIds: string[]
   units: RosterUnit[]
@@ -39,8 +41,9 @@ type Action =
   | { type: 'setEnhancement'; instanceId: string; enhancementId?: string }
   | { type: 'setAttachment'; instanceId: string; attachedToInstanceId?: string }
   | { type: 'rename'; name: string }
+  | { type: 'setGameSize'; gameSizeId: GameSizeId }
   | { type: 'load'; state: RosterState }
-  | { type: 'new'; detachmentId: string }
+  | { type: 'new'; detachmentId: string; gameSizeId: GameSizeId }
 
 function reducer(state: RosterState, action: Action): RosterState {
   switch (action.type) {
@@ -62,6 +65,8 @@ function reducer(state: RosterState, action: Action): RosterState {
     }
     case 'rename':
       return { ...state, name: action.name }
+    case 'setGameSize':
+      return { ...state, gameSizeId: action.gameSizeId }
     case 'load':
       return action.state
     case 'new':
@@ -69,6 +74,7 @@ function reducer(state: RosterState, action: Action): RosterState {
         id: crypto.randomUUID(),
         name: 'Untitled list',
         createdAt: new Date().toISOString(),
+        gameSizeId: action.gameSizeId,
         detachmentIds: action.detachmentId ? [action.detachmentId] : [],
         units: [],
       }
@@ -172,6 +178,7 @@ function init(catalogue: FactionCatalogue): RosterState {
     id: crypto.randomUUID(),
     name: 'Untitled list',
     createdAt: new Date().toISOString(),
+    gameSizeId: catalogue.gameSizes[0]?.id ?? 'strikeForce',
     detachmentIds: catalogue.detachments[0] ? [catalogue.detachments[0].id] : [],
     units: [],
   }
@@ -180,7 +187,8 @@ function init(catalogue: FactionCatalogue): RosterState {
 export function useRoster(catalogue: FactionCatalogue) {
   const [state, dispatch] = useReducer(reducer, catalogue, init)
 
-  const size = catalogue.gameSizes[0]
+  const size =
+    catalogue.gameSizes.find((s) => s.id === state.gameSizeId) ?? catalogue.gameSizes[0]
   const byId = useMemo(
     () => new Map(catalogue.datasheets.map((d) => [d.id, d])),
     [catalogue],

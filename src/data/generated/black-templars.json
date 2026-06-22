@@ -11,6 +11,14 @@
       "detachmentPoints": 3,
       "enhancementLimit": 4,
       "datasheetLimit": 3
+    },
+    {
+      "id": "incursion",
+      "label": "Incursion (1000 pts)",
+      "pointsLimit": 1000,
+      "detachmentPoints": 2,
+      "enhancementLimit": 2,
+      "datasheetLimit": 3
     }
   ],
   "detachments": [

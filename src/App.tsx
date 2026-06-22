@@ -74,9 +74,24 @@ function App() {
       <header className="app-header">
         <p className="eyebrow">Warhammer 40,000 · {cat.edition}</p>
         <h1>Crusade List Builder</h1>
-        <p className="subtitle">
-          {cat.name} · {size.label}
-        </p>
+        <div className="app-header__sub">
+          <span className="subtitle">{cat.name}</span>
+          <span className="subtitle-sep">·</span>
+          <select
+            className="gamesize-select"
+            value={size.id}
+            aria-label="Game size"
+            onChange={(e) =>
+              dispatch({ type: 'setGameSize', gameSizeId: e.target.value as typeof size.id })
+            }
+          >
+            {cat.gameSizes.map((g) => (
+              <option key={g.id} value={g.id}>
+                {g.label}
+              </option>
+            ))}
+          </select>
+        </div>
       </header>
 
       <Toolbar
@@ -85,7 +100,11 @@ function App() {
         currentId={state.id}
         onRename={(name) => dispatch({ type: 'rename', name })}
         onNew={() => {
-          dispatch({ type: 'new', detachmentId: cat.detachments[0]?.id ?? '' })
+          dispatch({
+            type: 'new',
+            detachmentId: cat.detachments[0]?.id ?? '',
+            gameSizeId: state.gameSizeId,
+          })
           setSelection(null)
         }}
         onSave={handleSave}
